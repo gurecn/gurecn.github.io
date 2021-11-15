@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://devdroid.cn/about/index.html</loc>
+    
+    <lastmod>2021-11-15T01:48:38.492Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://devdroid.cn/2021/11/03/zou-bu-chu-tong-hua-de-mei-li/</loc>
     
     <lastmod>2021-11-12T11:09:14.438Z</lastmod>
@@ -47,13 +54,6 @@
     <loc>https://devdroid.cn/2021/11/11/sheng-cheng-mu-lu-shu-xing-jie-gou-code-structure/</loc>
     
     <lastmod>2021-11-11T12:06:25.168Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://devdroid.cn/about/index.html</loc>
-    
-    <lastmod>2021-11-11T08:52:05.083Z</lastmod>
     
   </url>
   
