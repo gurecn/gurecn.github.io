@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devdroid.cn/"/>
-  <updated>2021-11-15T02:52:01.480Z</updated>
+  <updated>2021-11-16T12:16:31.129Z</updated>
   <id>https://devdroid.cn/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Android任务栏新增最近页面</title>
+    <link href="https://devdroid.cn/2021/11/16/android-ren-wu-lan-xin-zeng-zui-jin-ye-mian/"/>
+    <id>https://devdroid.cn/2021/11/16/android-ren-wu-lan-xin-zeng-zui-jin-ye-mian/</id>
+    <published>2021-11-16T12:01:55.000Z</published>
+    <updated>2021-11-16T12:16:31.129Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;需求&quot;&gt;&lt;a href=&quot;#需求&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="https://devdroid.cn/categories/Android/"/>
+    
+    
+      <category term="应用" scheme="https://devdroid.cn/tags/%E5%BA%94%E7%94%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>Hexo博客问题解决记录</title>
