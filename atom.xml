@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devdroid.cn/"/>
-  <updated>2021-11-16T12:16:31.129Z</updated>
+  <updated>2021-11-17T11:54:03.565Z</updated>
   <id>https://devdroid.cn/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>应用启动闪屏优化与夜间模式</title>
+    <link href="https://devdroid.cn/2021/11/17/ying-yong-qi-dong-shan-ping-you-hua-yu-ye-jian-mo-shi/"/>
+    <id>https://devdroid.cn/2021/11/17/ying-yong-qi-dong-shan-ping-you-hua-yu-ye-jian-mo-shi/</id>
+    <published>2021-11-17T11:40:33.000Z</published>
+    <updated>2021-11-17T11:54:03.565Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;今天主要实现Android应用的两个体验上的功能：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;优化应用启动时闪屏页效果。&lt;/li&gt;
+&lt;li&gt;应用实现夜间模式。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;优化闪屏页&quot;&gt;&lt;a href=&quot;#优化闪屏页&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="https://devdroid.cn/categories/Android/"/>
+    
+    
+      <category term="新特性" scheme="https://devdroid.cn/tags/%E6%96%B0%E7%89%B9%E6%80%A7/"/>
+    
+  </entry>
   
   <entry>
     <title>Android任务栏新增最近页面</title>
