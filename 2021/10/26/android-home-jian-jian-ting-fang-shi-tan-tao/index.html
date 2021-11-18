@@ -254,7 +254,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -451,47 +451,47 @@
             <span class="token attr-name"><span class="token namespace">android:</span>exported</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>false<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>然后实现广播接收者主要是监听两种动作：homekey和recentapps，发现点击HOME调用的是homekey动作，长按HOME键是调用了recentapps动作，故实现监听这两种动作即可：</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HomeKeyEventReceiver</span> <span class="token keyword">extends</span> <span class="token class-name">BroadcastReceiver</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HomeKeyEventReceiver</span> <span class="token keyword">extends</span> <span class="token class-name">BroadcastReceiver</span> <span class="token punctuation">{</span>
     String SYSTEM_REASON <span class="token operator">=</span> <span class="token string">"reason"</span><span class="token punctuation">;</span>
     String SYSTEM_HOME_KEY <span class="token operator">=</span> <span class="token string">"homekey"</span><span class="token punctuation">;</span>
     String SYSTEM_HOME_KEY_LONG <span class="token operator">=</span> <span class="token string">"recentapps"</span><span class="token punctuation">;</span>
-    <span class="token keyword">public</span> <span class="token function">HomeKeyEventReceiver</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token function">HomeKeyEventReceiver</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">}</span>
 
     <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onReceive</span><span class="token punctuation">(</span>Context context<span class="token punctuation">,</span> Intent intent<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onReceive</span><span class="token punctuation">(</span>Context context<span class="token punctuation">,</span> Intent intent<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         String action <span class="token operator">=</span> intent<span class="token punctuation">.</span><span class="token function">getAction</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>Intent<span class="token punctuation">.</span>ACTION_CLOSE_SYSTEM_DIALOGS<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>action<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>Intent<span class="token punctuation">.</span>ACTION_CLOSE_SYSTEM_DIALOGS<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>action<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
             String reason <span class="token operator">=</span> intent<span class="token punctuation">.</span><span class="token function">getStringExtra</span><span class="token punctuation">(</span>SYSTEM_REASON<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>TextUtils<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>reason<span class="token punctuation">,</span> SYSTEM_HOME_KEY<span class="token punctuation">)</span> <span class="token operator">||</span> TextUtils<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>reason<span class="token punctuation">,</span> SYSTEM_HOME_KEY_LONG<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>TextUtils<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>reason<span class="token punctuation">,</span> SYSTEM_HOME_KEY<span class="token punctuation">)</span> <span class="token operator">||</span> TextUtils<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>reason<span class="token punctuation">,</span> SYSTEM_HOME_KEY_LONG<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
                 <span class="token comment" spellcheck="true">//点击HOME键</span>
                 LauncherModel<span class="token punctuation">.</span><span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getGlobalEventBus</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">OnHomeClickEvent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>然后使用红米手机测试程序效果：点击HOME键，查看效果，期待日志的产生。</p>
 <p>结果让人失望，竟然没有如愿的实现监听！！！</p>
 <p>为什么呢？是小米手机做了特殊处理还是Android系统做了系统级别的限制，这个不可而知了。</p>
 <p>既然静态不行，那就动态试试。</p>
 <h4 id="第二种方式：使用动态方式注册广播接收者，监听HOME键的点击事件。"><a href="#第二种方式：使用动态方式注册广播接收者，监听HOME键的点击事件。" class="headerlink" title="第二种方式：使用动态方式注册广播接收者，监听HOME键的点击事件。"></a>第二种方式：使用动态方式注册广播接收者，监听HOME键的点击事件。</h4><p>为了实现类似静态的效果，在整个程序内监听HOME键的点击，所以我们在Application中进行动态广播的注册，代码如下：</p>
-<pre class="line-numbers language-java"><code class="language-java">    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">startServerAndReceiver</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-java"><code class="language-java">    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">startServerAndReceiver</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         IntentFilter filterHome <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">IntentFilter</span><span class="token punctuation">(</span>Intent<span class="token punctuation">.</span>ACTION_CLOSE_SYSTEM_DIALOGS<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token function">getAppContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">registerReceiver</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">HomeKeyEventReceiver</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> filterHome<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>发现，终于，日志出现了！是时候尽情庆祝吧。</p>
 <p>不过，等等。好像这种方式也有漏洞。。</p>
 <p>经测试组测试发现，在部分国产定制ROM中，发现一个奇怪的现象：在部分手机上使用动态监听依然无法达到监听HOME键的目的，比如说在奇酷手机。这又是为什么呢？</p>
 <p>经过研究发现，注册动态广播需要在主线程进行，我们对代码进行改进，终于实现了对奇酷的监听。</p>
 <pre class="line-numbers language-java"><code class="language-java">    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onCreate</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onCreate</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onCreate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         IntentFilter filterHome <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">IntentFilter</span><span class="token punctuation">(</span>Intent<span class="token punctuation">.</span>ACTION_CLOSE_SYSTEM_DIALOGS<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token function">getAppContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">registerReceiver</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">HomeKeyEventReceiver</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> filterHome<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>由于手机资源有限，不能对所有手机进行测试，希望大家有更好的方式或者想法能够及时反馈。</p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ol>
@@ -848,7 +848,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/24.jpg" class="responsive-img" alt="个人推荐工具">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="个人推荐工具">
                         
                         <span class="card-title">个人推荐工具</span>
                     </div>
@@ -904,7 +904,7 @@ TAPD
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hexo+Github博客搭建、避坑指南">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="Hexo+Github博客搭建、避坑指南">
                         
                         <span class="card-title">Hexo+Github博客搭建、避坑指南</span>
                     </div>
@@ -1111,7 +1111,7 @@ TAPD
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">21.2k</span>
+            <span class="white-color">21k</span>
             
 
             <br>

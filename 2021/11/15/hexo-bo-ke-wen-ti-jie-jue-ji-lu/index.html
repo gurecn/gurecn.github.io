@@ -260,7 +260,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/24.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -415,7 +415,7 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    817
+                    777
                 </div>
                 
 
@@ -452,18 +452,18 @@
 <p>在\themes\matery\source\css\my.css文件中添加如下代码：</p>
 <pre class="line-numbers language-css"><code class="language-css"><span class="token comment" spellcheck="true">/* Here is your custom css styles. */</span>
 <span class="token comment" spellcheck="true">/* 修改首页轮播的标题大小 */</span>
-<span class="token atrule"><span class="token rule">@media</span> only screen and <span class="token punctuation">(</span><span class="token property">max-width</span><span class="token punctuation">:</span> 601px<span class="token punctuation">)</span> &amp;#123<span class="token punctuation">;</span></span>
-    <span class="token number">.</span>bg-cover <span class="token number">.</span>title &amp;<span class="token hexcode">#123</span><span class="token punctuation">;</span>
+<span class="token atrule"><span class="token rule">@media</span> only screen and <span class="token punctuation">(</span><span class="token property">max-width</span><span class="token punctuation">:</span> 601px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+    <span class="token selector"><span class="token class">.bg-cover</span> <span class="token class">.title</span> </span><span class="token punctuation">{</span>
         <span class="token property">font-size</span><span class="token punctuation">:</span> <span class="token number">2.5</span>rem<span class="token punctuation">;</span>
-    &amp;<span class="token hexcode">#125</span><span class="token punctuation">;</span>
-&amp;<span class="token hexcode">#125</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
 <span class="token comment" spellcheck="true">/* 修改博客标题的字体大小 */</span>
-<span class="token atrule"><span class="token rule">@media</span> only screen and <span class="token punctuation">(</span><span class="token property">max-width</span><span class="token punctuation">:</span> 601px<span class="token punctuation">)</span> &amp;#123<span class="token punctuation">;</span></span>
-    header <span class="token number">.</span>brand-logo <span class="token number">.</span>logo-span &amp;<span class="token hexcode">#123</span><span class="token punctuation">;</span>
+<span class="token atrule"><span class="token rule">@media</span> only screen and <span class="token punctuation">(</span><span class="token property">max-width</span><span class="token punctuation">:</span> 601px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+    <span class="token selector">header <span class="token class">.brand-logo</span> <span class="token class">.logo-span</span> </span><span class="token punctuation">{</span>
         <span class="token property">font-size</span><span class="token punctuation">:</span> <span class="token number">1.5</span>rem<span class="token punctuation">;</span>
-    &amp;<span class="token hexcode">#125</span><span class="token punctuation">;</span>
-&amp;<span class="token hexcode">#125</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>设置后再次打开页面（清除浏览器缓存），显示效果如下：</p>
 <img src="2.jpg" alt="显示正常" width="439" height="463" align="middle" />
@@ -482,32 +482,32 @@
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span>script type<span class="token operator">=</span><span class="token string">"text/javascript"</span><span class="token operator">></span>
     <span class="token operator">&lt;</span><span class="token operator">%</span>
     <span class="token keyword">let</span> tagWordArr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-    site<span class="token punctuation">.</span>tags<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>tag<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-        tagWordArr<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span><span class="token string">'text'</span><span class="token punctuation">:</span> tag<span class="token punctuation">.</span>name<span class="token punctuation">,</span> <span class="token string">'weight'</span><span class="token punctuation">:</span> tag<span class="token punctuation">.</span>length<span class="token punctuation">,</span> <span class="token string">'link'</span><span class="token punctuation">:</span> <span class="token function">url_for</span><span class="token punctuation">(</span>tag<span class="token punctuation">.</span>path<span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    site<span class="token punctuation">.</span>tags<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>tag<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        tagWordArr<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">'text'</span><span class="token punctuation">:</span> tag<span class="token punctuation">.</span>name<span class="token punctuation">,</span> <span class="token string">'weight'</span><span class="token punctuation">:</span> tag<span class="token punctuation">.</span>length<span class="token punctuation">,</span> <span class="token string">'link'</span><span class="token punctuation">:</span> <span class="token function">url_for</span><span class="token punctuation">(</span>tag<span class="token punctuation">.</span>path<span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
     <span class="token keyword">let</span> tagWords <span class="token operator">=</span> JSON<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>tagWordArr<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token operator">%</span><span class="token operator">></span>
 
-    <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#tag-wordcloud'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">jQCloud</span><span class="token punctuation">(</span><span class="token operator">&lt;</span><span class="token operator">%</span><span class="token operator">-</span> tagWords <span class="token operator">%</span><span class="token operator">></span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#tag-wordcloud'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">jQCloud</span><span class="token punctuation">(</span><span class="token operator">&lt;</span><span class="token operator">%</span><span class="token operator">-</span> tagWords <span class="token operator">%</span><span class="token operator">></span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
         autoResize<span class="token punctuation">:</span> <span class="token boolean">true</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>发现tag.path使用hexo内置的url_for方法进行格式化。通过日志输出发现传入正常的地址，经过该方法处理后就会出现异常（可能是编码问题）。因为我不是专业前端，无法深入底层优化，所以我就找了个取巧的方式，采用地址拼接的方案解决该问题。优化后代码如下：</p>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span>script type<span class="token operator">=</span><span class="token string">"text/javascript"</span><span class="token operator">></span>
     <span class="token operator">&lt;</span><span class="token operator">%</span>
     <span class="token keyword">let</span> tagWordArr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-    site<span class="token punctuation">.</span>tags<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>tag<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-        tagWordArr<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span><span class="token string">'text'</span><span class="token punctuation">:</span> tag<span class="token punctuation">.</span>name<span class="token punctuation">,</span> <span class="token string">'weight'</span><span class="token punctuation">:</span> tag<span class="token punctuation">.</span>length<span class="token punctuation">,</span> <span class="token string">'link'</span><span class="token punctuation">:</span> <span class="token string">"/"</span><span class="token operator">+</span>tag<span class="token punctuation">.</span>path<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    site<span class="token punctuation">.</span>tags<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>tag<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        tagWordArr<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">'text'</span><span class="token punctuation">:</span> tag<span class="token punctuation">.</span>name<span class="token punctuation">,</span> <span class="token string">'weight'</span><span class="token punctuation">:</span> tag<span class="token punctuation">.</span>length<span class="token punctuation">,</span> <span class="token string">'link'</span><span class="token punctuation">:</span> <span class="token string">"/"</span><span class="token operator">+</span>tag<span class="token punctuation">.</span>path<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
     <span class="token keyword">let</span> tagWords <span class="token operator">=</span> JSON<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>tagWordArr<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token operator">%</span><span class="token operator">></span>
 
-    <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#tag-wordcloud'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">jQCloud</span><span class="token punctuation">(</span><span class="token operator">&lt;</span><span class="token operator">%</span><span class="token operator">-</span> tagWords <span class="token operator">%</span><span class="token operator">></span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#tag-wordcloud'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">jQCloud</span><span class="token punctuation">(</span><span class="token operator">&lt;</span><span class="token operator">%</span><span class="token operator">-</span> tagWords <span class="token operator">%</span><span class="token operator">></span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
         autoResize<span class="token punctuation">:</span> <span class="token boolean">true</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>此时再点击wordcloud生成的词云图片上的中文标签，显示就正常了。</p>
@@ -857,7 +857,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Android任务栏新增最近页面">
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="Android任务栏新增最近页面">
                         
                         <span class="card-title">Android任务栏新增最近页面</span>
                     </div>
@@ -906,7 +906,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="Android实现下拉菜单快捷开关">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Android实现下拉菜单快捷开关">
                         
                         <span class="card-title">Android实现下拉菜单快捷开关</span>
                     </div>
@@ -1111,7 +1111,7 @@
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">21.2k</span>
+            <span class="white-color">21k</span>
             
 
             <br>

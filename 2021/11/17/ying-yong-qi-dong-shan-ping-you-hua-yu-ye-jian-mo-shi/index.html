@@ -260,7 +260,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -466,12 +466,12 @@
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>最后进入启动Activity文件，在onCreate方法中使用setTheme设置主题：</p>
 <pre class="line-numbers language-java"><code class="language-java">    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onCreate</span><span class="token punctuation">(</span>Bundle savedInstanceState<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onCreate</span><span class="token punctuation">(</span>Bundle savedInstanceState<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onCreate</span><span class="token punctuation">(</span>savedInstanceState<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token function">setTheme</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>style<span class="token punctuation">.</span>AppTheme_Launcher<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token function">getWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setFlags</span><span class="token punctuation">(</span>WindowManager<span class="token punctuation">.</span>LayoutParams<span class="token punctuation">.</span>FLAG_FULLSCREEN<span class="token punctuation">,</span> WindowManager<span class="token punctuation">.</span>LayoutParams<span class="token punctuation">.</span>FLAG_FULLSCREEN<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token function">setContentView</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>layout<span class="token punctuation">.</span>activity_guide<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>这时候重新启动应用，发现白屏确实没有了，但是仔细看发现启动时出现了黑屏（苦笑）。</p>
 <p>原来关键在于AppTheme.Launcher中的样式设置。</p>
@@ -897,7 +897,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="应用启动闪屏优化与夜间模式">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="应用启动闪屏优化与夜间模式">
                         
                         <span class="card-title">应用启动闪屏优化与夜间模式</span>
                     </div>
@@ -953,7 +953,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Android任务栏新增最近页面">
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="Android任务栏新增最近页面">
                         
                         <span class="card-title">Android任务栏新增最近页面</span>
                     </div>
@@ -1158,7 +1158,7 @@
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">21.2k</span>
+            <span class="white-color">21k</span>
             
 
             <br>

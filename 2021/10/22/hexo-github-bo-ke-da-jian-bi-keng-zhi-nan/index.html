@@ -256,7 +256,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -508,7 +508,7 @@ TypeError <span class="token punctuation">[</span>ERR_INVALID_ARG_TYPE<span clas
 <p><a target="_blank" rel="noopener" href="https://www.ddmit.com/2021/09/24/hexo-mode-argument-must-be-integer-error/">hexo部署项目报错解决：The “mode” argument must be integer（无需node降版本）</a></p>
 <p>很遗憾，通过作者的方式没能解决这个问题（哭笑），不过给我很大的启示。升级hexo-renderer-stylus版本的方式没有解决该问题，但是使用hexo初始化的模板又可以正常编译、提交，那说明我个人电脑上的hexo及其他插件的版本都是没问题的，那么将阳神项目中的版本全部升级成我电脑安装的版本是否能解决问题？</p>
 <p>阳神项目中的依赖版本信息：</p>
-<pre class="line-numbers language-groovy"><code class="language-groovy">  <span class="token string">"dependencies"</span><span class="token punctuation">:</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-groovy"><code class="language-groovy">  <span class="token string">"dependencies"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
     <span class="token string">"eslint"</span><span class="token punctuation">:</span> <span class="token string">"^6.0.1"</span><span class="token punctuation">,</span>
     <span class="token string">"hexo"</span><span class="token punctuation">:</span> <span class="token string">"^3.9.0"</span><span class="token punctuation">,</span>
     <span class="token string">"hexo-baidu-url-submit"</span><span class="token punctuation">:</span> <span class="token string">"0.0.6"</span><span class="token punctuation">,</span>
@@ -529,10 +529,10 @@ TypeError <span class="token punctuation">[</span>ERR_INVALID_ARG_TYPE<span clas
     <span class="token string">"hexo-renderer-stylus"</span><span class="token punctuation">:</span> <span class="token string">"^0.3.3"</span><span class="token punctuation">,</span>
     <span class="token string">"hexo-server"</span><span class="token punctuation">:</span> <span class="token string">"^0.3.3"</span><span class="token punctuation">,</span>
     <span class="token string">"hexo-wordcount"</span><span class="token punctuation">:</span> <span class="token string">"^6.0.1"</span>
-  <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>我初始化hexo项目中的依赖版本信息：</p>
-<pre class="line-numbers language-groovy"><code class="language-groovy">  <span class="token string">"dependencies"</span><span class="token punctuation">:</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-groovy"><code class="language-groovy">  <span class="token string">"dependencies"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
     <span class="token string">"hexo"</span><span class="token punctuation">:</span> <span class="token string">"^5.0.0"</span><span class="token punctuation">,</span>
     <span class="token string">"hexo-generator-archive"</span><span class="token punctuation">:</span> <span class="token string">"^1.0.0"</span><span class="token punctuation">,</span>
     <span class="token string">"hexo-generator-category"</span><span class="token punctuation">:</span> <span class="token string">"^1.0.0"</span><span class="token punctuation">,</span>
@@ -543,10 +543,10 @@ TypeError <span class="token punctuation">[</span>ERR_INVALID_ARG_TYPE<span clas
     <span class="token string">"hexo-renderer-stylus"</span><span class="token punctuation">:</span> <span class="token string">"^2.0.0"</span><span class="token punctuation">,</span>
     <span class="token string">"hexo-server"</span><span class="token punctuation">:</span> <span class="token string">"^2.0.0"</span><span class="token punctuation">,</span>
     <span class="token string">"hexo-theme-landscape"</span><span class="token punctuation">:</span> <span class="token string">"^0.0.3"</span>
-  <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>将对应的版本升级后，最终的版本信息如下：</p>
-<pre class="line-numbers language-groovy"><code class="language-groovy">  <span class="token string">"dependencies"</span><span class="token punctuation">:</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-groovy"><code class="language-groovy">  <span class="token string">"dependencies"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
     <span class="token string">"eslint"</span><span class="token punctuation">:</span> <span class="token string">"^6.0.1"</span><span class="token punctuation">,</span>
     <span class="token string">"hexo"</span><span class="token punctuation">:</span> <span class="token string">"^5.0.0"</span><span class="token punctuation">,</span>
     <span class="token string">"hexo-baidu-url-submit"</span><span class="token punctuation">:</span> <span class="token string">"0.0.6"</span><span class="token punctuation">,</span>
@@ -567,7 +567,7 @@ TypeError <span class="token punctuation">[</span>ERR_INVALID_ARG_TYPE<span clas
     <span class="token string">"hexo-renderer-stylus"</span><span class="token punctuation">:</span> <span class="token string">"^2.0.0"</span><span class="token punctuation">,</span>
     <span class="token string">"hexo-server"</span><span class="token punctuation">:</span> <span class="token string">"^2.0.0"</span><span class="token punctuation">,</span>
     <span class="token string">"hexo-wordcount"</span><span class="token punctuation">:</span> <span class="token string">"^6.0.1"</span>
-  <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>发现果然提交正常了。hexo d提交如下：</p>
 <pre class="line-numbers language-bash"><code class="language-bash">Enumerating objects: 380, done.
@@ -946,7 +946,7 @@ INFO  Deploy done: <span class="token function">git</span>
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Android Home键监听方式探讨">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Android Home键监听方式探讨">
                         
                         <span class="card-title">Android Home键监听方式探讨</span>
                     </div>
@@ -995,7 +995,7 @@ INFO  Deploy done: <span class="token function">git</span>
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="5W2H | 关于写博客的七点反思">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="5W2H | 关于写博客的七点反思">
                         
                         <span class="card-title">5W2H | 关于写博客的七点反思</span>
                     </div>
@@ -1204,7 +1204,7 @@ When？什么时候开始写的？第一次写博客是 2015 年了，在 CSDN �
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">21.2k</span>
+            <span class="white-color">21k</span>
             
 
             <br>
