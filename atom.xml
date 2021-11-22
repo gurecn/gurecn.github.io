@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devdroid.cn/"/>
-  <updated>2021-11-18T06:04:04.967Z</updated>
+  <updated>2021-11-22T02:43:38.526Z</updated>
   <id>https://devdroid.cn/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Android 8.0图标适配</title>
+    <link href="https://devdroid.cn/2021/11/22/android-8-0-tu-biao-gua-pei/"/>
+    <id>https://devdroid.cn/2021/11/22/android-8-0-tu-biao-gua-pei/</id>
+    <published>2021-11-22T02:42:56.000Z</published>
+    <updated>2021-11-22T02:43:38.526Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Android 8.0（API 级别 26）引入了自适应启动器图标（adaptive-icon），它可以通过蒙版的方式在不同设备型号上显示为不同的形状（方形、圆角、圆形等）。官方文档&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="https://devdroid.cn/categories/Android/"/>
+    
+    
+      <category term="新特性" scheme="https://devdroid.cn/tags/%E6%96%B0%E7%89%B9%E6%80%A7/"/>
+    
+  </entry>
   
   <entry>
     <title>hexo博客字符乱码解决方案</title>
@@ -48,7 +74,7 @@
     <link href="https://devdroid.cn/2021/11/17/ying-yong-qi-dong-shan-ping-you-hua-yu-ye-jian-mo-shi/"/>
     <id>https://devdroid.cn/2021/11/17/ying-yong-qi-dong-shan-ping-you-hua-yu-ye-jian-mo-shi/</id>
     <published>2021-11-17T11:40:33.000Z</published>
-    <updated>2021-11-17T11:54:03.565Z</updated>
+    <updated>2021-11-22T02:51:08.780Z</updated>
     
     <summary type="html">
     
@@ -79,7 +105,7 @@
     <link href="https://devdroid.cn/2021/11/16/android-ren-wu-lan-xin-zeng-zui-jin-ye-mian/"/>
     <id>https://devdroid.cn/2021/11/16/android-ren-wu-lan-xin-zeng-zui-jin-ye-mian/</id>
     <published>2021-11-16T12:01:55.000Z</published>
-    <updated>2021-11-16T12:16:31.129Z</updated>
+    <updated>2021-11-22T02:48:53.560Z</updated>
     
     <summary type="html">
     
@@ -131,7 +157,7 @@
     <link href="https://devdroid.cn/2021/11/12/android-shi-xian-xia-la-cai-dan-kuai-jie-kai-guan/"/>
     <id>https://devdroid.cn/2021/11/12/android-shi-xian-xia-la-cai-dan-kuai-jie-kai-guan/</id>
     <published>2021-11-12T09:41:20.000Z</published>
-    <updated>2021-11-12T10:04:26.630Z</updated>
+    <updated>2021-11-22T02:49:36.053Z</updated>
     
     <summary type="html">
     
@@ -184,7 +210,7 @@
     <link href="https://devdroid.cn/2021/11/10/android-diao-yong-xi-tong-you-xiang-fa-song-you-jian/"/>
     <id>https://devdroid.cn/2021/11/10/android-diao-yong-xi-tong-you-xiang-fa-song-you-jian/</id>
     <published>2021-11-10T09:20:13.000Z</published>
-    <updated>2021-11-12T10:00:39.317Z</updated>
+    <updated>2021-11-22T02:45:51.970Z</updated>
     
     <summary type="html">
     
@@ -195,7 +221,7 @@
           &lt;p&gt;在开发中，经常会用到调用手机里的邮件的情况，比如说交流，反馈等。&lt;/p&gt;
 &lt;p&gt;在Android中，有多种方式能够打开一个外部应用，打开邮件也有多种方式，这里我们介绍两种方法调用系统邮箱进行邮件的发送。&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;1.这种方式会在系统中存在多个邮箱软件
+&lt;li&gt;1.这种方式会在系统中存在多个邮箱软件的时候
         
       
     
@@ -406,7 +432,7 @@
     <link href="https://devdroid.cn/2021/10/26/android-home-jian-jian-ting-fang-shi-tan-tao/"/>
     <id>https://devdroid.cn/2021/10/26/android-home-jian-jian-ting-fang-shi-tan-tao/</id>
     <published>2021-10-26T03:16:58.000Z</published>
-    <updated>2021-11-12T10:57:50.038Z</updated>
+    <updated>2021-11-22T02:44:28.452Z</updated>
     
     <summary type="html">
     

@@ -5,11 +5,11 @@
 <head>
     <meta name="google-site-verification" content="BZSSTWCG6ygfXci-M6fHXRUOICCdvw9XUlROWGENjyA" />
     <meta charset="utf-8">
-    <meta name="keywords" content="Android任务栏新增最近页面, Java C/C++ Vue Gure gurecn Android 卓技卓品">
+    <meta name="keywords" content="Android 8.0图标适配, Java C/C++ Vue Gure gurecn Android 卓技卓品">
     <meta name="baidu-site-verification" content="fmlEuI34ir" />
     <meta name="google-site-verification" content="yCy2azpds5XSuGZvis6OuA-XIGF5GuGpYRAaGfD6o48" />
     <meta name="360-site-verification" content="b7c11a830ef90fd1464ad6206bb7b6e7" />
-    <meta name="description" content="需求Android应用启动页面需要在AndroidManifest.xml文件进行注册，常用的应用都有一个Activity被定义成LAUNCHER，这时候点击应用图标时就会启动该Activity。在应用界面相互切换时系统维护的Activit">
+    <meta name="description" content="Android 8.0（API 级别 26）引入了自适应启动器图标（adaptive-icon），它可以通过蒙版的方式在不同设备型号上显示为不同的形状（方形、圆角、圆形等）。官方文档参考链接下面我们来实现一下该图标方式：1.在res路径下新">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Android任务栏新增最近页面 | 卓技卓品</title>
+    <title>Android 8.0图标适配 | 卓技卓品</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -254,13 +254,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/24.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Android任务栏新增最近页面
+                        Android 8.0图标适配
                     </div>
                 </div>
             </div>
@@ -371,8 +371,8 @@
                     
                     <div class="article-tag">
                         
-                        <a href="/tags/%E5%BA%94%E7%94%A8/" target="_blank">
-                            <span class="chip bg-color">应用</span>
+                        <a href="/tags/%E6%96%B0%E7%89%B9%E6%80%A7/" target="_blank">
+                            <span class="chip bg-color">新特性</span>
                         </a>
                         
                     </div>
@@ -395,7 +395,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-11-16
+                    2021-11-22
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -409,14 +409,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.1k
+                    356
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    1 分
                 </div>
                 
                 
@@ -432,104 +432,26 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>Android应用启动页面需要在AndroidManifest.xml文件进行注册，常用的应用都有一个Activity被定义成LAUNCHER，这时候点击应用图标时就会启动该Activity。在应用界面相互切换时系统维护的Activity栈会执行进出栈操作。这时候切换到后台任务管理界面（最近使用的应用界面）会看到每个应用只显示一个后台任务。</p>
-<p>我们开发的项目需要创建多个快捷方式，也就是一个应用需要多个入口，这个需求通过创建多个应用快捷方式不难实现。</p>
-<p>但是因通过不同入口进入时处理的业务也不相同，这就需要每个入口进入应用后都在后台任务管理界面独立创建一个新的后台展示界面，且实现同一应用的各个后台界面进入应用内跳转、退出互不影响。这个需求类似于微信应用与各个公众号快捷菜单的关系：通过公众号快捷菜单打开的公众号独立于微信应用，他们互不干涉。</p>
-<h3 id="探究"><a href="#探究" class="headerlink" title="探究"></a>探究</h3><p>刚看到这个需求时，第一感觉需要自己处理Activity栈，通过不同方式打开的页面使用不同的栈进行维护。但是这样维护成本比较大，且存在较大风险。</p>
-<h4 id="中间方案"><a href="#中间方案" class="headerlink" title="中间方案"></a>中间方案</h4><p>通过查阅Android官方文档，发现在Android 5.0（API 21）中引入了<a target="_blank" rel="noopener" href="https://developer.android.com/about/versions/lollipop#Documents">以文档为中心</a>的模型，也就是说，如果同一 Activity 的多个实例包含不同的文档，它们可能会在最近使用的应用屏幕中显示为任务。通过新增的 API 允许将应用中不同的 Activity 作为单个文档与其他最近使用的应用屏幕一并显示。</p>
-<p>实际测试发现，确实可以实现效果。实现代码如下（以<a target="_blank" rel="noopener" href="https://github.com/gurecn/sleepassistant">sleepassistant</a>项目代码举例）：</p>
-<p>显式Intent调用方式：</p>
-<pre class="line-numbers language-java"><code class="language-java">Intent intent <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Intent</span><span class="token punctuation">(</span>mAppCompatActivity<span class="token punctuation">,</span> AboutActivity<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-intent<span class="token punctuation">.</span><span class="token function">addFlags</span><span class="token punctuation">(</span>Intent<span class="token punctuation">.</span>FLAG_ACTIVITY_NEW_DOCUMENT <span class="token operator">|</span> Intent<span class="token punctuation">.</span>FLAG_ACTIVITY_MULTIPLE_TASK<span class="token punctuation">)</span><span class="token punctuation">;</span>
-mAppCompatActivity<span class="token punctuation">.</span><span class="token function">startActivity</span><span class="token punctuation">(</span>intent<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>documentLaunchMode方式：</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token operator">&lt;</span>activity
-    android<span class="token operator">:</span>label<span class="token operator">=</span><span class="token string">"@string/nav_string_about"</span>
-    android<span class="token operator">:</span>documentLaunchMode<span class="token operator">=</span><span class="token string">"always"</span>
-    android<span class="token operator">:</span>name<span class="token operator">=</span><span class="token string">".activity.AboutActivity"</span> <span class="token operator">/</span><span class="token operator">></span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p><em>注意：使用以上两种方式时，Activity的启动模式（launchMode）需要使用标准模式（或默认模式）才可生效。</em></p>
-<p>通过该Intent方式启动的Activity会在任务栏显示一个新的最近页面。</p>
-<img src="显示效果.png" width="272" height="381" alt="显示效果" >
-
-<p>但是这样还是存在一个问题，若是使用显式Intent调用方式（方法一），那么会出现的问题是，快捷方式无法实现flags（无法调用addFlags方法）。查看快捷方式代码如下：</p>
-<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>shortcut</span>
-    <span class="token attr-name"><span class="token namespace">android:</span>shortcutId</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>shortcut_about<span class="token punctuation">"</span></span>
-    <span class="token attr-name"><span class="token namespace">android:</span>enabled</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span>
-    <span class="token attr-name"><span class="token namespace">android:</span>icon</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@mipmap/icon_shortcut_backup<span class="token punctuation">"</span></span>
-    <span class="token attr-name"><span class="token namespace">android:</span>shortcutShortLabel</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@string/shortcutabout_lable<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>intent</span>
-        <span class="token attr-name"><span class="token namespace">android:</span>action</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>android.intent.action.VIEW<span class="token punctuation">"</span></span>
-        <span class="token attr-name"><span class="token namespace">android:</span>targetPackage</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>com.devdroid.sleepassistant<span class="token punctuation">"</span></span>
-        <span class="token attr-name"><span class="token namespace">android:</span>targetClass</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>com.devdroid.sleepassistant.activity.AboutActivity<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>intent</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>shortcut</span><span class="token punctuation">></span></span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>此时 <intent/>下可包含的参数为：</p>
-<blockquote>
-<declare-styleable name="Intent">
-    <!-- The action name to assign to the Intent, as per
-        {@link android.content.Intent#setAction Intent.setAction()}. -->
-    <attr name="action" format="string" />
-    <!-- The data URI to assign to the Intent, as per
-        {@link android.content.Intent#setData Intent.setData()}. -->
-    <attr name="data" format="string" />
-    <!-- The MIME type name to assign to the Intent, as per
-        {@link android.content.Intent#setType Intent.setType()}. -->
-    <attr name="mimeType" />
-    <!-- The package part of the ComponentName to assign to the Intent, as per
-        {@link android.content.Intent#setComponent Intent.setComponent()}. -->
-    <attr name="targetPackage" />
-    <!-- The class part of the ComponentName to assign to the Intent, as per
-        {@link android.content.Intent#setComponent Intent.setComponent()}. -->
-    <attr name="targetClass" format="string" />
-</declare-styleable>
-</blockquote>
-<p>发现没有配置Flags的方式。</p>
-<p>若是使用documentLaunchMode方式（方法二），那么会出现的问题是，每次使用该Activity，都会创建一个新的后台任务（我希望根据需求，需要时创建）。</p>
-<p>好像又陷入了死胡同。。</p>
-<h4 id="最终方案"><a href="#最终方案" class="headerlink" title="最终方案"></a>最终方案</h4><p>忽然灵机一动，想到一个非常规的方法。</p>
-<p>是不是可以通过快捷菜单使用标准启动方式启动一个中间界面（SkipActivity），在中间界面中再使用显式Intent调用方式（方法一）打开对应的页面（创建后台任务）？</p>
-<p>验证代码如下：</p>
-<p>快捷菜单代码：</p>
-<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>shortcut</span>
-    <span class="token attr-name"><span class="token namespace">android:</span>shortcutId</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>shortcut_about<span class="token punctuation">"</span></span>
-    <span class="token attr-name"><span class="token namespace">android:</span>enabled</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span>
-    <span class="token attr-name"><span class="token namespace">android:</span>icon</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@mipmap/icon_shortcut_backup<span class="token punctuation">"</span></span>
-    <span class="token attr-name"><span class="token namespace">android:</span>shortcutShortLabel</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@string/shortcutabout_lable<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>intent</span>
-        <span class="token attr-name"><span class="token namespace">android:</span>action</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>android.intent.action.VIEW<span class="token punctuation">"</span></span>
-        <span class="token attr-name"><span class="token namespace">android:</span>targetPackage</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>com.devdroid.sleepassistant<span class="token punctuation">"</span></span>
-        <span class="token attr-name"><span class="token namespace">android:</span>targetClass</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>com.devdroid.sleepassistant.activity.SkipActivity<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>extra</span>
-            <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>action<span class="token punctuation">"</span></span>
-            <span class="token attr-name"><span class="token namespace">android:</span>value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>about<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>intent</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>shortcut</span><span class="token punctuation">></span></span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>SkipActivity主要代码：</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@Override</span>
-<span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onResume</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-<span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onResume</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-Intent intent <span class="token operator">=</span> <span class="token function">getIntent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">if</span><span class="token punctuation">(</span>intent <span class="token operator">!=</span> null<span class="token punctuation">)</span><span class="token punctuation">{</span>
-  String action <span class="token operator">=</span> intent<span class="token punctuation">.</span><span class="token function">getStringExtra</span><span class="token punctuation">(</span><span class="token string">"action"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token string">"about"</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>action<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    Intent inten <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Intent</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> AboutActivity<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span> <span class="token punctuation">;</span>
-    inten<span class="token punctuation">.</span><span class="token function">addFlags</span><span class="token punctuation">(</span>Intent<span class="token punctuation">.</span>FLAG_ACTIVITY_NEW_DOCUMENT <span class="token operator">|</span> Intent<span class="token punctuation">.</span>FLAG_ACTIVITY_MULTIPLE_TASK<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">startActivity</span><span class="token punctuation">(</span>inten<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>测试发现确实达到了想要的效果。</p>
-<p><img src="%E6%9C%80%E7%BB%88%E6%95%88%E6%9E%9C.gif" alt="最终效果"></p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ol>
-<li>很多需求设计的技术在Android新版本中可能已经实现，需要经常查阅Android原始文档，跟进学习。</li>
-<li>作为研发人员，个人感觉该方法是一个取巧的方案，不是官方建议用法、也不是最优方式，仅作为参考。</li>
-</ol>
-<p>若是您有更好的实现方式，请告知博主，共同进步。项目相关代码请访问<a target="_blank" rel="noopener" href="https://github.com/gurecn/sleepassistant">sleepassistant</a>项目获取，或联系本人获取。</p>
+                <p>Android 8.0（API 级别 26）引入了自适应启动器图标（adaptive-icon），它可以通过蒙版的方式在不同设备型号上显示为不同的形状（方形、圆角、圆形等）。官方文档<a target="_blank" rel="noopener" href="https://developer.android.com/guide/practices/ui_guidelines/icon_design_adaptive">参考链接</a><br>下面我们来实现一下该图标方式：<br>1.在res路径下新建mipmap-anydpi-v26文件夹，文件夹内新建图标文件ic_launcher.xml</p>
+<pre class="line-numbers language-xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="utf-8"?></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>adaptive-icon</span> <span class="token attr-name"><span class="token namespace">xmlns:</span>android</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://schemas.android.com/apk/res/android<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>background</span> <span class="token attr-name"><span class="token namespace">android:</span>drawable</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@color/app_icon_background<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>foreground</span> <span class="token attr-name"><span class="token namespace">android:</span>drawable</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@mipmap/zhuopin_foreground<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>adaptive-icon</span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>2.在AndroidManifest.xml文件夹，使用新建的图标文件：</p>
+<pre class="line-numbers language-xml"><code class="language-xml"> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>application</span>
+        <span class="token attr-name"><span class="token namespace">android:</span>allowBackup</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>backupAgent</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>.database.DataBackupAgent<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>icon</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@mipmap/ic_launcher<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>label</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@string/app_name<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>.application.TheApplication<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>supportsRtl</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>theme</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@style/AppTheme.NoActionBar<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<span class="token comment" spellcheck="true">&lt;!--  清单资源--></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>application</span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>以上代码与资源可以参考开源项目：<a target="_blank" rel="noopener" href="https://github.com/gurecn/sleepassistant">sleepassistant</a><br>此时在Android 8.0（API 26）及以上系统显示正常。<br>但是我发现一个问题，就是在低于Android 8.0的手机上，应用图标显示默认的Android机器人图像，并没有适应低版本显示，看来需要自行兼容低版本的显示效果。<br>我们可以把未兼容的应用图标（包含背景色、前景色、蒙版等）放到mipmap资源路径下，图标命名成ic_launcher.png（名称与兼容图标xml文件一致）此时系统为低于Android 8.0时，系统会加载ic_launcher.png作为应用图标。</p>
 
             </div>
             <hr />
@@ -564,9 +486,9 @@ Intent intent <span class="token operator">=</span> <span class="token function"
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《Android任务栏新增最近页面》
+                    《Android 8.0图标适配》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2021/11/16/android-ren-wu-lan-xin-zeng-zui-jin-ye-mian/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2021/11/22/android-8-0-tu-biao-gua-pei/" property="cc:attributionName"
                rel="cc:attributionURL">
                 Gure
             </a> 采用
@@ -868,35 +790,30 @@ Intent intent <span class="token operator">=</span> <span class="token function"
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/11/17/ying-yong-qi-dong-shan-ping-you-hua-yu-ye-jian-mo-shi/">
+                <a href="/2021/11/22/android-8-0-tu-biao-gua-pei/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="应用启动闪屏优化与夜间模式">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="Android 8.0图标适配">
                         
-                        <span class="card-title">应用启动闪屏优化与夜间模式</span>
+                        <span class="card-title">Android 8.0图标适配</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            今天主要实现Android应用的两个体验上的功能：
-
-优化应用启动时闪屏页效果。
-应用实现夜间模式。
-
-优化闪屏页Android应用启动时，默认会出现瞬时的白屏界面。这个很影响用户的体验。
-我们可以通过为启动页Activity设置主题的方式
+                            Android 8.0（API 级别 26）引入了自适应启动器图标（adaptive-icon），它可以通过蒙版的方式在不同设备型号上显示为不同的形状（方形、圆角、圆形等）。官方文档参考链接下面我们来实现一下该图标方式：1.在res路径下新
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2021-11-17
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-11-22
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -909,6 +826,7 @@ Intent intent <span class="token operator">=</span> <span class="token function"
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -927,37 +845,33 @@ Intent intent <span class="token operator">=</span> <span class="token function"
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/11/15/hexo-bo-ke-wen-ti-jie-jue-ji-lu/">
+                <a href="/2021/11/18/hexo-bo-ke-zi-fu-luan-ma-jie-jue-fang-an/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Hexo博客问题解决记录">
+                        <img src="/medias/featureimages/24.jpg" class="responsive-img" alt="hexo博客字符乱码解决方案">
                         
-                        <span class="card-title">Hexo博客问题解决记录</span>
+                        <span class="card-title">hexo博客字符乱码解决方案</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            首先我使用的是阳神的博客模板，部署完成后，各种效果都比较满意。但是实际使用中也发现一些问题，今天就记录一下这些问题的修复方法，供大家借鉴。
-要记录的优化点主要是两个：
-
-手机访问页面时标题显示异常；
-点击博客生成的tag图无法打开页面。
-
-
+                            现象今天发现博客中所有的“{”与“}”都成了乱码，效果如下：
+public class HomeKeyEventReceiver extends BroadcastReceiver &amp;#123;
+    String SYSTEM_
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-11-15
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-11-18
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%8E%9F%E5%88%9B/" class="post-category" target="_blank">
-                                    原创
+                            <a href="/categories/hexo/" class="post-category" target="_blank">
+                                    hexo
                                 </a>
                             
                             
@@ -967,8 +881,8 @@ Intent intent <span class="token operator">=</span> <span class="token function"
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/hexo/" target="_blank">
-                        <span class="chip bg-color">hexo</span>
+                    <a href="/tags/%E7%BC%96%E7%A0%81/" target="_blank">
+                        <span class="chip bg-color">编码</span>
                     </a>
                     
                 </div>

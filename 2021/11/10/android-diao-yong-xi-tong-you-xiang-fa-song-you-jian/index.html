@@ -257,7 +257,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -438,7 +438,8 @@
                 <p>在开发中，经常会用到调用手机里的邮件的情况，比如说交流，反馈等。</p>
 <p>在Android中，有多种方式能够打开一个外部应用，打开邮件也有多种方式，这里我们介绍两种方法调用系统邮箱进行邮件的发送。</p>
 <ul>
-<li><p>1.这种方式会在系统中存在多个邮箱软件的时候，弹出选择框，让用户选择具体使用哪个客户端打开，完成邮件发送。</p>
+<li>1.这种方式会在系统中存在多个邮箱软件的时候，弹出选择框，让用户选择具体使用哪个客户端打开，完成邮件发送。</li>
+</ul>
 <pre class="line-numbers language-java"><code class="language-java">intent<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Intent</span><span class="token punctuation">(</span>Intent<span class="token punctuation">.</span>ACTION_SEND<span class="token punctuation">)</span><span class="token punctuation">;</span>
 intent<span class="token punctuation">.</span><span class="token function">setData</span><span class="token punctuation">(</span>Uri<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span><span class="token string">"mailto"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 String<span class="token punctuation">[</span><span class="token punctuation">]</span>to<span class="token operator">=</span><span class="token punctuation">{</span><span class="token string">"gurecn@163.com"</span><span class="token punctuation">,</span><span class="token string">"gurecn@gmail.com"</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
@@ -448,14 +449,13 @@ intent<span class="token punctuation">.</span><span class="token function">putEx
 intent<span class="token punctuation">.</span><span class="token function">setType</span><span class="token punctuation">(</span><span class="token string">"message/rfc822"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 chooser<span class="token operator">=</span>intent<span class="token punctuation">.</span><span class="token function">createChooser</span><span class="token punctuation">(</span>intent<span class="token punctuation">,</span> <span class="token string">"选择框标题"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">try</span> <span class="token punctuation">{</span>
-<span class="token function">startActivity</span><span class="token punctuation">(</span>chooser<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">startActivity</span><span class="token punctuation">(</span>chooser<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> ex<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-Toast<span class="token punctuation">.</span><span class="token function">makeText</span><span class="token punctuation">(</span>MenuFeedbackActivity<span class="token punctuation">.</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token function">getResources</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>string<span class="token punctuation">.</span>activity_setting_feedback_no_email<span class="token punctuation">)</span><span class="token punctuation">,</span> Toast<span class="token punctuation">.</span>LENGTH_SHORT<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Toast<span class="token punctuation">.</span><span class="token function">makeText</span><span class="token punctuation">(</span>MenuFeedbackActivity<span class="token punctuation">.</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token function">getResources</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>string<span class="token punctuation">.</span>activity_setting_feedback_no_email<span class="token punctuation">)</span><span class="token punctuation">,</span> Toast<span class="token punctuation">.</span>LENGTH_SHORT<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li><p>2.这种方式会优先直接调用默认的邮箱软件，完成邮件发送任务：不会弹出选择框</p>
-</li>
+<ul>
+<li>2.这种方式会优先直接调用默认的邮箱软件，完成邮件发送任务：不会弹出选择框</li>
 </ul>
 <pre class="line-numbers language-java"><code class="language-java">String tos <span class="token operator">=</span> <span class="token string">"gurecn@163.com; gurecn@gmail.com"</span><span class="token punctuation">;</span>
 Intent emailIntent <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Intent</span><span class="token punctuation">(</span>Intent<span class="token punctuation">.</span>ACTION_SEND<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -467,9 +467,9 @@ Uri uri <span class="token operator">=</span> Uri<span class="token punctuation"
 emailIntent<span class="token punctuation">.</span><span class="token function">setAction</span><span class="token punctuation">(</span>Intent<span class="token punctuation">.</span>ACTION_SENDTO<span class="token punctuation">)</span><span class="token punctuation">;</span>
 emailIntent<span class="token punctuation">.</span><span class="token function">setData</span><span class="token punctuation">(</span>uri<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">try</span> <span class="token punctuation">{</span>
-<span class="token function">startActivity</span><span class="token punctuation">(</span>emailIntent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">startActivity</span><span class="token punctuation">(</span>emailIntent<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> ex<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-Toast<span class="token punctuation">.</span><span class="token function">makeText</span><span class="token punctuation">(</span>MenuFeedbackActivity<span class="token punctuation">.</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token function">getResources</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>string<span class="token punctuation">.</span>activity_setting_feedback_no_email<span class="token punctuation">)</span><span class="token punctuation">,</span> Toast<span class="token punctuation">.</span>LENGTH_SHORT<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Toast<span class="token punctuation">.</span><span class="token function">makeText</span><span class="token punctuation">(</span>MenuFeedbackActivity<span class="token punctuation">.</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token function">getResources</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>string<span class="token punctuation">.</span>activity_setting_feedback_no_email<span class="token punctuation">)</span><span class="token punctuation">,</span> Toast<span class="token punctuation">.</span>LENGTH_SHORT<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>当然第二种来看，用户的操作更少，更适合用户的体验。</p>
@@ -820,7 +820,7 @@ Toast<span class="token punctuation">.</span><span class="token function">makeTe
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="生成目录树形结构(Code Structure)">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="生成目录树形结构(Code Structure)">
                         
                         <span class="card-title">生成目录树形结构(Code Structure)</span>
                     </div>
@@ -1078,7 +1078,7 @@ Toast<span class="token punctuation">.</span><span class="token function">makeTe
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">21.4k</span>
+            <span class="white-color">21.8k</span>
             
 
             <br>

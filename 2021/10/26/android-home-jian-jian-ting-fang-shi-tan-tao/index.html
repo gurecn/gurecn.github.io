@@ -254,7 +254,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -433,10 +433,10 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="遇到问题"><a href="#遇到问题" class="headerlink" title="遇到问题"></a>遇到问题</h2><p>由于我公司产品要实现调起键盘界面时能直接弹出对话框，让用户直接进行输入交互。Android中，在非界面类控件下想要直接弹出对话框需要使用覆盖其他应用的权限。该需求我们使用Dialog，采用设置TYPE_SYSTEM_ALERT权限来实现：</p>
-<pre class="line-numbers language-java"><code class="language-java">        Window window <span class="token operator">=</span> mDialog<span class="token punctuation">.</span><span class="token function">getWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        WindowManager<span class="token punctuation">.</span>LayoutParams wl <span class="token operator">=</span> window<span class="token punctuation">.</span><span class="token function">getAttributes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        wl<span class="token punctuation">.</span>type <span class="token operator">=</span> WindowManager<span class="token punctuation">.</span>LayoutParams<span class="token punctuation">.</span>TYPE_SYSTEM_ALERT<span class="token punctuation">;</span>
-        mDialog<span class="token punctuation">.</span><span class="token function">onWindowAttributesChanged</span><span class="token punctuation">(</span>wl<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-java"><code class="language-java">Window window <span class="token operator">=</span> mDialog<span class="token punctuation">.</span><span class="token function">getWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+WindowManager<span class="token punctuation">.</span>LayoutParams wl <span class="token operator">=</span> window<span class="token punctuation">.</span><span class="token function">getAttributes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+wl<span class="token punctuation">.</span>type <span class="token operator">=</span> WindowManager<span class="token punctuation">.</span>LayoutParams<span class="token punctuation">.</span>TYPE_SYSTEM_ALERT<span class="token punctuation">;</span>
+mDialog<span class="token punctuation">.</span><span class="token function">onWindowAttributesChanged</span><span class="token punctuation">(</span>wl<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>实际使用中发现按键交互存在问题。在该对话框显示时，点击返回键会隐藏对话框，再次点击才会执行返回效果，这正是我们需要的。</p>
 <p>但是当点击HOME键呢，会出现异常情况：部分手机上对话框没有隐藏，手机却切换到了桌面（应用隐藏），即系统返回到了主界面，但是对话框仍然在覆盖在桌面上，这显然是不合理的。今天来探究一下对话框和HOME键冲突的问题。</p>
@@ -445,10 +445,10 @@
 <p>Android系统对HOME键的点击确实有发送对应的广播，即：Intent.ACTION_CLOSE_SYSTEM_DIALOGS。那么实现对该广播的监听是否就能解决问题？</p>
 <p>监听广播有几种方案，我们逐方案进行验证。</p>
 <h4 id="第一种方式：静态方式注册监听："><a href="#第一种方式：静态方式注册监听：" class="headerlink" title="第一种方式：静态方式注册监听："></a>第一种方式：静态方式注册监听：</h4><p>首先，在清单文件中注册广播接收者，接收系统广播：</p>
-<pre class="line-numbers language-xml"><code class="language-xml">        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>receiver</span>
-            <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>.receiver.HomeKeyEventReceiver<span class="token punctuation">"</span></span>
-            <span class="token attr-name"><span class="token namespace">android:</span>enabled</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span>
-            <span class="token attr-name"><span class="token namespace">android:</span>exported</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>false<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>receiver</span>
+   <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>.receiver.HomeKeyEventReceiver<span class="token punctuation">"</span></span>
+   <span class="token attr-name"><span class="token namespace">android:</span>enabled</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span>
+   <span class="token attr-name"><span class="token namespace">android:</span>exported</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>false<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>然后实现广播接收者主要是监听两种动作：homekey和recentapps，发现点击HOME调用的是homekey动作，长按HOME键是调用了recentapps动作，故实现监听这两种动作即可：</p>
 <pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HomeKeyEventReceiver</span> <span class="token keyword">extends</span> <span class="token class-name">BroadcastReceiver</span> <span class="token punctuation">{</span>
@@ -476,22 +476,22 @@
 <p>为什么呢？是小米手机做了特殊处理还是Android系统做了系统级别的限制，这个不可而知了。</p>
 <p>既然静态不行，那就动态试试。</p>
 <h4 id="第二种方式：使用动态方式注册广播接收者，监听HOME键的点击事件。"><a href="#第二种方式：使用动态方式注册广播接收者，监听HOME键的点击事件。" class="headerlink" title="第二种方式：使用动态方式注册广播接收者，监听HOME键的点击事件。"></a>第二种方式：使用动态方式注册广播接收者，监听HOME键的点击事件。</h4><p>为了实现类似静态的效果，在整个程序内监听HOME键的点击，所以我们在Application中进行动态广播的注册，代码如下：</p>
-<pre class="line-numbers language-java"><code class="language-java">    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">startServerAndReceiver</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        IntentFilter filterHome <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">IntentFilter</span><span class="token punctuation">(</span>Intent<span class="token punctuation">.</span>ACTION_CLOSE_SYSTEM_DIALOGS<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">getAppContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">registerReceiver</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">HomeKeyEventReceiver</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> filterHome<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">startServerAndReceiver</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    IntentFilter filterHome <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">IntentFilter</span><span class="token punctuation">(</span>Intent<span class="token punctuation">.</span>ACTION_CLOSE_SYSTEM_DIALOGS<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">getAppContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">registerReceiver</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">HomeKeyEventReceiver</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> filterHome<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>发现，终于，日志出现了！是时候尽情庆祝吧。</p>
 <p>不过，等等。好像这种方式也有漏洞。。</p>
 <p>经测试组测试发现，在部分国产定制ROM中，发现一个奇怪的现象：在部分手机上使用动态监听依然无法达到监听HOME键的目的，比如说在奇酷手机。这又是为什么呢？</p>
 <p>经过研究发现，注册动态广播需要在主线程进行，我们对代码进行改进，终于实现了对奇酷的监听。</p>
-<pre class="line-numbers language-java"><code class="language-java">    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onCreate</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onCreate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        IntentFilter filterHome <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">IntentFilter</span><span class="token punctuation">(</span>Intent<span class="token punctuation">.</span>ACTION_CLOSE_SYSTEM_DIALOGS<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">getAppContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">registerReceiver</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">HomeKeyEventReceiver</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> filterHome<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@Override</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onCreate</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onCreate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    IntentFilter filterHome <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">IntentFilter</span><span class="token punctuation">(</span>Intent<span class="token punctuation">.</span>ACTION_CLOSE_SYSTEM_DIALOGS<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">getAppContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">registerReceiver</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">HomeKeyEventReceiver</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> filterHome<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>由于手机资源有限，不能对所有手机进行测试，希望大家有更好的方式或者想法能够及时反馈。</p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ol>
@@ -848,7 +848,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="个人推荐工具">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="个人推荐工具">
                         
                         <span class="card-title">个人推荐工具</span>
                     </div>
@@ -904,7 +904,7 @@ TAPD
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="Hexo+Github博客搭建、避坑指南">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="Hexo+Github博客搭建、避坑指南">
                         
                         <span class="card-title">Hexo+Github博客搭建、避坑指南</span>
                     </div>
@@ -1111,7 +1111,7 @@ TAPD
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">21.4k</span>
+            <span class="white-color">21.8k</span>
             
 
             <br>

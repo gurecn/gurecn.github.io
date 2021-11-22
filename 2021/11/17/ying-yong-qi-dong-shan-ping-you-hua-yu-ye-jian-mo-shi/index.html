@@ -260,7 +260,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -446,39 +446,39 @@
 <h3 id="优化闪屏页"><a href="#优化闪屏页" class="headerlink" title="优化闪屏页"></a>优化闪屏页</h3><p>Android应用启动时，默认会出现瞬时的白屏界面。这个很影响用户的体验。</p>
 <p>我们可以通过为启动页Activity设置主题的方式解决该问题。</p>
 <p>首先修改styles.xml文件，创建新的style：AppTheme.Launcher</p>
-<pre class="line-numbers language-xml"><code class="language-xml">    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>AppTheme.Launcher<span class="token punctuation">"</span></span> <span class="token attr-name">parent</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>AppTheme.NoActionBar<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token style language-css">
-        &lt;item name=<span class="token string">"android:windowBackground"</span>>@null&lt;/item>
-    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span>
+<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>AppTheme.Launcher<span class="token punctuation">"</span></span> <span class="token attr-name">parent</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>AppTheme.NoActionBar<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token style language-css">
+    &lt;item name=<span class="token string">"android:windowBackground"</span>>@null&lt;/item>
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>然后在AndroidManifest.xml文件中找到启动页（LAUNCHER），配置theme：</p>
-<pre class="line-numbers language-java"><code class="language-java">        <span class="token operator">&lt;</span>activity
-            android<span class="token operator">:</span>name<span class="token operator">=</span><span class="token string">".activity.GuideActivity"</span>
-            android<span class="token operator">:</span>theme<span class="token operator">=</span><span class="token string">"@style/AppTheme.Launcher"</span>
-            android<span class="token operator">:</span>exported<span class="token operator">=</span><span class="token string">"true"</span><span class="token operator">></span>
-            <span class="token operator">&lt;</span>intent<span class="token operator">-</span>filter<span class="token operator">></span>
-                <span class="token operator">&lt;</span>action android<span class="token operator">:</span>name<span class="token operator">=</span><span class="token string">"android.intent.action.MAIN"</span> <span class="token operator">/</span><span class="token operator">></span>
-                <span class="token operator">&lt;</span>category android<span class="token operator">:</span>name<span class="token operator">=</span><span class="token string">"android.intent.category.LAUNCHER"</span> <span class="token operator">/</span><span class="token operator">></span>
-            <span class="token operator">&lt;</span><span class="token operator">/</span>intent<span class="token operator">-</span>filter<span class="token operator">></span>
-            <span class="token operator">&lt;</span>meta<span class="token operator">-</span>data
-                android<span class="token operator">:</span>name<span class="token operator">=</span><span class="token string">"android.app.shortcuts"</span>
-                android<span class="token operator">:</span>resource<span class="token operator">=</span><span class="token string">"@xml/shortcuts"</span> <span class="token operator">/</span><span class="token operator">></span>
-        <span class="token operator">&lt;</span><span class="token operator">/</span>activity<span class="token operator">></span>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token operator">&lt;</span>activity
+    android<span class="token operator">:</span>name<span class="token operator">=</span><span class="token string">".activity.GuideActivity"</span>
+    android<span class="token operator">:</span>theme<span class="token operator">=</span><span class="token string">"@style/AppTheme.Launcher"</span>
+    android<span class="token operator">:</span>exported<span class="token operator">=</span><span class="token string">"true"</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>intent<span class="token operator">-</span>filter<span class="token operator">></span>
+        <span class="token operator">&lt;</span>action android<span class="token operator">:</span>name<span class="token operator">=</span><span class="token string">"android.intent.action.MAIN"</span> <span class="token operator">/</span><span class="token operator">></span>
+        <span class="token operator">&lt;</span>category android<span class="token operator">:</span>name<span class="token operator">=</span><span class="token string">"android.intent.category.LAUNCHER"</span> <span class="token operator">/</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>intent<span class="token operator">-</span>filter<span class="token operator">></span>
+    <span class="token operator">&lt;</span>meta<span class="token operator">-</span>data
+        android<span class="token operator">:</span>name<span class="token operator">=</span><span class="token string">"android.app.shortcuts"</span>
+        android<span class="token operator">:</span>resource<span class="token operator">=</span><span class="token string">"@xml/shortcuts"</span> <span class="token operator">/</span><span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>activity<span class="token operator">></span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>最后进入启动Activity文件，在onCreate方法中使用setTheme设置主题：</p>
-<pre class="line-numbers language-java"><code class="language-java">    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onCreate</span><span class="token punctuation">(</span>Bundle savedInstanceState<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onCreate</span><span class="token punctuation">(</span>savedInstanceState<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">setTheme</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>style<span class="token punctuation">.</span>AppTheme_Launcher<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">getWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setFlags</span><span class="token punctuation">(</span>WindowManager<span class="token punctuation">.</span>LayoutParams<span class="token punctuation">.</span>FLAG_FULLSCREEN<span class="token punctuation">,</span> WindowManager<span class="token punctuation">.</span>LayoutParams<span class="token punctuation">.</span>FLAG_FULLSCREEN<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">setContentView</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>layout<span class="token punctuation">.</span>activity_guide<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@Override</span>
+<span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onCreate</span><span class="token punctuation">(</span>Bundle savedInstanceState<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onCreate</span><span class="token punctuation">(</span>savedInstanceState<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">setTheme</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>style<span class="token punctuation">.</span>AppTheme_Launcher<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">getWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setFlags</span><span class="token punctuation">(</span>WindowManager<span class="token punctuation">.</span>LayoutParams<span class="token punctuation">.</span>FLAG_FULLSCREEN<span class="token punctuation">,</span> WindowManager<span class="token punctuation">.</span>LayoutParams<span class="token punctuation">.</span>FLAG_FULLSCREEN<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">setContentView</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>layout<span class="token punctuation">.</span>activity_guide<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>这时候重新启动应用，发现白屏确实没有了，但是仔细看发现启动时出现了黑屏（苦笑）。</p>
 <p>原来关键在于AppTheme.Launcher中的样式设置。</p>
 <p>我们没有给windowBackground配置资源，所以默认使用了黑色背景。我们可以使用取色器取出启动页面的主题色，然后配置进入：</p>
-<pre class="line-numbers language-xml"><code class="language-xml">    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>AppTheme.Launcher<span class="token punctuation">"</span></span> <span class="token attr-name">parent</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>AppTheme.NoActionBar<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token style language-css">
-        &lt;item name=<span class="token string">"android:windowBackground"</span>>@color/app_icon_background&lt;/item>
-    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span>
+<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>AppTheme.Launcher<span class="token punctuation">"</span></span> <span class="token attr-name">parent</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>AppTheme.NoActionBar<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token style language-css">
+    &lt;item name=<span class="token string">"android:windowBackground"</span>>@color/app_icon_background&lt;/item>
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>此时再启动应用，发现闪屏的黑色已经变成启动界面的主题色了。</p>
 <p>主要配置的内容是windowBackground，我们研究一下：</p>
@@ -490,9 +490,9 @@
 <p>Drawable资源（纯色值或图片）可用作整个窗口背景。从Android 3(HONEYCOMB)开始，这可能是一个选择器。当运行在可以以 60fps 的速度在顶部绘制复杂合成的位图的设备时，它可能使用硬件加速来选择非纯色.</p>
 </blockquote>
 <p>我们也可以把启动页图片直接配置到这个 参数里：</p>
-<pre class="line-numbers language-xml"><code class="language-xml">    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>AppTheme.Launcher<span class="token punctuation">"</span></span> <span class="token attr-name">parent</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>AppTheme.NoActionBar<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token style language-css">
-        &lt;item name=<span class="token string">"android:windowBackground"</span>>@drawable/welcome&lt;/item>
-    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span>
+<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>AppTheme.Launcher<span class="token punctuation">"</span></span> <span class="token attr-name">parent</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>AppTheme.NoActionBar<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token style language-css">
+    &lt;item name=<span class="token string">"android:windowBackground"</span>>@drawable/welcome&lt;/item>
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>注意：很多博客使用了下面这个配置：</p>
 <pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>item</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>android:windowDisablePreview<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>true<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>item</span><span class="token punctuation">></span></span>
@@ -896,7 +896,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="hexo博客字符乱码解决方案">
+                        <img src="/medias/featureimages/24.jpg" class="responsive-img" alt="hexo博客字符乱码解决方案">
                         
                         <span class="card-title">hexo博客字符乱码解决方案</span>
                     </div>
@@ -947,7 +947,7 @@ public class HomeKeyEventReceiver extends BroadcastReceiver &amp;#123;
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="Android任务栏新增最近页面">
+                        <img src="/medias/featureimages/24.jpg" class="responsive-img" alt="Android任务栏新增最近页面">
                         
                         <span class="card-title">Android任务栏新增最近页面</span>
                     </div>
@@ -1152,7 +1152,7 @@ public class HomeKeyEventReceiver extends BroadcastReceiver &amp;#123;
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">21.4k</span>
+            <span class="white-color">21.8k</span>
             
 
             <br>
