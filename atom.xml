@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devdroid.cn/"/>
-  <updated>2021-11-25T02:31:06.981Z</updated>
+  <updated>2021-11-25T02:42:20.180Z</updated>
   <id>https://devdroid.cn/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>获取color资源色值</title>
+    <link href="https://devdroid.cn/2021/11/25/huo-qu-color-zi-yuan-se-zhi/"/>
+    <id>https://devdroid.cn/2021/11/25/huo-qu-color-zi-yuan-se-zhi/</id>
+    <published>2021-11-25T02:41:15.000Z</published>
+    <updated>2021-11-25T02:42:20.180Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;为了实现应用切换主题（日常模式、夜间模式）时，应用内各种组件的显示效果也能很友好的切换。所以在应用内所使用的color色值尽量使用values内colors.xml资源文件内。&lt;br&gt;这样的好处显而易见：需要调整效果时，无效代码内到处检查，直接在文件内配置即可；可以给不同的
+        
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="https://devdroid.cn/categories/Android/"/>
+    
+    
+      <category term="应用" scheme="https://devdroid.cn/tags/%E5%BA%94%E7%94%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>Android调用今日诗词和配置字体</title>
