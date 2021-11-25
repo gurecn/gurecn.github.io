@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devdroid.cn/"/>
-  <updated>2021-11-22T02:43:38.526Z</updated>
+  <updated>2021-11-25T02:31:06.981Z</updated>
   <id>https://devdroid.cn/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Android调用今日诗词和配置字体</title>
+    <link href="https://devdroid.cn/2021/11/25/android-diao-yong-jin-ri-shi-ci-he-pei-zhi-zi-ti/"/>
+    <id>https://devdroid.cn/2021/11/25/android-diao-yong-jin-ri-shi-ci-he-pei-zhi-zi-ti/</id>
+    <published>2021-11-25T02:27:49.000Z</published>
+    <updated>2021-11-25T02:31:06.981Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;睡眠助理项目里添加了今日诗词（&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="https://devdroid.cn/categories/Android/"/>
+    
+    
+      <category term="三方资源" scheme="https://devdroid.cn/tags/%E4%B8%89%E6%96%B9%E8%B5%84%E6%BA%90/"/>
+    
+  </entry>
   
   <entry>
     <title>Android 8.0图标适配</title>

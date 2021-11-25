@@ -5,13 +5,11 @@
 <head>
     <meta name="google-site-verification" content="BZSSTWCG6ygfXci-M6fHXRUOICCdvw9XUlROWGENjyA" />
     <meta charset="utf-8">
-    <meta name="keywords" content="生成目录树形结构(Code Structure), Java C/C++ Vue Gure gurecn Android 卓技卓品">
+    <meta name="keywords" content="Android调用今日诗词和配置字体, Java C/C++ Vue Gure gurecn Android 卓技卓品">
     <meta name="baidu-site-verification" content="fmlEuI34ir" />
     <meta name="google-site-verification" content="yCy2azpds5XSuGZvis6OuA-XIGF5GuGpYRAaGfD6o48" />
     <meta name="360-site-verification" content="b7c11a830ef90fd1464ad6206bb7b6e7" />
-    <meta name="description" content="一次小教训，让自己深刻明白了记录的重要性。
-原因由于开源项目中要非常直观展现项目的结构，为不同模块添加注释，便于其他人理解。所以我想要导出开源项目代码的整体结构。
-过程因为之前整理公司产品技术文档时已经导出过相关代码结构，所以这一次自然而然">
+    <meta name="description" content="睡眠助理项目里添加了今日诗词（今日诗词开放接口）显示。为了达到显示效果，应用内设置方正舒体字体。今天记录一下集成今日诗词的过程及设置字体的方案。集成今日诗词直接根据接口文档进行即可，由于我进行Android应用开发，所以参考“安卓 SDK”">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +17,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>生成目录树形结构(Code Structure) | 卓技卓品</title>
+    <title>Android调用今日诗词和配置字体 | 卓技卓品</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -256,13 +254,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        生成目录树形结构(Code Structure)
+                        Android调用今日诗词和配置字体
                     </div>
                 </div>
             </div>
@@ -373,8 +371,8 @@
                     
                     <div class="article-tag">
                         
-                        <a href="/tags/%E6%97%A5%E5%B8%B8/" target="_blank">
-                            <span class="chip bg-color">日常</span>
+                        <a href="/tags/%E4%B8%89%E6%96%B9%E8%B5%84%E6%BA%90/" target="_blank">
+                            <span class="chip bg-color">三方资源</span>
                         </a>
                         
                     </div>
@@ -385,8 +383,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                        <a href="/categories/%E6%8A%80%E8%83%BD/" class="post-category" target="_blank">
-                            技能
+                        <a href="/categories/Android/" class="post-category" target="_blank">
+                            Android
                         </a>
                         
                     </div>
@@ -397,7 +395,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-11-11
+                    2021-11-25
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -411,14 +409,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.2k
+                    539
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    2 分
                 </div>
                 
                 
@@ -434,117 +432,56 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><strong>一次小教训，让自己深刻明白了记录的重要性。</strong></p>
-<h4 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h4><p>由于开源项目中要非常直观展现项目的结构，为不同模块添加注释，便于其他人理解。所以我想要导出开源项目代码的整体结构。</p>
-<h4 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h4><p>因为之前整理公司产品技术文档时已经导出过相关代码结构，所以这一次自然而然想到使用同样的方案。</p>
-<p>但因为时间较久远，一时竟然想不起当时如何导出了（摊手，好脑袋不如烂笔头）。</p>
-<p>由于是Android Studio项目，所以我第一时间打开IDEA在工具中查找方式，很明显没有找到对应的方案。然后就经历了漫长的探索之路：百度、谷歌、Android官方、jetbrains官方查询相关方式。</p>
-<p>当然最终均已失败告终。</p>
-<h4 id="中间方案"><a href="#中间方案" class="headerlink" title="中间方案"></a>中间方案</h4><p>当然中间也不是完全没有收获的，在网络中发现一个命令：Tree，借助该命令可以生成一个文件夹及子文件的路径（我电脑是Windows系统）。</p>
-<p>经过尝试，首先切到项目路径下，然后执行对应命令：</p>
-<blockquote>
-<p>tree /f</p>
-</blockquote>
-<p>发现确实输出了目录结构。</p>
-<pre class="line-numbers language-bash"><code class="language-bash">C:.
-└─com
-    └─devdroid
-        └─sleepassistant
-            ├─activity
-            │      AboutActivity.java
-            │      AgreementAvtivity.java
-            │      AppLockTimeActivity.java
-            │      ChartActivity.java
-            │      FeedbackActivity.java
-            │      GuideActivity.java
-            │      MainActivity.java
-            │      RestrictionActivity.java
-            │      SettingsActivity.java
-            │
-            ├─adapter
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>但是生成的项目结构和我希望的及以前生成的都不太一样。区别就是最后一级（显示文件时）文件名没有“|”及“-”。这让强迫症的我看的是很不舒服，但不能一个个添加吧。</p>
-<h4 id="最终方式"><a href="#最终方式" class="headerlink" title="最终方式"></a>最终方式</h4><p>今天忽然灵机一动，有没有可能是Windows就支持这一种方式，但是Linux或者其他工具下同样的命令就输出不一样结果呢？</p>
-<p>我电脑安装有Git Bash，里面安装有MINGW64，就自己验证一下。</p>
-<p>首先使用npm命令安装tree-cli:</p>
-<blockquote>
-<p>npm install -g tree-cli</p>
-</blockquote>
-<pre class="line-numbers language-bash"><code class="language-bash">$ <span class="token function">npm</span> <span class="token function">install</span> -g tree-cli
-C:\Users\Administrator\AppData\Roaming\npm\tree -<span class="token operator">></span> C:\Users\Administrator\AppData\Roaming\npm\node_modules\tree-cli\bin\tree
-C:\Users\Administrator\AppData\Roaming\npm\treee -<span class="token operator">></span> C:\Users\Administrator\AppData\Roaming\npm\node_modules\tree-cli\bin\tree
-+ tree-cli@0.6.7
-added 72 packages from 57 contributors <span class="token keyword">in</span> 3.658s
+                <p>睡眠助理项目里添加了今日诗词（<a target="_blank" rel="noopener" href="https://www.jinrishici.com/doc/#json-fast">今日诗词开放接口</a>）显示。为了达到显示效果，应用内设置方正舒体字体。<br>今天记录一下集成今日诗词的过程及设置字体的方案。<br>集成今日诗词直接根据接口文档进行即可，由于我进行Android应用开发，所以参考“安卓 SDK”。<br>通过Gradle方式，首先添加依赖：</p>
+<pre class="line-numbers language-java"><code class="language-java">implementation <span class="token string">'com.jinrishici:android-sdk:1.5'</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>然后再Application中进行初始化：</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">//今日诗词初始化</span>
+JinrishiciFactory<span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span><span class="token function">getAppContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>最后在Activity中调用接口获取诗词数据：</p>
+<pre class="line-numbers language-java"><code class="language-java">JinrishiciClient client <span class="token operator">=</span> JinrishiciClient<span class="token punctuation">.</span><span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+client<span class="token punctuation">.</span><span class="token function">getOneSentenceBackground</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">JinrishiciCallback</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">done</span><span class="token punctuation">(</span>PoetySentence poetySentence<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        DataBean dataBean <span class="token operator">=</span> poetySentence<span class="token punctuation">.</span><span class="token function">getData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>dataBean <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            String shici <span class="token operator">=</span> poetySentence<span class="token punctuation">.</span><span class="token function">getData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getContent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>TextUtils<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span>shici<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">// 遇见逗号换行显示</span>
+                shici <span class="token operator">=</span> shici<span class="token punctuation">.</span><span class="token function">replaceAll</span><span class="token punctuation">(</span><span class="token string">",|，"</span><span class="token punctuation">,</span> <span class="token string">"，\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                mTvJinRiShiCi<span class="token punctuation">.</span><span class="token function">setText</span><span class="token punctuation">(</span>shici<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">error</span><span class="token punctuation">(</span>JinrishiciRuntimeException e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        Log<span class="token punctuation">.</span><span class="token function">d</span><span class="token punctuation">(</span><span class="token string">"111111"</span><span class="token punctuation">,</span> <span class="token string">"error: code = "</span> <span class="token operator">+</span> e<span class="token punctuation">.</span><span class="token function">getCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">" message = "</span> <span class="token operator">+</span> e<span class="token punctuation">.</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>实际调用中，发现有两点需要注意：<br>1.获取诗词需要联网，所以需要添加网络权限。<br>2.实际使用发现调试模式功能正常，但是打出正式包时无法显示，且没有错误信息。经定位发现是没有添加混淆配置：</p>
+<pre class="line-numbers language-yaml"><code class="language-yaml"><span class="token comment" spellcheck="true"># Gson uses generic type information stored in a class file when working with fields. Proguard</span>
+<span class="token comment" spellcheck="true"># removes such information by default, so configure it to keep all of it.</span>
+<span class="token punctuation">-</span>keepattributes Signature
+<span class="token comment" spellcheck="true"># For using GSON @Expose annotation</span>
+<span class="token punctuation">-</span>keepattributes <span class="token important">*Annotation</span>*
+<span class="token comment" spellcheck="true"># Gson specific classes</span>
+<span class="token punctuation">-</span>keep class sun.misc.Unsafe <span class="token punctuation">{</span> *; <span class="token punctuation">}</span>
+<span class="token punctuation">-</span>keep class com.google.gson.stream.** <span class="token punctuation">{</span> *; <span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true"># Application classes that will be serialized/deserialized over Gson</span>
+<span class="token punctuation">-</span>keep class com.jinrishici.sdk.android.model.** <span class="token punctuation">{</span> *; <span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这样今日诗词配置就完成了。<br>​</p>
+<p>下面研究一下配置自定义字体，我们以方正舒体（FZSTK.TTF）为例。<br>首先下载字体文件（.TTF）。若是Windows系统，也可以到系统查询相关文件，字体文件路径在：C:\Windows\Fonts<br>然后将字体放在项目中assets资源路径下，可以在assets内新建一个fonts资源文件夹，将字体文件放到该路径下。<br>最后为TextView设置字体显示：</p>
+<pre class="line-numbers language-java"><code class="language-java">mTvJinRiShiCi <span class="token operator">=</span> <span class="token punctuation">(</span>TextView<span class="token punctuation">)</span>headerView<span class="token punctuation">.</span><span class="token function">findViewById</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>tv_nav_header_jinrishici<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//从asset 读取字体</span>
+AssetManager mgr <span class="token operator">=</span> <span class="token function">getAssets</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+Typeface tf <span class="token operator">=</span> Typeface<span class="token punctuation">.</span><span class="token function">createFromAsset</span><span class="token punctuation">(</span>mgr<span class="token punctuation">,</span> <span class="token string">"fonts/FZSTK.TTF"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//仿宋</span>
+mTvJinRiShiCi<span class="token punctuation">.</span><span class="token function">setTypeface</span><span class="token punctuation">(</span>tf<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>然后使用Tree命令，输出结构：</p>
-<blockquote>
-<p>tree -l 5</p>
-</blockquote>
-<pre class="line-numbers language-bash"><code class="language-bash">C:\develop\DevProject\Android\Sleepassistant\app\src\main\java
-└── com
-   └── devdroid
-      └── sleepassistant
-         ├── activity
-         <span class="token operator">|</span>  ├── AboutActivity.java
-         <span class="token operator">|</span>  ├── AgreementAvtivity.java
-         <span class="token operator">|</span>  ├── AppLockTimeActivity.java
-         <span class="token operator">|</span>  ├── ChartActivity.java
-         <span class="token operator">|</span>  ├── FeedbackActivity.java
-         <span class="token operator">|</span>  ├── GuideActivity.java
-         <span class="token operator">|</span>  ├── MainActivity.java
-         <span class="token operator">|</span>  ├── RestrictionActivity.java
-         <span class="token operator">|</span>  └── SettingsActivity.java
-         ├── adapter
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ol>
-<li>遇到问题找到解决方案时，一定要及时做笔记记录。不然过几天你就要再次经历辛苦的探究过程了。</li>
-<li>咱们看一下tree-cli这个工具。</li>
-</ol>
-<ul>
-<li>根据官方说明：</li>
-</ul>
-<blockquote>
-<p>Tree is a recursive directory listing program that produces a depth indented listing of files.With no arguments, tree lists the files in the current directory. When directory arguments are given, tree lists all the files and/or directories found in the given directories each in turn. Upon completion of listing all files/directories found,tree returns the total number of files and/or directories listed.</p>
-</blockquote>
-<p>翻译一下就是：</p>
-<blockquote>
-<p>Tree是一个递归目录列表程序，它生成文件的深度缩进列表。当没有参数时，Tree列出当前目录中的文件。当给定目录参数时，树依次列出在给定目录中找到的所有文件和/或目录。完成列出找到的所有文件/目录后，tree返回列出的文件和/或目录总数。</p>
-</blockquote>
-<ul>
-<li>tree-cli可以指定的参数：</li>
-</ul>
-<blockquote>
-<p>  –help, -h</p>
-<p>​    outputs a verbose usage listing.输出详细的用法列表。</p>
-<p>  –version</p>
-<p>​    outputs the version of tree-cli.输出tree-cli的版本。</p>
-<p>  –debug</p>
-<p>​    show debug info.显示调试信息。</p>
-<p>  –ignore</p>
-<p>​    ignores directory or file you specify.忽略您指定的目录或文件</p>
-<p>  –base</p>
-<p>​    specify a root directory. Relative path from cwd root and absolute path are both acceptable.</p>
-<p>​    指定根目录。来自cwd根的相对路径和绝对路径都是可以接受的。</p>
-<p>  –fullpath</p>
-<p>​    prints the full path prefix for each file.打印每个文件的完整路径前缀。</p>
-<p>  –noreport</p>
-<p>​    omits printing of the file and directory report at the end of the tree listing and omits printing the tree on console.省略在树列表末尾打印文件和目录报告，并省略在控制台上打印树。    </p>
-<p>  -a</p>
-<p>​    all files are printed. By default tree does not print hidden files (those beginning with a dot ‘.’). In no event does tree print the file system constructs ‘.’ (current directory) and ‘..’ (previous directory).打印所有文件。默认情况下，tree不显示隐藏文件（以点“.”开头的文件）。在任何情况下，树都不会打印文件系统构造 ‘.’ （当前目录）和“..”（上一目录）。</p>
-<p>  -d</p>
-<p>​    list directories only.仅列出目录。</p>
-<p>  –directoryFirst</p>
-<p>​    list directories first.优先列出目录。</p>
-<p>  -f</p>
-<p>​    append a ‘/‘ for directories, a ‘=’ for socket files and a ‘|’ for FIFOs.为目录追加“/”，为socket文件追加“=”和为FIFO文件追加“|”。</p>
-<p>  -i</p>
-<p>​    makes tree not print the indentation lines, useful when used in conjunction with the -f option.使树不打印缩进线，与 -f 选项结合使用时很有用。</p>
-<p>  -l</p>
-<p>​    max display depth of the directory tree.目录树的最大显示深度。</p>
-<p>  -o</p>
-<p>​    send output to filename.将输出发送到文件名。</p>
-</blockquote>
-<p>终于，期待已久的结果出现了，赶紧记下来，别再忘记了。</p>
+<p>这样，字体设置就完成了。</p>
+<p>诗词及字体效果参考<a target="_blank" rel="noopener" href="https://github.com/gurecn/sleepassistant">睡眠助理项目。</a></p>
 
             </div>
             <hr />
@@ -579,9 +516,9 @@ added 72 packages from 57 contributors <span class="token keyword">in</span> 3.6
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《生成目录树形结构(Code Structure)》
+                    《Android调用今日诗词和配置字体》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2021/11/11/sheng-cheng-mu-lu-shu-xing-jie-gou-code-structure/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2021/11/25/android-diao-yong-jin-ri-shi-ci-he-pei-zhi-zi-ti/" property="cc:attributionName"
                rel="cc:attributionURL">
                 Gure
             </a> 采用
@@ -883,29 +820,80 @@ added 72 packages from 57 contributors <span class="token keyword">in</span> 3.6
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/11/12/android-shi-xian-xia-la-cai-dan-kuai-jie-kai-guan/">
+                <a href="/2021/11/25/android-diao-yong-jin-ri-shi-ci-he-pei-zhi-zi-ti/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Android实现下拉菜单快捷开关">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Android调用今日诗词和配置字体">
                         
-                        <span class="card-title">Android实现下拉菜单快捷开关</span>
+                        <span class="card-title">Android调用今日诗词和配置字体</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            背景下拉菜单快捷开关方式是用户使用非常频繁的一个功能。我们可以在手机任何界面下拉打开，完成诸如：亮度调节，音量调节，Wifi、流量、定位等功能开关。但是在之前的系统中，该功能是不对第三方应用开发者开放的，大家只能眼睁睁看着系统功能占据用户入
+                            睡眠助理项目里添加了今日诗词（今日诗词开放接口）显示。为了达到显示效果，应用内设置方正舒体字体。今天记录一下集成今日诗词的过程及设置字体的方案。集成今日诗词直接根据接口文档进行即可，由于我进行Android应用开发，所以参考“安卓 SDK”
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2021-11-12
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-11-25
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Android/" class="post-category" target="_blank">
+                                    Android
+                                </a>
+                            
+                            
                         </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E4%B8%89%E6%96%B9%E8%B5%84%E6%BA%90/" target="_blank">
+                        <span class="chip bg-color">三方资源</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/11/22/android-8-0-tu-biao-gua-pei/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Android 8.0图标适配">
+                        
+                        <span class="card-title">Android 8.0图标适配</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Android 8.0（API 级别 26）引入了自适应启动器图标（adaptive-icon），它可以通过蒙版的方式在不同设备型号上显示为不同的形状（方形、圆角、圆形等）。官方文档参考链接下面我们来实现一下该图标方式：1.在res路径下新
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-11-22
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -923,58 +911,6 @@ added 72 packages from 57 contributors <span class="token keyword">in</span> 3.6
                     
                     <a href="/tags/%E6%96%B0%E7%89%B9%E6%80%A7/" target="_blank">
                         <span class="chip bg-color">新特性</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/11/10/android-diao-yong-xi-tong-you-xiang-fa-song-you-jian/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="Android调用系统邮箱发送邮件">
-                        
-                        <span class="card-title">Android调用系统邮箱发送邮件</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            在开发中，经常会用到调用手机里的邮件的情况，比如说交流，反馈等。
-在Android中，有多种方式能够打开一个外部应用，打开邮件也有多种方式，这里我们介绍两种方法调用系统邮箱进行邮件的发送。
-
-1.这种方式会在系统中存在多个邮箱软件的时候，弹
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-11-10
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Android/" class="post-category" target="_blank">
-                                    Android
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E5%BA%94%E7%94%A8/" target="_blank">
-                        <span class="chip bg-color">应用</span>
                     </a>
                     
                 </div>

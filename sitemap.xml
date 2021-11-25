@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://devdroid.cn/2021/11/25/android-diao-yong-jin-ri-shi-ci-he-pei-zhi-zi-ti/</loc>
+    
+    <lastmod>2021-11-25T02:31:06.981Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://devdroid.cn/about/index.html</loc>
+    
+    <lastmod>2021-11-24T03:34:52.816Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://devdroid.cn/2021/11/17/ying-yong-qi-dong-shan-ping-you-hua-yu-ye-jian-mo-shi/</loc>
     
     <lastmod>2021-11-22T02:51:08.780Z</lastmod>
@@ -54,13 +68,6 @@
     <loc>https://devdroid.cn/2021/11/15/hexo-bo-ke-wen-ti-jie-jue-ji-lu/</loc>
     
     <lastmod>2021-11-15T02:52:01.480Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://devdroid.cn/about/index.html</loc>
-    
-    <lastmod>2021-11-15T01:48:38.492Z</lastmod>
     
   </url>
   
