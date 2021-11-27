@@ -349,6 +349,10 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
 
 
 
+    <a href="https://zhihu.com/people/gurecn" class="tooltipped" target="_blank" data-tooltip="访问我的知乎" data-position="top" data-delay="50">
+        <i class="fa fa-inverse">知</i>
+    </a>
+
 
 
     <a href="http://wpa.qq.com/msgrd?v=3&uin=755383249&site=qq&menu=yes" class="tooltipped" target="_blank" data-tooltip="访问我的知乎" data-position="top" data-delay="50">
@@ -1099,6 +1103,10 @@ public class HomeKeyEventReceiver extends BroadcastReceiver &amp;#123;
 
 
 
+    <a href="https://zhihu.com/people/gurecn" class="tooltipped" target="_blank" data-tooltip="访问我的知乎" data-position="top" data-delay="50">
+        <i class="fa fa-inverse">知</i>
+    </a>
+
 
 
     <a href="http://wpa.qq.com/msgrd?v=3&uin=755383249&site=qq&menu=yes" class="tooltipped" target="_blank" data-tooltip="访问我的知乎" data-position="top" data-delay="50">
@@ -1234,6 +1242,38 @@ $(function () {
 
     <!-- 雪花特效 -->
     
+	  
+	<script>
+      function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+          setTimeout(function () {
+            $('body').hasClass('DarkMode') ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'),$('#nightMode').removeClass('fa-moon-o').addClass('fa-lightbulb-o')): ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#nightMode').removeClass('fa-lightbulb-o').addClass('fa-moon-o')),
+              setTimeout(function () {
+                $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                  $(this).remove()
+                })
+              }, 2e3)
+          })
+      }
+      function switchNightModeTop() {
+        $('body').hasClass('DarkMode') ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'),$('#nightMode').removeClass('fa-moon-o').addClass('fa-lightbulb-o')) : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#nightMode').removeClass('fa-lightbulb-o').addClass('fa-moon-o'))
+      }
+    </script>
+	
+	<script>
+    if (localStorage.getItem('isDark') === '1') {
+        ('body').addClass('DarkMode');
+        }
+        else if (new Date().getHours() >= 22 || new Date().getHours() < 7) {
+        ('body').addClass('DarkMode');
+        } 
+        else if (matchMedia('(prefers-color-scheme: dark)').matches) {
+        ('body').addClass('DarkMode');
+        }
+    </script>
+	<a onclick="switchNightMode()" id="sma" title="切换主题">
+        <i class="fa fa-lightbulb-o" id="nightMode"  aria-hidden="false"></i>
+    </a>
 
 </body>
 

@@ -360,6 +360,10 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
 
 
 
+    <a href="https://zhihu.com/people/gurecn" class="tooltipped" target="_blank" data-tooltip="访问我的知乎" data-position="top" data-delay="50">
+        <i class="fa fa-inverse">知</i>
+    </a>
+
 
 
     <a href="http://wpa.qq.com/msgrd?v=3&uin=755383249&site=qq&menu=yes" class="tooltipped" target="_blank" data-tooltip="访问我的知乎" data-position="top" data-delay="50">
@@ -392,6 +396,10 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
     </a>
 
 
+
+    <a href="https://zhihu.com/people/gurecn" class="tooltipped" target="_blank" data-tooltip="访问我的知乎" data-position="top" data-delay="50">
+        <i class="fa fa-inverse">知</i>
+    </a>
 
 
 
@@ -747,14 +755,14 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
             
             
             
-            <a href="/tags/%E5%BA%94%E7%94%A8/" target="_blank">
-                <span class="chip center-align waves-effect waves-light chip-default">应用</span>
+            <a href="/tags/%E6%96%B0%E7%89%B9%E6%80%A7/" target="_blank">
+                <span class="chip center-align waves-effect waves-light chip-default">新特性</span>
             </a>
             
             
             
-            <a href="/tags/%E6%96%B0%E7%89%B9%E6%80%A7/" target="_blank">
-                <span class="chip center-align waves-effect waves-light chip-default">新特性</span>
+            <a href="/tags/%E5%BA%94%E7%94%A8/" target="_blank">
+                <span class="chip center-align waves-effect waves-light chip-default">应用</span>
             </a>
             
             
@@ -777,14 +785,14 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
             
             
             
-            <a href="/tags/%E5%B9%B4%E5%B0%91/" target="_blank">
-                <span class="chip center-align waves-effect waves-light chip-default">年少</span>
+            <a href="/tags/%E6%97%A5%E5%B8%B8/" target="_blank">
+                <span class="chip center-align waves-effect waves-light chip-default">日常</span>
             </a>
             
             
             
-            <a href="/tags/%E6%97%A5%E5%B8%B8/" target="_blank">
-                <span class="chip center-align waves-effect waves-light chip-default">日常</span>
+            <a href="/tags/%E5%B9%B4%E5%B0%91/" target="_blank">
+                <span class="chip center-align waves-effect waves-light chip-default">年少</span>
             </a>
             
             
@@ -913,6 +921,10 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
     </a>
 
 
+
+    <a href="https://zhihu.com/people/gurecn" class="tooltipped" target="_blank" data-tooltip="访问我的知乎" data-position="top" data-delay="50">
+        <i class="fa fa-inverse">知</i>
+    </a>
 
 
 
@@ -1049,6 +1061,38 @@ $(function () {
 
     <!-- 雪花特效 -->
     
+	  
+	<script>
+      function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+          setTimeout(function () {
+            $('body').hasClass('DarkMode') ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'),$('#nightMode').removeClass('fa-moon-o').addClass('fa-lightbulb-o')): ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#nightMode').removeClass('fa-lightbulb-o').addClass('fa-moon-o')),
+              setTimeout(function () {
+                $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                  $(this).remove()
+                })
+              }, 2e3)
+          })
+      }
+      function switchNightModeTop() {
+        $('body').hasClass('DarkMode') ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'),$('#nightMode').removeClass('fa-moon-o').addClass('fa-lightbulb-o')) : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#nightMode').removeClass('fa-lightbulb-o').addClass('fa-moon-o'))
+      }
+    </script>
+	
+	<script>
+    if (localStorage.getItem('isDark') === '1') {
+        ('body').addClass('DarkMode');
+        }
+        else if (new Date().getHours() >= 22 || new Date().getHours() < 7) {
+        ('body').addClass('DarkMode');
+        } 
+        else if (matchMedia('(prefers-color-scheme: dark)').matches) {
+        ('body').addClass('DarkMode');
+        }
+    </script>
+	<a onclick="switchNightMode()" id="sma" title="切换主题">
+        <i class="fa fa-lightbulb-o" id="nightMode"  aria-hidden="false"></i>
+    </a>
 
 </body>
 

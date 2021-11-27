@@ -302,20 +302,20 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
                 </a>
                 
                 
-                <a href="/tags/%E5%BA%94%E7%94%A8/" title="应用: 6">
+                <a href="/tags/%E6%96%B0%E7%89%B9%E6%80%A7/" title="新特性: 3">
                     <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="应用" style="background-color: #F5EEF8;">应用
-                        <span class="tag-length">6</span>
+                             chip-active "
+                            data-tagname="新特性" style="background-color: #F5EEF8;">新特性
+                        <span class="tag-length">3</span>
                     </span>
                 </a>
                 
                 
-                <a href="/tags/%E6%96%B0%E7%89%B9%E6%80%A7/" title="新特性: 3">
+                <a href="/tags/%E5%BA%94%E7%94%A8/" title="应用: 6">
                     <span class="chip center-align waves-effect waves-light
-                             chip-active "
-                            data-tagname="新特性" style="background-color: #D5F5E3;">新特性
-                        <span class="tag-length">3</span>
+                             chip-default "
+                            data-tagname="应用" style="background-color: #D5F5E3;">应用
+                        <span class="tag-length">6</span>
                     </span>
                 </a>
                 
@@ -347,20 +347,20 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
                 </a>
                 
                 
-                <a href="/tags/%E5%B9%B4%E5%B0%91/" title="年少: 1">
+                <a href="/tags/%E6%97%A5%E5%B8%B8/" title="日常: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="年少" style="background-color: #82E0AA;">年少
-                        <span class="tag-length">1</span>
+                            data-tagname="日常" style="background-color: #82E0AA;">日常
+                        <span class="tag-length">2</span>
                     </span>
                 </a>
                 
                 
-                <a href="/tags/%E6%97%A5%E5%B8%B8/" title="日常: 2">
+                <a href="/tags/%E5%B9%B4%E5%B0%91/" title="年少: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="日常" style="background-color: #D7BDE2;">日常
-                        <span class="tag-length">2</span>
+                            data-tagname="年少" style="background-color: #D7BDE2;">年少
+                        <span class="tag-length">1</span>
                     </span>
                 </a>
                 
@@ -544,6 +544,10 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
 
 
 
+    <a href="https://zhihu.com/people/gurecn" class="tooltipped" target="_blank" data-tooltip="访问我的知乎" data-position="top" data-delay="50">
+        <i class="fa fa-inverse">知</i>
+    </a>
+
 
 
     <a href="http://wpa.qq.com/msgrd?v=3&uin=755383249&site=qq&menu=yes" class="tooltipped" target="_blank" data-tooltip="访问我的知乎" data-position="top" data-delay="50">
@@ -679,6 +683,38 @@ $(function () {
 
     <!-- 雪花特效 -->
     
+	  
+	<script>
+      function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+          setTimeout(function () {
+            $('body').hasClass('DarkMode') ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'),$('#nightMode').removeClass('fa-moon-o').addClass('fa-lightbulb-o')): ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#nightMode').removeClass('fa-lightbulb-o').addClass('fa-moon-o')),
+              setTimeout(function () {
+                $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                  $(this).remove()
+                })
+              }, 2e3)
+          })
+      }
+      function switchNightModeTop() {
+        $('body').hasClass('DarkMode') ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'),$('#nightMode').removeClass('fa-moon-o').addClass('fa-lightbulb-o')) : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#nightMode').removeClass('fa-lightbulb-o').addClass('fa-moon-o'))
+      }
+    </script>
+	
+	<script>
+    if (localStorage.getItem('isDark') === '1') {
+        ('body').addClass('DarkMode');
+        }
+        else if (new Date().getHours() >= 22 || new Date().getHours() < 7) {
+        ('body').addClass('DarkMode');
+        } 
+        else if (matchMedia('(prefers-color-scheme: dark)').matches) {
+        ('body').addClass('DarkMode');
+        }
+    </script>
+	<a onclick="switchNightMode()" id="sma" title="切换主题">
+        <i class="fa fa-lightbulb-o" id="nightMode"  aria-hidden="false"></i>
+    </a>
 
 </body>
 
