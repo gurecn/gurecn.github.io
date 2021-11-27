@@ -1,3 +1,4 @@
+https://devdroid.cn/2021/11/27/android-bu-huo-xi-tong-beng-kui-de-ri-zhi/
 https://devdroid.cn/2021/11/25/yin-dao-yong-hu-jin-xing-hao-ping/
 https://devdroid.cn/2021/11/25/huo-qu-color-zi-yuan-se-zhi/
 https://devdroid.cn/2021/11/25/android-diao-yong-jin-ri-shi-ci-he-pei-zhi-zi-ti/
@@ -18,4 +19,4 @@ https://devdroid.cn/2021/10/28/qian-qian-shi-guang-2021/
 https://devdroid.cn/2021/10/26/ge-ren-tui-jian-gong-ju/
 https://devdroid.cn/2021/10/26/android-home-jian-jian-ting-fang-shi-tan-tao/
 https://devdroid.cn/2021/10/22/hexo-github-bo-ke-da-jian-bi-keng-zhi-nan/
-https://devdroid.cn/2020/01/14/5w2h-godweiyang/
+https://devdroid.cn/2021/10/14/5w2h-godweiyang/
