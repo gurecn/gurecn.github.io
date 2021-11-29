@@ -3,12 +3,9 @@
 
 
 <head>
-    <meta name="google-site-verification" content="BZSSTWCG6ygfXci-M6fHXRUOICCdvw9XUlROWGENjyA" />
     <meta charset="utf-8">
+    <meta name="google-site-verification" content="BZSSTWCG6ygfXci-M6fHXRUOICCdvw9XUlROWGENjyA" />
     <meta name="keywords" content="标签: 应用, Java C/C++ Vue Gure gurecn Android 卓技卓品">
-    <meta name="baidu-site-verification" content="fmlEuI34ir" />
-    <meta name="google-site-verification" content="yCy2azpds5XSuGZvis6OuA-XIGF5GuGpYRAaGfD6o48" />
-    <meta name="360-site-verification" content="b7c11a830ef90fd1464ad6206bb7b6e7" />
     <meta name="description" content="标签: 应用 | 卓技卓品">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -43,21 +40,6 @@
         })();
     </script>
 
-    
-        <script>
-            (function(){
-                var bp = document.createElement('script');
-                var curProtocol = window.location.protocol.split(':')[0];
-                if (curProtocol === 'https') {
-                    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
-                }
-                else {
-                    bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-                }
-                var s = document.getElementsByTagName("script")[0];
-                s.parentNode.insertBefore(bp, s);
-            })();
-        </script>
     
 
     <script>
@@ -151,11 +133,16 @@
         </a>
     </li>
     
+
     <li>
+		<a href="javascript:void(0)" onclick="switchNightMode()" class="hide-on-med-and-down waves-effect waves-light">
+			<i class="fa fa-lightbulb-o" id="nightMode"> 切换主题</i>
+		</a>
         <a href="#searchModal" class="modal-trigger waves-effect waves-light">
             <i id="searchIcon" class="fa fa-search" title="搜索"></i>
         </a>
     </li>
+	
 </ul>
 
 <div id="mobile-nav" class="side-nav sidenav">
@@ -239,10 +226,29 @@
             </a>
         </li>
         
+		<li>
+			<a href="javascript:void(0)" onclick="switchNightMode()" class="waves-effect waves-light">
+				<i class="fa fa-lightbulb-o" id="nightMode" title=" 切换主题"></i>切换主题
+			</a>
+		</li>
         
     </ul>
 </div>
 
+
+<script>
+  function switchNightMode() {
+	$('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+	  setTimeout(function () {
+		$('body').hasClass('DarkMode') ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'),$('#nightMode').removeClass('fa-moon-o').addClass('fa-lightbulb-o')): ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#nightMode').removeClass('fa-lightbulb-o').addClass('fa-moon-o')),
+		  setTimeout(function () {
+			$('.Cuteen_DarkSky').fadeOut(1e3, function () {
+			  $(this).remove()
+			})
+		  }, 2e3)
+	  })
+  }
+</script>
         </div>
 
         
@@ -408,7 +414,7 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
                         <div class="card-image tag-image">
                             
                             
-                            <img src="/medias/featureimages/24.jpg" class="responsive-img" alt="Android捕获系统崩溃的日志">
+                            <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="Android捕获系统崩溃的日志">
                             
                             <span class="card-title">Android捕获系统崩溃的日志</span>
                         </div>
@@ -440,7 +446,7 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
                         <div class="card-image tag-image">
                             
                             
-                            <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="获取color资源色值">
+                            <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="获取color资源色值">
                             
                             <span class="card-title">获取color资源色值</span>
                         </div>
@@ -472,7 +478,7 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
                         <div class="card-image tag-image">
                             
                             
-                            <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="Android任务栏新增最近页面">
+                            <img src="/medias/featureimages/24.jpg" class="responsive-img" alt="Android任务栏新增最近页面">
                             
                             <span class="card-title">Android任务栏新增最近页面</span>
                         </div>
@@ -504,7 +510,7 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
                         <div class="card-image tag-image">
                             
                             
-                            <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="Android调用系统邮箱发送邮件">
+                            <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="Android调用系统邮箱发送邮件">
                             
                             <span class="card-title">Android调用系统邮箱发送邮件</span>
                         </div>
@@ -536,7 +542,7 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
                         <div class="card-image tag-image">
                             
                             
-                            <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="微信聊天气泡实现">
+                            <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="微信聊天气泡实现">
                             
                             <span class="card-title">微信聊天气泡实现</span>
                         </div>
@@ -568,7 +574,7 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
                         <div class="card-image tag-image">
                             
                             
-                            <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="Android Home键监听方式探讨">
+                            <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="Android Home键监听方式探讨">
                             
                             <span class="card-title">Android Home键监听方式探讨</span>
                         </div>
@@ -780,38 +786,6 @@ $(function () {
     <!-- 雪花特效 -->
     
 	  
-	<script>
-      function switchNightMode() {
-        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
-          setTimeout(function () {
-            $('body').hasClass('DarkMode') ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'),$('#nightMode').removeClass('fa-moon-o').addClass('fa-lightbulb-o')): ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#nightMode').removeClass('fa-lightbulb-o').addClass('fa-moon-o')),
-              setTimeout(function () {
-                $('.Cuteen_DarkSky').fadeOut(1e3, function () {
-                  $(this).remove()
-                })
-              }, 2e3)
-          })
-      }
-      function switchNightModeTop() {
-        $('body').hasClass('DarkMode') ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'),$('#nightMode').removeClass('fa-moon-o').addClass('fa-lightbulb-o')) : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#nightMode').removeClass('fa-lightbulb-o').addClass('fa-moon-o'))
-      }
-    </script>
-	
-	<script>
-    if (localStorage.getItem('isDark') === '1') {
-        ('body').addClass('DarkMode');
-        }
-        else if (new Date().getHours() >= 22 || new Date().getHours() < 7) {
-        ('body').addClass('DarkMode');
-        } 
-        else if (matchMedia('(prefers-color-scheme: dark)').matches) {
-        ('body').addClass('DarkMode');
-        }
-    </script>
-	<a onclick="switchNightMode()" id="sma" title="切换主题">
-        <i class="fa fa-lightbulb-o" id="nightMode"  aria-hidden="false"></i>
-    </a>
-
 </body>
 
 </html>
