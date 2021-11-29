@@ -1065,6 +1065,17 @@ public class HomeKeyEventReceiver extends BroadcastReceiver &amp;#123;
 </div>
 
 
+<script>
+	try {
+		var reg = new RegExp("(^|&)nightmode=([^&]*)(&|$)");
+		var r = window.location.href.split('?')[1].match(reg);
+		if(r != null) {
+		  '1' === r[2]?($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#nightMode').removeClass('fa-lightbulb-o').addClass('fa-moon-o')):($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'),$('#nightMode').removeClass('fa-moon-o').addClass('fa-lightbulb-o'))
+		}
+	} catch(e) {
+		
+	}
+</script>
     <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">

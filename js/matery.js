@@ -1,5 +1,31 @@
 $(function () {
     /**
+	* 获取url参数
+	*@param url,name
+	**/
+	function getParam(url, name) {
+		try {
+			var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+			var r = url.split('?')[1].match(reg);
+			if(r != null) {
+			  return r[2];
+			}
+			return "";//如果此处只写return;则返回的是undefined
+		} catch(e) {
+			return "";//如果此处只写return;则返回的是undefined
+		}
+	};
+
+	let checkNightMode = function() {
+		'1' === localStorage.getItem('isDark')? ($('body').addClass('DarkMode'), $('#nightMode').removeClass('fa-lightbulb-o').addClass('fa-moon-o')) : ($('#nightMode').removeClass('fa-moon-o').addClass('fa-lightbulb-o')) 
+	}
+
+	/**
+	* 检查主题样式
+	**/
+	checkNightMode();
+	
+	/**
      * 添加文章卡片hover效果.
      */
     let articleCardHover = function () {
@@ -34,6 +60,7 @@ $(function () {
         }
         $('#' + targetId).width(w);
     };
+	
 
     /**
      * 修复footer部分的位置，使得在内容比较少时，footer也会在底部.
@@ -42,9 +69,6 @@ $(function () {
         $('.content').css('min-height', window.innerHeight - 165);
     };
 	
-	let checkNightMode = function() {
-        '1' === localStorage.getItem('isDark') ? ($('body').addClass('DarkMode'), $('#nightMode').removeClass('fa-lightbulb-o').addClass('fa-moon-o')) : ($('#nightMode').removeClass('fa-moon-o').addClass('fa-lightbulb-o')) 
-      }
 
     /**
      * 修复样式.
@@ -53,7 +77,6 @@ $(function () {
         fixPostCardWidth('navContainer', 'articles');
         fixPostCardWidth('artDetail', 'prenext-posts');
         fixFooterPosition();
-		checkNightMode();
     };
     fixStyles();
 
