@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devdroid.cn/"/>
-  <updated>2021-11-29T08:43:05.981Z</updated>
+  <updated>2021-11-29T10:15:57.242Z</updated>
   <id>https://devdroid.cn/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hexo获取url参数实现主题自适应</title>
+    <link href="https://devdroid.cn/2021/11/29/hexo-huo-qu-url-can-shu-shi-xian-zhu-ti-zi-gua-ying/"/>
+    <id>https://devdroid.cn/2021/11/29/hexo-huo-qu-url-can-shu-shi-xian-zhu-ti-zi-gua-ying/</id>
+    <published>2021-11-29T10:13:33.000Z</published>
+    <updated>2021-11-29T10:15:57.242Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h4 id=&quot;需求背景&quot;&gt;&lt;a href=&quot;#需求背景&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="hexo" scheme="https://devdroid.cn/categories/hexo/"/>
+    
+    
+      <category term="博客" scheme="https://devdroid.cn/tags/%E5%8D%9A%E5%AE%A2/"/>
+    
+  </entry>
   
   <entry>
     <title>Hexo博客实现深色主题切换</title>
@@ -527,33 +553,6 @@
     
     
       <category term="小确幸" scheme="https://devdroid.cn/tags/%E5%B0%8F%E7%A1%AE%E5%B9%B8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>个人推荐工具</title>
-    <link href="https://devdroid.cn/2021/10/26/ge-ren-tui-jian-gong-ju/"/>
-    <id>https://devdroid.cn/2021/10/26/ge-ren-tui-jian-gong-ju/</id>
-    <published>2021-10-26T10:53:01.000Z</published>
-    <updated>2021-10-26T11:06:34.049Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;个人推荐工具&quot;&gt;&lt;a href=&quot;#个人推荐工具&quot; class=&quot;headerlink&quot; title=&quot;个人推荐工具&quot;&gt;&lt;/a&gt;个人推荐工具&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;桌面端搜索工具：&lt;br&gt;Everything：&lt;a
-        
-      
-    
-    </summary>
-    
-      <category term="原创" scheme="https://devdroid.cn/categories/%E5%8E%9F%E5%88%9B/"/>
-    
-    
-      <category term="日常" scheme="https://devdroid.cn/tags/%E6%97%A5%E5%B8%B8/"/>
     
   </entry>
   
