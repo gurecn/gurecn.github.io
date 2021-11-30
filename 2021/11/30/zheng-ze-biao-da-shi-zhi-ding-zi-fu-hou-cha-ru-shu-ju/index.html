@@ -502,7 +502,7 @@ Pattern<span class="token punctuation">.</span><span class="token function">comp
 <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>相当于String内部实现了正则表达式的替换操作。</p>
-<h4 id="Java正则表达式语法"><a href="#Java正则表达式语法" class="headerlink" title="Java正则表达式语法"></a>Java正则表达式语法</h4><p>在其他语言中，<em><em>\\*</em> 表示：</em><em>我想要在正则表达式中插入一个普通的（字面上的）反斜杠，请不要给它任何特殊的意义。</em>*<br>在 Java 中，<em><em>\\*</em> 表示：</em><em>我要插入一个正则表达式的反斜线，所以其后的字符具有特殊的意义。</em>*<br>所以，在其他的语言中（如 Perl），一个反斜杠 *<em>\*</em> 就足以具有转义的作用，而在 Java 中正则表达式中则需要有两个反斜杠才能被解析为其他语言中的转义作用。也可以简单的理解在 Java 的正则表达式中，两个 *<em>\\*</em> 代表其他语言中的一个 **\**，这也就是为什么表示一位数字的正则表达式是 <strong>\\d</strong>，而表示一个普通的反斜杠是 **\\**。</p>
+<h4 id="Java正则表达式语法"><a href="#Java正则表达式语法" class="headerlink" title="Java正则表达式语法"></a>Java正则表达式语法</h4><p>在其他语言中，\\ 表示：<strong>我想要在正则表达式中插入一个普通的（字面上的）反斜杠，请不要给它任何特殊的意义。</strong><br>在 Java 中，\\ 表示：<strong>我要插入一个正则表达式的反斜线，所以其后的字符具有特殊的意义。</strong><br>所以，在其他的语言中（如 Perl），一个反斜杠 \ 就足以具有转义的作用，而在 Java 中正则表达式中则需要有两个反斜杠才能被解析为其他语言中的转义作用。也可以简单的理解在 Java 的正则表达式中，两个 \\ 代表其他语言中的一个 \，这也就是为什么表示一位数字的正则表达式是 \\d，而表示一个普通的反斜杠是 \\。</p>
 <table>
 <thead>
 <tr>
@@ -512,7 +512,7 @@ Pattern<span class="token punctuation">.</span><span class="token function">comp
 </thead>
 <tbody><tr>
 <td>\</td>
-<td>将下一字符标记为特殊字符、文本、反向引用或八进制转义符。例如， <strong>n</strong>匹配字符 <strong>n</strong>。<strong>\n</strong> 匹配换行符。序列 <strong>\\\\** 匹配 *<em>\\*</em> ，</strong>\\(** 匹配 **(**。</td>
+<td>将下一字符标记为特殊字符、文本、反向引用或八进制转义符。例如， n匹配字符 n。\n 匹配换行符。序列 \\\\ 匹配 \\ ，\\( 匹配 (。</td>
 </tr>
 <tr>
 <td>^</td>
@@ -556,7 +556,7 @@ Pattern<span class="token punctuation">.</span><span class="token function">comp
 </tr>
 <tr>
 <td>(<em>pattern</em>)</td>
-<td>匹配 <em>pattern</em> 并捕获该匹配的子表达式。可以使用 <strong>$0…$9</strong> 属性从结果”匹配”集合中检索捕获的匹配。若要匹配括号字符 ( )，请使用”(“或者”)“。</td>
+<td>匹配 <em>pattern</em> 并捕获该匹配的子表达式。可以使用 <strong>$0…$9</strong> 属性从结果”匹配”集合中检索捕获的匹配。若要匹配括号字符 ( )，请使用”\(“或者”\)”。</td>
 </tr>
 <tr>
 <td>(?:<em>pattern</em>)</td>
@@ -568,7 +568,7 @@ Pattern<span class="token punctuation">.</span><span class="token function">comp
 </tr>
 <tr>
 <td>(?!<em>pattern</em>)</td>
-<td>执行反向预测先行搜索的子表达式，该表达式匹配不处于匹配 <em>pattern</em> 的字符串的起始点的搜索字符串。它是一个非捕获匹配，即不能捕获供以后使用的匹配。例如，’Windows (?!95|98|NT|2000)’ 匹配”Windows 3.1”中的 “Windows”，但不匹配”Windows 2000”中的”Windows”。预测先行不占用字符，即发生匹配后，下一匹配的搜索紧随上一匹配之后，而不是在组成预测先行的字符后。</td>
+<td>执行反向预测先行搜索的子表达式，该表达式匹配不处于匹配 <em>pattern</em> 的字符串的起始点的搜索字符串。它是一个非捕获匹配，即不能捕获供以后使用的匹配。例如，’Windows (?!95|98|NT|2000)‘ 匹配”Windows 3.1”中的 “Windows”，但不匹配”Windows 2000”中的”Windows”。预测先行不占用字符，即发生匹配后，下一匹配的搜索紧随上一匹配之后，而不是在组成预测先行的字符后。</td>
 </tr>
 <tr>
 <td>x|y</td>
