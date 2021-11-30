@@ -5,14 +5,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="google-site-verification" content="BZSSTWCG6ygfXci-M6fHXRUOICCdvw9XUlROWGENjyA" />
-    <meta name="keywords" content="应用启动闪屏优化与夜间模式, Java C/C++ Vue Gure gurecn Android 卓技卓品">
-    <meta name="description" content="今天主要实现Android应用的两个体验上的功能：
-
-优化应用启动时闪屏页效果。
-应用实现夜间模式。
-
-优化闪屏页Android应用启动时，默认会出现瞬时的白屏界面。这个很影响用户的体验。
-我们可以通过为启动页Activity设置主题的方式">
+    <meta name="keywords" content="正则表达式指定字符后插入数据, Java C/C++ Vue Gure gurecn Android 卓技卓品">
+    <meta name="description" content="需求背景睡眠助理添加了古诗词显示效果，API接口返回的古诗词数据如下：
+{
+    &#34;status&#34;: &#34;success&#34;,
+    &#34;data&#34;: {
+        &#34;id&#34;: &#34;5b8b9572e116fb3714e6faba&#34;,
+ ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -20,7 +19,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>应用启动闪屏优化与夜间模式 | 卓技卓品</title>
+    <title>正则表达式指定字符后插入数据 | 卓技卓品</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -266,13 +265,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        应用启动闪屏优化与夜间模式
+                        正则表达式指定字符后插入数据
                     </div>
                 </div>
             </div>
@@ -383,8 +382,8 @@
                     
                     <div class="article-tag">
                         
-                        <a href="/tags/%E6%96%B0%E7%89%B9%E6%80%A7/" target="_blank">
-                            <span class="chip bg-color">新特性</span>
+                        <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" target="_blank">
+                            <span class="chip bg-color">正则表达式</span>
                         </a>
                         
                     </div>
@@ -395,8 +394,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                        <a href="/categories/Android/" class="post-category" target="_blank">
-                            Android
+                        <a href="/categories/%E6%8A%80%E8%83%BD/" class="post-category" target="_blank">
+                            技能
                         </a>
                         
                     </div>
@@ -407,7 +406,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-11-17
+                    2021-11-30
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -421,14 +420,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.3k
+                    2.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    9 分
                 </div>
                 
                 
@@ -444,118 +443,234 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>今天主要实现Android应用的两个体验上的功能：</p>
-<ul>
-<li>优化应用启动时闪屏页效果。</li>
-<li>应用实现夜间模式。</li>
-</ul>
-<h3 id="优化闪屏页"><a href="#优化闪屏页" class="headerlink" title="优化闪屏页"></a>优化闪屏页</h3><p>Android应用启动时，默认会出现瞬时的白屏界面。这个很影响用户的体验。</p>
-<p>我们可以通过为启动页Activity设置主题的方式解决该问题。</p>
-<p>首先修改styles.xml文件，创建新的style：AppTheme.Launcher</p>
-<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>AppTheme.Launcher<span class="token punctuation">"</span></span> <span class="token attr-name">parent</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>AppTheme.NoActionBar<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token style language-css">
-    &lt;item name=<span class="token string">"android:windowBackground"</span>>@null&lt;/item>
-</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>然后在AndroidManifest.xml文件中找到启动页（LAUNCHER），配置theme：</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token operator">&lt;</span>activity
-    android<span class="token operator">:</span>name<span class="token operator">=</span><span class="token string">".activity.GuideActivity"</span>
-    android<span class="token operator">:</span>theme<span class="token operator">=</span><span class="token string">"@style/AppTheme.Launcher"</span>
-    android<span class="token operator">:</span>exported<span class="token operator">=</span><span class="token string">"true"</span><span class="token operator">></span>
-    <span class="token operator">&lt;</span>intent<span class="token operator">-</span>filter<span class="token operator">></span>
-        <span class="token operator">&lt;</span>action android<span class="token operator">:</span>name<span class="token operator">=</span><span class="token string">"android.intent.action.MAIN"</span> <span class="token operator">/</span><span class="token operator">></span>
-        <span class="token operator">&lt;</span>category android<span class="token operator">:</span>name<span class="token operator">=</span><span class="token string">"android.intent.category.LAUNCHER"</span> <span class="token operator">/</span><span class="token operator">></span>
-    <span class="token operator">&lt;</span><span class="token operator">/</span>intent<span class="token operator">-</span>filter<span class="token operator">></span>
-    <span class="token operator">&lt;</span>meta<span class="token operator">-</span>data
-        android<span class="token operator">:</span>name<span class="token operator">=</span><span class="token string">"android.app.shortcuts"</span>
-        android<span class="token operator">:</span>resource<span class="token operator">=</span><span class="token string">"@xml/shortcuts"</span> <span class="token operator">/</span><span class="token operator">></span>
-<span class="token operator">&lt;</span><span class="token operator">/</span>activity<span class="token operator">></span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>最后进入启动Activity文件，在onCreate方法中使用setTheme设置主题：</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@Override</span>
-<span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onCreate</span><span class="token punctuation">(</span>Bundle savedInstanceState<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onCreate</span><span class="token punctuation">(</span>savedInstanceState<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">setTheme</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>style<span class="token punctuation">.</span>AppTheme_Launcher<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">getWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setFlags</span><span class="token punctuation">(</span>WindowManager<span class="token punctuation">.</span>LayoutParams<span class="token punctuation">.</span>FLAG_FULLSCREEN<span class="token punctuation">,</span> WindowManager<span class="token punctuation">.</span>LayoutParams<span class="token punctuation">.</span>FLAG_FULLSCREEN<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">setContentView</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>layout<span class="token punctuation">.</span>activity_guide<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <h3 id="需求背景"><a href="#需求背景" class="headerlink" title="需求背景"></a>需求背景</h3><p>睡眠助理添加了古诗词显示效果，API接口返回的古诗词数据如下：</p>
+<pre class="line-numbers language-json"><code class="language-json"><span class="token punctuation">{</span>
+    <span class="token property">"status"</span><span class="token operator">:</span> <span class="token string">"success"</span><span class="token punctuation">,</span>
+    <span class="token property">"data"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"id"</span><span class="token operator">:</span> <span class="token string">"5b8b9572e116fb3714e6faba"</span><span class="token punctuation">,</span>
+        <span class="token property">"content"</span><span class="token operator">:</span> <span class="token string">"君问归期未有期，巴山夜雨涨秋池。"</span><span class="token punctuation">,</span>
+        <span class="token property">"popularity"</span><span class="token operator">:</span> <span class="token number">1170000</span><span class="token punctuation">,</span>
+        <span class="token property">"origin"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token property">"title"</span><span class="token operator">:</span> <span class="token string">"夜雨寄北"</span><span class="token punctuation">,</span>
+            <span class="token property">"dynasty"</span><span class="token operator">:</span> <span class="token string">"唐代"</span><span class="token punctuation">,</span>
+            <span class="token property">"author"</span><span class="token operator">:</span> <span class="token string">"李商隐"</span><span class="token punctuation">,</span>
+            <span class="token property">"content"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                <span class="token string">"君问归期未有期，巴山夜雨涨秋池。"</span><span class="token punctuation">,</span>
+                <span class="token string">"何当共剪西窗烛，却话巴山夜雨时。"</span>
+            <span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token property">"translate"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                <span class="token string">"您问归期，归期实难说准，巴山连夜暴雨，涨满秋池。"</span><span class="token punctuation">,</span>
+                <span class="token string">"何时归去，共剪西窗烛花，当面诉说，巴山夜雨况味。"</span>
+            <span class="token punctuation">]</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token property">"matchTags"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+            <span class="token string">"秋"</span><span class="token punctuation">,</span>
+            <span class="token string">"晚上"</span>
+        <span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token property">"recommendedReason"</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
+        <span class="token property">"cacheAt"</span><span class="token operator">:</span> <span class="token string">"2018-09-17T21:18:44.693645"</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">"token"</span><span class="token operator">:</span> <span class="token string">"6453911a-9ad7-457e-9b9d-c21011b85a0c"</span><span class="token punctuation">,</span>
+    <span class="token property">"ipAddress"</span><span class="token operator">:</span> <span class="token string">"162.248.93.154"</span>
 <span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>这时候重新启动应用，发现白屏确实没有了，但是仔细看发现启动时出现了黑屏（苦笑）。</p>
-<p>原来关键在于AppTheme.Launcher中的样式设置。</p>
-<p>我们没有给windowBackground配置资源，所以默认使用了黑色背景。我们可以使用取色器取出启动页面的主题色，然后配置进入：</p>
-<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>AppTheme.Launcher<span class="token punctuation">"</span></span> <span class="token attr-name">parent</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>AppTheme.NoActionBar<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token style language-css">
-    &lt;item name=<span class="token string">"android:windowBackground"</span>>@color/app_icon_background&lt;/item>
-</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>我们可以看到，古诗词的内容（content）被按句分割成了不同的字符串，我希望实现在每个符号进行换行显示。所以需要在字符串中查找所有符号（中文：。？！；：及对应英文符号），然后替换。</p>
+<h3 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程"></a>实现过程</h3><p>字符串的替换操作，很显然使用replaceAll实现。<br>最初实现如下,，分别替换符号：</p>
+<pre class="line-numbers language-java"><code class="language-java">str<span class="token punctuation">.</span><span class="token function">replaceAll</span><span class="token punctuation">(</span><span class="token string">"，"</span><span class="token punctuation">,</span> <span class="token string">"\n"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">replaceAll</span><span class="token punctuation">(</span><span class="token string">"。"</span><span class="token punctuation">,</span> <span class="token string">"\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>但是这样实现发现代码很冗余，查询发现replaceAll支持正则表达式的方案，那么我们进行优化：</p>
+<pre class="line-numbers language-java"><code class="language-java">str<span class="token punctuation">.</span><span class="token function">replaceAll</span><span class="token punctuation">(</span><span class="token string">"：|:|，|,|\\.|。|;|；|\\?|？"</span><span class="token punctuation">,</span> <span class="token string">"\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>这样实现了遇到符号替换成换行操作。<br>但是效果是在勉强，为何？当遇到符号时，所有符号都会被替换成换行，导致原来的符号都没有了。<br>然后继续优化，最终使用下面方式实现：</p>
+<pre class="line-numbers language-java"><code class="language-java">str<span class="token punctuation">.</span><span class="token function">replaceAll</span><span class="token punctuation">(</span><span class="token string">"(：|:|，|,|\\.|。|;|；|\\?|？)"</span><span class="token punctuation">,</span> <span class="token string">"$1\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>通过()选择匹配到的内容，在替换数据中使用$1插入匹配到的数据，这样实现了既保留了原来的符号，又插入了换行符号的功能。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><h4 id="replaceAll方法"><a href="#replaceAll方法" class="headerlink" title="replaceAll方法"></a>replaceAll方法</h4><pre class="line-numbers language-java"><code class="language-java">Replaces each substring of <span class="token keyword">this</span> string that matches the given regular expression with the given replacement<span class="token punctuation">.</span>
+An invocation of <span class="token keyword">this</span> method of the form str<span class="token punctuation">.</span><span class="token function">replaceAll</span><span class="token punctuation">(</span>regex<span class="token punctuation">,</span> repl<span class="token punctuation">)</span> yields exactly the same result as the expression
+Pattern<span class="token punctuation">.</span><span class="token function">compile</span><span class="token punctuation">(</span>regex<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">matcher</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">replaceAll</span><span class="token punctuation">(</span>repl<span class="token punctuation">)</span> 
+Note that <span class="token function">backslashes</span> <span class="token punctuation">(</span>\<span class="token punctuation">)</span> and dollar <span class="token function">signs</span> <span class="token punctuation">(</span>$<span class="token punctuation">)</span> in the replacement string may cause the results to be different than <span class="token keyword">if</span> it were being treated as a literal replacement string<span class="token punctuation">;</span> see Matcher<span class="token punctuation">.</span>replaceAll<span class="token punctuation">.</span> Use java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>regex<span class="token punctuation">.</span>Matcher<span class="token punctuation">.</span>quoteReplacement to suppress the special meaning of these characters<span class="token punctuation">,</span> <span class="token keyword">if</span> desired<span class="token punctuation">.</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>翻译即是：</p>
+<pre class="line-numbers language-java"><code class="language-java">用给定的替代字符串（replacement）替换此字符串中与给定正则表达式匹配的每个子字符串。
+以 str<span class="token punctuation">.</span><span class="token function">replaceAll</span><span class="token punctuation">(</span>regex<span class="token punctuation">,</span> repl<span class="token punctuation">)</span> 形式调用此方法会产生与下面正则表达式完全相同的结果：
+Pattern<span class="token punctuation">.</span><span class="token function">compile</span><span class="token punctuation">(</span>regex<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">matcher</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">replaceAll</span><span class="token punctuation">(</span>repl<span class="token punctuation">)</span>
+请注意，替换字符串中的反斜杠 <span class="token punctuation">(</span>\<span class="token punctuation">)</span> 和美元符号 <span class="token punctuation">(</span>$<span class="token punctuation">)</span> 可能会导致结果与将其视为文字替换字符串时的结果不同；参见 Matcher<span class="token punctuation">.</span>replaceAll。如果需要，使用 java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>regex<span class="token punctuation">.</span>Matcher<span class="token punctuation">.</span>quoteReplacement 取消这些字符的特殊含义。
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>我们查看replaceAll方法，发现其直接调用了Pattern的compile方法：</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> String <span class="token function">replaceAll</span><span class="token punctuation">(</span>String regex<span class="token punctuation">,</span> String replacement<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> Pattern<span class="token punctuation">.</span><span class="token function">compile</span><span class="token punctuation">(</span>regex<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">matcher</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">replaceAll</span><span class="token punctuation">(</span>replacement<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>此时再启动应用，发现闪屏的黑色已经变成启动界面的主题色了。</p>
-<p>主要配置的内容是windowBackground，我们研究一下：</p>
-<blockquote>
-<p>Drawable to use as the overall window background.  As of {@link android.os.Build.VERSION_CODES#HONEYCOMB}, this may be a selector that uses state_accelerated to pick a non-solid color when running on devices that can draw such a bitmap with complex compositing on top at 60fps.</p>
-</blockquote>
-<p>翻译就是：</p>
-<blockquote>
-<p>Drawable资源（纯色值或图片）可用作整个窗口背景。从Android 3(HONEYCOMB)开始，这可能是一个选择器。当运行在可以以 60fps 的速度在顶部绘制复杂合成的位图的设备时，它可能使用硬件加速来选择非纯色.</p>
-</blockquote>
-<p>我们也可以把启动页图片直接配置到这个 参数里：</p>
-<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>AppTheme.Launcher<span class="token punctuation">"</span></span> <span class="token attr-name">parent</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>AppTheme.NoActionBar<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token style language-css">
-    &lt;item name=<span class="token string">"android:windowBackground"</span>>@drawable/welcome&lt;/item>
-</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>注意：很多博客使用了下面这个配置：</p>
-<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>item</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>android:windowDisablePreview<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>true<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>item</span><span class="token punctuation">></span></span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>在实际使用时，我发现一旦配置该参数，会导致白屏一直存在。</p>
-<p>查看源码：</p>
-<blockquote>
-<p>Flag allowing you to disable the splash screen for a window. The default value is false; if set to true, the system can never use the window’s theme to show a splash screen before your actual instance is shown to the user.</p>
-</blockquote>
-<p>翻译：</p>
-<blockquote>
-<p>允许您禁用窗口的初始屏幕的标志。 默认值为 false； 如果设置为 true，则在您的实际实例显示给用户之前，系统永远不能使用窗口的主题来显示启动画面(预览)。</p>
-</blockquote>
-<p>也就是windowDisablePreview设置为true时，windowBackground功能将会失效。所以注意不能将windowDisablePreview设置为true。</p>
-<h3 id="实现夜间模式"><a href="#实现夜间模式" class="headerlink" title="实现夜间模式"></a>实现夜间模式</h3><p>首先修改styles.xml文件，使其parent为：Theme.AppCompat.DayNight：</p>
-<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>AppTheme<span class="token punctuation">"</span></span> <span class="token attr-name">parent</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Theme.AppCompat.DayNight<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>然后新建values-night文件夹，该文件夹与values平级。</p>
-<p>并在文件夹内新建colors.xml文件，用于保存深色主题的colors色值。图片文件也一样，需要创建对应的文件夹存放对应的深色图片。否则会使用非深色主题的资源替代。</p>
-<pre class="line-numbers language-xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="utf-8"?></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>resources</span><span class="token punctuation">></span></span>
-    <span class="token comment" spellcheck="true">&lt;!--应用主题背景--></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>color</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>app_main_background<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>#818181<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>color</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>color</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>app_setting_background<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>#616161<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>color</span><span class="token punctuation">></span></span>
-    
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>color</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>color_calendar_card_yellow<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>#000B31<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>color</span><span class="token punctuation">></span></span>>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>color</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>color_calendar_card_click<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>#0035F5<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>color</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>color</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>color_calendar_card_future_text<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>#DDDDDD<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>color</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>color</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>color_calendar_card_next_text<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>#666666<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>color</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>resources</span><span class="token punctuation">></span></span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>最后就剩下设置生效了。设置配置生效有两种方式：Application启动时设置和Activity中设置。</p>
-<p>全局设置可以通过TheApplication实现，在onCreate方法中设置，设置完成后即可对应用内所有页面生效：</p>
-<pre class="line-numbers language-java"><code class="language-java">AppCompatDelegate<span class="token punctuation">.</span><span class="token function">setDefaultNightMode</span><span class="token punctuation">(</span>AppCompatDelegate<span class="token punctuation">.</span>MODE_NIGHT_YES<span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>Activity页面实现，通过在Activity的onCreate方法中设置，设置方式和Application中相同。此时仅对新创建的页面生效，以前的页面仍然使用创建时的主题。</p>
-<p>我们看到设置生效的方法是setDefaultNightMode：</p>
-<blockquote>
-<p>Sets the default night mode. This is used across all activities/dialogs but can be overridden locally via setLocalNightMode(int).</p>
-<p>This method only takes effect for those situations where applyDayNight() works. Defaults to MODE_NIGHT_NO.</p>
-<p>This only takes effect for components which are created after the call. Any components which are already open will not be updated.</p>
-</blockquote>
-<p>翻译如下：</p>
-<blockquote>
-<p>设置默认夜间模式。这用于所有activities/dialogs组件，但可以通过 setLocalNightMode(int) 在本地覆盖。</p>
-<p>此方法仅对 applyDayNight() 起作用的情况有效。默认为 MODE_NIGHT_NO。</p>
-<p> 这只对调用后创建的组件有效。任何已经打开的组件都不会更新。</p>
-</blockquote>
-<p>该方法中有一个参数NightMode：</p>
-<blockquote>
-<p>MODE_NIGHT_NO        关闭夜间模式</p>
-<p>MODE_NIGHT_YES         开启夜间模式</p>
-<p>MODE_NIGHT_AUTO        根据位置自动切换模式</p>
-<p>MODE_NIGHT_FOLLOW_SYSTEM     跟随系统设置</p>
-</blockquote>
-<p>遗留问题：</p>
-<p>实际使用时，发现当模式从MODE_NIGHT_YES到MODE_NIGHT_FOLLOW_SYSTEM时，若系统设置未开启深色模式，那么需要杀死应用重启才能生效。但模式从MODE_NIGHT_YES到MODE_NIGHT_NO时，无需杀死应用就能生效。</p>
+<p>相当于String内部实现了正则表达式的替换操作。</p>
+<h4 id="Java正则表达式语法"><a href="#Java正则表达式语法" class="headerlink" title="Java正则表达式语法"></a>Java正则表达式语法</h4><p>在其他语言中，<em><em>\\*</em> 表示：</em><em>我想要在正则表达式中插入一个普通的（字面上的）反斜杠，请不要给它任何特殊的意义。</em>*<br>在 Java 中，<em><em>\\*</em> 表示：</em><em>我要插入一个正则表达式的反斜线，所以其后的字符具有特殊的意义。</em>*<br>所以，在其他的语言中（如 Perl），一个反斜杠 *<em>\*</em> 就足以具有转义的作用，而在 Java 中正则表达式中则需要有两个反斜杠才能被解析为其他语言中的转义作用。也可以简单的理解在 Java 的正则表达式中，两个 *<em>\\*</em> 代表其他语言中的一个 **\**，这也就是为什么表示一位数字的正则表达式是 <strong>\\d</strong>，而表示一个普通的反斜杠是 **\\**。</p>
+<table>
+<thead>
+<tr>
+<th>字符</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>\</td>
+<td>将下一字符标记为特殊字符、文本、反向引用或八进制转义符。例如， <strong>n</strong>匹配字符 <strong>n</strong>。<strong>\n</strong> 匹配换行符。序列 <strong>\\** 匹配 *<em>\*</em> ，</strong>\(** 匹配 **(**。</td>
+</tr>
+<tr>
+<td>^</td>
+<td>匹配输入字符串开始的位置。如果设置了 <strong>RegExp</strong> 对象的 <strong>Multiline</strong> 属性，^ 还会与”\n”或”\r”之后的位置匹配。</td>
+</tr>
+<tr>
+<td>$</td>
+<td>匹配输入字符串结尾的位置。如果设置了 <strong>RegExp</strong> 对象的 <strong>Multiline</strong> 属性，$ 还会与”\n”或”\r”之前的位置匹配。</td>
+</tr>
+<tr>
+<td>*</td>
+<td>零次或多次匹配前面的字符或子表达式。例如，zo* 匹配”z”和”zoo”。* 等效于 {0,}。</td>
+</tr>
+<tr>
+<td>+</td>
+<td>一次或多次匹配前面的字符或子表达式。例如，”zo+”与”zo”和”zoo”匹配，但与”z”不匹配。+ 等效于 {1,}。</td>
+</tr>
+<tr>
+<td>?</td>
+<td>零次或一次匹配前面的字符或子表达式。例如，”do(es)?”匹配”do”或”does”中的”do”。? 等效于 {0,1}。</td>
+</tr>
+<tr>
+<td>{<em>n</em>}</td>
+<td>_n _是非负整数。正好匹配 <em>n</em> 次。例如，”o{2}”与”Bob”中的”o”不匹配，但与”food”中的两个”o”匹配。</td>
+</tr>
+<tr>
+<td>{<em>n</em>,}</td>
+<td>_n _是非负整数。至少匹配 _n _次。例如，”o{2,}”不匹配”Bob”中的”o”，而匹配”foooood”中的所有 o。”o{1,}”等效于”o+”。”o{0,}”等效于”o*”。</td>
+</tr>
+<tr>
+<td>{<em>n</em>,<em>m</em>}</td>
+<td><em>m</em> 和 <em>n</em> 是非负整数，其中 <em>n</em> &lt;= _m_。匹配至少 <em>n</em> 次，至多 <em>m</em> 次。例如，”o{1,3}”匹配”fooooood”中的头三个 o。’o{0,1}’ 等效于 ‘o?’。注意：您不能将空格插入逗号和数字之间。</td>
+</tr>
+<tr>
+<td>?</td>
+<td>当此字符紧随任何其他限定符（*、+、?、{<em>n</em>}、{<em>n</em>,}、{<em>n</em>,<em>m</em>}）之后时，匹配模式是”非贪心的”。”非贪心的”模式匹配搜索到的、尽可能短的字符串，而默认的”贪心的”模式匹配搜索到的、尽可能长的字符串。例如，在字符串”oooo”中，”o+?”只匹配单个”o”，而”o+”匹配所有”o”。</td>
+</tr>
+<tr>
+<td>.</td>
+<td>匹配除”\r\n”之外的任何单个字符。若要匹配包括”\r\n”在内的任意字符，请使用诸如”[\s\S]”之类的模式。</td>
+</tr>
+<tr>
+<td>(<em>pattern</em>)</td>
+<td>匹配 <em>pattern</em> 并捕获该匹配的子表达式。可以使用 <strong>$0…$9</strong> 属性从结果”匹配”集合中检索捕获的匹配。若要匹配括号字符 ( )，请使用”(“或者”)“。</td>
+</tr>
+<tr>
+<td>(?:<em>pattern</em>)</td>
+<td>匹配 <em>pattern</em> 但不捕获该匹配的子表达式，即它是一个非捕获匹配，不存储供以后使用的匹配。这对于用”or”字符 (</td>
+</tr>
+<tr>
+<td>(?=<em>pattern</em>)</td>
+<td>执行正向预测先行搜索的子表达式，该表达式匹配处于匹配 <em>pattern</em> 的字符串的起始点的字符串。它是一个非捕获匹配，即不能捕获供以后使用的匹配。例如，’Windows (?=95</td>
+</tr>
+<tr>
+<td>(?!<em>pattern</em>)</td>
+<td>执行反向预测先行搜索的子表达式，该表达式匹配不处于匹配 <em>pattern</em> 的字符串的起始点的搜索字符串。它是一个非捕获匹配，即不能捕获供以后使用的匹配。例如，’Windows (?!95</td>
+</tr>
+<tr>
+<td><em>x</em></td>
+<td><em>y</em></td>
+</tr>
+<tr>
+<td>[<em>xyz</em>]</td>
+<td>字符集。匹配包含的任一字符。例如，”[abc]”匹配”plain”中的”a”。</td>
+</tr>
+<tr>
+<td>[^<em>xyz</em>]</td>
+<td>反向字符集。匹配未包含的任何字符。例如，”[^abc]”匹配”plain”中”p”，”l”，”i”，”n”。</td>
+</tr>
+<tr>
+<td>[<em>a-z</em>]</td>
+<td>字符范围。匹配指定范围内的任何字符。例如，”[a-z]”匹配”a”到”z”范围内的任何小写字母。</td>
+</tr>
+<tr>
+<td>[^<em>a-z</em>]</td>
+<td>反向范围字符。匹配不在指定的范围内的任何字符。例如，”[^a-z]”匹配任何不在”a”到”z”范围内的任何字符。</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>匹配一个字边界，即字与空格间的位置。例如，”er\b”匹配”never”中的”er”，但不匹配”verb”中的”er”。</td>
+</tr>
+<tr>
+<td>\B</td>
+<td>非字边界匹配。”er\B”匹配”verb”中的”er”，但不匹配”never”中的”er”。</td>
+</tr>
+<tr>
+<td>\c_x_</td>
+<td>匹配 <em>x</em> 指示的控制字符。例如，\cM 匹配 Control-M 或回车符。<em>x</em> 的值必须在 A-Z 或 a-z 之间。如果不是这样，则假定 c 就是”c”字符本身。</td>
+</tr>
+<tr>
+<td>\d</td>
+<td>数字字符匹配。等效于 [0-9]。</td>
+</tr>
+<tr>
+<td>\D</td>
+<td>非数字字符匹配。等效于 [^0-9]。</td>
+</tr>
+<tr>
+<td>\f</td>
+<td>换页符匹配。等效于 \x0c 和 \cL。</td>
+</tr>
+<tr>
+<td>\n</td>
+<td>换行符匹配。等效于 \x0a 和 \cJ。</td>
+</tr>
+<tr>
+<td>\r</td>
+<td>匹配一个回车符。等效于 \x0d 和 \cM。</td>
+</tr>
+<tr>
+<td>\s</td>
+<td>匹配任何空白字符，包括空格、制表符、换页符等。与 [ \f\n\r\t\v] 等效。</td>
+</tr>
+<tr>
+<td>\S</td>
+<td>匹配任何非空白字符。与 [^ \f\n\r\t\v] 等效。</td>
+</tr>
+<tr>
+<td>\t</td>
+<td>制表符匹配。与 \x09 和 \cI 等效。</td>
+</tr>
+<tr>
+<td>\v</td>
+<td>垂直制表符匹配。与 \x0b 和 \cK 等效。</td>
+</tr>
+<tr>
+<td>\w</td>
+<td>匹配任何字类字符，包括下划线。与”[A-Za-z0-9_]”等效。</td>
+</tr>
+<tr>
+<td>\W</td>
+<td>与任何非单词字符匹配。与”[^A-Za-z0-9_]”等效。</td>
+</tr>
+<tr>
+<td>\x_n_</td>
+<td>匹配 _n_，此处的 <em>n</em> 是一个十六进制转义码。十六进制转义码必须正好是两位数长。例如，”\x41”匹配”A”。”\x041”与”\x04”&amp;”1”等效。允许在正则表达式中使用 ASCII 代码。</td>
+</tr>
+<tr>
+<td>_num_</td>
+<td>匹配 _num_，此处的 <em>num</em> 是一个正整数。到捕获匹配的反向引用。例如，”(.)\1”匹配两个连续的相同字符。</td>
+</tr>
+<tr>
+<td>_n_</td>
+<td>标识一个八进制转义码或反向引用。如果 _n_ 前面至少有 <em>n</em> 个捕获子表达式，那么 <em>n</em> 是反向引用。否则，如果 <em>n</em> 是八进制数 (0-7)，那么 <em>n</em> 是八进制转义码。</td>
+</tr>
+<tr>
+<td>_nm_</td>
+<td>标识一个八进制转义码或反向引用。如果 _nm_ 前面至少有 <em>nm</em> 个捕获子表达式，那么 <em>nm</em> 是反向引用。如果 _nm_ 前面至少有 <em>n</em> 个捕获，则 <em>n</em> 是反向引用，后面跟有字符 <em>m_。如果两种前面的情况都不存在，则 _nm</em> 匹配八进制值 _nm_，其中 _n _和 <em>m</em> 是八进制数字 (0-7)。</td>
+</tr>
+<tr>
+<td>\nml</td>
+<td>当 <em>n</em> 是八进制数 (0-3)，<em>m</em> 和 <em>l</em> 是八进制数 (0-7) 时，匹配八进制转义码 _nml_。</td>
+</tr>
+<tr>
+<td>\u_n_</td>
+<td>匹配 _n_，其中 <em>n</em> 是以四位十六进制数表示的 Unicode 字符。例如，\u00A9 匹配版权符号 (©)。</td>
+</tr>
+</tbody></table>
 
             </div>
             <hr />
@@ -590,9 +705,9 @@
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《应用启动闪屏优化与夜间模式》
+                    《正则表达式指定字符后插入数据》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2021/11/17/ying-yong-qi-dong-shan-ping-you-hua-yu-ye-jian-mo-shi/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2021/11/30/zheng-ze-biao-da-shi-zhi-ding-zi-fu-hou-cha-ru-shu-ju/" property="cc:attributionName"
                rel="cc:attributionURL">
                 Gure
             </a> 采用
@@ -894,31 +1009,85 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/11/18/hexo-bo-ke-zi-fu-luan-ma-jie-jue-fang-an/">
+                <a href="/2021/11/30/zheng-ze-biao-da-shi-zhi-ding-zi-fu-hou-cha-ru-shu-ju/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="hexo博客字符乱码解决方案">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="正则表达式指定字符后插入数据">
                         
-                        <span class="card-title">hexo博客字符乱码解决方案</span>
+                        <span class="card-title">正则表达式指定字符后插入数据</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            现象今天发现博客中所有的“{”与“}”都成了乱码，效果如下：
-public class HomeKeyEventReceiver extends BroadcastReceiver &amp;#123;
-    String SYSTEM_
+                            需求背景睡眠助理添加了古诗词显示效果，API接口返回的古诗词数据如下：
+{
+    "status": "success",
+    "data": {
+        "id": "5b8b9572e116fb3714e6faba",
+ 
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2021-11-18
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-11-30
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%8A%80%E8%83%BD/" class="post-category" target="_blank">
+                                    技能
+                                </a>
+                            
+                            
                         </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" target="_blank">
+                        <span class="chip bg-color">正则表达式</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/11/29/hexo-huo-qu-url-can-shu-shi-xian-zhu-ti-zi-gua-ying/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="Hexo获取url参数实现主题自适应">
+                        
+                        <span class="card-title">Hexo获取url参数实现主题自适应</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            需求背景由于博客嵌入到开源项目Android客户端中，客户端做了深色主题兼容，博客在上一节中也实现了深色主题。上节遗留一个问题，就是从Android客户端中跳转到博客时，无法把客户端的主题类型携带过去。所以出现了深色主题客户端跳转到博客后，
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-11-29
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -934,57 +1103,8 @@ public class HomeKeyEventReceiver extends BroadcastReceiver &amp;#123;
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E7%BC%96%E7%A0%81/" target="_blank">
-                        <span class="chip bg-color">编码</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/11/16/android-ren-wu-lan-xin-zeng-zui-jin-ye-mian/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Android任务栏新增最近页面">
-                        
-                        <span class="card-title">Android任务栏新增最近页面</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            需求Android应用启动页面需要在AndroidManifest.xml文件进行注册，常用的应用都有一个Activity被定义成LAUNCHER，这时候点击应用图标时就会启动该Activity。在应用界面相互切换时系统维护的Activit
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-11-16
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Android/" class="post-category" target="_blank">
-                                    Android
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E5%BA%94%E7%94%A8/" target="_blank">
-                        <span class="chip bg-color">应用</span>
+                    <a href="/tags/%E5%8D%9A%E5%AE%A2/" target="_blank">
+                        <span class="chip bg-color">博客</span>
                     </a>
                     
                 </div>

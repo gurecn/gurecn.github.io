@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devdroid.cn/"/>
-  <updated>2021-11-29T10:15:57.242Z</updated>
+  <updated>2021-11-30T02:27:35.726Z</updated>
   <id>https://devdroid.cn/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>正则表达式指定字符后插入数据</title>
+    <link href="https://devdroid.cn/2021/11/30/zheng-ze-biao-da-shi-zhi-ding-zi-fu-hou-cha-ru-shu-ju/"/>
+    <id>https://devdroid.cn/2021/11/30/zheng-ze-biao-da-shi-zhi-ding-zi-fu-hou-cha-ru-shu-ju/</id>
+    <published>2021-11-30T02:13:37.000Z</published>
+    <updated>2021-11-30T02:27:35.726Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;需求背景&quot;&gt;&lt;a href=&quot;#需求背景&quot; class=&quot;headerlink&quot; title=&quot;需求背景&quot;&gt;&lt;/a&gt;需求背景&lt;/h3&gt;&lt;p&gt;睡眠助理添加了古诗词显示效果，API接口返回的古诗词数据如下：&lt;/p&gt;
+&lt;pre class=&quot;line-numbers
+        
+      
+    
+    </summary>
+    
+      <category term="技能" scheme="https://devdroid.cn/categories/%E6%8A%80%E8%83%BD/"/>
+    
+    
+      <category term="正则表达式" scheme="https://devdroid.cn/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>Hexo获取url参数实现主题自适应</title>
@@ -525,34 +552,6 @@
     
     
       <category term="童话" scheme="https://devdroid.cn/tags/%E7%AB%A5%E8%AF%9D/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>浅浅时光(2021)</title>
-    <link href="https://devdroid.cn/2021/10/28/qian-qian-shi-guang-2021/"/>
-    <id>https://devdroid.cn/2021/10/28/qian-qian-shi-guang-2021/</id>
-    <published>2021-10-28T01:41:50.000Z</published>
-    <updated>2021-10-28T03:03:10.911Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;立一个flag：每年的8月在结婚纪念日之前，做一本照片书。&lt;/p&gt;
-&lt;p&gt;把这本相册献给把一生托付给我的妻子。感谢您的陪伴，我用这本相册纪念过去一年里我们共同的经历。可能每年的内容不同，时多时少，有好有坏，但这都是我们相依相偎、见证我们共同走过的岁月。&lt;/p&gt;
-&lt;p&gt;这是我
-        
-      
-    
-    </summary>
-    
-      <category term="原创" scheme="https://devdroid.cn/categories/%E5%8E%9F%E5%88%9B/"/>
-    
-    
-      <category term="小确幸" scheme="https://devdroid.cn/tags/%E5%B0%8F%E7%A1%AE%E5%B9%B8/"/>
     
   </entry>
   
