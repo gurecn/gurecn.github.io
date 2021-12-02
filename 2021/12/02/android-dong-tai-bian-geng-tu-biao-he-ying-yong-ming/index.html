@@ -542,7 +542,7 @@ Error <span class="token keyword">while</span> Launching activity
 <p>翻译：</p>
 <pre><code>setComponentEnabledSetting（ComponentName，int，int）的标志参数，用于指示给定用户的包限制状态将在更新组件状态后序列化到磁盘。请注意，这是同步磁盘访问，因此使用此标志的调用应该在后台线程上运行。
 </code></pre>
-<p>测试发现：使用DONT_KILL_APP时，应用在3秒内退出；使用SYNCHRONOUS应用立即退出。<br>但是DONT_KILL_APP和实际不符啊，为什么呢？<br>网上查阅资料，大多回答是一头雾水，有人反馈是Android系统的一个系统级bug。自己到谷歌社区查找主题，通过官方人员沟通，了解到：当使用DONT_KILL_APP时，Application不会主动结束进程，但是由于作为启动页的GuideActivity被设置为COMPONENT_ENABLED_STATE_DISABLED（不可用），这时候APP会将GuideActivity创建的任务栈清空，由于APP所有Activity都是由GuideActivity任务栈创建的，所以就看到类似于退出应用的效果。<br>好了，原因确定了，那么就看如何解决了。</p>
+<p>测试发现：使用DONT_KILL_APP时，应用在3秒内退出；使用SYNCHRONOUS应用立即退出。<br>但是DONT_KILL_APP实际和描述不符啊，难道这就是所谓的不可预测？为什么会这样呢？<br>网上查阅资料，大多回答是一头雾水，有人反馈是Android系统的一个系统级bug。自己到谷歌社区查找主题，通过官方人员沟通，了解到：当使用DONT_KILL_APP时，Application不会主动结束进程，但是由于作为启动页的GuideActivity被设置为COMPONENT_ENABLED_STATE_DISABLED（不可用），这时候APP会将GuideActivity创建的任务栈清空，由于APP所有Activity都是由GuideActivity任务栈创建的，所以就看到类似于退出应用的效果。<br>好了，原因确定了，那么就看如何解决了。</p>
 <p>此时我们只需要使用新的任务栈启动SettingsActivity，然后在SettingsActivity内清空启动栈，应用就不会退出了。</p>
 <pre class="line-numbers language-java"><code class="language-java">Intent intent <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Intent</span><span class="token punctuation">(</span>mAppCompatActivity<span class="token punctuation">,</span> SettingsActivity<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 intent<span class="token punctuation">.</span><span class="token function">addFlags</span><span class="token punctuation">(</span>Intent<span class="token punctuation">.</span>FLAG_ACTIVITY_NEW_DOCUMENT <span class="token operator">|</span> Intent<span class="token punctuation">.</span>FLAG_ACTIVITY_MULTIPLE_TASK<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1179,7 +1179,7 @@ mAppCompatActivity<span class="token punctuation">.</span><span class="token fun
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">31.3k</span>
+            <span class="white-color">31.4k</span>
             
 
             <br>
