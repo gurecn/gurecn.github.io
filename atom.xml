@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devdroid.cn/"/>
-  <updated>2021-11-30T02:58:38.589Z</updated>
+  <updated>2021-12-02T10:15:11.084Z</updated>
   <id>https://devdroid.cn/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Android动态变更图标和应用名</title>
+    <link href="https://devdroid.cn/2021/12/02/android-dong-tai-bian-geng-tu-biao-he-ying-yong-ming/"/>
+    <id>https://devdroid.cn/2021/12/02/android-dong-tai-bian-geng-tu-biao-he-ying-yong-ming/</id>
+    <published>2021-12-02T10:10:25.000Z</published>
+    <updated>2021-12-02T10:15:11.084Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h4 id=&quot;需求背景&quot;&gt;&lt;a href=&quot;#需求背景&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="https://devdroid.cn/categories/Android/"/>
+    
+    
+      <category term="特性" scheme="https://devdroid.cn/tags/%E7%89%B9%E6%80%A7/"/>
+    
+  </entry>
   
   <entry>
     <title>正则表达式指定字符后插入数据</title>
@@ -288,7 +314,7 @@
     <link href="https://devdroid.cn/2021/11/16/android-ren-wu-lan-xin-zeng-zui-jin-ye-mian/"/>
     <id>https://devdroid.cn/2021/11/16/android-ren-wu-lan-xin-zeng-zui-jin-ye-mian/</id>
     <published>2021-11-16T12:01:55.000Z</published>
-    <updated>2021-11-22T02:48:53.560Z</updated>
+    <updated>2021-12-02T10:11:34.722Z</updated>
     
     <summary type="html">
     
@@ -515,34 +541,6 @@
         
           &lt;p&gt;上大一时，我看中一套定价88元的《走上成功之路》丛书，书中选取了一百篇文章，从方方面面介绍了在竞争中立于不败之地的技巧经验，令渴望成功的我为之着迷。直到店主以一种怪怪的眼神看我时，我才想起囊中羞涩。&lt;/p&gt;
 &lt;p&gt;实在不忍心再给常年劳苦的父母增加负担，我就瞒着老师和家庭，请
-        
-      
-    
-    </summary>
-    
-      <category term="转载" scheme="https://devdroid.cn/categories/%E8%BD%AC%E8%BD%BD/"/>
-    
-    
-      <category term="童话" scheme="https://devdroid.cn/tags/%E7%AB%A5%E8%AF%9D/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>洁白的木槿花</title>
-    <link href="https://devdroid.cn/2021/11/03/ji-bai-de-mu-jin-hua/"/>
-    <id>https://devdroid.cn/2021/11/03/ji-bai-de-mu-jin-hua/</id>
-    <published>2021-11-03T05:39:27.000Z</published>
-    <updated>2021-11-03T06:17:25.678Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;一到夏天，院子里的木槿就开花。&lt;/p&gt;
-&lt;p&gt;母亲一见洁白的木槿花，就会眼含泪水，嘴唇哆嗦着说：“我那时好糊涂，好糊涂啊。”&lt;/p&gt;
-&lt;p&gt;这里面有个故事。 
         
       
     
