@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devdroid.cn/"/>
-  <updated>2021-12-03T09:38:24.702Z</updated>
+  <updated>2021-12-03T10:03:48.399Z</updated>
   <id>https://devdroid.cn/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ScrollView只显示最后一个控件</title>
+    <link href="https://devdroid.cn/2021/12/03/scrollview-zhi-xian-shi-zui-hou-yi-ge-kong-jian/"/>
+    <id>https://devdroid.cn/2021/12/03/scrollview-zhi-xian-shi-zui-hou-yi-ge-kong-jian/</id>
+    <published>2021-12-03T10:01:40.000Z</published>
+    <updated>2021-12-03T10:03:48.399Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;因为诗词的数据有可能较多，一屏不一定显示完，所以使用ScrollView实现滑动显示。但是发现当最后一个条目内容很多（ScrollView嵌套的LinearLayout最后一个TextView独自能够占满一屏）时，会出现只显示最后一个控件的现象。&lt;/p&gt;
+&lt;p&gt;实现代码如下
+        
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="https://devdroid.cn/categories/Android/"/>
+    
+    
+      <category term="应用" scheme="https://devdroid.cn/tags/%E5%BA%94%E7%94%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>增加系统TextView长按菜单</title>
@@ -522,33 +549,6 @@
     
     
       <category term="规范" scheme="https://devdroid.cn/tags/%E8%A7%84%E8%8C%83/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>微信聊天气泡实现</title>
-    <link href="https://devdroid.cn/2021/11/03/wei-xin-liao-tian-qi-pao-shi-xian/"/>
-    <id>https://devdroid.cn/2021/11/03/wei-xin-liao-tian-qi-pao-shi-xian/</id>
-    <published>2021-11-03T06:41:42.000Z</published>
-    <updated>2021-11-12T10:57:33.625Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h4 id=&quot;需求&quot;&gt;&lt;a href=&quot;#需求&quot; class=&quot;headerlink&quot; title=&quot;需求&quot;&gt;&lt;/a&gt;需求&lt;/h4&gt;&lt;p&gt;我们的聊天软件需要实现像微信一样的聊天气泡，就是圆角加尖角。如截图所示：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;yuanjiao.jpg&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="Android" scheme="https://devdroid.cn/categories/Android/"/>
-    
-    
-      <category term="应用" scheme="https://devdroid.cn/tags/%E5%BA%94%E7%94%A8/"/>
     
   </entry>
   
