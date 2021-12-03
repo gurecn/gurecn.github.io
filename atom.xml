@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devdroid.cn/"/>
-  <updated>2021-12-02T10:29:40.251Z</updated>
+  <updated>2021-12-03T09:38:24.702Z</updated>
   <id>https://devdroid.cn/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>增加系统TextView长按菜单</title>
+    <link href="https://devdroid.cn/2021/12/03/zeng-jia-xi-tong-textview-chang-an-cai-dan/"/>
+    <id>https://devdroid.cn/2021/12/03/zeng-jia-xi-tong-textview-chang-an-cai-dan/</id>
+    <published>2021-12-03T09:35:02.000Z</published>
+    <updated>2021-12-03T09:38:24.702Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;今天介绍一下在Android6.0+版本上新增的一个新特性：通过Text Selection实现系统中应用EditText、TextView的文本选择菜单和提供文本处理功能。参考：&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="https://devdroid.cn/categories/Android/"/>
+    
+    
+      <category term="特性" scheme="https://devdroid.cn/tags/%E7%89%B9%E6%80%A7/"/>
+    
+  </entry>
   
   <entry>
     <title>Android动态变更图标和应用名</title>
@@ -523,33 +549,6 @@
     
     
       <category term="应用" scheme="https://devdroid.cn/tags/%E5%BA%94%E7%94%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>走不出童话的美丽</title>
-    <link href="https://devdroid.cn/2021/11/03/zou-bu-chu-tong-hua-de-mei-li/"/>
-    <id>https://devdroid.cn/2021/11/03/zou-bu-chu-tong-hua-de-mei-li/</id>
-    <published>2021-11-03T06:15:50.000Z</published>
-    <updated>2021-11-12T11:09:14.438Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;上大一时，我看中一套定价88元的《走上成功之路》丛书，书中选取了一百篇文章，从方方面面介绍了在竞争中立于不败之地的技巧经验，令渴望成功的我为之着迷。直到店主以一种怪怪的眼神看我时，我才想起囊中羞涩。&lt;/p&gt;
-&lt;p&gt;实在不忍心再给常年劳苦的父母增加负担，我就瞒着老师和家庭，请
-        
-      
-    
-    </summary>
-    
-      <category term="转载" scheme="https://devdroid.cn/categories/%E8%BD%AC%E8%BD%BD/"/>
-    
-    
-      <category term="童话" scheme="https://devdroid.cn/tags/%E7%AB%A5%E8%AF%9D/"/>
     
   </entry>
   
