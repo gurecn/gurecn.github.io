@@ -5,8 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="google-site-verification" content="BZSSTWCG6ygfXci-M6fHXRUOICCdvw9XUlROWGENjyA" />
-    <meta name="keywords" content="获取color资源色值, Java C/C++ Vue Gure gurecn Android 卓技卓品">
-    <meta name="description" content="为了实现应用切换主题（日常模式、夜间模式）时，应用内各种组件的显示效果也能很友好的切换。所以在应用内所使用的color色值尽量使用values内colors.xml资源文件内。这样的好处显而易见：需要调整效果时，无效代码内到处检查，直接在文">
+    <meta name="keywords" content="屏蔽应用内TextView Selection菜单, Java C/C++ Vue Gure gurecn Android 卓技卓品">
+    <meta name="description" content="之前一篇文章《增加系统TextView长按菜单》中，我们实现了对于系统中安装的各类应用内新增一条TextView长按菜单，实现自己应用功能的入口扩展。在应用开发者看来，该方式增加了应用的入口和曝光度，获取了流量的导入渠道。站在使用者的角度，">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +14,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>获取color资源色值 | 卓技卓品</title>
+    <title>屏蔽应用内TextView Selection菜单 | 卓技卓品</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -260,13 +260,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        获取color资源色值
+                        屏蔽应用内TextView Selection菜单
                     </div>
                 </div>
             </div>
@@ -401,7 +401,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-11-25
+                    2021-12-07
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -415,14 +415,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    560
+                    737
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    3 分
                 </div>
                 
                 
@@ -438,46 +438,109 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>为了实现应用切换主题（日常模式、夜间模式）时，应用内各种组件的显示效果也能很友好的切换。所以在应用内所使用的color色值尽量使用values内colors.xml资源文件内。<br>这样的好处显而易见：需要调整效果时，无效代码内到处检查，直接在文件内配置即可；可以给不同的主题设置不同的色值等等。<br>但是使用时在细节上遇到一些问题，有部分View是使用代码进行绘制，比如项目（<a target="_blank" rel="noopener" href="https://github.com/gurecn/sleepassistant">sleepassistant为例</a>）中，折线图、扇形图等图形及日历使用Java代码进行绘制。这时候如何给画笔配置color.xml内定义的资源呢？<br>在旧版本系统中，我们可以使用下面的方式：</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">int</span> tickLabelColor <span class="token operator">=</span> <span class="token function">getResources</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getColor</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>color<span class="token punctuation">.</span>tick_label_color<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>但是系统提示该方法已过时：</p>
-<blockquote>
-<p>Returns a color integer associated with a particular resource ID. If the resource holds a complex ColorStateList, then the default color from the set is returned.<br>Deprecated：Use getColor(int, Resources.Theme) instead.</p>
-</blockquote>
-<p>翻译：</p>
-<blockquote>
-<p>返回与特定资源 ID 关联的颜色整数。如果资源拥有复杂的 ColorStateList，则返回集合中的默认颜色。<br>已弃用：使用 getColor(int, Resources.Theme) 代替。</p>
-</blockquote>
-<p>其中 Resources.Theme可为null，为null时获取当前手机主题模式下的color resource ID。<br>新方式实现如下：</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">int</span> tickLabelColor <span class="token operator">=</span> <span class="token function">getResources</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getColor</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>color<span class="token punctuation">.</span>tick_label_color<span class="token punctuation">,</span> null<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>我们查看源码发现getResources方式是Context定义的抽象方法。为了更好的访问 Context 中的功能，Android系统引入了ContextCompat，查询ContextCompat发现有一个静态方法getColor，查看代码：</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@ColorInt</span>
-<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">int</span> <span class="token function">getColor</span><span class="token punctuation">(</span>Context context<span class="token punctuation">,</span> <span class="token annotation punctuation">@ColorRes</span> <span class="token keyword">int</span> id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>Build<span class="token punctuation">.</span>VERSION<span class="token punctuation">.</span>SDK_INT <span class="token operator">>=</span> <span class="token number">23</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> context<span class="token punctuation">.</span><span class="token function">getColor</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> context<span class="token punctuation">.</span><span class="token function">getResources</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getColor</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>该方法对API 23版本进行了兼容，对于低于23的系统，其实调用的还是Context中的getColor。因此我们也可以使用：</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">int</span> tickLabelColor <span class="token operator">=</span> ContextCompat<span class="token punctuation">.</span><span class="token function">getColor</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> R<span class="token punctuation">.</span>color<span class="token punctuation">.</span>tick_label_color<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>获取到color id后，可以通过setColor进行设置：</p>
-<pre class="line-numbers language-java"><code class="language-java">Paint paint <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Paint</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">int</span> tickLabelColor <span class="token operator">=</span> ContextCompat<span class="token punctuation">.</span><span class="token function">getColor</span><span class="token punctuation">(</span><span class="token function">getContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> R<span class="token punctuation">.</span>color<span class="token punctuation">.</span>tick_label_color<span class="token punctuation">)</span><span class="token punctuation">;</span>
-paint<span class="token punctuation">.</span><span class="token function">setColor</span><span class="token punctuation">(</span>tickLabelColor<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>与getColor 对应的，getDrawable 用法也是一样。</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 弃用方法</span>
-Drawable drawable <span class="token operator">=</span> <span class="token function">getResources</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getDrawable</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>mipmap<span class="token punctuation">.</span>ic_launcher<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">// 建议方法</span>
-Drawable drawable1 <span class="token operator">=</span> <span class="token function">getResources</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getDrawable</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>mipmap<span class="token punctuation">.</span>ic_launcher<span class="token punctuation">,</span> null<span class="token punctuation">)</span><span class="token punctuation">;</span>
-Drawable drawable2 <span class="token operator">=</span> ContextCompat<span class="token punctuation">.</span><span class="token function">getDrawable</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span>R<span class="token punctuation">.</span>mipmap<span class="token punctuation">.</span>ic_launcher<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>代码效果参考<a target="_blank" rel="noopener" href="https://github.com/gurecn/sleepassistant">睡眠助理项目。</a></p>
+                <p>之前一篇文章《<a href="https://devdroid.cn/2021/12/03/zeng-jia-xi-tong-textview-chang-an-cai-dan/">增加系统TextView长按菜单</a>》中，我们实现了对于系统中安装的各类应用内新增一条TextView长按菜单，实现自己应用功能的入口扩展。在应用开发者看来，该方式增加了应用的入口和曝光度，获取了流量的导入渠道。<br>站在使用者的角度，方便了部分操作，但同时也带了一些困扰。我自己为例，发现TextView长按菜单出现的实在太多了，包括：复制、剪切、全选、粘贴、分享、搜索（有多个）、翻译。挤在界面上，体验很不好。</p>
+<p>作为以用户体验为基准的研发人员，肯定要考虑用户的使用感受。<br>我研究发现微信的长按复制菜单全部是自己定义的，和系统默认的菜单不同。那么显而易见，TextView长按菜单是可自定义的。<br>今天我们就研究一下如何实现自定义TextView（含EditText）长按菜单的显示。</p>
+<p>实现过程：<br>TextView中有setCustomSelectionActionModeCallback方法，来实现长按选中菜单的初始化和点击回调操作。看一下源码，setCustomSelectionActionModeCallback中参数为ActionMode.Callback2，内部可重写的方法分别为：<br>onCreateActionMode:</p>
+<pre><code>Called when action mode is first created. The menu supplied will be used to generate action buttons for the action mode.
+
+首次创建action模式时调用。提供的菜单将用于为action模式生成action按钮。
+</code></pre>
+<p>onPrepareActionMode:</p>
+<pre><code>Called to refresh an action mode&#39;s action menu whenever it is invalidated.
+
+调用以在action模式失效时刷新操作模式的操作菜单。
+</code></pre>
+<p>onActionItemClicked：</p>
+<pre><code>Called to report a user click on an action button.
+
+调用以报告用户单击action菜单按钮。
+</code></pre>
+<p>onDestroyActionMode:</p>
+<pre><code>Called when an action mode is about to be exited and destroyed.
+
+当action模式即将退出和销毁时调用。
+</code></pre>
+<p>实际验证发现，只要onCreateActionMode方法返回false，那么长按选中文本时，不显示任何菜单项。<br>在此基础上，进行以下几种测试，分别为：</p>
+<pre class="line-numbers language-java"><code class="language-java">mTvShiciContent<span class="token punctuation">.</span><span class="token function">setCustomSelectionActionModeCallback</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ActionMode<span class="token punctuation">.</span>Callback2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token annotation punctuation">@Override</span>
+  <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">onCreateActionMode</span><span class="token punctuation">(</span>ActionMode mode<span class="token punctuation">,</span> Menu menu<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    MenuInflater inflater <span class="token operator">=</span> mode<span class="token punctuation">.</span><span class="token function">getMenuInflater</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    menu<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    inflater<span class="token punctuation">.</span><span class="token function">inflate</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>menu<span class="token punctuation">.</span>text_menu<span class="token punctuation">,</span> menu<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token annotation punctuation">@Override</span>
+  <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">onPrepareActionMode</span><span class="token punctuation">(</span>ActionMode mode<span class="token punctuation">,</span> Menu menu<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token annotation punctuation">@Override</span>
+  <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">onActionItemClicked</span><span class="token punctuation">(</span>ActionMode mode<span class="token punctuation">,</span> MenuItem item<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token annotation punctuation">@Override</span>
+  <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onDestroyActionMode</span><span class="token punctuation">(</span>ActionMode mode<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>此时，菜单显示：全选、测试（text_menu中自定义）、搜索（浏览器）、翻译（华为翻译）、搜索（今日头条）。</p>
+<pre class="line-numbers language-java"><code class="language-java">mTvShiciContent<span class="token punctuation">.</span><span class="token function">setCustomSelectionActionModeCallback</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ActionMode<span class="token punctuation">.</span>Callback2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token annotation punctuation">@Override</span>
+  <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">onCreateActionMode</span><span class="token punctuation">(</span>ActionMode mode<span class="token punctuation">,</span> Menu menu<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    MenuInflater inflater <span class="token operator">=</span> mode<span class="token punctuation">.</span><span class="token function">getMenuInflater</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    inflater<span class="token punctuation">.</span><span class="token function">inflate</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>menu<span class="token punctuation">.</span>text_menu<span class="token punctuation">,</span> menu<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token annotation punctuation">@Override</span>
+  <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">onPrepareActionMode</span><span class="token punctuation">(</span>ActionMode mode<span class="token punctuation">,</span> Menu menu<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    menu<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token annotation punctuation">@Override</span>
+  <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">onActionItemClicked</span><span class="token punctuation">(</span>ActionMode mode<span class="token punctuation">,</span> MenuItem item<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token annotation punctuation">@Override</span>
+  <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onDestroyActionMode</span><span class="token punctuation">(</span>ActionMode mode<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>此时，不显示任何菜单项。</p>
+<pre class="line-numbers language-java"><code class="language-java">mTvShiciContent<span class="token punctuation">.</span><span class="token function">setCustomSelectionActionModeCallback</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ActionMode<span class="token punctuation">.</span>Callback2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token annotation punctuation">@Override</span>
+  <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">onCreateActionMode</span><span class="token punctuation">(</span>ActionMode mode<span class="token punctuation">,</span> Menu menu<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token annotation punctuation">@Override</span>
+  <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">onPrepareActionMode</span><span class="token punctuation">(</span>ActionMode mode<span class="token punctuation">,</span> Menu menu<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    menu<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    MenuInflater inflater <span class="token operator">=</span> mode<span class="token punctuation">.</span><span class="token function">getMenuInflater</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    inflater<span class="token punctuation">.</span><span class="token function">inflate</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>menu<span class="token punctuation">.</span>text_menu<span class="token punctuation">,</span> menu<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token annotation punctuation">@Override</span>
+  <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">onActionItemClicked</span><span class="token punctuation">(</span>ActionMode mode<span class="token punctuation">,</span> MenuItem item<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token annotation punctuation">@Override</span>
+  <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onDestroyActionMode</span><span class="token punctuation">(</span>ActionMode mode<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>此时，只显示自定义菜单：测试（text_menu中自定义）。</p>
+<p>那么可以根据应用实际需要的模式进行设置即可。</p>
 
             </div>
             <hr />
@@ -512,9 +575,9 @@ Drawable drawable2 <span class="token operator">=</span> ContextCompat<span clas
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《获取color资源色值》
+                    《屏蔽应用内TextView Selection菜单》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2021/11/25/huo-qu-color-zi-yuan-se-zhi/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2021/12/07/ping-bi-ying-yong-nei-textview-selection-cai-dan/" property="cc:attributionName"
                rel="cc:attributionURL">
                 Gure
             </a> 采用
@@ -816,30 +879,30 @@ Drawable drawable2 <span class="token operator">=</span> ContextCompat<span clas
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/11/25/yin-dao-yong-hu-jin-xing-hao-ping/">
+                <a href="/2021/12/07/ping-bi-ying-yong-nei-textview-selection-cai-dan/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="引导用户进行好评">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="屏蔽应用内TextView Selection菜单">
                         
-                        <span class="card-title">引导用户进行好评</span>
+                        <span class="card-title">屏蔽应用内TextView Selection菜单</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            背景最近发现我们的产品在google play商店的评分下滑的很厉害，已经影响到产品的市场推荐能力。产品和研发一期沟通解决这个问题。
-思路首先最好的方式当然是在产品体验层面进行优化，比如体验更友好、介面更整洁、移除用户比较厌倦的广告等。但是
+                            之前一篇文章《增加系统TextView长按菜单》中，我们实现了对于系统中安装的各类应用内新增一条TextView长按菜单，实现自己应用功能的入口扩展。在应用开发者看来，该方式增加了应用的入口和曝光度，获取了流量的导入渠道。站在使用者的角度，
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2021-11-25
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-12-07
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -852,11 +915,12 @@ Drawable drawable2 <span class="token operator">=</span> ContextCompat<span clas
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E4%BA%A7%E5%93%81/" target="_blank">
-                        <span class="chip bg-color">产品</span>
+                    <a href="/tags/%E5%BA%94%E7%94%A8/" target="_blank">
+                        <span class="chip bg-color">应用</span>
                     </a>
                     
                 </div>
@@ -870,24 +934,24 @@ Drawable drawable2 <span class="token operator">=</span> ContextCompat<span clas
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/11/25/android-diao-yong-jin-ri-shi-ci-he-pei-zhi-zi-ti/">
+                <a href="/2021/12/03/scrollview-zhi-xian-shi-zui-hou-yi-ge-kong-jian/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="Android调用今日诗词和配置字体">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="ScrollView只显示最后一个控件">
                         
-                        <span class="card-title">Android调用今日诗词和配置字体</span>
+                        <span class="card-title">ScrollView只显示最后一个控件</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            睡眠助理项目里添加了今日诗词（今日诗词开放接口）显示。为了达到显示效果，应用内设置方正舒体字体。今天记录一下集成今日诗词的过程及设置字体的方案。集成今日诗词直接根据接口文档进行即可，由于我进行Android应用开发，所以参考“安卓 SDK”
+                            因为诗词的数据有可能较多，一屏不一定显示完，所以使用ScrollView实现滑动显示。但是发现当最后一个条目内容很多（ScrollView嵌套的LinearLayout最后一个TextView独自能够占满一屏）时，会出现只显示最后一个控件的
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-11-25
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-12-03
                             </span>
                         <span class="publish-author">
                             
@@ -904,8 +968,8 @@ Drawable drawable2 <span class="token operator">=</span> ContextCompat<span clas
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E4%B8%89%E6%96%B9%E8%B5%84%E6%BA%90/" target="_blank">
-                        <span class="chip bg-color">三方资源</span>
+                    <a href="/tags/%E5%BA%94%E7%94%A8/" target="_blank">
+                        <span class="chip bg-color">应用</span>
                     </a>
                     
                 </div>

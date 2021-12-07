@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devdroid.cn/"/>
-  <updated>2021-12-06T02:38:12.122Z</updated>
+  <updated>2021-12-07T08:32:55.072Z</updated>
   <id>https://devdroid.cn/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>屏蔽应用内TextView Selection菜单</title>
+    <link href="https://devdroid.cn/2021/12/07/ping-bi-ying-yong-nei-textview-selection-cai-dan/"/>
+    <id>https://devdroid.cn/2021/12/07/ping-bi-ying-yong-nei-textview-selection-cai-dan/</id>
+    <published>2021-12-07T08:29:00.000Z</published>
+    <updated>2021-12-07T08:32:55.072Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;之前一篇文章《&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="https://devdroid.cn/categories/Android/"/>
+    
+    
+      <category term="应用" scheme="https://devdroid.cn/tags/%E5%BA%94%E7%94%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>ScrollView只显示最后一个控件</title>
@@ -522,33 +548,6 @@
     
     
       <category term="年少" scheme="https://devdroid.cn/tags/%E5%B9%B4%E5%B0%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android代码协作规范</title>
-    <link href="https://devdroid.cn/2021/11/08/android-dai-ma-xie-zuo-gui-fan/"/>
-    <id>https://devdroid.cn/2021/11/08/android-dai-ma-xie-zuo-gui-fan/</id>
-    <published>2021-11-08T12:10:29.000Z</published>
-    <updated>2021-11-12T10:00:24.760Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;为更好地协同开发及管理，真切的希望加入Android项目开发的小伙伴们能够依照该开发规范约定进行相关代码的开发工作。&lt;/p&gt;
-&lt;p&gt;这样不仅提高协同开发的效率，并且对后期代码的维护和bug的修复有重大的影响，对于后来人交接项目节省很大的精力。在此，该工程的创建者感谢各位的体
-        
-      
-    
-    </summary>
-    
-      <category term="Android" scheme="https://devdroid.cn/categories/Android/"/>
-    
-    
-      <category term="规范" scheme="https://devdroid.cn/tags/%E8%A7%84%E8%8C%83/"/>
     
   </entry>
   
