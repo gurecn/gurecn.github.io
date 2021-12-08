@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devdroid.cn/"/>
-  <updated>2021-12-07T08:32:55.072Z</updated>
+  <updated>2021-12-08T05:36:26.852Z</updated>
   <id>https://devdroid.cn/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>优化状态栏沉浸显示</title>
+    <link href="https://devdroid.cn/2021/12/08/you-hua-zhuang-tai-lan-chen-jin-xian-shi/"/>
+    <id>https://devdroid.cn/2021/12/08/you-hua-zhuang-tai-lan-chen-jin-xian-shi/</id>
+    <published>2021-12-08T05:28:12.000Z</published>
+    <updated>2021-12-08T05:36:26.852Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;需求背景&quot;&gt;&lt;a href=&quot;#需求背景&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="https://devdroid.cn/categories/Android/"/>
+    
+    
+      <category term="特性" scheme="https://devdroid.cn/tags/%E7%89%B9%E6%80%A7/"/>
+    
+  </entry>
   
   <entry>
     <title>屏蔽应用内TextView Selection菜单</title>
@@ -519,35 +545,6 @@
     
     
       <category term="应用" scheme="https://devdroid.cn/tags/%E5%BA%94%E7%94%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>年少时的影子情人</title>
-    <link href="https://devdroid.cn/2021/11/09/nian-shao-shi-de-ying-zi-qing-ren/"/>
-    <id>https://devdroid.cn/2021/11/09/nian-shao-shi-de-ying-zi-qing-ren/</id>
-    <published>2021-11-09T03:36:20.000Z</published>
-    <updated>2021-11-09T03:49:52.188Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;center&gt;&lt;b&gt;也许，我们都应该对藏在心底的影子情人心存感激，是他（她）们让我们年少时那颗稚嫩空虚的心有了牵挂，从而不会荒芜地成长。&lt;/b&gt;&lt;/center&gt;
-
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;前几天偶然遇到了一个高中时的同学，同级不同班，只是认识而已，没有说过话
-        
-      
-    
-    </summary>
-    
-      <category term="转载" scheme="https://devdroid.cn/categories/%E8%BD%AC%E8%BD%BD/"/>
-    
-    
-      <category term="年少" scheme="https://devdroid.cn/tags/%E5%B9%B4%E5%B0%91/"/>
     
   </entry>
   

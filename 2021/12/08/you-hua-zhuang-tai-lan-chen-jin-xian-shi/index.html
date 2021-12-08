@@ -5,8 +5,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="google-site-verification" content="BZSSTWCG6ygfXci-M6fHXRUOICCdvw9XUlROWGENjyA" />
-    <meta name="keywords" content="屏蔽应用内TextView Selection菜单, Java C/C++ Vue Gure gurecn Android 卓技卓品">
-    <meta name="description" content="之前一篇文章《增加系统TextView长按菜单》中，我们实现了对于系统中安装的各类应用内新增一条TextView长按菜单，实现自己应用功能的入口扩展。在应用开发者看来，该方式增加了应用的入口和曝光度，获取了流量的导入渠道。站在使用者的角度，">
+    <meta name="keywords" content="优化状态栏沉浸显示, Java C/C++ Vue Gure gurecn Android 卓技卓品">
+    <meta name="description" content="需求背景应用启动页一般要全屏显示，使用全屏的引导页来增强显示效果。今天我们研究一下如何实现全屏引导页，以及过程中遇到的问题，对应的解决方案。
+实现方案方案一第一步，我们定义显示样式，打开styles.xml文件，定义AppTheme.NoA">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +15,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>屏蔽应用内TextView Selection菜单 | 卓技卓品</title>
+    <title>优化状态栏沉浸显示 | 卓技卓品</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -260,13 +261,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        屏蔽应用内TextView Selection菜单
+                        优化状态栏沉浸显示
                     </div>
                 </div>
             </div>
@@ -377,8 +378,8 @@
                     
                     <div class="article-tag">
                         
-                        <a href="/tags/%E5%BA%94%E7%94%A8/" target="_blank">
-                            <span class="chip bg-color">应用</span>
+                        <a href="/tags/%E7%89%B9%E6%80%A7/" target="_blank">
+                            <span class="chip bg-color">特性</span>
                         </a>
                         
                     </div>
@@ -401,7 +402,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-12-07
+                    2021-12-08
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -415,7 +416,7 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    737
+                    748
                 </div>
                 
 
@@ -438,109 +439,79 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>之前一篇文章《<a href="https://devdroid.cn/2021/12/03/zeng-jia-xi-tong-textview-chang-an-cai-dan/">增加系统TextView长按菜单</a>》中，我们实现了对于系统中安装的各类应用内新增一条TextView长按菜单，实现自己应用功能的入口扩展。在应用开发者看来，该方式增加了应用的入口和曝光度，获取了流量的导入渠道。<br>站在使用者的角度，方便了部分操作，但同时也带了一些困扰。我自己为例，发现TextView长按菜单出现的实在太多了，包括：复制、剪切、全选、粘贴、分享、搜索（有多个）、翻译。挤在界面上，体验很不好。</p>
-<p>作为以用户体验为基准的研发人员，肯定要考虑用户的使用感受。<br>我研究发现微信的长按复制菜单全部是自己定义的，和系统默认的菜单不同。那么显而易见，TextView长按菜单是可自定义的。<br>今天我们就研究一下如何实现自定义TextView（含EditText）长按菜单的显示。</p>
-<p>实现过程：<br>TextView中有setCustomSelectionActionModeCallback方法，来实现长按选中菜单的初始化和点击回调操作。看一下源码，setCustomSelectionActionModeCallback中参数为ActionMode.Callback2，内部可重写的方法分别为：<br>onCreateActionMode:</p>
-<pre><code>Called when action mode is first created. The menu supplied will be used to generate action buttons for the action mode.
+                <h3 id="需求背景"><a href="#需求背景" class="headerlink" title="需求背景"></a>需求背景</h3><p>应用启动页一般要全屏显示，使用全屏的引导页来增强显示效果。<br>今天我们研究一下如何实现全屏引导页，以及过程中遇到的问题，对应的解决方案。</p>
+<h3 id="实现方案"><a href="#实现方案" class="headerlink" title="实现方案"></a>实现方案</h3><h4 id="方案一"><a href="#方案一" class="headerlink" title="方案一"></a>方案一</h4><p>第一步，我们定义显示样式，打开styles.xml文件，定义AppTheme.NoActionBar与AppTheme.Launcher：</p>
+<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>AppTheme.NoActionBar<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token style language-css">
+    &lt;item name=<span class="token string">"windowActionBar"</span>>false&lt;/item>
+    &lt;item name=<span class="token string">"windowNoTitle"</span>>true&lt;/item>
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span>
 
-首次创建action模式时调用。提供的菜单将用于为action模式生成action按钮。
-</code></pre>
-<p>onPrepareActionMode:</p>
-<pre><code>Called to refresh an action mode&#39;s action menu whenever it is invalidated.
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>AppTheme.Launcher<span class="token punctuation">"</span></span> <span class="token attr-name">parent</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>AppTheme.NoActionBar<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token style language-css">
+    &lt;item name=<span class="token string">"android:windowBackground"</span>>@color/colorPrimaryDark&lt;/item>
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>样式中，windowBackground设置整个窗口背景，可以设置color色值或者drawable资源。<br>第二步，Activity配置该主题样式：</p>
+<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>activity</span>
+    <span class="token attr-name"><span class="token namespace">android:</span>exported</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>.activity.GuideActivity<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>theme</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@style/AppTheme.Launcher<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>intent-filter</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>action</span> <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>android.intent.action.MAIN<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>category</span> <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>android.intent.category.LAUNCHER<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>intent-filter</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>activity</span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>第三步，打开启动页GuideActivity代码，在onCreate中设置全屏显示：</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@Override</span>
+<span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onCreate</span><span class="token punctuation">(</span>Bundle savedInstanceState<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onCreate</span><span class="token punctuation">(</span>savedInstanceState<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">setTheme</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>style<span class="token punctuation">.</span>AppTheme_Launcher<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">getWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setFlags</span><span class="token punctuation">(</span>WindowManager<span class="token punctuation">.</span>LayoutParams<span class="token punctuation">.</span> FLAG_FULLSCREEN <span class="token punctuation">,</span> WindowManager<span class="token punctuation">.</span>LayoutParams<span class="token punctuation">.</span> FLAG_FULLSCREEN<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">getWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addFlags</span><span class="token punctuation">(</span>WindowManager<span class="token punctuation">.</span>LayoutParams<span class="token punctuation">.</span>FLAG_LAYOUT_NO_LIMITS<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">setContentView</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>layout<span class="token punctuation">.</span>activity_guide<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>此时我们安装、运行应用，看到应用确实全屏展示了。<br>但是同时也会有一些问题，在手机最上部状态栏显示全黑，如下如所示：</p>
+<img src="1.png" width="450" height="50" alt="全屏状态栏黑条" >
 
-调用以在action模式失效时刷新操作模式的操作菜单。
-</code></pre>
-<p>onActionItemClicked：</p>
-<pre><code>Called to report a user click on an action button.
+<p>我们希望全屏显示，当然状态栏也要包含在内，否则状态栏很突兀。<br>仔细研发，发现出现该问题原因是因为刘海屏，所以我们兼容一下刘海屏：</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@Override</span>
+<span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onCreate</span><span class="token punctuation">(</span>Bundle savedInstanceState<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onCreate</span><span class="token punctuation">(</span>savedInstanceState<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">setTheme</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>style<span class="token punctuation">.</span>AppTheme_Launcher<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">fitsNotchScreen</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">getWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setFlags</span><span class="token punctuation">(</span>WindowManager<span class="token punctuation">.</span>LayoutParams<span class="token punctuation">.</span> FLAG_FULLSCREEN <span class="token punctuation">,</span> WindowManager<span class="token punctuation">.</span>LayoutParams<span class="token punctuation">.</span> FLAG_FULLSCREEN<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">getWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addFlags</span><span class="token punctuation">(</span>WindowManager<span class="token punctuation">.</span>LayoutParams<span class="token punctuation">.</span>FLAG_LAYOUT_NO_LIMITS<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">setContentView</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>layout<span class="token punctuation">.</span>activity_guide<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-调用以报告用户单击action菜单按钮。
-</code></pre>
-<p>onDestroyActionMode:</p>
-<pre><code>Called when an action mode is about to be exited and destroyed.
-
-当action模式即将退出和销毁时调用。
-</code></pre>
-<p>实际验证发现，只要onCreateActionMode方法返回false，那么长按选中文本时，不显示任何菜单项。<br>在此基础上，进行以下几种测试，分别为：</p>
-<pre class="line-numbers language-java"><code class="language-java">mTvShiciContent<span class="token punctuation">.</span><span class="token function">setCustomSelectionActionModeCallback</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ActionMode<span class="token punctuation">.</span>Callback2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token annotation punctuation">@Override</span>
-  <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">onCreateActionMode</span><span class="token punctuation">(</span>ActionMode mode<span class="token punctuation">,</span> Menu menu<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    MenuInflater inflater <span class="token operator">=</span> mode<span class="token punctuation">.</span><span class="token function">getMenuInflater</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    menu<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    inflater<span class="token punctuation">.</span><span class="token function">inflate</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>menu<span class="token punctuation">.</span>text_menu<span class="token punctuation">,</span> menu<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token annotation punctuation">@Override</span>
-  <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">onPrepareActionMode</span><span class="token punctuation">(</span>ActionMode mode<span class="token punctuation">,</span> Menu menu<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token annotation punctuation">@Override</span>
-  <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">onActionItemClicked</span><span class="token punctuation">(</span>ActionMode mode<span class="token punctuation">,</span> MenuItem item<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token annotation punctuation">@Override</span>
-  <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onDestroyActionMode</span><span class="token punctuation">(</span>ActionMode mode<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>此时，菜单显示：全选、测试（text_menu中自定义）、搜索（浏览器）、翻译（华为翻译）、搜索（今日头条）。</p>
-<pre class="line-numbers language-java"><code class="language-java">mTvShiciContent<span class="token punctuation">.</span><span class="token function">setCustomSelectionActionModeCallback</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ActionMode<span class="token punctuation">.</span>Callback2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token annotation punctuation">@Override</span>
-  <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">onCreateActionMode</span><span class="token punctuation">(</span>ActionMode mode<span class="token punctuation">,</span> Menu menu<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    MenuInflater inflater <span class="token operator">=</span> mode<span class="token punctuation">.</span><span class="token function">getMenuInflater</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    inflater<span class="token punctuation">.</span><span class="token function">inflate</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>menu<span class="token punctuation">.</span>text_menu<span class="token punctuation">,</span> menu<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token annotation punctuation">@Override</span>
-  <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">onPrepareActionMode</span><span class="token punctuation">(</span>ActionMode mode<span class="token punctuation">,</span> Menu menu<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    menu<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token annotation punctuation">@Override</span>
-  <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">onActionItemClicked</span><span class="token punctuation">(</span>ActionMode mode<span class="token punctuation">,</span> MenuItem item<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token annotation punctuation">@Override</span>
-  <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onDestroyActionMode</span><span class="token punctuation">(</span>ActionMode mode<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>此时，不显示任何菜单项。</p>
-<pre class="line-numbers language-java"><code class="language-java">mTvShiciContent<span class="token punctuation">.</span><span class="token function">setCustomSelectionActionModeCallback</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ActionMode<span class="token punctuation">.</span>Callback2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token annotation punctuation">@Override</span>
-  <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">onCreateActionMode</span><span class="token punctuation">(</span>ActionMode mode<span class="token punctuation">,</span> Menu menu<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-
-    <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token annotation punctuation">@Override</span>
-  <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">onPrepareActionMode</span><span class="token punctuation">(</span>ActionMode mode<span class="token punctuation">,</span> Menu menu<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    menu<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    MenuInflater inflater <span class="token operator">=</span> mode<span class="token punctuation">.</span><span class="token function">getMenuInflater</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    inflater<span class="token punctuation">.</span><span class="token function">inflate</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>menu<span class="token punctuation">.</span>text_menu<span class="token punctuation">,</span> menu<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token annotation punctuation">@Override</span>
-  <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">onActionItemClicked</span><span class="token punctuation">(</span>ActionMode mode<span class="token punctuation">,</span> MenuItem item<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token annotation punctuation">@Override</span>
-  <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onDestroyActionMode</span><span class="token punctuation">(</span>ActionMode mode<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>此时，只显示自定义菜单：测试（text_menu中自定义）。</p>
-<p>那么可以根据应用实际需要的模式进行设置即可。</p>
+<span class="token comment" spellcheck="true">/**
+ * 适配刘海屏
+ */</span>
+<span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">fitsNotchScreen</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>Build<span class="token punctuation">.</span>VERSION<span class="token punctuation">.</span>SDK_INT <span class="token operator">>=</span> Build<span class="token punctuation">.</span>VERSION_CODES<span class="token punctuation">.</span>P<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        WindowManager<span class="token punctuation">.</span>LayoutParams lp <span class="token operator">=</span> <span class="token function">getWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getAttributes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        lp<span class="token punctuation">.</span>layoutInDisplayCutoutMode <span class="token operator">=</span> WindowManager<span class="token punctuation">.</span>LayoutParams<span class="token punctuation">.</span>LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES<span class="token punctuation">;</span>
+        <span class="token function">getWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setAttributes</span><span class="token punctuation">(</span>lp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>此时再次打开应用，发现状态栏全黑的背景消失了。效果如下：<br><img src="2.png" width="450" height="51" alt="优化效果" ><br>该方案优势：无需引入三方资源，减少方法数量和代码冗余，规范代码结构。</p>
+<h4 id="方案二"><a href="#方案二" class="headerlink" title="方案二"></a>方案二</h4><p>下面再说一个简单的方式，我们可以直接使用开源兼容库<a target="_blank" rel="noopener" href="https://github.com/gyf-dev/ImmersionBar">Immersionbar</a>,它是一个第三方的类库，用于 android 4.4以上沉浸式实现。具体项目介绍和复杂的使用可以参考Github项目说明文档和使用文档。<br>我下面就简单介绍实现引导页全屏的沉浸式方案。使用方案二实现，不用进行方案一相关的调整、改造。可以直接按照下面方式实现：<br>第一步，在build.gradle添加项目依赖：</p>
+<pre class="line-numbers language-java"><code class="language-java">implementation <span class="token string">'com.gyf.immersionbar:immersionbar:2.3.3'</span>  <span class="token comment" spellcheck="true">//沉浸式桌面</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>第二步，找到应用引导页GuideActivity，修改onCreate方法，添加ImmersionBar实现：</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@Override</span>
+<span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onCreate</span><span class="token punctuation">(</span>Bundle savedInstanceState<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onCreate</span><span class="token punctuation">(</span>savedInstanceState<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">setTheme</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>style<span class="token punctuation">.</span>AppTheme_Launcher<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    ImmersionBar<span class="token punctuation">.</span><span class="token function">with</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">transparentBar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">getWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setFlags</span><span class="token punctuation">(</span>WindowManager<span class="token punctuation">.</span>LayoutParams<span class="token punctuation">.</span> FLAG_FULLSCREEN <span class="token punctuation">,</span> WindowManager<span class="token punctuation">.</span>LayoutParams<span class="token punctuation">.</span> FLAG_FULLSCREEN<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">getWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addFlags</span><span class="token punctuation">(</span>WindowManager<span class="token punctuation">.</span>LayoutParams<span class="token punctuation">.</span>FLAG_LAYOUT_NO_LIMITS<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">setContentView</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>layout<span class="token punctuation">.</span>activity_guide<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>此时，改造就完成了，效果和方案一相同。<br>该方案优势：兼容了各类国产型号手机，无需各机型分别适配。<br>全屏显示效果：<br><img src="3.jpg" width="270" height="1170" alt="最终效果" ><br>项目代码参考：<a target="_blank" rel="noopener" href="https://github.com/gurecn/sleepassistant">睡眠助理</a></p>
 
             </div>
             <hr />
@@ -575,9 +546,9 @@
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《屏蔽应用内TextView Selection菜单》
+                    《优化状态栏沉浸显示》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2021/12/07/ping-bi-ying-yong-nei-textview-selection-cai-dan/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2021/12/08/you-hua-zhuang-tai-lan-chen-jin-xian-shi/" property="cc:attributionName"
                rel="cc:attributionURL">
                 Gure
             </a> 采用
@@ -879,9 +850,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2021/12/08/you-hua-zhuang-tai-lan-chen-jin-xian-shi/">
                     <div class="card-image">
@@ -900,9 +872,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2021-12-08
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-12-08
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -915,6 +887,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -933,24 +906,24 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/12/03/scrollview-zhi-xian-shi-zui-hou-yi-ge-kong-jian/">
+                <a href="/2021/12/07/ping-bi-ying-yong-nei-textview-selection-cai-dan/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="ScrollView只显示最后一个控件">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="屏蔽应用内TextView Selection菜单">
                         
-                        <span class="card-title">ScrollView只显示最后一个控件</span>
+                        <span class="card-title">屏蔽应用内TextView Selection菜单</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            因为诗词的数据有可能较多，一屏不一定显示完，所以使用ScrollView实现滑动显示。但是发现当最后一个条目内容很多（ScrollView嵌套的LinearLayout最后一个TextView独自能够占满一屏）时，会出现只显示最后一个控件的
+                            之前一篇文章《增加系统TextView长按菜单》中，我们实现了对于系统中安装的各类应用内新增一条TextView长按菜单，实现自己应用功能的入口扩展。在应用开发者看来，该方式增加了应用的入口和曝光度，获取了流量的导入渠道。站在使用者的角度，
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-12-03
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-12-07
                             </span>
                         <span class="publish-author">
                             
