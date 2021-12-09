@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devdroid.cn/"/>
-  <updated>2021-12-08T13:11:29.675Z</updated>
+  <updated>2021-12-09T10:57:30.503Z</updated>
   <id>https://devdroid.cn/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>TextView长按复制功能失效</title>
+    <link href="https://devdroid.cn/2021/12/09/textview-chang-an-fu-zhi-gong-neng-shi-xiao/"/>
+    <id>https://devdroid.cn/2021/12/09/textview-chang-an-fu-zhi-gong-neng-shi-xiao/</id>
+    <published>2021-12-09T10:56:45.000Z</published>
+    <updated>2021-12-09T10:57:30.503Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;应用中RecyclerView列表显示的动态简介需添加长按复制的功能，以此提升用户的体验。&lt;br&gt;本来使用Android自带的功能就能满足该需求，无需自己实现，方式很简单，一句话解决：&lt;/p&gt;
+&lt;pre class=&quot;line-numbers
+        
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="https://devdroid.cn/categories/Android/"/>
+    
+    
+      <category term="特性" scheme="https://devdroid.cn/tags/%E7%89%B9%E6%80%A7/"/>
+    
+  </entry>
   
   <entry>
     <title>有没有发现你的价值</title>
@@ -518,33 +545,6 @@
     
     
       <category term="新特性" scheme="https://devdroid.cn/tags/%E6%96%B0%E7%89%B9%E6%80%A7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>生成目录树形结构(Code Structure)</title>
-    <link href="https://devdroid.cn/2021/11/11/sheng-cheng-mu-lu-shu-xing-jie-gou-code-structure/"/>
-    <id>https://devdroid.cn/2021/11/11/sheng-cheng-mu-lu-shu-xing-jie-gou-code-structure/</id>
-    <published>2021-11-11T11:58:43.000Z</published>
-    <updated>2021-11-11T12:06:25.168Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;&lt;strong&gt;一次小教训，让自己深刻明白了记录的重要性。&lt;/strong&gt;&lt;/p&gt;
-&lt;h4 id=&quot;原因&quot;&gt;&lt;a href=&quot;#原因&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="技能" scheme="https://devdroid.cn/categories/%E6%8A%80%E8%83%BD/"/>
-    
-    
-      <category term="日常" scheme="https://devdroid.cn/tags/%E6%97%A5%E5%B8%B8/"/>
     
   </entry>
   
