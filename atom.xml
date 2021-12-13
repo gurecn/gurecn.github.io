@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devdroid.cn/"/>
-  <updated>2021-12-09T10:57:30.503Z</updated>
+  <updated>2021-12-13T03:43:38.204Z</updated>
   <id>https://devdroid.cn/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>为梦想工作</title>
+    <link href="https://devdroid.cn/2021/12/13/wei-meng-xiang-gong-zuo/"/>
+    <id>https://devdroid.cn/2021/12/13/wei-meng-xiang-gong-zuo/</id>
+    <published>2021-12-13T03:43:17.000Z</published>
+    <updated>2021-12-13T03:43:38.204Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;一块吃饭，同时问我：你为什么要让自己如此辛苦？大家每天晚上走的很晚，相当于每天都在加班。现在所有人都调休了，你也该休息了。可为什么你还那么拼命，不去休息？&lt;/p&gt;
+&lt;p&gt;对于这样的疑问，我只能苦笑。是因为我在内卷吗？&lt;/p&gt;
+&lt;p&gt;现在坐在电脑前整理思绪。我也在想：为什么我
+        
+      
+    
+    </summary>
+    
+      <category term="日常" scheme="https://devdroid.cn/categories/%E6%97%A5%E5%B8%B8/"/>
+    
+    
+      <category term="感悟" scheme="https://devdroid.cn/tags/%E6%84%9F%E6%82%9F/"/>
+    
+  </entry>
   
   <entry>
     <title>TextView长按复制功能失效</title>
@@ -519,32 +547,6 @@
     
     
       <category term="博客" scheme="https://devdroid.cn/tags/%E5%8D%9A%E5%AE%A2/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android实现下拉菜单快捷开关</title>
-    <link href="https://devdroid.cn/2021/11/12/android-shi-xian-xia-la-cai-dan-kuai-jie-kai-guan/"/>
-    <id>https://devdroid.cn/2021/11/12/android-shi-xian-xia-la-cai-dan-kuai-jie-kai-guan/</id>
-    <published>2021-11-12T09:41:20.000Z</published>
-    <updated>2021-11-22T02:49:36.053Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h4 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="Android" scheme="https://devdroid.cn/categories/Android/"/>
-    
-    
-      <category term="新特性" scheme="https://devdroid.cn/tags/%E6%96%B0%E7%89%B9%E6%80%A7/"/>
     
   </entry>
   
