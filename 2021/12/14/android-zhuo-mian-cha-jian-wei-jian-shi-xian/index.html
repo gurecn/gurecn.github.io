@@ -479,9 +479,9 @@
 <blockquote>
 <p>onDisabled:在删除此提供程序的最后一个APPWIDGET实例时调用。<br>onEnabled：当实例化此provider程序的AppWidget时调用。<br>onReceive:实现广播接收者。onReceive对AppWidgetProvider上的各种其他方法进行调用。<br>onUpdate：当此provider程序被要求为一组APPWIDGET提供远程视图时调用。<br>onAppWidgetOptionsChanged：当这个APPWIDGET部件以新的尺寸展示时调用。</p>
 </blockquote>
-<p>查看代码我们发现，在源码中onReceive法相内部实现action判断，通过对应的action调用其余方法。对应几个方法的action只能由系统发送，应用不能主动触发。<br>这几个方法内的具体逻辑实现可以先不实现，接下来我们绘制微件显示界面效果。<br>第二部，创建微件布局文件效果。我设置的界面显示一个水墨背景，左上侧显示应用图标，图标旁诗词内容。下方显示爱诗词图标，并且添加切换诗词按钮：<br>效果如下：</p>
-<pre class="line-numbers language-text"><code class="language-text"> <img src="效果图.png" width = "370" height = "266" alt="效果图" align=center />
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>查看代码我们发现，在源码中onReceive法相内部实现action判断，通过对应的action调用其余方法。对应几个方法的action只能由系统发送，应用不能主动触发。<br>这几个方法内的具体逻辑实现可以先不实现，接下来我们绘制微件显示界面效果。<br>第二部，创建微件布局文件效果。我设置的界面显示一个水墨背景，左上侧显示应用图标，图标旁诗词内容。下方显示爱诗词图标，并且添加切换诗词按钮。效果如下：</p>
+<img src="效果图.png" width = "370" height = "266" alt="效果图" align=center />
+
 <p>创建微件布局文件widget_layout_shici代码如下：</p>
 <pre class="line-numbers language-xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="utf-8"?></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>FrameLayout</span> <span class="token attr-name"><span class="token namespace">xmlns:</span>android</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://schemas.android.com/apk/res/android<span class="token punctuation">"</span></span> 
