@@ -5,10 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="google-site-verification" content="BZSSTWCG6ygfXci-M6fHXRUOICCdvw9XUlROWGENjyA" />
-    <meta name="keywords" content="浅浅时光(2021), Java C/C++ Vue Gure gurecn Android 卓技卓品">
-    <meta name="description" content="立一个flag：每年的8月在结婚纪念日之前，做一本照片书。
-把这本相册献给把一生托付给我的妻子。感谢您的陪伴，我用这本相册纪念过去一年里我们共同的经历。可能每年的内容不同，时多时少，有好有坏，但这都是我们相依相偎、见证我们共同走过的岁月。
-">
+    <meta name="keywords" content="使用多线程处理耗时操作, Java C/C++ Vue Gure gurecn Android 卓技卓品">
+    <meta name="description" content="需求背景Android开发中，当UI线程被阻塞会导致ANR的出现。尽管开发原则应该是主要逻辑都交给服务器进行处理，APP端重点进行界面的优化与数据的显示。但有些问题仍需要APP端进行大量的逻辑运算。这时很容易出现程序未响应的情况或者列表滚动">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +14,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>浅浅时光(2021) | 卓技卓品</title>
+    <title>使用多线程处理耗时操作 | 卓技卓品</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -262,13 +260,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        浅浅时光(2021)
+                        使用多线程处理耗时操作
                     </div>
                 </div>
             </div>
@@ -379,8 +377,8 @@
                     
                     <div class="article-tag">
                         
-                        <a href="/tags/%E5%B0%8F%E7%A1%AE%E5%B9%B8/" target="_blank">
-                            <span class="chip bg-color">小确幸</span>
+                        <a href="/tags/%E4%BC%98%E5%8C%96/" target="_blank">
+                            <span class="chip bg-color">优化</span>
                         </a>
                         
                     </div>
@@ -391,8 +389,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                        <a href="/categories/%E5%8E%9F%E5%88%9B/" class="post-category" target="_blank">
-                            原创
+                        <a href="/categories/Java/" class="post-category" target="_blank">
+                            Java
                         </a>
                         
                     </div>
@@ -403,7 +401,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-10-28
+                    2021-12-17
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -417,14 +415,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    132
+                    1.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    6 分
                 </div>
                 
                 
@@ -440,15 +438,66 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>立一个flag：每年的8月在结婚纪念日之前，做一本照片书。</p>
-<p>把这本相册献给把一生托付给我的妻子。感谢您的陪伴，我用这本相册纪念过去一年里我们共同的经历。可能每年的内容不同，时多时少，有好有坏，但这都是我们相依相偎、见证我们共同走过的岁月。</p>
-<p>这是我们最宝贵的经历和一生的记忆。有您陪伴，甚幸；今生有您，足矣。</p>
-<p><img src="0001.jpg"></p>
-<p><img src="0002.jpg"></p>
-<p><img src="0003.jpg"></p>
-<p><img src="0004.jpg"></p>
-<p><img src="0005.jpg"></p>
-<p><img src="0006.jpg"></p>
+                <h4 id="需求背景"><a href="#需求背景" class="headerlink" title="需求背景"></a>需求背景</h4><p>Android开发中，当UI线程被阻塞会导致ANR的出现。<br>尽管开发原则应该是主要逻辑都交给服务器进行处理，APP端重点进行界面的优化与数据的显示。但有些问题仍需要APP端进行大量的逻辑运算。这时很容易出现程序未响应的情况或者列表滚动卡顿、刷新延迟等问题。<br>鉴于异步处理与手机处理性能等多种原因的考虑，使用多线程来处理该问题是个有效的解决方式。<br>在实际开发中，多线程使用非常广泛。<br>我们应用中消息模块就遇到了服务器无法处理的逻辑问题：我们项目消息模块是使用环信平台，好友体系是自己实现。这导致一个问题：新来的消息发送者是好友、关注、粉丝或陌生人呢？<br>产品设计如下：如果是好友、关注、已聊过的消息，那么直接显示在好友列表；如果是其他人的消息，那么仅在消息列表的陌生人消息处显示消息的数量；如果是对群操作的透传消息，那么仅在消息提醒条目上显示提醒的数量；如果是公众号发来的消息，那么仅在公众消息条目上显示消息数量。同时没有消息的条目是不显示的，在聊天界面可以清空消息和删除某一条消息，当把本人发送的消息全部删除后，则聊天状态变为未聊过。<br>在这个前提下，逻辑是相对复杂的：<br>在初次布局时，需遍历一遍消息，整体进行布局显示。每来一条消息，首先获取到发送人，区分透传或者普通消息。若是普通消息，则区分是群消息或者个人消息。若是个人消息需要获取到发送者，然后获取关系和聊天情况……等等一系列逻辑判断。<br>刚开始是直接在主线程处理，发现初次显示需要等待3S左右。并且每次来新消息都会刷新一下消息列表（ListView），由于ListView不能部分刷新，可以明显感觉到刷新卡顿。并且当来的消息很多的时候，由于ListView需要不断布局，导致点击失效的情况。</p>
+<h4 id="结果过程"><a href="#结果过程" class="headerlink" title="结果过程"></a>结果过程</h4><p>其实在这种情况下使用多线程来组织数据，然后使用Handler进行界面的刷新是一个非常好的选择。<br>创建子线程进行数据组织的代码很简单，直接贴出关键部分，不再赘述。</p>
+<pre class="line-numbers language-java"><code class="language-java">LinkedList tempMsgList <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//存放消息的集合</span>
+FreshMsg mr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FreshMsg</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+Thread t <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Thread</span><span class="token punctuation">(</span>mr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+t<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">/**
+ * 创建子线程进行消息的刷新及消息界面的重新布局
+ */</span>
+<span class="token keyword">class</span> <span class="token class-name">FreshMsg</span> <span class="token keyword">implements</span> <span class="token class-name">Runnable</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//消息组织代码，将组织好的消息存放到tempMsgList中</span>
+        handler<span class="token punctuation">.</span><span class="token function">sendEmptyMessage</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token annotation punctuation">@SuppressLint</span><span class="token punctuation">(</span><span class="token string">"HandlerLeak"</span><span class="token punctuation">)</span> 
+Handler handler <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Handler</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//Handler负责将组织好的消息列表显示</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">handleMessage</span><span class="token punctuation">(</span>android<span class="token punctuation">.</span>os<span class="token punctuation">.</span>Message message<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>messageListAdapter<span class="token operator">!=</span>null<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            msgList<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            msgList<span class="token punctuation">.</span><span class="token function">addAll</span><span class="token punctuation">(</span>tempMsgList<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            messageListAdapter<span class="token punctuation">.</span><span class="token function">notifyDataSetChanged</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>大概看一下，发现该代码不存在问题。经测试发现，卡顿的问题解决，不再出现条目无法点击的情况。<br>但是会概率出现条目重复的问题。<br>这是什么原因呢？考虑整个处理逻辑发现，产生重复肯定是tempMsgList中存放了重复的消息，为什么会重复呢？<br>当消息来的非常频繁的时候，当一条消息到来立即开始新的子线程任务（定义成任务1）。新的消息再次到来时，tempMsgList被重新创建，之前的数据被清空，然后会重新创建新的子线程来处理消息（定义成任务2）。请注意，这时任务1和任务2均没有结束，均会操作tempMsgList，任务1会将剩下的消息继续处理并把得到的结果存放到tempMsgList；同时的任务2也会进行同样的操作，导致消息重复显示。<br>问题找到了，那么就解决吧。对于这种多线程异步处理的情况解决方式可以加锁：在任务1未结束的时候不让任务2执行。修改后的代码就是如下：</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+ * 创建子线程进行消息的刷新及消息界面的重新布局
+ */</span>
+<span class="token keyword">class</span> <span class="token class-name">FreshMsg</span> <span class="token keyword">implements</span> <span class="token class-name">Runnable</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">synchronized</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>     <span class="token comment" spellcheck="true">//消息频繁时，会出现异步实现问题，加锁控制</span>
+            tempMsgList <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//存放消息的集合</span>
+            <span class="token comment" spellcheck="true">//消息组织代码，将组织好的消息存放到tempMsgList中</span>
+            handler<span class="token punctuation">.</span><span class="token function">sendEmptyMessage</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>加锁了问题应该被解决了。<br>但测试发现为题依旧。为什么呢？自己明明加锁了，怎么还能出现重复的情况啊。<br>当时自己觉得很可不思议。仔细看代码，终于发现了问题所在：这段代码锁是加上了，也确实约束了线程的执行。现在的情况下是任务2会一直等待任务1执行完，然后才进入所内部进行执行。但是执行顺序正确了，结果还是没有改变啊。<br>原来tempMsgList是引用数据，在创建任务2时tempMsgList已经被重置了。这时任务1执行后的数据保存的位置是新的tempMsgList集合，任务2再次执行时会继续向tempMsgList添加数据而不会重新清空，这必然导致数据的重复。<br>其实这篇文章重点想告诫自己，在多线程中处理引用型数据时要注意引用的地址是不是当前的地址，会不会在线程执行时地址遭到改变而影响以后的结果。<br>原因找到，解决就很简单：只需在创建线程时不重置集合，在子线程内部将集合重置即可：</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+ * 创建子线程进行消息的刷新及消息界面的重新布局
+ */</span>
+<span class="token keyword">class</span> <span class="token class-name">FreshMsg</span> <span class="token keyword">implements</span> <span class="token class-name">Runnable</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">synchronized</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>     <span class="token comment" spellcheck="true">//消息频繁时，会出现异步实现问题，特加锁实现</span>
+            tempMsgList <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//存放消息的集合</span>
+            <span class="token comment" spellcheck="true">//消息组织代码，将组织好的消息存放到tempMsgList中</span>
+            handler<span class="token punctuation">.</span><span class="token function">sendEmptyMessage</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>本身是一个很小的问题，却让我印象深刻，在微小中彰显细致。这样来看卡顿和点击失效就解决了。<br>但ListView显示效率低下，每次刷新时，尽管数据已准备好，但是头像图片仍然会闪烁。这就需要修改ListView的控件来实现。在我将其替换成RecyclerView后，问题就不存在了。<br>当然项目还是有很多需优化的点。比如，来多条新消息时不需多次刷新，仅最后一条刷新，这样能很大的节省手机的性能。</p>
 
             </div>
             <hr />
@@ -483,9 +532,9 @@
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《浅浅时光(2021)》
+                    《使用多线程处理耗时操作》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2021/10/28/qian-qian-shi-guang-2021/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2021/12/17/shi-yong-duo-xian-cheng-chu-li-hao-shi-cao-zuo/" property="cc:attributionName"
                rel="cc:attributionURL">
                 Gure
             </a> 采用
@@ -787,48 +836,48 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/11/03/ji-bai-de-mu-jin-hua/">
+                <a href="/2021/12/17/shi-yong-duo-xian-cheng-chu-li-hao-shi-cao-zuo/">
                     <div class="card-image">
                         
-                        <img src="/medias/images/mujinhua.jpg" class="responsive-img" alt="洁白的木槿花">
                         
-                        <span class="card-title">洁白的木槿花</span>
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="使用多线程处理耗时操作">
+                        
+                        <span class="card-title">使用多线程处理耗时操作</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            一到夏天，院子里的木槿就开花。
-母亲一见洁白的木槿花，就会眼含泪水，嘴唇哆嗦着说：“我那时好糊涂，好糊涂啊。”
-这里面有个故事。  
-我五岁那年，右腿忽然青肿了一块，痛得我成天哭喊。母亲见我熬不过，就背着我去廖医生家。廖医生是个老中医，退休
+                            需求背景Android开发中，当UI线程被阻塞会导致ANR的出现。尽管开发原则应该是主要逻辑都交给服务器进行处理，APP端重点进行界面的优化与数据的显示。但有些问题仍需要APP端进行大量的逻辑运算。这时很容易出现程序未响应的情况或者列表滚动
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2021-11-03
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-12-17
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E8%BD%AC%E8%BD%BD/" class="post-category" target="_blank">
-                                    转载
+                            <a href="/categories/Java/" class="post-category" target="_blank">
+                                    Java
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E7%AB%A5%E8%AF%9D/" target="_blank">
-                        <span class="chip bg-color">童话</span>
+                    <a href="/tags/%E4%BC%98%E5%8C%96/" target="_blank">
+                        <span class="chip bg-color">优化</span>
                     </a>
                     
                 </div>
@@ -842,38 +891,31 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/10/26/ge-ren-tui-jian-gong-ju/">
+                <a href="/2021/12/14/android-zhuo-mian-cha-jian-wei-jian-shi-xian/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="个人推荐工具">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Android桌面插件（微件）实现">
                         
-                        <span class="card-title">个人推荐工具</span>
+                        <span class="card-title">Android桌面插件（微件）实现</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            个人推荐工具
-桌面端搜索工具：Everything：https://www.voidtools.com/zh-cn/
-
-项目管理工具：
-
-
-Kanboard：https://github.com/kanboard/kanboard
-TAPD
+                            需求背景Android系统支持应用创建显示在桌面上的小空间，也就是微件。按照官方文档介绍：应用微件是可以嵌入其他应用（如主屏幕）并接收定期更新的微型应用视图。详细内容可参考：官方文档。随着Android版本不断迭代优化，微件的功能也在不断的
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-10-26
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-12-14
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%8E%9F%E5%88%9B/" class="post-category" target="_blank">
-                                    原创
+                            <a href="/categories/Android/" class="post-category" target="_blank">
+                                    Android
                                 </a>
                             
                             
@@ -883,8 +925,8 @@ TAPD
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%97%A5%E5%B8%B8/" target="_blank">
-                        <span class="chip bg-color">日常</span>
+                    <a href="/tags/%E7%89%B9%E6%80%A7/" target="_blank">
+                        <span class="chip bg-color">特性</span>
                     </a>
                     
                 </div>

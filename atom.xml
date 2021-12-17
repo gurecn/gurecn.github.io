@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devdroid.cn/"/>
-  <updated>2021-12-14T06:14:04.195Z</updated>
+  <updated>2021-12-17T11:15:14.910Z</updated>
   <id>https://devdroid.cn/</id>
   
   <author>
@@ -17,11 +17,37 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>使用多线程处理耗时操作</title>
+    <link href="https://devdroid.cn/2021/12/17/shi-yong-duo-xian-cheng-chu-li-hao-shi-cao-zuo/"/>
+    <id>https://devdroid.cn/2021/12/17/shi-yong-duo-xian-cheng-chu-li-hao-shi-cao-zuo/</id>
+    <published>2021-12-17T11:13:28.000Z</published>
+    <updated>2021-12-17T11:15:14.910Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h4 id=&quot;需求背景&quot;&gt;&lt;a href=&quot;#需求背景&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Java" scheme="https://devdroid.cn/categories/Java/"/>
+    
+    
+      <category term="优化" scheme="https://devdroid.cn/tags/%E4%BC%98%E5%8C%96/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Android桌面插件（微件）实现</title>
     <link href="https://devdroid.cn/2021/12/14/android-zhuo-mian-cha-jian-wei-jian-shi-xian/"/>
     <id>https://devdroid.cn/2021/12/14/android-zhuo-mian-cha-jian-wei-jian-shi-xian/</id>
     <published>2021-12-14T06:03:45.000Z</published>
-    <updated>2021-12-14T06:14:04.195Z</updated>
+    <updated>2021-12-14T06:38:52.174Z</updated>
     
     <summary type="html">
     
@@ -521,32 +547,6 @@
     
     
       <category term="新特性" scheme="https://devdroid.cn/tags/%E6%96%B0%E7%89%B9%E6%80%A7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android任务栏新增最近页面</title>
-    <link href="https://devdroid.cn/2021/11/16/android-ren-wu-lan-xin-zeng-zui-jin-ye-mian/"/>
-    <id>https://devdroid.cn/2021/11/16/android-ren-wu-lan-xin-zeng-zui-jin-ye-mian/</id>
-    <published>2021-11-16T12:01:55.000Z</published>
-    <updated>2021-12-02T10:11:34.722Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h3 id=&quot;需求&quot;&gt;&lt;a href=&quot;#需求&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="Android" scheme="https://devdroid.cn/categories/Android/"/>
-    
-    
-      <category term="应用" scheme="https://devdroid.cn/tags/%E5%BA%94%E7%94%A8/"/>
     
   </entry>
   
