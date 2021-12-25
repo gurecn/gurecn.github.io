@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>获取Android手机底部导航栏的高度</title>
+      <link href="/2021/12/25/huo-qu-android-shou-ji-di-bu-dao-hang-lan-de-gao-du/"/>
+      <url>/2021/12/25/huo-qu-android-shou-ji-di-bu-dao-hang-lan-de-gao-du/</url>
+      
+        <content type="html"><![CDATA[<p>在工作中，遇到了一个这样的情况：使用PopWindow弹框作为对话框在底部显示。<br>这本来是一个简单的问题，但是实际使用的过程发现，底部导航栏适配也是一个难题。因为在底部显示这个底部不是绝对的：对于有实体键或者虚拟键的手机来说是没有导航栏的；对于没有任何按键的手机（除去音量，电源等侧边按键）来说才含有导航栏。<br>手机类型多样，兼容适配对Android开发来说是一个永恒的话题。各种品牌、各种定制造成了混乱的局面，对此谷歌也感到很无力与无奈吧。<br>尽管谷歌一再要求厂商取消实体按键使用虚拟按键，但还是有很多手机继续使用按键，包括三星，小米，魅族，努比亚，一加等等。这就为软件的开发带来了很大的不便：有的有实体键、有的是虚拟键、有的什么都没有但是导航栏的高度又不一样。<br>在网上查找发现确实很多人遇到了这个问题，也有各种解决办法。我拿手机真实测试一下，有方案根本没有作用、有方案对部分手机起作用。实体键的表现形式也是各种各样：三星手机一个实体键两个虚拟键、小米三个虚拟键、魅族有的一个虚拟键（mx3）、有的一个实体键（mx4pro）、锤子三个实体键。<br>作为一款合格的应用这些都必须考虑到并且解决掉。<br>按照网上的一个做法，代码如下获取导航栏的高度。测试确实能够获取到底部导航栏的高度:</p><pre class="line-numbers language-java"><code class="language-java">Resources resources <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getResources</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//avigationBarHight 即为底部导航栏的高度</span><span class="token keyword">int</span> avigationBarHight <span class="token operator">=</span> resources<span class="token punctuation">.</span><span class="token function">getDimensionPixelSize</span><span class="token punctuation">(</span>resources<span class="token punctuation">.</span><span class="token function">getIdentifier</span><span class="token punctuation">(</span>“navigation_bar_height”<span class="token punctuation">,</span> “dimen”<span class="token punctuation">,</span> “android”<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>但是使用的过程中发现，无论手机有没有导航栏都能获取到一个值，如果直接把该值作为导航栏的高度的话看定不行的。<br>考虑到只有有实体按键或者虚拟按键的手机没有导航栏，那就找那些带按键的手机的共同特征来解决。<br>发现所有带按键的手机必定有HOME键，无论三星，魅族，还是小米，一加，如果只有一个按键那么这个键必定是HOME（有可能夹带指纹）；如果多个键那么必定有一个键是HOME键。<br>找到了共同特征就一切好办了，只需要在刚才获取高度之前添加判断手机是否含有HOME键即可，最终实现方式如下：</p><pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">//avigationBarHight 即为底部导航栏的高度</span><span class="token keyword">int</span> navigationBarHight <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span><span class="token keyword">boolean</span> hasHomeKey <span class="token operator">=</span> KeyCharacterMap<span class="token punctuation">.</span><span class="token function">deviceHasKey</span><span class="token punctuation">(</span>KeyEvent<span class="token punctuation">.</span>KEYCODE_HOME<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>hasHomeKey<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">//判断没有HOME键时存在导航栏</span>navigationBarHight <span class="token operator">=</span> resources<span class="token punctuation">.</span><span class="token function">getDimensionPixelSize</span><span class="token punctuation">(</span>resources<span class="token punctuation">.</span><span class="token function">getIdentifier</span><span class="token punctuation">(</span>“navigation_bar_height”<span class="token punctuation">,</span> “dimen”<span class="token punctuation">,</span> “android”<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>然后在使用PopWindow或者其他任何需要在底部显示的时候显示的高度位置加上navigationBarHight的值即可。<br>需要注意，这是在应用未全屏的情况下可行的。全屏的情况下肯定都没有导航栏的，可以再加一个判断，因为我的应用没有全屏选项就省略了，需要的自己添加即可。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Android </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 兼容性 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Android使用系统放大镜微件</title>
       <link href="/2021/12/25/android-shi-yong-xi-tong-fang-da-jing-wei-jian/"/>
       <url>/2021/12/25/android-shi-yong-xi-tong-fang-da-jing-wei-jian/</url>
