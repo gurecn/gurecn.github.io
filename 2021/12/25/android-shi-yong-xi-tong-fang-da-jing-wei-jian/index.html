@@ -5,8 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="google-site-verification" content="BZSSTWCG6ygfXci-M6fHXRUOICCdvw9XUlROWGENjyA" />
-    <meta name="keywords" content="ScrollView只显示最后一个控件, Java C/C++ Vue Gure gurecn Android 卓技卓品">
-    <meta name="description" content="因为诗词的数据有可能较多，一屏不一定显示完，所以使用ScrollView实现滑动显示。但是发现当最后一个条目内容很多（ScrollView嵌套的LinearLayout最后一个TextView独自能够占满一屏）时，会出现只显示最后一个控件的">
+    <meta name="keywords" content="Android使用系统放大镜微件, Java C/C++ Vue Gure gurecn Android 卓技卓品">
+    <meta name="description" content="背景iOS很早就有系统级别的放大镜控件供开发者使用，Android在9版本（API 级别 28）中也提供了放大镜微件的使用。放大镜微件（Magnifier ）是一个虚拟放大镜，通过代表镜头的叠加窗格来显示所选视图的放大副本。此功能可改善文本">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +14,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>ScrollView只显示最后一个控件 | 卓技卓品</title>
+    <title>Android使用系统放大镜微件 | 卓技卓品</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -260,13 +260,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        ScrollView只显示最后一个控件
+                        Android使用系统放大镜微件
                     </div>
                 </div>
             </div>
@@ -377,8 +377,8 @@
                     
                     <div class="article-tag">
                         
-                        <a href="/tags/%E5%BA%94%E7%94%A8/" target="_blank">
-                            <span class="chip bg-color">应用</span>
+                        <a href="/tags/%E7%89%B9%E6%80%A7/" target="_blank">
+                            <span class="chip bg-color">特性</span>
                         </a>
                         
                     </div>
@@ -401,7 +401,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-12-03
+                    2021-12-25
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -415,14 +415,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    480
+                    1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    4 分
                 </div>
                 
                 
@@ -438,64 +438,87 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>因为诗词的数据有可能较多，一屏不一定显示完，所以使用ScrollView实现滑动显示。但是发现当最后一个条目内容很多（ScrollView嵌套的LinearLayout最后一个TextView独自能够占满一屏）时，会出现只显示最后一个控件的现象。</p>
-<p>实现代码如下：</p>
-<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ScrollView</span>
-    <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
-    <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
-    <span class="token attr-name"><span class="token namespace">android:</span>layout_marginTop</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>30dp<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>LinearLayout</span>
-        <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
-        <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
-        <span class="token attr-name"><span class="token namespace">android:</span>layout_gravity</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>center<span class="token punctuation">"</span></span>
-        <span class="token attr-name"><span class="token namespace">android:</span>gravity</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>center<span class="token punctuation">"</span></span>
-        <span class="token attr-name"><span class="token namespace">android:</span>orientation</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>vertical<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>TextView</span>
-            <span class="token attr-name"><span class="token namespace">android:</span>id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@+id/tv_shici_title<span class="token punctuation">"</span></span>
-            <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
-            <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>wrap_content<span class="token punctuation">"</span></span>
-            <span class="token attr-name"><span class="token namespace">android:</span>gravity</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>center<span class="token punctuation">"</span></span>
-            <span class="token attr-name"><span class="token namespace">android:</span>textSize</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>18sp<span class="token punctuation">"</span></span>
-            <span class="token attr-name"><span class="token namespace">android:</span>paddingBottom</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>10dp<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>TextView</span>
-            <span class="token attr-name"><span class="token namespace">android:</span>id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@+id/tv_shici_content<span class="token punctuation">"</span></span>
-            <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
-            <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>wrap_content<span class="token punctuation">"</span></span>
-            <span class="token attr-name"><span class="token namespace">android:</span>gravity</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>center<span class="token punctuation">"</span></span>
-            <span class="token attr-name"><span class="token namespace">android:</span>paddingTop</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>25dp<span class="token punctuation">"</span></span>
-            <span class="token attr-name"><span class="token namespace">android:</span>textSize</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>22sp<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>LinearLayout</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ScrollView</span> <span class="token punctuation">></span></span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>当tv_shici_content控件中内容足够占满一屏时，无论如何都无法滚动显示tv_shici_title控件。<br>最初我考虑是tv_shici_content这个控件抢占了ScrollView的焦点，导致ScrollView无法获取滑动手势。但是当我给所有TextView、LinearLayout设置android:focusable=”false”也不可用。<br>查阅资料，发现网络上基本上都是ScrollView嵌套ListView只显示一条的解决方案。那么我这个问题应该并不常见才对。<br>我尝试简化代码，直到移除了android:layout_gravity=”center”，功能竟然神奇的实现了。<br>最终代码是：</p>
-<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ScrollView</span>
-    <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
-    <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
-    <span class="token attr-name"><span class="token namespace">android:</span>layout_marginTop</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>30dp<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>LinearLayout</span>
-        <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
-        <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
-        <span class="token attr-name"><span class="token namespace">android:</span>gravity</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>center<span class="token punctuation">"</span></span>
-        <span class="token attr-name"><span class="token namespace">android:</span>orientation</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>vertical<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>TextView</span>
-            <span class="token attr-name"><span class="token namespace">android:</span>id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@+id/tv_shici_title<span class="token punctuation">"</span></span>
-            <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
-            <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>wrap_content<span class="token punctuation">"</span></span>
-            <span class="token attr-name"><span class="token namespace">android:</span>gravity</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>center<span class="token punctuation">"</span></span>
-            <span class="token attr-name"><span class="token namespace">android:</span>textSize</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>18sp<span class="token punctuation">"</span></span>
-            <span class="token attr-name"><span class="token namespace">android:</span>paddingBottom</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>10dp<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>TextView</span>
-            <span class="token attr-name"><span class="token namespace">android:</span>id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@+id/tv_shici_content<span class="token punctuation">"</span></span>
-            <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
-            <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>wrap_content<span class="token punctuation">"</span></span>
-            <span class="token attr-name"><span class="token namespace">android:</span>gravity</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>center<span class="token punctuation">"</span></span>
-            <span class="token attr-name"><span class="token namespace">android:</span>paddingTop</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>25dp<span class="token punctuation">"</span></span>
-            <span class="token attr-name"><span class="token namespace">android:</span>textSize</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>22sp<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>LinearLayout</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ScrollView</span> <span class="token punctuation">></span></span>
+                <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><p>iOS很早就有系统级别的放大镜控件供开发者使用，Android在9版本（API 级别 28）中也提供了放大镜微件的使用。<br>放大镜微件（Magnifier ）是一个虚拟放大镜，通过代表镜头的叠加窗格来显示所选视图的放大副本。此功能可改善文本插入和选择方面的用户体验：将放大镜应用于文本时，用户可以通过查看窗格内随其手指移动的放大文本来精确定位光标或选择手柄。<br>效果如下：</p>
+<img src="magnifier-1.png" width = "250" height = "147" alt="官方效果" align=center />
+
+<p>当前官方放大镜已与 TextView、EditText 或 WebView 等平台微件集成。它可在各种应用上提供一致的文本操纵体验。该微件附带一个简单的 API，可用于根据应用的上下文放大任何 View。<br>官方文档地址：<a target="_blank" rel="noopener" href="https://developer.android.com/guide/topics/text/magnifier?hl=zh-cn">放大镜微件</a></p>
+<p>今天我们在应用中实现放大镜微件功能。</p>
+<h4 id="API-28版本"><a href="#API-28版本" class="headerlink" title="API 28版本"></a>API 28版本</h4><p>首先咱研究最早的API 28的版本。<br>在这个初始版本里，我们使用放大镜时能配置的内容比较少。<br>我们可以直接设置放大镜：</p>
+<pre class="line-numbers language-java"><code class="language-java">View view <span class="token operator">=</span> <span class="token function">findViewById</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>view<span class="token punctuation">)</span><span class="token punctuation">;</span>
+Magnifier magnifier <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Magnifier</span><span class="token punctuation">(</span>view<span class="token punctuation">)</span><span class="token punctuation">;</span>
+magnifier<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span>view<span class="token punctuation">.</span><span class="token function">getWidth</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">,</span> view<span class="token punctuation">.</span><span class="token function">getHeight</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>根据官方文档描述，此代码就为view设置了一个放大镜，在执行代码时就会显示。但是我是用了这段代码后发现放大镜并没有显示（原因先不研究吧）。<br>根据代码看，上面是在固定的位置显示一个放大镜，这显然不符合我们的诉求。我们要的放大镜是要跟随手势移动并不断刷新显示内容的。<br>这时候就需要监听手势触摸操作了。我封装了一个方法实现：</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+ * 设置放大镜显示
+ * @param view 触摸显示放大镜的view
+ */</span>
+<span class="token annotation punctuation">@SuppressLint</span><span class="token punctuation">(</span><span class="token string">"ClickableViewAccessibility"</span><span class="token punctuation">)</span>
+<span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">setMagnifier</span><span class="token punctuation">(</span>View view<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>Build<span class="token punctuation">.</span>VERSION<span class="token punctuation">.</span>SDK_INT <span class="token operator">>=</span> Build<span class="token punctuation">.</span>VERSION_CODES<span class="token punctuation">.</span>P<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    Magnifier magnifier <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Magnifier</span><span class="token punctuation">(</span>view<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    view<span class="token punctuation">.</span><span class="token function">setOnTouchListener</span><span class="token punctuation">(</span><span class="token punctuation">(</span>v<span class="token punctuation">,</span> event<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token punctuation">{</span>
+      <span class="token keyword">switch</span> <span class="token punctuation">(</span>event<span class="token punctuation">.</span><span class="token function">getActionMasked</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">case</span> MotionEvent<span class="token punctuation">.</span>ACTION_DOWN<span class="token operator">:</span>
+        <span class="token keyword">case</span> MotionEvent<span class="token punctuation">.</span>ACTION_MOVE<span class="token operator">:</span>
+          <span class="token keyword">final</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> viewPosition <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+          v<span class="token punctuation">.</span><span class="token function">getLocationOnScreen</span><span class="token punctuation">(</span>viewPosition<span class="token punctuation">)</span><span class="token punctuation">;</span>
+          magnifier<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span><span class="token function">getRawX</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> viewPosition<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> event<span class="token punctuation">.</span><span class="token function">getRawY</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> viewPosition<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token keyword">case</span> MotionEvent<span class="token punctuation">.</span>ACTION_CANCEL<span class="token operator">:</span>
+        <span class="token keyword">case</span> MotionEvent<span class="token punctuation">.</span>ACTION_UP<span class="token operator">:</span>
+          magnifier<span class="token punctuation">.</span><span class="token function">dismiss</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token keyword">break</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+      <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>最终问题解决了，但是糊里糊涂的，没有明白为何会这样。在Android官方也没有找到答案。</p>
-<p>网络上有人猜测说，ScrollView为了满足android:layout_gravity=”center”功能，会将内容截取一整屏幕，然后实现居中显示，那么未被截取的内容就不会显示了。不确定这个猜测是否正确，暂且作为一个遗留问题吧。</p>
+<p>然后初始化时对应的view调用该方法即可：</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token function">setMagnifier</span><span class="token punctuation">(</span>mSTvShiciContent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">setMagnifier</span><span class="token punctuation">(</span>mTvShiciAuthor<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>此时按压对应的view，就会出现文章最开始显示的放大镜效果了。<br>效果实现了，但是我们发现针对于放大镜我们可配置功能很少，包括：效果只能是这种默认长方形、放大倍数等均不可调。<br>我希望最终实现类似于iOS的原型放大镜效果，这个功能在API 29的版本实现了。</p>
+<h4 id="API-29版本"><a href="#API-29版本" class="headerlink" title="API 29版本"></a>API 29版本</h4><p>下面我们研究一下基于API 29的定义实现。<br>在API 29中，系统新增了Magnifier.Builder构造方法，可以通过该构造方法配置放大镜的显示效果：</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@SuppressLint</span><span class="token punctuation">(</span><span class="token string">"ClickableViewAccessibility"</span><span class="token punctuation">)</span>
+<span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">setMagnifier</span><span class="token punctuation">(</span>View view<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>Build<span class="token punctuation">.</span>VERSION<span class="token punctuation">.</span>SDK_INT <span class="token operator">>=</span> Build<span class="token punctuation">.</span>VERSION_CODES<span class="token punctuation">.</span>P<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>Build<span class="token punctuation">.</span>VERSION<span class="token punctuation">.</span>SDK_INT <span class="token operator">>=</span> Build<span class="token punctuation">.</span>VERSION_CODES<span class="token punctuation">.</span>Q<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      Magnifier<span class="token punctuation">.</span>Builder builder <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Magnifier<span class="token punctuation">.</span>Builder</span><span class="token punctuation">(</span>view<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      builder<span class="token punctuation">.</span><span class="token function">setOverlay</span><span class="token punctuation">(</span>ContextCompat<span class="token punctuation">.</span><span class="token function">getDrawable</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> R<span class="token punctuation">.</span>drawable<span class="token punctuation">.</span>magnifier<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//设置覆盖物</span>
+      builder<span class="token punctuation">.</span><span class="token function">setInitialZoom</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//设置初始放大倍数，与Magnifier的setZoom功能相同</span>
+      builder<span class="token punctuation">.</span><span class="token function">setCornerRadius</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//设置圆角：0-100</span>
+      builder<span class="token punctuation">.</span><span class="token function">setClippingEnabled</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//false时放大镜可以滑到手机屏幕外；true时放大镜只能再屏幕内滑动。</span>
+      builder<span class="token punctuation">.</span><span class="token function">setSize</span><span class="token punctuation">(</span><span class="token number">180</span><span class="token punctuation">,</span> <span class="token number">180</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//设置放大镜宽高</span>
+      Magnifier magnifier <span class="token operator">=</span> builder<span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      magnifier<span class="token punctuation">.</span><span class="token function">setZoom</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//设置放大倍数：</span>
+      view<span class="token punctuation">.</span><span class="token function">setOnTouchListener</span><span class="token punctuation">(</span><span class="token punctuation">(</span>v<span class="token punctuation">,</span> event<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        <span class="token keyword">switch</span> <span class="token punctuation">(</span>event<span class="token punctuation">.</span><span class="token function">getActionMasked</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token keyword">case</span> MotionEvent<span class="token punctuation">.</span>ACTION_DOWN<span class="token operator">:</span>
+            <span class="token comment" spellcheck="true">// Fall through.</span>
+          <span class="token keyword">case</span> MotionEvent<span class="token punctuation">.</span>ACTION_MOVE<span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token keyword">final</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> viewPosition <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+            v<span class="token punctuation">.</span><span class="token function">getLocationOnScreen</span><span class="token punctuation">(</span>viewPosition<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            magnifier<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span><span class="token function">getRawX</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> viewPosition<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> event<span class="token punctuation">.</span><span class="token function">getRawY</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> viewPosition<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span>
+          <span class="token keyword">case</span> MotionEvent<span class="token punctuation">.</span>ACTION_CANCEL<span class="token operator">:</span>
+            <span class="token comment" spellcheck="true">// Fall through.</span>
+          <span class="token keyword">case</span> MotionEvent<span class="token punctuation">.</span>ACTION_UP<span class="token operator">:</span> <span class="token punctuation">{</span>
+            magnifier<span class="token punctuation">.</span><span class="token function">dismiss</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>如以上代码中描述，可以通过：<br>setOverlay设置放大镜的覆盖物，此时覆盖物可以是一个透明的放大镜边框。<br>setInitialZoom与setZoom都是设置放大倍数，都设置的话，以后者为准。倍数大于0.经实测在0-3体验较好，再大就只能看到很少的数据。<br>setCornerRadius设置放大镜圆角，取值0-100，大于100时与100相同。<br>setSize用于设置放大镜的宽高。<br>以上代码最终效果如下：</p>
+<img src="magnifier-2.png" width = "231" height = "164" alt="最终效果" align=center />
+
+<p>效果基本与iOS保持一致了。<br>以上代码请参考，源码可访问<a target="_blank" rel="noopener" href="https://github.com/gurecn/sleepassistant">睡眠助理</a>。</p>
 
             </div>
             <hr />
@@ -530,9 +553,9 @@
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《ScrollView只显示最后一个控件》
+                    《Android使用系统放大镜微件》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2021/12/03/scrollview-zhi-xian-shi-zui-hou-yi-ge-kong-jian/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2021/12/25/android-shi-yong-xi-tong-fang-da-jing-wei-jian/" property="cc:attributionName"
                rel="cc:attributionURL">
                 Gure
             </a> 采用
@@ -834,78 +857,29 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/12/07/ping-bi-ying-yong-nei-textview-selection-cai-dan/">
+                <a href="/2021/12/25/android-shi-yong-xi-tong-fang-da-jing-wei-jian/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="屏蔽应用内TextView Selection菜单">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="Android使用系统放大镜微件">
                         
-                        <span class="card-title">屏蔽应用内TextView Selection菜单</span>
+                        <span class="card-title">Android使用系统放大镜微件</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            之前一篇文章《增加系统TextView长按菜单》中，我们实现了对于系统中安装的各类应用内新增一条TextView长按菜单，实现自己应用功能的入口扩展。在应用开发者看来，该方式增加了应用的入口和曝光度，获取了流量的导入渠道。站在使用者的角度，
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2021-12-07
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Android/" class="post-category" target="_blank">
-                                    Android
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E5%BA%94%E7%94%A8/" target="_blank">
-                        <span class="chip bg-color">应用</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/12/03/zeng-jia-xi-tong-textview-chang-an-cai-dan/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="增加系统TextView长按菜单">
-                        
-                        <span class="card-title">增加系统TextView长按菜单</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            今天介绍一下在Android6.0+版本上新增的一个新特性：通过Text Selection实现系统中应用EditText、TextView的文本选择菜单和提供文本处理功能。参考：Android 6.0 Marshmallow​
-首先创建接
+                            背景iOS很早就有系统级别的放大镜控件供开发者使用，Android在9版本（API 级别 28）中也提供了放大镜微件的使用。放大镜微件（Magnifier ）是一个虚拟放大镜，通过代表镜头的叠加窗格来显示所选视图的放大副本。此功能可改善文本
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-12-03
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-12-25
                             </span>
                         <span class="publish-author">
                             
@@ -919,11 +893,61 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
                     <a href="/tags/%E7%89%B9%E6%80%A7/" target="_blank">
                         <span class="chip bg-color">特性</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/12/17/shi-yong-duo-xian-cheng-chu-li-hao-shi-cao-zuo/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="使用多线程处理耗时操作">
+                        
+                        <span class="card-title">使用多线程处理耗时操作</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            需求背景Android开发中，当UI线程被阻塞会导致ANR的出现。尽管开发原则应该是主要逻辑都交给服务器进行处理，APP端重点进行界面的优化与数据的显示。但有些问题仍需要APP端进行大量的逻辑运算。这时很容易出现程序未响应的情况或者列表滚动
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-12-17
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Java/" class="post-category" target="_blank">
+                                    Java
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E4%BC%98%E5%8C%96/" target="_blank">
+                        <span class="chip bg-color">优化</span>
                     </a>
                     
                 </div>

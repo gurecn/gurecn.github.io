@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devdroid.cn/"/>
-  <updated>2021-12-17T11:15:14.910Z</updated>
+  <updated>2021-12-25T02:59:26.831Z</updated>
   <id>https://devdroid.cn/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Android使用系统放大镜微件</title>
+    <link href="https://devdroid.cn/2021/12/25/android-shi-yong-xi-tong-fang-da-jing-wei-jian/"/>
+    <id>https://devdroid.cn/2021/12/25/android-shi-yong-xi-tong-fang-da-jing-wei-jian/</id>
+    <published>2021-12-25T02:53:20.000Z</published>
+    <updated>2021-12-25T02:59:26.831Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h4 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h4&gt;&lt;p&gt;iOS很早就有系统级别的放大镜控件供开发者使用，Android在9版本（API 级别
+        
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="https://devdroid.cn/categories/Android/"/>
+    
+    
+      <category term="特性" scheme="https://devdroid.cn/tags/%E7%89%B9%E6%80%A7/"/>
+    
+  </entry>
   
   <entry>
     <title>使用多线程处理耗时操作</title>
@@ -516,37 +542,6 @@
     
     
       <category term="编码" scheme="https://devdroid.cn/tags/%E7%BC%96%E7%A0%81/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>应用启动闪屏优化与夜间模式</title>
-    <link href="https://devdroid.cn/2021/11/17/ying-yong-qi-dong-shan-ping-you-hua-yu-ye-jian-mo-shi/"/>
-    <id>https://devdroid.cn/2021/11/17/ying-yong-qi-dong-shan-ping-you-hua-yu-ye-jian-mo-shi/</id>
-    <published>2021-11-17T11:40:33.000Z</published>
-    <updated>2021-11-22T02:51:08.780Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;今天主要实现Android应用的两个体验上的功能：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;优化应用启动时闪屏页效果。&lt;/li&gt;
-&lt;li&gt;应用实现夜间模式。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;优化闪屏页&quot;&gt;&lt;a href=&quot;#优化闪屏页&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="Android" scheme="https://devdroid.cn/categories/Android/"/>
-    
-    
-      <category term="新特性" scheme="https://devdroid.cn/tags/%E6%96%B0%E7%89%B9%E6%80%A7/"/>
     
   </entry>
   
