@@ -5,10 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="google-site-verification" content="BZSSTWCG6ygfXci-M6fHXRUOICCdvw9XUlROWGENjyA" />
-    <meta name="keywords" content="Hexo+Github博客搭建、避坑指南, Java C/C++ Vue Gure gurecn Android 卓技卓品">
-    <meta name="description" content="缘由由于阿里云服务器到期，财力问题未继续付费（摊手），所以想基于github免费搭建一套个人博客。
-由于我不是前端开发人员，本次博客系统搭建主要参考了阳神的小白搭建教程，在此感谢阳神细致的部署教程，阳神部署教程链接如下：
-超详细Hexo+G">
+    <meta name="keywords" content="Android 10系统创建文件失败, Java C/C++ Vue Gure gurecn Android 卓技卓品">
+    <meta name="description" content="昨天项目诗词功能新增将诗词显示界面保存到图库得功能，类似于小米便签、锤子便签的保存图片功能。将View保存成Bitmap对象已经实现了，唯独到了保存文件时出现了问题。开源项目本来有使用文件操作，但是主要是在私有路径下处理，保存到图库功能就必">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +14,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Hexo+Github博客搭建、避坑指南 | 卓技卓品</title>
+    <title>Android 10系统创建文件失败 | 卓技卓品</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -262,13 +260,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Hexo+Github博客搭建、避坑指南
+                        Android 10系统创建文件失败
                     </div>
                 </div>
             </div>
@@ -379,8 +377,8 @@
                     
                     <div class="article-tag">
                         
-                        <a href="/tags/%E5%8D%9A%E5%AE%A2/" target="_blank">
-                            <span class="chip bg-color">博客</span>
+                        <a href="/tags/%E6%96%B0%E7%89%B9%E6%80%A7/" target="_blank">
+                            <span class="chip bg-color">新特性</span>
                         </a>
                         
                     </div>
@@ -391,8 +389,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                        <a href="/categories/hexo/" class="post-category" target="_blank">
-                            hexo
+                        <a href="/categories/Android/" class="post-category" target="_blank">
+                            Android
                         </a>
                         
                     </div>
@@ -403,7 +401,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-10-22
+                    2021-12-28
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -417,14 +415,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.9k
+                    957
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    12 分
+                    4 分
                 </div>
                 
                 
@@ -440,172 +438,114 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="缘由"><a href="#缘由" class="headerlink" title="缘由"></a>缘由</h2><p>由于阿里云服务器到期，财力问题未继续付费（摊手），所以想基于github免费搭建一套个人博客。</p>
-<p>由于我不是前端开发人员，本次博客系统搭建主要参考了阳神的小白搭建教程，在此感谢阳神细致的部署教程，阳神部署教程链接如下：</p>
-<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/35668237">超详细Hexo+Github博客搭建小白教程</a></p>
-<p>在阳神部署教程发布的时间上看，他实际部署在2018年4月份，距今已近4年，所以在参考教程进行实际部署时，发现了一些问题。本次我主要记录部署中出现的问题以及解决问题的过程。</p>
-<p>其他小伙伴借鉴部署时，可先阅读一下我在部署过程中遇到的坑及解决方式，然后对比阅读阳神的部署教程，希望能对大家顺利部署自己的博客有所帮助。</p>
-<h3 id="遇到问题："><a href="#遇到问题：" class="headerlink" title="遇到问题："></a>遇到问题：</h3><ol>
-<li><p>github创建Pages时创建gh-pages分支</p>
-</li>
-<li><p>hexo d命令错误</p>
-</li>
-<li><p>无法push到github远程仓库</p>
-</li>
-<li><p>访问页面总是404</p>
-</li>
-<li><p>访问页面不带样式</p>
-</li>
-</ol>
-<h2 id="解决过程"><a href="#解决过程" class="headerlink" title="解决过程"></a>解决过程</h2><h3 id="问题一：Github创建Pages时总是创建新的分支"><a href="#问题一：Github创建Pages时总是创建新的分支" class="headerlink" title="问题一：Github创建Pages时总是创建新的分支"></a>问题一：Github创建Pages时总是创建新的分支</h3><h4 id="现象"><a href="#现象" class="headerlink" title="现象"></a>现象</h4><p>按照阳神教程说明：</p>
-<p>然后项目就建成了，点击Settings，向下拉到最后有个GitHub Pages，点击Choose a theme选择一个主题。然后等一会儿，再回到GitHub Pages，会变成下面这样：</p>
-<p>发现实际现象不太一样。</p>
-<p>实际执行中发现一旦选择theme后，Github会默认创建一个新分支：gh-pages，并提示进行git提交申请。此时提交后GitHub Pages会将pages默认切换到gh-pages分支上，这时是没办法把gh-pages分支的内容手动迁移到master分支。</p>
-<h4 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h4><p>方案1：不选择theme。项目建成后，点击Settings，向下拉到最后有个GitHub Pages，在Source中选择master分支，然后直接点击Save，停止后续的操作。这时候Github仓库中由于没有web资源，所以这时候访问会提示404，不过不用担心，待客户端部署后就能进行测试了。</p>
-<p>方案2：选择theme。这时Github会创建一个新的分支gh-pages，此时可以测试访问创建的gh-pages测试创建情况。能正常打开说明创建已经完成。这时候重新进入Settings，向下拉到最后GitHub Pages，在Source中选择master分支，然后直接点击Save，操作结束。该操作后网页访问不到，不过不用担心，待客户端部署后就可恢复功能。</p>
-<h3 id="问题二：无法push到github远程仓库"><a href="#问题二：无法push到github远程仓库" class="headerlink" title="问题二：无法push到github远程仓库"></a>问题二：无法push到github远程仓库</h3><h4 id="现象-1"><a href="#现象-1" class="headerlink" title="现象"></a>现象</h4><p>按照阳神教程：</p>
-<p>编写完markdown文件后，根目录下输入hexo g生成静态网页，然后输入hexo s可以本地预览效果，最后输入hexo d上传到github上。这时打开你的github.io主页就能看到发布的文章啦。</p>
-<p>实际过程中，由于hexo会在初始化后自动创建一个hello-world.md文章，我实际部署时没有执行”<strong>写文章、发布文章</strong>“这个章节中的安装命令，导致执行hexo d后总是提示：ERROR Deployer not found: git。如下：</p>
-<pre class="line-numbers language-bash"><code class="language-bash">$ hexo d
-INFO  Validating config
-ERROR Deployer not found: <span class="token function">git</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h4 id="方案-1"><a href="#方案-1" class="headerlink" title="方案"></a>方案</h4><p>这个错误是由于未安装exo-deployer-git导致的，可以在博客根目录下右键打开git bash，安装对应的扩展npm i hexo-deployer-git。安装完成后再次执行hexo d后即可正常提交。</p>
-<h3 id="问题三：hexo-d命令错误"><a href="#问题三：hexo-d命令错误" class="headerlink" title="问题三：hexo d命令错误"></a>问题三：hexo d命令错误</h3><h4 id="现象-2"><a href="#现象-2" class="headerlink" title="现象"></a>现象</h4><p>若是使用hexo自带的模板，不存在该问题，可以正常进行博客书写了。</p>
-<p>由于我看到阳神博客模板功能比较完备，所以想直接使用阳神GitHub上提供的模板，就根据阳神的教程进行操作：</p>
-<p>大家也可以先用下文hexo安装方法安装完hexo，然后直接<code>git clone git@github.com:godweiyang/hexo-matery-modified.git</code>克隆我的所有源文件，然后这是我修改完的基本没bug的定制化的博客，就可以直接拿来用啦。</p>
-<p><strong>我这个源文件和原来的主题没有什么区别，只是我把插件都安装完了，有些小bug也修复了，所以拿来就能直接用，方便大家。</strong></p>
-<p>发现执行hexo g、hexo s均正常，本地预览也正常。但是在使用hexo d提交GitHub时报错：The “mode” argument must be integer. Received an instance of Object。</p>
-<pre class="line-numbers language-bash"><code class="language-bash">$ hexo d
-INFO  Deploying: <span class="token function">git</span>
-INFO  Clearing .deploy_git folder<span class="token punctuation">..</span>.
-INFO  Copying files from public folder<span class="token punctuation">..</span>.
-FATAL Something's wrong. Maybe you can <span class="token function">find</span> the solution here: https://hexo.io/docs/troubleshooting.html
-TypeError <span class="token punctuation">[</span>ERR_INVALID_ARG_TYPE<span class="token punctuation">]</span>: The <span class="token string">"mode"</span> argument must be integer. Received an instance of Object
-    at copyFile <span class="token punctuation">(</span>fs.js:2042:10<span class="token punctuation">)</span>
-    at tryCatcher <span class="token punctuation">(</span>C:\develop\hexo-theme-sungod-master\node_modules\bluebird\js\release\util.js:16:23<span class="token punctuation">)</span>
-    at ret <span class="token punctuation">(</span>eval at makeNodePromisifiedEval <span class="token punctuation">(</span>C:\Users\Administrator\AppData\Roaming\npm\node_modules\hexo-cli\node_modules\bluebird\js\release\promisify.js:184:12<span class="token punctuation">)</span>, <span class="token operator">&lt;</span>anonymous<span class="token operator">></span>:13:39<span class="token punctuation">)</span>
-    at C:\develop\hexo-theme-sungod-master\node_modules\hexo-fs\lib\fs.js:144:39
-    at tryCatcher <span class="token punctuation">(</span>C:\develop\hexo-theme-sungod-master\node_modules\bluebird\js\release\util.js:16:23<span class="token punctuation">)</span>
-    at Promise._settlePromiseFromHandler <span class="token punctuation">(</span>C:\develop\hexo-theme-sungod-master\node_modules\bluebird\js\release\promise.js:517:31<span class="token punctuation">)</span>
-    at Promise._settlePromise <span class="token punctuation">(</span>C:\develop\hexo-theme-sungod-master\node_modules\bluebird\js\release\promise.js:574:18<span class="token punctuation">)</span>
-    at Promise._settlePromise0 <span class="token punctuation">(</span>C:\develop\hexo-theme-sungod-master\node_modules\bluebird\js\release\promise.js:619:10<span class="token punctuation">)</span>
-    at Promise._settlePromises <span class="token punctuation">(</span>C:\develop\hexo-theme-sungod-master\node_modules\bluebird\js\release\promise.js:699:18<span class="token punctuation">)</span>
-    at Promise._fulfill <span class="token punctuation">(</span>C:\develop\hexo-theme-sungod-master\node_modules\bluebird\js\release\promise.js:643:18<span class="token punctuation">)</span>
-    at Promise._resolveCallback <span class="token punctuation">(</span>C:\develop\hexo-theme-sungod-master\node_modules\bluebird\js\release\promise.js:437:57<span class="token punctuation">)</span>
-    at Promise._settlePromiseFromHandler <span class="token punctuation">(</span>C:\develop\hexo-theme-sungod-master\node_modules\bluebird\js\release\promise.js:529:17<span class="token punctuation">)</span>
-    at Promise._settlePromise <span class="token punctuation">(</span>C:\develop\hexo-theme-sungod-master\node_modules\bluebird\js\release\promise.js:574:18<span class="token punctuation">)</span>
-    at Promise._settlePromise0 <span class="token punctuation">(</span>C:\develop\hexo-theme-sungod-master\node_modules\bluebird\js\release\promise.js:619:10<span class="token punctuation">)</span>
-    at Promise._settlePromises <span class="token punctuation">(</span>C:\develop\hexo-theme-sungod-master\node_modules\bluebird\js\release\promise.js:699:18<span class="token punctuation">)</span>
-    at Promise._fulfill <span class="token punctuation">(</span>C:\develop\hexo-theme-sungod-master\node_modules\bluebird\js\release\promise.js:643:18<span class="token punctuation">)</span>
-    at Promise._resolveCallback <span class="token punctuation">(</span>C:\develop\hexo-theme-sungod-master\node_modules\bluebird\js\release\promise.js:437:57<span class="token punctuation">)</span>
-    at Promise._settlePromiseFromHandler <span class="token punctuation">(</span>C:\develop\hexo-theme-sungod-master\node_modules\bluebird\js\release\promise.js:529:17<span class="token punctuation">)</span>
-    at Promise._settlePromise <span class="token punctuation">(</span>C:\develop\hexo-theme-sungod-master\node_modules\bluebird\js\release\promise.js:574:18<span class="token punctuation">)</span>
-    at Promise._settlePromise0 <span class="token punctuation">(</span>C:\develop\hexo-theme-sungod-master\node_modules\bluebird\js\release\promise.js:619:10<span class="token punctuation">)</span>
-    at Promise._settlePromises <span class="token punctuation">(</span>C:\develop\hexo-theme-sungod-master\node_modules\bluebird\js\release\promise.js:699:18<span class="token punctuation">)</span>
-    at Promise._fulfill <span class="token punctuation">(</span>C:\develop\hexo-theme-sungod-master\node_modules\bluebird\js\release\promise.js:643:18<span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>经查资料，普遍反馈是node.js版本不一致导致的，网上也提供了多种解决方案。</p>
-<h4 id="方案-2"><a href="#方案-2" class="headerlink" title="方案"></a>方案</h4><p>方案1：The “mode” argument must be integer（node降版本方式）</p>
-<p>网上比较常见的解决方式是降级node.js的版本号，反馈降级到比较稳定的node12.14版本后功能即可正常（个人未验证）。我特意看了一下阳神使用的版本：v9.11.1，确实是比较老的版本了。通过降低node.js的方式我没有尝试，理论上大家普遍反馈使用该方式解决了，应该能解决问题。方法可参考：</p>
-<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/136552969">Hexo网站部署 The “mode” argument must be integer问题</a></p>
-<p>方案2：The “mode” argument must be integer（无需node降版本）</p>
-<p>我个人不建议使用方案1降级的方式。当前node.js稳定版本是14.18.1，中间已经有了几个大版本迭代，包括安全性和新特性上来看，最好能在项目上修复该问题，使部署的项目适配最新的平台，这样后续其他项目也不至于使用旧版的node.js进行编译。继续查找资料，发现一个比较有帮助的文章：</p>
-<p><a target="_blank" rel="noopener" href="https://www.ddmit.com/2021/09/24/hexo-mode-argument-must-be-integer-error/">hexo部署项目报错解决：The “mode” argument must be integer（无需node降版本）</a></p>
-<p>很遗憾，通过作者的方式没能解决这个问题（哭笑），不过给我很大的启示。升级hexo-renderer-stylus版本的方式没有解决该问题，但是使用hexo初始化的模板又可以正常编译、提交，那说明我个人电脑上的hexo及其他插件的版本都是没问题的，那么将阳神项目中的版本全部升级成我电脑安装的版本是否能解决问题？</p>
-<p>阳神项目中的依赖版本信息：</p>
-<pre class="line-numbers language-groovy"><code class="language-groovy">  <span class="token string">"dependencies"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    <span class="token string">"eslint"</span><span class="token punctuation">:</span> <span class="token string">"^6.0.1"</span><span class="token punctuation">,</span>
-    <span class="token string">"hexo"</span><span class="token punctuation">:</span> <span class="token string">"^3.9.0"</span><span class="token punctuation">,</span>
-    <span class="token string">"hexo-baidu-url-submit"</span><span class="token punctuation">:</span> <span class="token string">"0.0.6"</span><span class="token punctuation">,</span>
-    <span class="token string">"hexo-deployer-git"</span><span class="token punctuation">:</span> <span class="token string">"^1.0.0"</span><span class="token punctuation">,</span>
-    <span class="token string">"hexo-generator-archive"</span><span class="token punctuation">:</span> <span class="token string">"^0.1.5"</span><span class="token punctuation">,</span>
-    <span class="token string">"hexo-generator-baidu-sitemap"</span><span class="token punctuation">:</span> <span class="token string">"^0.1.6"</span><span class="token punctuation">,</span>
-    <span class="token string">"hexo-generator-category"</span><span class="token punctuation">:</span> <span class="token string">"^0.1.3"</span><span class="token punctuation">,</span>
-    <span class="token string">"hexo-generator-feed"</span><span class="token punctuation">:</span> <span class="token string">"^1.2.2"</span><span class="token punctuation">,</span>
-    <span class="token string">"hexo-generator-index"</span><span class="token punctuation">:</span> <span class="token string">"^0.2.1"</span><span class="token punctuation">,</span>
-    <span class="token string">"hexo-generator-search"</span><span class="token punctuation">:</span> <span class="token string">"^2.4.0"</span><span class="token punctuation">,</span>
-    <span class="token string">"hexo-generator-sitemap"</span><span class="token punctuation">:</span> <span class="token string">"^1.2.0"</span><span class="token punctuation">,</span>
-    <span class="token string">"hexo-generator-tag"</span><span class="token punctuation">:</span> <span class="token string">"^0.2.0"</span><span class="token punctuation">,</span>
-    <span class="token string">"hexo-helper-live2d"</span><span class="token punctuation">:</span> <span class="token string">"^3.1.1"</span><span class="token punctuation">,</span>
-    <span class="token string">"hexo-permalink-pinyin"</span><span class="token punctuation">:</span> <span class="token string">"^1.1.0"</span><span class="token punctuation">,</span>
-    <span class="token string">"hexo-prism-plugin"</span><span class="token punctuation">:</span> <span class="token string">"^2.3.0"</span><span class="token punctuation">,</span>
-    <span class="token string">"hexo-renderer-ejs"</span><span class="token punctuation">:</span> <span class="token string">"^0.3.1"</span><span class="token punctuation">,</span>
-    <span class="token string">"hexo-renderer-marked"</span><span class="token punctuation">:</span> <span class="token string">"^1.0.1"</span><span class="token punctuation">,</span>
-    <span class="token string">"hexo-renderer-stylus"</span><span class="token punctuation">:</span> <span class="token string">"^0.3.3"</span><span class="token punctuation">,</span>
-    <span class="token string">"hexo-server"</span><span class="token punctuation">:</span> <span class="token string">"^0.3.3"</span><span class="token punctuation">,</span>
-    <span class="token string">"hexo-wordcount"</span><span class="token punctuation">:</span> <span class="token string">"^6.0.1"</span>
+                <p>昨天项目诗词功能新增将诗词显示界面保存到图库得功能，类似于小米便签、锤子便签的保存图片功能。<br>将View保存成Bitmap对象已经实现了，唯独到了保存文件时出现了问题。<br>开源项目本来有使用文件操作，但是主要是在私有路径下处理，保存到图库功能就必须要把图片把图片保存到公共路径下，负责图库扫描不到图片显示。</p>
+<h4 id="问题过程"><a href="#问题过程" class="headerlink" title="问题过程"></a>问题过程</h4><p>就是在保存图片，创建文件夹和文件时出现了异常。下面我记录一下过程：<br>第一步，声明文件读写权限：</p>
+<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>uses-permission</span> <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>android.permission.WRITE_EXTERNAL_STORAGE<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>uses-permission</span> <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>android.permission.READ_EXTERNAL_STORAGE<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>第二步，动态获取权限：</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+ * 请求需要的权限
+ */</span>
+<span class="token keyword">private</span> String<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">requestPermissions</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    String<span class="token punctuation">[</span><span class="token punctuation">]</span> permissions <span class="token operator">=</span> null<span class="token punctuation">;</span>
+    List<span class="token operator">&lt;</span>String<span class="token operator">></span> permissionsList <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">addPermission</span><span class="token punctuation">(</span>permissionsList<span class="token punctuation">,</span> Manifest<span class="token punctuation">.</span>permission<span class="token punctuation">.</span>WRITE_EXTERNAL_STORAGE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">addPermission</span><span class="token punctuation">(</span>permissionsList<span class="token punctuation">,</span> Manifest<span class="token punctuation">.</span>permission<span class="token punctuation">.</span>READ_EXTERNAL_STORAGE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>permissionsList<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        permissions <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">[</span>permissionsList<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span> <span class="token punctuation">;</span> i <span class="token operator">&lt;</span> permissionsList<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            permissions<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> permissionsList<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> permissions<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">addPermission</span><span class="token punctuation">(</span>List<span class="token operator">&lt;</span>String<span class="token operator">></span> permissionsList<span class="token punctuation">,</span> String permission<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>Build<span class="token punctuation">.</span>VERSION<span class="token punctuation">.</span>SDK_INT <span class="token operator">>=</span> Build<span class="token punctuation">.</span>VERSION_CODES<span class="token punctuation">.</span>M<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">checkSelfPermission</span><span class="token punctuation">(</span>permission<span class="token punctuation">)</span> <span class="token operator">!=</span> PackageManager<span class="token punctuation">.</span>PERMISSION_GRANTED<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            permissionsList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>permission<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token annotation punctuation">@Override</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onRequestPermissionsResult</span><span class="token punctuation">(</span><span class="token keyword">int</span> requestCode<span class="token punctuation">,</span> String<span class="token punctuation">[</span><span class="token punctuation">]</span> permissions<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> grantResults<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onRequestPermissionsResult</span><span class="token punctuation">(</span>requestCode<span class="token punctuation">,</span> permissions<span class="token punctuation">,</span> grantResults<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>requestCode <span class="token operator">==</span> <span class="token number">1003</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> grantResults<span class="token punctuation">.</span>length<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">int</span> grant <span class="token operator">=</span> grantResults<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>grant <span class="token operator">!=</span> PackageManager<span class="token punctuation">.</span>PERMISSION_GRANTED<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                Toast<span class="token punctuation">.</span><span class="token function">makeText</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token function">getString</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>string<span class="token punctuation">.</span>permissionnot<span class="token punctuation">)</span><span class="token punctuation">,</span> Toast<span class="token punctuation">.</span>LENGTH_SHORT<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>i <span class="token operator">==</span> grantResults<span class="token punctuation">.</span>length <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token function">initView</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>第三步，操作公共存储空间，创建文件：</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+ * 保存图片
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">save</span><span class="token punctuation">(</span>Bitmap bitmap<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  String base_path <span class="token operator">=</span> Environment<span class="token punctuation">.</span><span class="token function">getExternalStorageDirectory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getAbsolutePath</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> File<span class="token punctuation">.</span>separator <span class="token operator">+</span> <span class="token string">"devdroid"</span> <span class="token operator">+</span> File<span class="token punctuation">.</span>separator<span class="token punctuation">;</span>
+  String path <span class="token operator">=</span> base_path<span class="token operator">+</span> System<span class="token punctuation">.</span><span class="token function">currentTimeMillis</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">".jpg"</span><span class="token punctuation">;</span>
+  Log<span class="token punctuation">.</span><span class="token function">d</span><span class="token punctuation">(</span>TAG<span class="token punctuation">,</span> <span class="token string">"path："</span> <span class="token operator">+</span> path<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  File directory <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">File</span><span class="token punctuation">(</span>BASE_PATH<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>directory<span class="token punctuation">.</span><span class="token function">isDirectory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">boolean</span> mkSuccess <span class="token operator">=</span> directory<span class="token punctuation">.</span><span class="token function">mkdirs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Log<span class="token punctuation">.</span><span class="token function">d</span><span class="token punctuation">(</span>TAG<span class="token punctuation">,</span> <span class="token string">"mkdirs："</span> <span class="token operator">+</span> mkSuccess<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>mkSuccess<span class="token punctuation">)</span><span class="token punctuation">{</span>
+      directory<span class="token punctuation">.</span><span class="token function">mkdirs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
   <span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>我初始化hexo项目中的依赖版本信息：</p>
-<pre class="line-numbers language-groovy"><code class="language-groovy">  <span class="token string">"dependencies"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    <span class="token string">"hexo"</span><span class="token punctuation">:</span> <span class="token string">"^5.0.0"</span><span class="token punctuation">,</span>
-    <span class="token string">"hexo-generator-archive"</span><span class="token punctuation">:</span> <span class="token string">"^1.0.0"</span><span class="token punctuation">,</span>
-    <span class="token string">"hexo-generator-category"</span><span class="token punctuation">:</span> <span class="token string">"^1.0.0"</span><span class="token punctuation">,</span>
-    <span class="token string">"hexo-generator-index"</span><span class="token punctuation">:</span> <span class="token string">"^2.0.0"</span><span class="token punctuation">,</span>
-    <span class="token string">"hexo-generator-tag"</span><span class="token punctuation">:</span> <span class="token string">"^1.0.0"</span><span class="token punctuation">,</span>
-    <span class="token string">"hexo-renderer-ejs"</span><span class="token punctuation">:</span> <span class="token string">"^1.0.0"</span><span class="token punctuation">,</span>
-    <span class="token string">"hexo-renderer-marked"</span><span class="token punctuation">:</span> <span class="token string">"^4.0.0"</span><span class="token punctuation">,</span>
-    <span class="token string">"hexo-renderer-stylus"</span><span class="token punctuation">:</span> <span class="token string">"^2.0.0"</span><span class="token punctuation">,</span>
-    <span class="token string">"hexo-server"</span><span class="token punctuation">:</span> <span class="token string">"^2.0.0"</span><span class="token punctuation">,</span>
-    <span class="token string">"hexo-theme-landscape"</span><span class="token punctuation">:</span> <span class="token string">"^0.0.3"</span>
+  File file <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">File</span><span class="token punctuation">(</span>path<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  Log<span class="token punctuation">.</span><span class="token function">d</span><span class="token punctuation">(</span>TAG<span class="token punctuation">,</span> <span class="token string">"exists："</span> <span class="token operator">+</span> file<span class="token punctuation">.</span><span class="token function">exists</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>file<span class="token punctuation">.</span><span class="token function">exists</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">try</span> <span class="token punctuation">{</span>
+      <span class="token keyword">boolean</span> createNewFile <span class="token operator">=</span> file<span class="token punctuation">.</span><span class="token function">createNewFile</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      Log<span class="token punctuation">.</span><span class="token function">d</span><span class="token punctuation">(</span>TAG<span class="token punctuation">,</span> <span class="token string">"createNewFile："</span> <span class="token operator">+</span> createNewFile<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">IOException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
   <span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>将对应的版本升级后，最终的版本信息如下：</p>
-<pre class="line-numbers language-groovy"><code class="language-groovy">  <span class="token string">"dependencies"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    <span class="token string">"eslint"</span><span class="token punctuation">:</span> <span class="token string">"^6.0.1"</span><span class="token punctuation">,</span>
-    <span class="token string">"hexo"</span><span class="token punctuation">:</span> <span class="token string">"^5.0.0"</span><span class="token punctuation">,</span>
-    <span class="token string">"hexo-baidu-url-submit"</span><span class="token punctuation">:</span> <span class="token string">"0.0.6"</span><span class="token punctuation">,</span>
-    <span class="token string">"hexo-deployer-git"</span><span class="token punctuation">:</span> <span class="token string">"^3.0.0"</span><span class="token punctuation">,</span>
-    <span class="token string">"hexo-generator-archive"</span><span class="token punctuation">:</span> <span class="token string">"^1.0.0"</span><span class="token punctuation">,</span>
-    <span class="token string">"hexo-generator-baidu-sitemap"</span><span class="token punctuation">:</span> <span class="token string">"^0.1.6"</span><span class="token punctuation">,</span>
-    <span class="token string">"hexo-generator-category"</span><span class="token punctuation">:</span> <span class="token string">"^1.0.0"</span><span class="token punctuation">,</span>
-    <span class="token string">"hexo-generator-feed"</span><span class="token punctuation">:</span> <span class="token string">"^1.2.2"</span><span class="token punctuation">,</span>
-    <span class="token string">"hexo-generator-index"</span><span class="token punctuation">:</span> <span class="token string">"^2.0.0"</span><span class="token punctuation">,</span>
-    <span class="token string">"hexo-generator-search"</span><span class="token punctuation">:</span> <span class="token string">"^2.4.0"</span><span class="token punctuation">,</span>
-    <span class="token string">"hexo-generator-sitemap"</span><span class="token punctuation">:</span> <span class="token string">"^1.2.0"</span><span class="token punctuation">,</span>
-    <span class="token string">"hexo-generator-tag"</span><span class="token punctuation">:</span> <span class="token string">"^0.2.0"</span><span class="token punctuation">,</span>
-    <span class="token string">"hexo-helper-live2d"</span><span class="token punctuation">:</span> <span class="token string">"^3.1.1"</span><span class="token punctuation">,</span>
-    <span class="token string">"hexo-permalink-pinyin"</span><span class="token punctuation">:</span> <span class="token string">"^1.1.0"</span><span class="token punctuation">,</span>
-    <span class="token string">"hexo-prism-plugin"</span><span class="token punctuation">:</span> <span class="token string">"^2.3.0"</span><span class="token punctuation">,</span>
-    <span class="token string">"hexo-renderer-ejs"</span><span class="token punctuation">:</span> <span class="token string">"^1.0.0"</span><span class="token punctuation">,</span>
-    <span class="token string">"hexo-renderer-marked"</span><span class="token punctuation">:</span> <span class="token string">"^4.0.0"</span><span class="token punctuation">,</span>
-    <span class="token string">"hexo-renderer-stylus"</span><span class="token punctuation">:</span> <span class="token string">"^2.0.0"</span><span class="token punctuation">,</span>
-    <span class="token string">"hexo-server"</span><span class="token punctuation">:</span> <span class="token string">"^2.0.0"</span><span class="token punctuation">,</span>
-    <span class="token string">"hexo-wordcount"</span><span class="token punctuation">:</span> <span class="token string">"^6.0.1"</span>
+  <span class="token keyword">try</span> <span class="token punctuation">{</span>
+    BufferedOutputStream bos <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BufferedOutputStream</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">FileOutputStream</span><span class="token punctuation">(</span>file<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    bitmap<span class="token punctuation">.</span><span class="token function">compress</span><span class="token punctuation">(</span>Bitmap<span class="token punctuation">.</span>CompressFormat<span class="token punctuation">.</span>JPEG<span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">,</span> bos<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    bos<span class="token punctuation">.</span><span class="token function">flush</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    bos<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">IOException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>发现果然提交正常了。hexo d提交如下：</p>
-<pre class="line-numbers language-bash"><code class="language-bash">Enumerating objects: 380, done.
-Counting objects: 100% <span class="token punctuation">(</span>380/380<span class="token punctuation">)</span>, done.
-Delta compression using up to 8 threads
-Compressing objects: 100% <span class="token punctuation">(</span>319/319<span class="token punctuation">)</span>, done.
-Writing objects: 100% <span class="token punctuation">(</span>380/380<span class="token punctuation">)</span>, 18.81 MiB <span class="token operator">|</span> 1.91 MiB/s, done.
-Total 380 <span class="token punctuation">(</span>delta 66<span class="token punctuation">)</span>, reused 0 <span class="token punctuation">(</span>delta 0<span class="token punctuation">)</span>, pack-reused 0
-remote: Resolving deltas: 100% <span class="token punctuation">(</span>66/66<span class="token punctuation">)</span>, done.
-To github.com:gurecn/gure.github.io.git
- + 0421389<span class="token punctuation">..</span>.dac3b2b HEAD -<span class="token operator">></span> master <span class="token punctuation">(</span>forced update<span class="token punctuation">)</span>
-Branch <span class="token string">'master'</span> <span class="token keyword">set</span> up to track remote branch <span class="token string">'master'</span> from <span class="token string">'git@github.com:gurecn/gure.github.io.git'</span><span class="token keyword">.</span>
-INFO  Deploy done: <span class="token function">git</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="问题四：访问页面总是404"><a href="#问题四：访问页面总是404" class="headerlink" title="问题四：访问页面总是404"></a>问题四：访问页面总是404</h3><p>这个问题我没有遇到，但是在网络上发现了，感觉会有人遇到，我测试了一下确实存在，在这里也提醒一下。</p>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>执行代码，但是文件、路径都没有成功。<br>错误信息如下：</p>
+<blockquote>
+<p>D/ImageActivity: path：/storage/emulated/0/devdroid/1640657351362.jpg<br>D/ImageActivity: mkdirs：false<br>D/ImageActivity: exists：false<br>W/System.err: java.io.IOException: No such file or directory<br>W/System.err:     at java.io.UnixFileSystem.createFileExclusively0(Native Method)<br>W/System.err:     at java.io.UnixFileSystem.createFileExclusively(UnixFileSystem.java:317)<br>W/System.err:     at java.io.File.createNewFile(File.java:1008)<br>W/System.err:     at com.devdroid.sleepassistant.activity.ImageActivity.save(ImageActivity.java:60)<br>W/System.err:     at com.devdroid.sleepassistant.activity.ImageActivity.onCreate(ImageActivity.java:37)<br>W/System.err:     at android.app.Activity.performCreate(Activity.java:8049)<br>W/System.err: java.io.FileNotFoundException: /storage/emulated/0/devdroid/1640657351362.jpg: open failed: ENOENT (No such file or directory)<br>W/System.err:     … 19 more</p>
+</blockquote>
+<p>为什么找不到路径呢？路径明明时调用系统方法获取的，并且权限已经申请了。<br>让我比较纠结的另外一点，是公司另外一个项目使用同样的方式就没有问题。</p>
+<h4 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h4><p>仔细研究了一下，原来Android官方最近几个版本一直在优化存储权限的使用和控制问题。<br>官方指南参考：<a target="_blank" rel="noopener" href="https://developer.android.com/training/data-storage/use-cases">Android 存储用例和最佳做法</a><br>原来我项目使用的targetSdkVersion 31导致的。所以修复方法有几种：</p>
 <ul>
-<li><p>🔲举个反例：项目这种情况下是不行的：<del><code>git@github.com:gurecn/gure.github.io.git</code></del></p>
-</li>
-<li><p>✅正确例子：必须创建成这样才可以：<code>git@github.com:gurecn/gurecn.github.io.git</code></p>
-</li>
+<li>把项目targetSdkVersion 改为29之下；</li>
+<li>在Androidmainfest 里面的application添加：android:requestLegacyExternalStorage=”true”</li>
+<li>通过MediaStore API处理图片文件，其他文件也有对用的API，参考：<a target="_blank" rel="noopener" href="https://developer.android.com/training/data-storage">数据和文件存储概览</a></li>
 </ul>
-<p>也就是GitHub上创建的项目：username.github.io，必须使用这种格式，且username需与GitHub真实username保持一致。</p>
-<p>如果按照正确的示例比克有一个简洁的访问方式。</p>
-<p>GitHub提示的访问方式是：</p>
-<p><code>https://gurecn.github.io/username.github.io/</code></p>
-<p>username与GitHub真实username保持一致时，可以使用下面的地址进行访问：</p>
-<p><code>https://username.github.io/</code></p>
-<p>其中username就是你的用户名。</p>
-<h3 id="问题五：访问页面不带样式"><a href="#问题五：访问页面不带样式" class="headerlink" title="问题五：访问页面不带样式"></a>问题五：访问页面不带样式</h3><h4 id="现象-3"><a href="#现象-3" class="headerlink" title="现象"></a>现象</h4><p>hexo d部署后，访问对应的页面，发现博客内容确实出来了，但没有样式。所有内容跟直接显示出来，没有任何美感。</p>
-<h4 id="方案-3"><a href="#方案-3" class="headerlink" title="方案"></a>方案</h4><p>经定位主要原因是GitHub访问较慢，数据没有加载完成。次要原因是浏览器可能带有缓存，一次访问失败后，后续直接加载之前错误的显示效果，无论怎么刷新都不会更新效果。</p>
-<p>此时我发现Chrome浏览器一个比较好用的方式，点击右上角菜单，选择：打开新的无痕窗口，这个窗口不共享缓存，重新加载数据。完美解决。</p>
-<p>好了，避坑指南到此结束，希望对大家有帮助，再次感谢阳神的细致的教程及奉献。</p>
+<p>由于时间问题，我暂时按照方案二进行临时优化，其他方案咱们后续再研究。<br>打开AndroidManifest.xml，添加：</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token operator">&lt;</span>application
+    android<span class="token operator">:</span>allowBackup<span class="token operator">=</span><span class="token string">"true"</span>
+    android<span class="token operator">:</span>backupAgent<span class="token operator">=</span><span class="token string">".database.DataBackupAgent"</span>
+    android<span class="token operator">:</span>icon<span class="token operator">=</span><span class="token string">"@mipmap/ic_launcher"</span>
+    android<span class="token operator">:</span>label<span class="token operator">=</span><span class="token string">"@string/app_name"</span>
+    android<span class="token operator">:</span>name<span class="token operator">=</span><span class="token string">".application.TheApplication"</span>
+    android<span class="token operator">:</span>requestLegacyExternalStorage<span class="token operator">=</span><span class="token string">"true"</span>
+    android<span class="token operator">:</span>supportsRtl<span class="token operator">=</span><span class="token string">"true"</span>
+    android<span class="token operator">:</span>theme<span class="token operator">=</span><span class="token string">"@style/AppTheme.NoActionBar"</span><span class="token operator">></span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>application<span class="token operator">></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>此时再测试，功能正常了。<br>需要注意的是，按照系统文档描述：</p>
+<blockquote>
+<p>当您将应用更新为以 Android 11（API 级别 30）为目标平台后，如果应用在搭载 Android 11 的设备上运行，<a target="_blank" rel="noopener" href="https://developer.android.com/preview/privacy/storage#scoped-storage">系统会忽略requestLegacyExternalStorage属性</a>，因此您的应用必须做好支持分区存储并为这些设备上的用户<a target="_blank" rel="noopener" href="https://developer.android.com/training/data-storage/use-cases#migrate-legacy-storage">迁移应用数据</a>的准备。</p>
+</blockquote>
 
             </div>
             <hr />
@@ -640,9 +580,9 @@ INFO  Deploy done: <span class="token function">git</span>
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《Hexo+Github博客搭建、避坑指南》
+                    《Android 10系统创建文件失败》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2021/10/22/hexo-github-bo-ke-da-jian-bi-keng-zhi-nan/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2021/12/28/android-10-xi-tong-chuang-jian-wen-jian-shi-bai/" property="cc:attributionName"
                rel="cc:attributionURL">
                 Gure
             </a> 采用
@@ -944,29 +884,80 @@ INFO  Deploy done: <span class="token function">git</span>
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/10/26/android-home-jian-jian-ting-fang-shi-tan-tao/">
+                <a href="/2021/12/28/android-10-xi-tong-chuang-jian-wen-jian-shi-bai/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/24.jpg" class="responsive-img" alt="Android Home键监听方式探讨">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Android 10系统创建文件失败">
                         
-                        <span class="card-title">Android Home键监听方式探讨</span>
+                        <span class="card-title">Android 10系统创建文件失败</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            遇到问题由于我公司产品要实现调起键盘界面时能直接弹出对话框，让用户直接进行输入交互。Android中，在非界面类控件下想要直接弹出对话框需要使用覆盖其他应用的权限。该需求我们使用Dialog，采用设置TYPE_SYSTEM_ALERT权限来
+                            昨天项目诗词功能新增将诗词显示界面保存到图库得功能，类似于小米便签、锤子便签的保存图片功能。将View保存成Bitmap对象已经实现了，唯独到了保存文件时出现了问题。开源项目本来有使用文件操作，但是主要是在私有路径下处理，保存到图库功能就必
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2021-10-26
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-12-28
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Android/" class="post-category" target="_blank">
+                                    Android
+                                </a>
+                            
+                            
                         </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%96%B0%E7%89%B9%E6%80%A7/" target="_blank">
+                        <span class="chip bg-color">新特性</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/12/25/huo-qu-android-shou-ji-di-bu-dao-hang-lan-de-gao-du/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="获取Android手机底部导航栏的高度">
+                        
+                        <span class="card-title">获取Android手机底部导航栏的高度</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            在工作中，遇到了一个这样的情况：使用PopWindow弹框作为对话框在底部显示。这本来是一个简单的问题，但是实际使用的过程发现，底部导航栏适配也是一个难题。因为在底部显示这个底部不是绝对的：对于有实体键或者虚拟键的手机来说是没有导航栏的；对
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-12-25
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -982,61 +973,8 @@ INFO  Deploy done: <span class="token function">git</span>
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%BA%94%E7%94%A8/" target="_blank">
-                        <span class="chip bg-color">应用</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/10/14/5w2h-godweiyang/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="5W2H | 关于写博客的七点反思">
-                        
-                        <span class="card-title">5W2H | 关于写博客的七点反思</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-关注公众号【算法码上来】，每日算法干货马上就来！
-
-
-When？什么时候开始写的？第一次写博客是 2015 年了，在 CSDN 和博客园上面，当时写文章是为了记录 ACM 竞赛的题解，陆陆续续写了几十篇。但是最后还是没有坚持下去，主要还是
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-10-14
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E8%BD%AC%E8%BD%BD/" class="post-category" target="_blank">
-                                    转载
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/hexo/" target="_blank">
-                        <span class="chip bg-color">hexo</span>
+                    <a href="/tags/%E5%85%BC%E5%AE%B9%E6%80%A7/" target="_blank">
+                        <span class="chip bg-color">兼容性</span>
                     </a>
                     
                 </div>

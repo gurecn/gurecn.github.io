@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devdroid.cn/"/>
-  <updated>2021-12-25T12:12:26.782Z</updated>
+  <updated>2021-12-28T03:20:27.335Z</updated>
   <id>https://devdroid.cn/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Android 10系统创建文件失败</title>
+    <link href="https://devdroid.cn/2021/12/28/android-10-xi-tong-chuang-jian-wen-jian-shi-bai/"/>
+    <id>https://devdroid.cn/2021/12/28/android-10-xi-tong-chuang-jian-wen-jian-shi-bai/</id>
+    <published>2021-12-28T03:19:29.000Z</published>
+    <updated>2021-12-28T03:20:27.335Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;昨天项目诗词功能新增将诗词显示界面保存到图库得功能，类似于小米便签、锤子便签的保存图片功能。&lt;br&gt;将View保存成Bitmap对象已经实现了，唯独到了保存文件时出现了问题。&lt;br&gt;开源项目本来有使用文件操作，但是主要是在私有路径下处理，保存到图库功能就必须要把图片把图片保
+        
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="https://devdroid.cn/categories/Android/"/>
+    
+    
+      <category term="新特性" scheme="https://devdroid.cn/tags/%E6%96%B0%E7%89%B9%E6%80%A7/"/>
+    
+  </entry>
   
   <entry>
     <title>获取Android手机底部导航栏的高度</title>
@@ -515,32 +541,6 @@
     
     
       <category term="三方资源" scheme="https://devdroid.cn/tags/%E4%B8%89%E6%96%B9%E8%B5%84%E6%BA%90/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android 8.0图标适配</title>
-    <link href="https://devdroid.cn/2021/11/22/android-8-0-tu-biao-gua-pei/"/>
-    <id>https://devdroid.cn/2021/11/22/android-8-0-tu-biao-gua-pei/</id>
-    <published>2021-11-22T02:42:56.000Z</published>
-    <updated>2021-11-22T02:43:38.526Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;Android 8.0（API 级别 26）引入了自适应启动器图标（adaptive-icon），它可以通过蒙版的方式在不同设备型号上显示为不同的形状（方形、圆角、圆形等）。官方文档&lt;a
-        
-      
-    
-    </summary>
-    
-      <category term="Android" scheme="https://devdroid.cn/categories/Android/"/>
-    
-    
-      <category term="新特性" scheme="https://devdroid.cn/tags/%E6%96%B0%E7%89%B9%E6%80%A7/"/>
     
   </entry>
   
