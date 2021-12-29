@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devdroid.cn/"/>
-  <updated>2021-12-28T03:20:27.335Z</updated>
+  <updated>2021-12-29T11:07:01.154Z</updated>
   <id>https://devdroid.cn/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>View保存到图片功能（长图支持）</title>
+    <link href="https://devdroid.cn/2021/12/29/view-bao-cun-dao-tu-pian-gong-neng-chang-tu-zhi-chi/"/>
+    <id>https://devdroid.cn/2021/12/29/view-bao-cun-dao-tu-pian-gong-neng-chang-tu-zhi-chi/</id>
+    <published>2021-12-29T11:06:02.000Z</published>
+    <updated>2021-12-29T11:07:01.154Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;睡眠助理项目中诗词歌赋功能新增将诗词显示界面保存到图库得功能，类似于小米便签、锤子便签的保存图片功能。&lt;br&gt;上篇博客介绍了Android 10系统中文件创建遇到的问题，今天介绍一下如何将诗词保存成图片。&lt;/p&gt;
+&lt;h4 id=&quot;功能实现&quot;&gt;&lt;a href=&quot;#功能实现&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="https://devdroid.cn/categories/Android/"/>
+    
+    
+      <category term="特性" scheme="https://devdroid.cn/tags/%E7%89%B9%E6%80%A7/"/>
+    
+  </entry>
   
   <entry>
     <title>Android 10系统创建文件失败</title>
@@ -515,32 +542,6 @@
     
     
       <category term="应用" scheme="https://devdroid.cn/tags/%E5%BA%94%E7%94%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android调用今日诗词和配置字体</title>
-    <link href="https://devdroid.cn/2021/11/25/android-diao-yong-jin-ri-shi-ci-he-pei-zhi-zi-ti/"/>
-    <id>https://devdroid.cn/2021/11/25/android-diao-yong-jin-ri-shi-ci-he-pei-zhi-zi-ti/</id>
-    <published>2021-11-25T02:27:49.000Z</published>
-    <updated>2021-11-25T02:31:06.981Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;睡眠助理项目里添加了今日诗词（&lt;a
-        
-      
-    
-    </summary>
-    
-      <category term="Android" scheme="https://devdroid.cn/categories/Android/"/>
-    
-    
-      <category term="三方资源" scheme="https://devdroid.cn/tags/%E4%B8%89%E6%96%B9%E8%B5%84%E6%BA%90/"/>
     
   </entry>
   

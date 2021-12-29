@@ -5,8 +5,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="google-site-verification" content="BZSSTWCG6ygfXci-M6fHXRUOICCdvw9XUlROWGENjyA" />
-    <meta name="keywords" content="Android 10系统创建文件失败, Java C/C++ Vue Gure gurecn Android 卓技卓品">
-    <meta name="description" content="昨天项目诗词功能新增将诗词显示界面保存到图库得功能，类似于小米便签、锤子便签的保存图片功能。将View保存成Bitmap对象已经实现了，唯独到了保存文件时出现了问题。开源项目本来有使用文件操作，但是主要是在私有路径下处理，保存到图库功能就必">
+    <meta name="keywords" content="View保存到图片功能（长图支持）, Java C/C++ Vue Gure gurecn Android 卓技卓品">
+    <meta name="description" content="睡眠助理项目中诗词歌赋功能新增将诗词显示界面保存到图库得功能，类似于小米便签、锤子便签的保存图片功能。上篇博客介绍了Android 10系统中文件创建遇到的问题，今天介绍一下如何将诗词保存成图片。
+功能实现方法二：
+view.setDraw">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +16,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Android 10系统创建文件失败 | 卓技卓品</title>
+    <title>View保存到图片功能（长图支持） | 卓技卓品</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -260,13 +262,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Android 10系统创建文件失败
+                        View保存到图片功能（长图支持）
                     </div>
                 </div>
             </div>
@@ -377,8 +379,8 @@
                     
                     <div class="article-tag">
                         
-                        <a href="/tags/%E6%96%B0%E7%89%B9%E6%80%A7/" target="_blank">
-                            <span class="chip bg-color">新特性</span>
+                        <a href="/tags/%E7%89%B9%E6%80%A7/" target="_blank">
+                            <span class="chip bg-color">特性</span>
                         </a>
                         
                     </div>
@@ -401,7 +403,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-12-28
+                    2021-12-29
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -415,14 +417,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    957
+                    1.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    6 分
                 </div>
                 
                 
@@ -438,57 +440,47 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>昨天项目诗词功能新增将诗词显示界面保存到图库得功能，类似于小米便签、锤子便签的保存图片功能。<br>将View保存成Bitmap对象已经实现了，唯独到了保存文件时出现了问题。<br>开源项目本来有使用文件操作，但是主要是在私有路径下处理，保存到图库功能就必须要把图片把图片保存到公共路径下，负责图库扫描不到图片显示。</p>
-<h4 id="问题过程"><a href="#问题过程" class="headerlink" title="问题过程"></a>问题过程</h4><p>就是在保存图片，创建文件夹和文件时出现了异常。下面我记录一下过程：<br>第一步，声明文件读写权限：</p>
-<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>uses-permission</span> <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>android.permission.WRITE_EXTERNAL_STORAGE<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>uses-permission</span> <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>android.permission.READ_EXTERNAL_STORAGE<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>第二步，动态获取权限：</p>
+                <p>睡眠助理项目中诗词歌赋功能新增将诗词显示界面保存到图库得功能，类似于小米便签、锤子便签的保存图片功能。<br>上篇博客介绍了Android 10系统中文件创建遇到的问题，今天介绍一下如何将诗词保存成图片。</p>
+<h4 id="功能实现"><a href="#功能实现" class="headerlink" title="功能实现"></a>功能实现</h4><p>方法二：</p>
+<pre class="line-numbers language-java"><code class="language-java">view<span class="token punctuation">.</span><span class="token function">setDrawingCacheEnabled</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+view<span class="token punctuation">.</span><span class="token function">buildDrawingCache</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+Bitmap bitmap <span class="token operator">=</span> view<span class="token punctuation">.</span><span class="token function">getDrawingCache</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>方法二：</p>
+<pre class="line-numbers language-java"><code class="language-java">Bitmap bitmap <span class="token operator">=</span> Bitmap<span class="token punctuation">.</span><span class="token function">createBitmap</span><span class="token punctuation">(</span>view<span class="token punctuation">.</span><span class="token function">getWidth</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> view<span class="token punctuation">.</span><span class="token function">getHeight</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Bitmap<span class="token punctuation">.</span>Config<span class="token punctuation">.</span>ARGB_8888<span class="token punctuation">)</span><span class="token punctuation">;</span>
+Canvas canvas <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Canvas</span><span class="token punctuation">(</span>bitmap<span class="token punctuation">)</span><span class="token punctuation">;</span>
+view<span class="token punctuation">.</span><span class="token function">draw</span><span class="token punctuation">(</span>canvas<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>以上两种方式均可将对应的view以及view内嵌套的view内容全部绘制到Bitmap中，同时我们可以对Bitmap进行压缩：</p>
 <pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
- * 请求需要的权限
+ * @return 质量压缩图片
  */</span>
-<span class="token keyword">private</span> String<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">requestPermissions</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    String<span class="token punctuation">[</span><span class="token punctuation">]</span> permissions <span class="token operator">=</span> null<span class="token punctuation">;</span>
-    List<span class="token operator">&lt;</span>String<span class="token operator">></span> permissionsList <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">addPermission</span><span class="token punctuation">(</span>permissionsList<span class="token punctuation">,</span> Manifest<span class="token punctuation">.</span>permission<span class="token punctuation">.</span>WRITE_EXTERNAL_STORAGE<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">addPermission</span><span class="token punctuation">(</span>permissionsList<span class="token punctuation">,</span> Manifest<span class="token punctuation">.</span>permission<span class="token punctuation">.</span>READ_EXTERNAL_STORAGE<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>permissionsList<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        permissions <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">[</span>permissionsList<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span> <span class="token punctuation">;</span> i <span class="token operator">&lt;</span> permissionsList<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-            permissions<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> permissionsList<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">return</span> permissions<span class="token punctuation">;</span>
+<span class="token keyword">public</span> <span class="token keyword">static</span> Bitmap <span class="token function">compressImage</span><span class="token punctuation">(</span>Bitmap image<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  ByteArrayOutputStream baos <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ByteArrayOutputStream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">//质量压缩方法，这里100表示不压缩，把压缩后的数据存放到baos中</span>
+  image<span class="token punctuation">.</span><span class="token function">compress</span><span class="token punctuation">(</span>Bitmap<span class="token punctuation">.</span>CompressFormat<span class="token punctuation">.</span>JPEG<span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">,</span> baos<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">int</span> options <span class="token operator">=</span> <span class="token number">80</span><span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">//循环判断如果压缩后图片是否大于100kb,大于继续压缩</span>
+  <span class="token keyword">while</span> <span class="token punctuation">(</span>baos<span class="token punctuation">.</span><span class="token function">toByteArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>length <span class="token operator">/</span> <span class="token number">1024</span> <span class="token operator">></span> <span class="token number">100</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//重置baos即清空baos</span>
+    baos<span class="token punctuation">.</span><span class="token function">reset</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//这里压缩options%，把压缩后的数据存放到baos中</span>
+    image<span class="token punctuation">.</span><span class="token function">compress</span><span class="token punctuation">(</span>Bitmap<span class="token punctuation">.</span>CompressFormat<span class="token punctuation">.</span>JPEG<span class="token punctuation">,</span> options<span class="token punctuation">,</span> baos<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//每次都减少10</span>
+    options <span class="token operator">-=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment" spellcheck="true">//把压缩后的数据baos存放到ByteArrayInputStream中</span>
+  ByteArrayInputStream isBm <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ByteArrayInputStream</span><span class="token punctuation">(</span>baos<span class="token punctuation">.</span><span class="token function">toByteArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">//把ByteArrayInputStream数据生成图片</span>
+  <span class="token keyword">return</span> BitmapFactory<span class="token punctuation">.</span><span class="token function">decodeStream</span><span class="token punctuation">(</span>isBm<span class="token punctuation">,</span> null<span class="token punctuation">,</span> null<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-<span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">addPermission</span><span class="token punctuation">(</span>List<span class="token operator">&lt;</span>String<span class="token operator">></span> permissionsList<span class="token punctuation">,</span> String permission<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>Build<span class="token punctuation">.</span>VERSION<span class="token punctuation">.</span>SDK_INT <span class="token operator">>=</span> Build<span class="token punctuation">.</span>VERSION_CODES<span class="token punctuation">.</span>M<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">checkSelfPermission</span><span class="token punctuation">(</span>permission<span class="token punctuation">)</span> <span class="token operator">!=</span> PackageManager<span class="token punctuation">.</span>PERMISSION_GRANTED<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            permissionsList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>permission<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span class="token annotation punctuation">@Override</span>
-<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onRequestPermissionsResult</span><span class="token punctuation">(</span><span class="token keyword">int</span> requestCode<span class="token punctuation">,</span> String<span class="token punctuation">[</span><span class="token punctuation">]</span> permissions<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> grantResults<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onRequestPermissionsResult</span><span class="token punctuation">(</span>requestCode<span class="token punctuation">,</span> permissions<span class="token punctuation">,</span> grantResults<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">if</span><span class="token punctuation">(</span>requestCode <span class="token operator">==</span> <span class="token number">1003</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> grantResults<span class="token punctuation">.</span>length<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">int</span> grant <span class="token operator">=</span> grantResults<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>grant <span class="token operator">!=</span> PackageManager<span class="token punctuation">.</span>PERMISSION_GRANTED<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                Toast<span class="token punctuation">.</span><span class="token function">makeText</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token function">getString</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>string<span class="token punctuation">.</span>permissionnot<span class="token punctuation">)</span><span class="token punctuation">,</span> Toast<span class="token punctuation">.</span>LENGTH_SHORT<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>i <span class="token operator">==</span> grantResults<span class="token punctuation">.</span>length <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-                <span class="token function">initView</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>第三步，操作公共存储空间，创建文件：</p>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>以上实现了把诗词界面绘制成Bitmap，再结合上一篇博客，可以将Bitmap保存到图片中：</p>
 <pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
  * 保存图片
  */</span>
 <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">save</span><span class="token punctuation">(</span>Bitmap bitmap<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  String base_path <span class="token operator">=</span> Environment<span class="token punctuation">.</span><span class="token function">getExternalStorageDirectory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getAbsolutePath</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> File<span class="token punctuation">.</span>separator <span class="token operator">+</span> <span class="token string">"devdroid"</span> <span class="token operator">+</span> File<span class="token punctuation">.</span>separator<span class="token punctuation">;</span>
-  String path <span class="token operator">=</span> base_path<span class="token operator">+</span> System<span class="token punctuation">.</span><span class="token function">currentTimeMillis</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">".jpg"</span><span class="token punctuation">;</span>
+  String path <span class="token operator">=</span> BASE_PATH <span class="token operator">+</span> System<span class="token punctuation">.</span><span class="token function">currentTimeMillis</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">".jpg"</span><span class="token punctuation">;</span>
   Log<span class="token punctuation">.</span><span class="token function">d</span><span class="token punctuation">(</span>TAG<span class="token punctuation">,</span> <span class="token string">"path："</span> <span class="token operator">+</span> path<span class="token punctuation">)</span><span class="token punctuation">;</span>
   File directory <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">File</span><span class="token punctuation">(</span>BASE_PATH<span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>directory<span class="token punctuation">.</span><span class="token function">isDirectory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
@@ -517,35 +509,94 @@
     e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>若是绘制的内容不会超过手机一屏，那么当前就能满足需求。<br>但是诗词有时候会特别长，导致一屏无法完全显示。这时候我发现上面的代码只能显示当前屏幕的内容。也就是只能实现类似于单页截屏，无法实现滚动截图能力。显然这个无法满足需求了。</p>
+<h4 id="最终解决"><a href="#最终解决" class="headerlink" title="最终解决"></a>最终解决</h4><p>经过研究，发现TextView当实现上下滚动时，无论TextView实际高度有多大，此时测量TextView的高度都返回当前手机屏幕的高度。当TextView超过一屏或者更长时，测量的高度并没有变。很显然，问题就出在了这里，下面就研究解决方案。<br>查询资料，发现有一个StaticLayout布局：</p>
+<blockquote>
+<p>StaticLayout is a Layout for text that will not be edited after it is laid out. Use <a target="_blank" rel="noopener" href="https://developer.android.com/reference/android/text/DynamicLayout">DynamicLayout</a> for text that may change.<br>This is used by widgets to control text layout. You should not need to use this class directly unless you are implementing your own widget or custom display object, or would be tempted to call <a target="_blank" rel="noopener" href="https://developer.android.com/reference/android/graphics/Canvas#drawText(java.lang.CharSequence,%20int,%20int,%20float,%20float,%20android.graphics.Paint)">Canvas.drawText()</a> directly.</p>
+</blockquote>
+<p>翻译如下：<br>​</p>
+<blockquote>
+<p>StaticLayout 是文本布局后不会被编辑的布局。对于可能会更改的文本，请使用 DynamicLayout。 小部件使用它来控制文本布局。除非您正在实现自己的小部件或自定义显示对象，否则您不需要直接使用此类，或者可能会想直接调用 Canvas.drawText()。</p>
+</blockquote>
+<p>从描述上看到，StaticLayout布局是一个固定的文本布局。网上查阅相关资料，介绍StaticLayou实现文本的换行等处理。我实际测试，发现通过StaticLayout可以实现测量文本的真实高度：</p>
+<pre class="line-numbers language-java"><code class="language-java">TextPaint contentPaint <span class="token operator">=</span> mTvShiciContent<span class="token punctuation">.</span><span class="token function">getPaint</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+StaticLayout staticLayout <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">StaticLayout</span><span class="token punctuation">(</span>mTvShiciContent<span class="token punctuation">.</span><span class="token function">getText</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> contentPaint<span class="token punctuation">,</span> mTvShiciContent<span class="token punctuation">.</span><span class="token function">getWidth</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Layout<span class="token punctuation">.</span>Alignment<span class="token punctuation">.</span>ALIGN_NORMAL<span class="token punctuation">,</span> <span class="token number">1.2F</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> heightContent <span class="token operator">=</span> staticLayout<span class="token punctuation">.</span><span class="token function">getHeight</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>真实高度获取了，那么整体绘制就能实现了。<br>通过测量TextView实现Bitmap，就和最初的两种方式不同，需要重新获取需要绘制的view，将其转换成Bitmap，然后确定位置绘制到画布上。<br>下面我们就按照最新的方式实现View的绘制。<br>首先我们定义从view获取Bitmap的方法：</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+ * 从View抓获取Bitmap
+ * @param view 获取Bitmap的view
+ * @param w Bitmap宽度
+ * @param h Bitmap高
+ */</span>
+<span class="token keyword">private</span> Bitmap <span class="token function">getImageViewBitmap</span><span class="token punctuation">(</span>View view<span class="token punctuation">,</span> <span class="token keyword">int</span> w<span class="token punctuation">,</span> <span class="token keyword">int</span> h<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  Bitmap originBitmap <span class="token operator">=</span> Bitmap<span class="token punctuation">.</span><span class="token function">createBitmap</span><span class="token punctuation">(</span>view<span class="token punctuation">.</span><span class="token function">getWidth</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> view<span class="token punctuation">.</span><span class="token function">getHeight</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Bitmap<span class="token punctuation">.</span>Config<span class="token punctuation">.</span>ARGB_8888<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  Canvas canvas <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Canvas</span><span class="token punctuation">(</span>originBitmap<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  view<span class="token punctuation">.</span><span class="token function">draw</span><span class="token punctuation">(</span>canvas<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token function">resizeImage</span><span class="token punctuation">(</span>originBitmap<span class="token punctuation">,</span> w<span class="token punctuation">,</span> h<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>由于背景图片不是跟随滑动的，所以我们需要将背景图片拉伸至最终输出的图片大小：</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+ * 缩放图片
+ * @param origin 原始图片
+ * @param newWidth  最终图片的宽度
+ * @param newHeight 最终图片的高度
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">static</span> Bitmap <span class="token function">resizeImage</span><span class="token punctuation">(</span>Bitmap origin<span class="token punctuation">,</span> <span class="token keyword">int</span> newWidth<span class="token punctuation">,</span> <span class="token keyword">int</span> newHeight<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>origin <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+  <span class="token keyword">int</span> height <span class="token operator">=</span> origin<span class="token punctuation">.</span><span class="token function">getHeight</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">int</span> width <span class="token operator">=</span> origin<span class="token punctuation">.</span><span class="token function">getWidth</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">float</span> scaleWidth <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">float</span><span class="token punctuation">)</span> newWidth<span class="token punctuation">)</span> <span class="token operator">/</span> width<span class="token punctuation">;</span>
+  <span class="token keyword">float</span> scaleHeight <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">float</span><span class="token punctuation">)</span> newHeight<span class="token punctuation">)</span> <span class="token operator">/</span> height<span class="token punctuation">;</span>
+  Matrix matrix <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Matrix</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  matrix<span class="token punctuation">.</span><span class="token function">postScale</span><span class="token punctuation">(</span>scaleWidth<span class="token punctuation">,</span> scaleHeight<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  Bitmap newBM <span class="token operator">=</span> Bitmap<span class="token punctuation">.</span><span class="token function">createBitmap</span><span class="token punctuation">(</span>origin<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> width<span class="token punctuation">,</span> height<span class="token punctuation">,</span> matrix<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>origin<span class="token punctuation">.</span><span class="token function">isRecycled</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    origin<span class="token punctuation">.</span><span class="token function">recycle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> newBM<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>最后就是绘制全部view到Bitmap上：</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">private</span> Bitmap <span class="token function">getShiciImage</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> location <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  mTvShiciContent<span class="token punctuation">.</span><span class="token function">getLocationOnScreen</span><span class="token punctuation">(</span>location<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">int</span> x <span class="token operator">=</span> location<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// view距离 屏幕左边的距离（即x轴方向）</span>
+  <span class="token keyword">int</span> y <span class="token operator">=</span> location<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// view距离 屏幕顶边的距离（即y轴方向）</span>
+  mTitleLayout<span class="token punctuation">.</span><span class="token function">getLocationOnScreen</span><span class="token punctuation">(</span>location<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">int</span> titleX <span class="token operator">=</span> location<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// view距离 屏幕左边的距离（即x轴方向）</span>
+  <span class="token keyword">int</span> titleY <span class="token operator">=</span> location<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// view距离 屏幕顶边的距离（即y轴方向）</span>
+  TextPaint contentPaint <span class="token operator">=</span> mTvShiciContent<span class="token punctuation">.</span><span class="token function">getPaint</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  StaticLayout staticLayout <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">StaticLayout</span><span class="token punctuation">(</span>mTvShiciContent<span class="token punctuation">.</span><span class="token function">getText</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> contentPaint<span class="token punctuation">,</span> mTvShiciContent<span class="token punctuation">.</span><span class="token function">getWidth</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Layout<span class="token punctuation">.</span>Alignment<span class="token punctuation">.</span>ALIGN_NORMAL<span class="token punctuation">,</span> <span class="token number">1.2F</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">int</span> heightContent <span class="token operator">=</span> staticLayout<span class="token punctuation">.</span><span class="token function">getHeight</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  Bitmap<span class="token punctuation">.</span>Config config <span class="token operator">=</span> Bitmap<span class="token punctuation">.</span>Config<span class="token punctuation">.</span>ARGB_8888<span class="token punctuation">;</span>
+  Bitmap bitmapAll<span class="token punctuation">;</span>
+  <span class="token keyword">try</span> <span class="token punctuation">{</span>
+    bitmapAll <span class="token operator">=</span> Bitmap<span class="token punctuation">.</span><span class="token function">createBitmap</span><span class="token punctuation">(</span>mContentLayout<span class="token punctuation">.</span><span class="token function">getWidth</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> y <span class="token operator">+</span> heightContent<span class="token punctuation">,</span> config<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    config <span class="token operator">=</span> Bitmap<span class="token punctuation">.</span>Config<span class="token punctuation">.</span>RGB_565<span class="token punctuation">;</span>
+    bitmapAll <span class="token operator">=</span> Bitmap<span class="token punctuation">.</span><span class="token function">createBitmap</span><span class="token punctuation">(</span>mContentLayout<span class="token punctuation">.</span><span class="token function">getWidth</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> y <span class="token operator">+</span> heightContent<span class="token punctuation">,</span> config<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  Canvas canvas <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Canvas</span><span class="token punctuation">(</span>bitmapAll<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  canvas<span class="token punctuation">.</span><span class="token function">drawColor</span><span class="token punctuation">(</span>Color<span class="token punctuation">.</span>WHITE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  Paint paint <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Paint</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  paint<span class="token punctuation">.</span><span class="token function">setAntiAlias</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  paint<span class="token punctuation">.</span><span class="token function">setDither</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  paint<span class="token punctuation">.</span><span class="token function">setFilterBitmap</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  canvas<span class="token punctuation">.</span><span class="token function">drawBitmap</span><span class="token punctuation">(</span><span class="token function">getImageViewBitmap</span><span class="token punctuation">(</span>mIvShiciBg<span class="token punctuation">,</span> mIvShiciBg<span class="token punctuation">.</span><span class="token function">getWidth</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> y <span class="token operator">+</span> heightContent<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> paint<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  canvas<span class="token punctuation">.</span><span class="token function">translate</span><span class="token punctuation">(</span>titleX<span class="token punctuation">,</span> titleY<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  mTitleLayout<span class="token punctuation">.</span><span class="token function">draw</span><span class="token punctuation">(</span>canvas<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  canvas<span class="token punctuation">.</span><span class="token function">translate</span><span class="token punctuation">(</span>x <span class="token operator">-</span> titleX<span class="token punctuation">,</span> y <span class="token operator">-</span> titleY<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  staticLayout<span class="token punctuation">.</span><span class="token function">draw</span><span class="token punctuation">(</span>canvas<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  canvas<span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> bitmapAll<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>执行代码，但是文件、路径都没有成功。<br>错误信息如下：</p>
-<blockquote>
-<p>D/ImageActivity: path：/storage/emulated/0/devdroid/1640657351362.jpg<br>D/ImageActivity: mkdirs：false<br>D/ImageActivity: exists：false<br>W/System.err: java.io.IOException: No such file or directory<br>W/System.err:     at java.io.UnixFileSystem.createFileExclusively0(Native Method)<br>W/System.err:     at java.io.UnixFileSystem.createFileExclusively(UnixFileSystem.java:317)<br>W/System.err:     at java.io.File.createNewFile(File.java:1008)<br>W/System.err:     at com.devdroid.sleepassistant.activity.ImageActivity.save(ImageActivity.java:60)<br>W/System.err:     at com.devdroid.sleepassistant.activity.ImageActivity.onCreate(ImageActivity.java:37)<br>W/System.err:     at android.app.Activity.performCreate(Activity.java:8049)<br>W/System.err: java.io.FileNotFoundException: /storage/emulated/0/devdroid/1640657351362.jpg: open failed: ENOENT (No such file or directory)<br>W/System.err:     … 19 more</p>
-</blockquote>
-<p>为什么找不到路径呢？路径明明时调用系统方法获取的，并且权限已经申请了。<br>让我比较纠结的另外一点，是公司另外一个项目使用同样的方式就没有问题。</p>
-<h4 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h4><p>仔细研究了一下，原来Android官方最近几个版本一直在优化存储权限的使用和控制问题。<br>官方指南参考：<a target="_blank" rel="noopener" href="https://developer.android.com/training/data-storage/use-cases">Android 存储用例和最佳做法</a><br>原来我项目使用的targetSdkVersion 31导致的。所以修复方法有几种：</p>
-<ul>
-<li>把项目targetSdkVersion 改为29之下；</li>
-<li>在Androidmainfest 里面的application添加：android:requestLegacyExternalStorage=”true”</li>
-<li>通过MediaStore API处理图片文件，其他文件也有对用的API，参考：<a target="_blank" rel="noopener" href="https://developer.android.com/training/data-storage">数据和文件存储概览</a></li>
-</ul>
-<p>由于时间问题，我暂时按照方案二进行临时优化，其他方案咱们后续再研究。<br>打开AndroidManifest.xml，添加：</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token operator">&lt;</span>application
-    android<span class="token operator">:</span>allowBackup<span class="token operator">=</span><span class="token string">"true"</span>
-    android<span class="token operator">:</span>backupAgent<span class="token operator">=</span><span class="token string">".database.DataBackupAgent"</span>
-    android<span class="token operator">:</span>icon<span class="token operator">=</span><span class="token string">"@mipmap/ic_launcher"</span>
-    android<span class="token operator">:</span>label<span class="token operator">=</span><span class="token string">"@string/app_name"</span>
-    android<span class="token operator">:</span>name<span class="token operator">=</span><span class="token string">".application.TheApplication"</span>
-    android<span class="token operator">:</span>requestLegacyExternalStorage<span class="token operator">=</span><span class="token string">"true"</span>
-    android<span class="token operator">:</span>supportsRtl<span class="token operator">=</span><span class="token string">"true"</span>
-    android<span class="token operator">:</span>theme<span class="token operator">=</span><span class="token string">"@style/AppTheme.NoActionBar"</span><span class="token operator">></span>
-    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-<span class="token operator">&lt;</span><span class="token operator">/</span>application<span class="token operator">></span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>此时再测试，功能正常了。<br>需要注意的是，按照系统文档描述：</p>
-<blockquote>
-<p>当您将应用更新为以 Android 11（API 级别 30）为目标平台后，如果应用在搭载 Android 11 的设备上运行，<a target="_blank" rel="noopener" href="https://developer.android.com/preview/privacy/storage#scoped-storage">系统会忽略requestLegacyExternalStorage属性</a>，因此您的应用必须做好支持分区存储并为这些设备上的用户<a target="_blank" rel="noopener" href="https://developer.android.com/training/data-storage/use-cases#migrate-legacy-storage">迁移应用数据</a>的准备。</p>
-</blockquote>
+<p>通过上面的方式，实现了将跨屏内容绘制到Bitmap中，并保存成图片，类似于长图支持，满足了项目需求。<br>以上相关代码请参考<a target="_blank" rel="noopener" href="https://github.com/gurecn/sleepassistant">睡眠助理</a></p>
 
             </div>
             <hr />
@@ -580,9 +631,9 @@
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《Android 10系统创建文件失败》
+                    《View保存到图片功能（长图支持）》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2021/12/28/android-10-xi-tong-chuang-jian-wen-jian-shi-bai/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2021/12/29/view-bao-cun-dao-tu-pian-gong-neng-chang-tu-zhi-chi/" property="cc:attributionName"
                rel="cc:attributionURL">
                 Gure
             </a> 采用
@@ -884,9 +935,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2021/12/29/view-bao-cun-dao-tu-pian-gong-neng-chang-tu-zhi-chi/">
                     <div class="card-image">
@@ -906,9 +958,9 @@ view.setDraw
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2021-12-29
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-12-29
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -921,6 +973,7 @@ view.setDraw
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -939,24 +992,24 @@ view.setDraw
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/12/25/huo-qu-android-shou-ji-di-bu-dao-hang-lan-de-gao-du/">
+                <a href="/2021/12/28/android-10-xi-tong-chuang-jian-wen-jian-shi-bai/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="获取Android手机底部导航栏的高度">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Android 10系统创建文件失败">
                         
-                        <span class="card-title">获取Android手机底部导航栏的高度</span>
+                        <span class="card-title">Android 10系统创建文件失败</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            在工作中，遇到了一个这样的情况：使用PopWindow弹框作为对话框在底部显示。这本来是一个简单的问题，但是实际使用的过程发现，底部导航栏适配也是一个难题。因为在底部显示这个底部不是绝对的：对于有实体键或者虚拟键的手机来说是没有导航栏的；对
+                            昨天项目诗词功能新增将诗词显示界面保存到图库得功能，类似于小米便签、锤子便签的保存图片功能。将View保存成Bitmap对象已经实现了，唯独到了保存文件时出现了问题。开源项目本来有使用文件操作，但是主要是在私有路径下处理，保存到图库功能就必
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-12-25
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-12-28
                             </span>
                         <span class="publish-author">
                             
@@ -973,8 +1026,8 @@ view.setDraw
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%85%BC%E5%AE%B9%E6%80%A7/" target="_blank">
-                        <span class="chip bg-color">兼容性</span>
+                    <a href="/tags/%E6%96%B0%E7%89%B9%E6%80%A7/" target="_blank">
+                        <span class="chip bg-color">新特性</span>
                     </a>
                     
                 </div>
