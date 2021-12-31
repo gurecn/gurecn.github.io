@@ -5,15 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="google-site-verification" content="BZSSTWCG6ygfXci-M6fHXRUOICCdvw9XUlROWGENjyA" />
-    <meta name="keywords" content="个人推荐工具, Java C/C++ Vue Gure gurecn Android 卓技卓品">
-    <meta name="description" content="个人推荐工具
-桌面端搜索工具：Everything：https://www.voidtools.com/zh-cn/
-
-项目管理工具：
-
-
-Kanboard：https://github.com/kanboard/kanboard
-TAPD">
+    <meta name="keywords" content="MediaStore访问共享存储空间中的媒体文件, Java C/C++ Vue Gure gurecn Android 卓技卓品">
+    <meta name="description" content="在Android 10（API 29）版本的手机中，系统提供了分区存储的功能。对于启用了分区存储的应用，可以通过MediaStore进行文件的操作。对于部分应用未作MediaStore兼容时，存储文件会报错。这时候需要设置暂不启用分区存储能">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -21,7 +14,7 @@ TAPD">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>个人推荐工具 | 卓技卓品</title>
+    <title>MediaStore访问共享存储空间中的媒体文件 | 卓技卓品</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -267,13 +260,13 @@ TAPD">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        个人推荐工具
+                        MediaStore访问共享存储空间中的媒体文件
                     </div>
                 </div>
             </div>
@@ -384,8 +377,8 @@ TAPD">
                     
                     <div class="article-tag">
                         
-                        <a href="/tags/%E6%97%A5%E5%B8%B8/" target="_blank">
-                            <span class="chip bg-color">日常</span>
+                        <a href="/tags/%E6%96%B0%E7%89%B9%E6%80%A7/" target="_blank">
+                            <span class="chip bg-color">新特性</span>
                         </a>
                         
                     </div>
@@ -396,8 +389,8 @@ TAPD">
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                        <a href="/categories/%E5%8E%9F%E5%88%9B/" class="post-category" target="_blank">
-                            原创
+                        <a href="/categories/Android/" class="post-category" target="_blank">
+                            Android
                         </a>
                         
                     </div>
@@ -408,7 +401,7 @@ TAPD">
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-10-26
+                    2021-12-31
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -422,14 +415,14 @@ TAPD">
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    406
+                    711
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
                 
@@ -445,161 +438,68 @@ TAPD">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="个人推荐工具"><a href="#个人推荐工具" class="headerlink" title="个人推荐工具"></a>个人推荐工具</h2><ul>
-<li><p>桌面端搜索工具：<br>Everything：<a target="_blank" rel="noopener" href="https://www.voidtools.com/zh-cn/">https://www.voidtools.com/zh-cn/</a></p>
-</li>
-<li><p>项目管理工具：</p>
-</li>
-<li><ul>
-<li>Kanboard：<a target="_blank" rel="noopener" href="https://github.com/kanboard/kanboard">https://github.com/kanboard/kanboard</a></li>
-<li>TAPD（腾讯）：<a target="_blank" rel="noopener" href="https://www.tapd.cn/cloud_logins/login">https://www.tapd.cn/cloud_logins/login</a>  </li>
+                <p>在Android 10（API 29）版本的手机中，系统提供了分区存储的功能。对于启用了分区存储的应用，可以通过MediaStore进行文件的操作。<br>对于部分应用未作MediaStore兼容时，存储文件会报错。这时候需要设置暂不启用分区存储能力，此时建议您在应用的清单文件中将 <a target="_blank" rel="noopener" href="https://developer.android.com/reference/kotlin/android/R.attr#requestLegacyExternalStorage:kotlin.Int">requestLegacyExternalStorage</a> 设置为 true 以停用分区存储。<br>参考代码如下：</p>
+<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>application</span>
+    <span class="token attr-name"><span class="token namespace">android:</span>allowBackup</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>backupAgent</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>.database.DataBackupAgent<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>icon</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@mipmap/ic_launcher<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>label</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@string/app_name<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>.application.TheApplication<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>requestLegacyExternalStorage</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>supportsRtl</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>theme</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@style/AppTheme.NoActionBar<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    ...
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>application</span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>但是上面方式只是临时方案，如果应用在搭载 Android 11 的设备上运行，以上配置会不生效。<br>此时就需要兼容MediaStore分区存储的方式了。<br>今天就以图片为例，实现图片的存储。官方文档：<a target="_blank" rel="noopener" href="https://developer.android.com/training/data-storage/shared/media">访问共享存储空间中的媒体文件</a>。<br>首先我们找到清单文件，对权限进行配置，设定API 29及以上版本不再获取存储权限：</p>
+<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>uses-permission</span> <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>android.permission.WRITE_EXTERNAL_STORAGE<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>maxSdkVersion</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>28<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>然乎我们在全县申请时，判断当前系统，若是28或更低版本时才动态获取存储权限：</p>
+<pre class="line-numbers language-xml"><code class="language-xml">if (Build.VERSION.SDK_INT &lt; Build.VERSION_CODES.Q) {
+    addPermission(permissionsList, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>权限申请取消后，我们可以使用MediaStore进行文件存储操作：</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+ * 保存图片,SDK > 28
+ */</span>
+<span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">insertImage</span><span class="token punctuation">(</span>Bitmap bitmap<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// 拿到 MediaStore.Images 表的uri</span>
+  Uri tableUri <span class="token operator">=</span> MediaStore<span class="token punctuation">.</span>Images<span class="token punctuation">.</span>Media<span class="token punctuation">.</span>EXTERNAL_CONTENT_URI<span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">// 创建图片索引</span>
+  ContentValues  value <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ContentValues</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  value<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>MediaStore<span class="token punctuation">.</span>Images<span class="token punctuation">.</span>Media<span class="token punctuation">.</span>DISPLAY_NAME<span class="token punctuation">,</span>System<span class="token punctuation">.</span><span class="token function">currentTimeMillis</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">".jpg"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  value<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>MediaStore<span class="token punctuation">.</span>Images<span class="token punctuation">.</span>Media<span class="token punctuation">.</span>MIME_TYPE<span class="token punctuation">,</span> <span class="token string">"image/png"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  value<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>MediaStore<span class="token punctuation">.</span>Images<span class="token punctuation">.</span>Media<span class="token punctuation">.</span>RELATIVE_PATH<span class="token punctuation">,</span> <span class="token string">"DCIM/devdroid"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  value<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>MediaStore<span class="token punctuation">.</span>Images<span class="token punctuation">.</span>Media<span class="token punctuation">.</span>DATE_ADDED<span class="token punctuation">,</span> System<span class="token punctuation">.</span><span class="token function">currentTimeMillis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">// 将该索引信息插入数据表，获得图片的Uri</span>
+  Uri imageUri <span class="token operator">=</span> <span class="token function">getContentResolver</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span>tableUri<span class="token punctuation">,</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">try</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 通过图片uri获得输出流</span>
+    OutputStream os <span class="token operator">=</span> <span class="token function">getContentResolver</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">openOutputStream</span><span class="token punctuation">(</span>imageUri<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// 图片压缩保存</span>
+    bitmap<span class="token punctuation">.</span><span class="token function">compress</span><span class="token punctuation">(</span>Bitmap<span class="token punctuation">.</span>CompressFormat<span class="token punctuation">.</span>JPEG<span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">,</span>os<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>此时安装应用，发现在API29及以上系统上，打开应用不在获取存储权限，同时存储图片功能也正常了。<br>以上讲述了对图片类型的操作，事实上MediaStore除了Images类型，还支持：</p>
+<ul>
+<li>MediaStore.Files: 共享的文件,包括多媒体和非多媒体信息</li>
+<li>MediaStore.Audio: 音频信息</li>
+<li>MediaStore.Vedio: 视频信息</li>
+<li>MediaStore.Download: 下载信息</li>
 </ul>
-</li>
-<li><p>编辑工具：</p>
-</li>
-<li><ul>
-<li>typora（markdown）：<a target="_blank" rel="noopener" href="https://typora.io/">https://typora.io/</a>  </li>
-<li>notepad++：<a target="_blank" rel="noopener" href="https://notepad-plus-plus.org/">https://notepad-plus-plus.org/</a></li>
+<p>他们支持的路径分别以下路径及其子路径：</p>
+<ul>
+<li>MediaStore.Images : 图片，存储在 DCIM/ 和 Pictures/ 目录中</li>
+<li>MediaStore.Video ：视频，存储在 DCIM/、Movies/ 和 Pictures/ 目录中</li>
+<li>MediaStore.Audio ：音频，存储在 Alarms/、Audiobooks/、Music/、Notifications/、Podcasts/ 和 Ringtones/ 目录中</li>
+<li>MediaStore.Download：下载，存储在 download/ 目录中</li>
 </ul>
-</li>
-<li><p>压缩工具：</p>
-</li>
-<li><ul>
-<li> 7zip：<a target="_blank" rel="noopener" href="https://www.7-zip.org/">https://www.7-zip.org/</a></li>
-</ul>
-</li>
-<li><p>安卓逆向：</p>
-</li>
-<li><ul>
-<li> jadx：<a target="_blank" rel="noopener" href="https://github.com/skylot/jadx/releases">https://github.com/skylot/jadx/releases</a></li>
-</ul>
-</li>
-<li><p>PDF阅读器：</p>
-</li>
-<li><ul>
-<li> sumatrapdf：<a target="_blank" rel="noopener" href="https://www.sumatrapdfreader.org/free-pdf-reader.html">https://www.sumatrapdfreader.org/free-pdf-reader.html</a></li>
-</ul>
-</li>
-<li><p>接口调试： </p>
-</li>
-<li><ul>
-<li>PostMan：<a target="_blank" rel="noopener" href="https://www.postman.com/">https://www.postman.com/</a></li>
-</ul>
-</li>
-<li><p>WiKi工具：</p>
-</li>
-<li><ul>
-<li> BookStack：<a target="_blank" rel="noopener" href="https://github.com/BookStackApp/BookStack/tree/v0.29.3">https://github.com/BookStackApp/BookStack/tree/v0.29.3</a></li>
-</ul>
-</li>
-<li><p>获取Android应用启动耗时命令：</p>
-</li>
-<li><ul>
-<li>adb shell am start -W packagename/MainActivity</li>
-</ul>
-</li>
-<li><p>日志捕获工具（可自建）：</p>
-</li>
-<li><ul>
-<li>Sentry:<a target="_blank" rel="noopener" href="https://sentry.io/welcome/">https://sentry.io/welcome/</a></li>
-</ul>
-</li>
-<li><p>NDK版本：</p>
-</li>
-<li><ul>
-<li>android-ndk-r16b</li>
-</ul>
-</li>
-<li><p>招标网站：</p>
-</li>
-<li><ul>
-<li>千里马：<a target="_blank" rel="noopener" href="http://vip.qianlima.com/login.html">http://vip.qianlima.com/login.html</a></li>
-</ul>
-</li>
-<li><p>播客客户端：</p>
-</li>
-<li><ul>
-<li>小宇宙：<a target="_blank" rel="noopener" href="https://www.xiaoyuzhoufm.com/">https://www.xiaoyuzhoufm.com/</a></li>
-</ul>
-</li>
-<li><p>新闻客户端：</p>
-</li>
-<li><ul>
-<li>人民日报：<a target="_blank" rel="noopener" href="http://paper.people.com.cn/rmrb/html/2021-10/09/nbs.D110000renmrb_01.htm">http://paper.people.com.cn</a></li>
-</ul>
-</li>
-<li><p>取色器：</p>
-</li>
-<li><ul>
-<li>TakeColor</li>
-</ul>
-</li>
-<li><p>文件对比工具：</p>
-</li>
-<li><ul>
-<li>Beyond Compare</li>
-</ul>
-</li>
-<li><p>APK瘦身工具：</p>
-</li>
-<li><ul>
-<li>AndResGuard：<a target="_blank" rel="noopener" href="https://github.com/shwenzhang/AndResGuard">https://github.com/shwenzhang/AndResGuard</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.yuque.com/attachments/yuque/0/2021/xml/22383421/1633761421721-264e6b9c-bd64-4a5d-a288-3969ce19c1dd.xml">📎config.xml</a>    <a target="_blank" rel="noopener" href="https://www.yuque.com/attachments/yuque/0/2021/sh/22383421/1633761421723-f2e83119-94c8-45ba-9c4b-e3d05ea7e291.sh">📎buildApk.sh</a></li>
-</ul>
-</li>
-<li><p>云盘：</p>
-</li>
-<li><ul>
-<li>微云：<a target="_blank" rel="noopener" href="https://www.weiyun.com/">https://www.weiyun.com/</a></li>
-</ul>
-</li>
-</ul>
-<h2 id="个人推荐Android客户端："><a href="#个人推荐Android客户端：" class="headerlink" title="个人推荐Android客户端："></a>个人推荐Android客户端：</h2><ul>
-<li><p>学习工具：墨墨背单词    </p>
-</li>
-<li><p>新闻客户端：学习强国、人民日报</p>
-</li>
-<li><p>记账软件：松鼠记账（有广告）</p>
-</li>
-<li><p>办事软件：郑好办（郑州）</p>
-</li>
-<li><p>技术论坛：掘金、脉脉</p>
-</li>
-<li><p>阅读软件：微信读书、多看阅读（离线图书）</p>
-</li>
-<li><p>导航地图：高德地图</p>
-</li>
-<li><p>播客软件：小宇宙</p>
-</li>
-<li><ul>
-<li>推荐播客：</li>
-</ul>
-</li>
-<li><ul>
-<li><ul>
-<li><a target="_blank" rel="noopener" href="https://www.xiaoyuzhoufm.com/podcast/5e285326418a84a04627343f?s=eyJ1IjoiNjEyNGQ3ZDRlMGY1ZTcyM2JiMDE0MzNjIn0=">一席：人人都是主播。</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.xiaoyuzhoufm.com/podcast/5e2aaf88418a84a046546819?s=eyJ1IjoiNjEyNGQ3ZDRlMGY1ZTcyM2JiMDE0MzNjIn0=">梁文道八分：一个陪你成长的知识剧场。</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><ul>
-<li><ul>
-<li><a target="_blank" rel="noopener" href="https://www.xiaoyuzhoufm.com/podcast/5e4515bd418a84a046e2b11a?s=eyJ1IjoiNjEyNGQ3ZDRlMGY1ZTcyM2JiMDE0MzNjIn0=">文化有限：分享最打动他们的文学作品。</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.xiaoyuzhoufm.com/podcast/60de7c003dd577b40d5a40f3?s=eyJ1IjoiNjEyNGQ3ZDRlMGY1ZTcyM2JiMDE0MzNjIn0=">声动早咖啡：浓缩、新鲜、商业科技轻解读。</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><ul>
-<li><ul>
-<li><a target="_blank" rel="noopener" href="https://www.xiaoyuzhoufm.com/podcast/5e2831ed418a84a046231c00?s=eyJ1IjoiNjEyNGQ3ZDRlMGY1ZTcyM2JiMDE0MzNjIn0=">声东击西：世界宽广，但人们被日常及社交媒体所限制。</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.xiaoyuzhoufm.com/podcast/5e4ee557418a84a0466737b7?s=eyJ1IjoiNjEyNGQ3ZDRlMGY1ZTcyM2JiMDE0MzNjIn0=">忽左忽右：沙龙访谈类博客。</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+<p>以上这些路径都是系统通过MIME类型进行访问和操作，包含视频、图像、文本、音频、应用程序等数据。<br>关于MIME类型后面有时间再研究。<br>以上所有代码可参考<a target="_blank" rel="noopener" href="https://github.com/gurecn/sleepassistant">睡眠助理</a>。</p>
 
             </div>
             <hr />
@@ -634,9 +534,9 @@ TAPD">
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《个人推荐工具》
+                    《MediaStore访问共享存储空间中的媒体文件》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2021/10/26/ge-ren-tui-jian-gong-ju/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2021/12/31/mediastore-fang-wen-gong-xiang-cun-chu-kong-jian-zhong-de-mei-ti-wen-jian/" property="cc:attributionName"
                rel="cc:attributionURL">
                 Gure
             </a> 采用
@@ -938,48 +838,48 @@ TAPD">
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/10/28/qian-qian-shi-guang-2021/">
+                <a href="/2021/12/31/mediastore-fang-wen-gong-xiang-cun-chu-kong-jian-zhong-de-mei-ti-wen-jian/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="浅浅时光(2021)">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="MediaStore访问共享存储空间中的媒体文件">
                         
-                        <span class="card-title">浅浅时光(2021)</span>
+                        <span class="card-title">MediaStore访问共享存储空间中的媒体文件</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            立一个flag：每年的8月在结婚纪念日之前，做一本照片书。
-把这本相册献给把一生托付给我的妻子。感谢您的陪伴，我用这本相册纪念过去一年里我们共同的经历。可能每年的内容不同，时多时少，有好有坏，但这都是我们相依相偎、见证我们共同走过的岁月。
-
+                            在Android 10（API 29）版本的手机中，系统提供了分区存储的功能。对于启用了分区存储的应用，可以通过MediaStore进行文件的操作。对于部分应用未作MediaStore兼容时，存储文件会报错。这时候需要设置暂不启用分区存储能
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2021-10-28
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-12-31
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%8E%9F%E5%88%9B/" class="post-category" target="_blank">
-                                    原创
+                            <a href="/categories/Android/" class="post-category" target="_blank">
+                                    Android
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%B0%8F%E7%A1%AE%E5%B9%B8/" target="_blank">
-                        <span class="chip bg-color">小确幸</span>
+                    <a href="/tags/%E6%96%B0%E7%89%B9%E6%80%A7/" target="_blank">
+                        <span class="chip bg-color">新特性</span>
                     </a>
                     
                 </div>
@@ -993,24 +893,26 @@ TAPD">
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/10/26/android-home-jian-jian-ting-fang-shi-tan-tao/">
+                <a href="/2021/12/29/view-bao-cun-dao-tu-pian-gong-neng-chang-tu-zhi-chi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="Android Home键监听方式探讨">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="View保存到图片功能（长图支持）">
                         
-                        <span class="card-title">Android Home键监听方式探讨</span>
+                        <span class="card-title">View保存到图片功能（长图支持）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            遇到问题由于我公司产品要实现调起键盘界面时能直接弹出对话框，让用户直接进行输入交互。Android中，在非界面类控件下想要直接弹出对话框需要使用覆盖其他应用的权限。该需求我们使用Dialog，采用设置TYPE_SYSTEM_ALERT权限来
+                            睡眠助理项目中诗词歌赋功能新增将诗词显示界面保存到图库得功能，类似于小米便签、锤子便签的保存图片功能。上篇博客介绍了Android 10系统中文件创建遇到的问题，今天介绍一下如何将诗词保存成图片。
+功能实现方法二：
+view.setDraw
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-10-26
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-12-29
                             </span>
                         <span class="publish-author">
                             
@@ -1027,8 +929,8 @@ TAPD">
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%BA%94%E7%94%A8/" target="_blank">
-                        <span class="chip bg-color">应用</span>
+                    <a href="/tags/%E7%89%B9%E6%80%A7/" target="_blank">
+                        <span class="chip bg-color">特性</span>
                     </a>
                     
                 </div>
