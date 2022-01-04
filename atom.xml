@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devdroid.cn/"/>
-  <updated>2022-01-04T09:13:49.761Z</updated>
+  <updated>2022-01-04T09:34:40.311Z</updated>
   <id>https://devdroid.cn/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://devdroid.cn/2022/01/04/han-zi-zhuan-pin-yin-shi-xian/"/>
     <id>https://devdroid.cn/2022/01/04/han-zi-zhuan-pin-yin-shi-xian/</id>
     <published>2022-01-04T08:58:47.000Z</published>
-    <updated>2022-01-04T09:13:49.761Z</updated>
+    <updated>2022-01-04T09:34:40.311Z</updated>
     
     <summary type="html">
     
@@ -40,81 +40,6 @@
     
     
       <category term="三方资源" scheme="https://devdroid.cn/tags/%E4%B8%89%E6%96%B9%E8%B5%84%E6%BA%90/"/>
-    
-  </entry>
-  
-  <entry>
-    <title></title>
-    <link href="https://devdroid.cn/2022/01/04/han-zi-zhuan-pin-yin-shi-xian/2017-03-22-tinypinyin-part-3/"/>
-    <id>https://devdroid.cn/2022/01/04/han-zi-zhuan-pin-yin-shi-xian/2017-03-22-tinypinyin-part-3/</id>
-    <published>2022-01-04T08:04:21.597Z</published>
-    <updated>2022-01-04T08:04:22.783Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot; data-color-mode=&quot;auto&quot; data-light-theme=&quot;light&quot; data-dark-theme=&quot;dark&quot;&gt;
-  &lt;head&gt;
-    &lt;meta
-        
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title></title>
-    <link href="https://devdroid.cn/2022/01/04/han-zi-zhuan-pin-yin-shi-xian/2017-03-20-tinypinyin-part-2/"/>
-    <id>https://devdroid.cn/2022/01/04/han-zi-zhuan-pin-yin-shi-xian/2017-03-20-tinypinyin-part-2/</id>
-    <published>2022-01-04T08:04:17.517Z</published>
-    <updated>2022-01-04T08:04:18.761Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot; data-color-mode=&quot;auto&quot; data-light-theme=&quot;light&quot; data-dark-theme=&quot;dark&quot;&gt;
-  &lt;head&gt;
-    &lt;meta
-        
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title></title>
-    <link href="https://devdroid.cn/2022/01/04/han-zi-zhuan-pin-yin-shi-xian/2017-03-19-tinypinyin-part-1/"/>
-    <id>https://devdroid.cn/2022/01/04/han-zi-zhuan-pin-yin-shi-xian/2017-03-19-tinypinyin-part-1/</id>
-    <published>2022-01-04T08:04:13.633Z</published>
-    <updated>2022-01-04T08:04:14.893Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot; data-color-mode=&quot;auto&quot; data-light-theme=&quot;light&quot; data-dark-theme=&quot;dark&quot;&gt;
-  &lt;head&gt;
-    &lt;meta
-        
-      
-    
-    </summary>
-    
     
   </entry>
   
@@ -540,6 +465,84 @@
     
     
       <category term="正则表达式" scheme="https://devdroid.cn/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo获取url参数实现主题自适应</title>
+    <link href="https://devdroid.cn/2021/11/29/hexo-huo-qu-url-can-shu-shi-xian-zhu-ti-zi-gua-ying/"/>
+    <id>https://devdroid.cn/2021/11/29/hexo-huo-qu-url-can-shu-shi-xian-zhu-ti-zi-gua-ying/</id>
+    <published>2021-11-29T10:13:33.000Z</published>
+    <updated>2021-11-29T10:15:57.242Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h4 id=&quot;需求背景&quot;&gt;&lt;a href=&quot;#需求背景&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="hexo" scheme="https://devdroid.cn/categories/hexo/"/>
+    
+    
+      <category term="博客" scheme="https://devdroid.cn/tags/%E5%8D%9A%E5%AE%A2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo博客实现深色主题切换</title>
+    <link href="https://devdroid.cn/2021/11/29/hexo-bo-ke-shi-xian-shen-se-zhu-ti-qie-huan/"/>
+    <id>https://devdroid.cn/2021/11/29/hexo-bo-ke-shi-xian-shen-se-zhu-ti-qie-huan/</id>
+    <published>2021-11-29T08:36:54.000Z</published>
+    <updated>2021-11-29T08:43:05.981Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h4 id=&quot;需求背景&quot;&gt;&lt;a href=&quot;#需求背景&quot; class=&quot;headerlink&quot; title=&quot;需求背景&quot;&gt;&lt;/a&gt;需求背景&lt;/h4&gt;&lt;p&gt;开源应用内嵌个人博客，由于应用做了深色主题兼容，然而当前博客不支持深色主题，导致夜间查看时屏幕很刺眼。遂研究Hexo
+        
+      
+    
+    </summary>
+    
+      <category term="hexo" scheme="https://devdroid.cn/categories/hexo/"/>
+    
+    
+      <category term="博客" scheme="https://devdroid.cn/tags/%E5%8D%9A%E5%AE%A2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android捕获系统崩溃的日志</title>
+    <link href="https://devdroid.cn/2021/11/27/android-bu-huo-xi-tong-beng-kui-de-ri-zhi/"/>
+    <id>https://devdroid.cn/2021/11/27/android-bu-huo-xi-tong-beng-kui-de-ri-zhi/</id>
+    <published>2021-11-27T03:37:27.000Z</published>
+    <updated>2021-11-27T03:38:02.976Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="https://devdroid.cn/categories/Android/"/>
+    
+    
+      <category term="应用" scheme="https://devdroid.cn/tags/%E5%BA%94%E7%94%A8/"/>
     
   </entry>
   
