@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devdroid.cn/"/>
-  <updated>2022-01-05T11:19:14.548Z</updated>
+  <updated>2022-01-07T10:30:33.740Z</updated>
   <id>https://devdroid.cn/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>因工作心疼</title>
+    <link href="https://devdroid.cn/2022/01/07/yin-gong-zuo-xin-teng/"/>
+    <id>https://devdroid.cn/2022/01/07/yin-gong-zuo-xin-teng/</id>
+    <published>2022-01-07T10:29:36.000Z</published>
+    <updated>2022-01-07T10:30:33.740Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;工作到心疼。&lt;br&gt;这不是形容词，也不是夸张语气，是真切感受到身体的揪心，同时也是第二次因为工作感到身体的不适。&lt;br&gt;第一次是在第一家公司，那是2016年。&lt;br&gt;作为一个新人，初涉工作，被公司放到Android开发团队小组长的位置上（能新手作为小组长，可以想象其他成员的
+        
+      
+    
+    </summary>
+    
+      <category term="日常" scheme="https://devdroid.cn/categories/%E6%97%A5%E5%B8%B8/"/>
+    
+    
+      <category term="感悟" scheme="https://devdroid.cn/tags/%E6%84%9F%E6%82%9F/"/>
+    
+  </entry>
   
   <entry>
     <title>分享图片到其他应用</title>
@@ -509,32 +535,6 @@
         
         
           &lt;h4 id=&quot;需求背景&quot;&gt;&lt;a href=&quot;#需求背景&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="Web" scheme="https://devdroid.cn/categories/Web/"/>
-    
-    
-      <category term="hexo" scheme="https://devdroid.cn/tags/hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hexo博客实现深色主题切换</title>
-    <link href="https://devdroid.cn/2021/11/29/hexo-bo-ke-shi-xian-shen-se-zhu-ti-qie-huan/"/>
-    <id>https://devdroid.cn/2021/11/29/hexo-bo-ke-shi-xian-shen-se-zhu-ti-qie-huan/</id>
-    <published>2021-11-29T08:36:54.000Z</published>
-    <updated>2022-01-07T09:31:09.319Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h4 id=&quot;需求背景&quot;&gt;&lt;a href=&quot;#需求背景&quot; class=&quot;headerlink&quot; title=&quot;需求背景&quot;&gt;&lt;/a&gt;需求背景&lt;/h4&gt;&lt;p&gt;开源应用内嵌个人博客，由于应用做了深色主题兼容，然而当前博客不支持深色主题，导致夜间查看时屏幕很刺眼。遂研究Hexo
         
       
     
