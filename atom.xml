@@ -206,7 +206,7 @@
     <link href="https://devdroid.cn/2021/12/17/shi-yong-duo-xian-cheng-chu-li-hao-shi-cao-zuo/"/>
     <id>https://devdroid.cn/2021/12/17/shi-yong-duo-xian-cheng-chu-li-hao-shi-cao-zuo/</id>
     <published>2021-12-17T11:13:28.000Z</published>
-    <updated>2021-12-17T11:15:14.910Z</updated>
+    <updated>2022-01-07T09:34:38.955Z</updated>
     
     <summary type="html">
     
@@ -220,7 +220,7 @@
     
     </summary>
     
-      <category term="Java" scheme="https://devdroid.cn/categories/Java/"/>
+      <category term="Android" scheme="https://devdroid.cn/categories/Android/"/>
     
     
       <category term="优化" scheme="https://devdroid.cn/tags/%E4%BC%98%E5%8C%96/"/>
@@ -342,7 +342,7 @@
     <link href="https://devdroid.cn/2021/12/08/you-hua-zhuang-tai-lan-chen-jin-xian-shi/"/>
     <id>https://devdroid.cn/2021/12/08/you-hua-zhuang-tai-lan-chen-jin-xian-shi/</id>
     <published>2021-12-08T05:28:12.000Z</published>
-    <updated>2021-12-08T05:36:26.852Z</updated>
+    <updated>2022-01-07T09:35:35.111Z</updated>
     
     <summary type="html">
     
@@ -359,7 +359,7 @@
       <category term="Android" scheme="https://devdroid.cn/categories/Android/"/>
     
     
-      <category term="特性" scheme="https://devdroid.cn/tags/%E7%89%B9%E6%80%A7/"/>
+      <category term="兼容性" scheme="https://devdroid.cn/tags/%E5%85%BC%E5%AE%B9%E6%80%A7/"/>
     
   </entry>
   
@@ -473,7 +473,7 @@
     <link href="https://devdroid.cn/2021/11/30/zheng-ze-biao-da-shi-zhi-ding-zi-fu-hou-cha-ru-shu-ju/"/>
     <id>https://devdroid.cn/2021/11/30/zheng-ze-biao-da-shi-zhi-ding-zi-fu-hou-cha-ru-shu-ju/</id>
     <published>2021-11-30T02:13:37.000Z</published>
-    <updated>2021-11-30T02:58:38.589Z</updated>
+    <updated>2022-01-07T09:35:58.331Z</updated>
     
     <summary type="html">
     
@@ -488,7 +488,7 @@
     
     </summary>
     
-      <category term="技能" scheme="https://devdroid.cn/categories/%E6%8A%80%E8%83%BD/"/>
+      <category term="Java" scheme="https://devdroid.cn/categories/Java/"/>
     
     
       <category term="正则表达式" scheme="https://devdroid.cn/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
@@ -500,7 +500,7 @@
     <link href="https://devdroid.cn/2021/11/29/hexo-huo-qu-url-can-shu-shi-xian-zhu-ti-zi-gua-ying/"/>
     <id>https://devdroid.cn/2021/11/29/hexo-huo-qu-url-can-shu-shi-xian-zhu-ti-zi-gua-ying/</id>
     <published>2021-11-29T10:13:33.000Z</published>
-    <updated>2021-11-29T10:15:57.242Z</updated>
+    <updated>2022-01-07T09:32:07.876Z</updated>
     
     <summary type="html">
     
@@ -514,10 +514,10 @@
     
     </summary>
     
-      <category term="hexo" scheme="https://devdroid.cn/categories/hexo/"/>
+      <category term="Web" scheme="https://devdroid.cn/categories/Web/"/>
     
     
-      <category term="博客" scheme="https://devdroid.cn/tags/%E5%8D%9A%E5%AE%A2/"/>
+      <category term="hexo" scheme="https://devdroid.cn/tags/hexo/"/>
     
   </entry>
   
@@ -526,7 +526,7 @@
     <link href="https://devdroid.cn/2021/11/29/hexo-bo-ke-shi-xian-shen-se-zhu-ti-qie-huan/"/>
     <id>https://devdroid.cn/2021/11/29/hexo-bo-ke-shi-xian-shen-se-zhu-ti-qie-huan/</id>
     <published>2021-11-29T08:36:54.000Z</published>
-    <updated>2021-11-29T08:43:05.981Z</updated>
+    <updated>2022-01-07T09:31:09.319Z</updated>
     
     <summary type="html">
     
@@ -540,10 +540,10 @@
     
     </summary>
     
-      <category term="hexo" scheme="https://devdroid.cn/categories/hexo/"/>
+      <category term="Web" scheme="https://devdroid.cn/categories/Web/"/>
     
     
-      <category term="博客" scheme="https://devdroid.cn/tags/%E5%8D%9A%E5%AE%A2/"/>
+      <category term="hexo" scheme="https://devdroid.cn/tags/hexo/"/>
     
   </entry>
   
