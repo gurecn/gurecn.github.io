@@ -5,8 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="google-site-verification" content="BZSSTWCG6ygfXci-M6fHXRUOICCdvw9XUlROWGENjyA" />
-    <meta name="keywords" content="Hexo获取url参数实现主题自适应, Java C/C++ Vue Gure gurecn Android 卓技卓品">
-    <meta name="description" content="需求背景由于博客嵌入到开源项目Android客户端中，客户端做了深色主题兼容，博客在上一节中也实现了深色主题。上节遗留一个问题，就是从Android客户端中跳转到博客时，无法把客户端的主题类型携带过去。所以出现了深色主题客户端跳转到博客后，">
+    <meta name="keywords" content="Notepad++运行JAVA代码, Java C/C++ Vue Gure gurecn Android 卓技卓品">
+    <meta name="description" content="有时候我们会临时写一些简单的Java代码执行，验证执行结果。不一定适合使用IDEA这样比较繁重的工具，但是直接使用记事本编写，采用命令执行又比较复杂。这时候类似于Notepad++、EditPlus这类常用的文本编辑工具就可以临时顶上来了。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +14,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Hexo获取url参数实现主题自适应 | 卓技卓品</title>
+    <title>Notepad++运行JAVA代码 | 卓技卓品</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -266,7 +266,7 @@
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Hexo获取url参数实现主题自适应
+                        Notepad++运行JAVA代码
                     </div>
                 </div>
             </div>
@@ -377,8 +377,8 @@
                     
                     <div class="article-tag">
                         
-                        <a href="/tags/hexo/" target="_blank">
-                            <span class="chip bg-color">hexo</span>
+                        <a href="/tags/%E5%B7%A5%E5%85%B7/" target="_blank">
+                            <span class="chip bg-color">工具</span>
                         </a>
                         
                     </div>
@@ -389,8 +389,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                        <a href="/categories/Web/" class="post-category" target="_blank">
-                            Web
+                        <a href="/categories/Java/" class="post-category" target="_blank">
+                            Java
                         </a>
                         
                     </div>
@@ -401,7 +401,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-11-29
+                    2022-01-11
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -415,7 +415,7 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    674
+                    703
                 </div>
                 
 
@@ -438,41 +438,53 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="需求背景"><a href="#需求背景" class="headerlink" title="需求背景"></a>需求背景</h4><p>由于博客嵌入到开源项目Android客户端中，客户端做了深色主题兼容，博客在上一节中也实现了深色主题。<br>上节遗留一个问题，就是从Android客户端中跳转到博客时，无法把客户端的主题类型携带过去。所以出现了深色主题客户端跳转到博客后，需要在博客主界面再次设置深色主题。这个过程显然是不满足要求的，本次就解决如何同步过来客户端的主题模式。<br>由于Android客户端跳转博客，仅通过URL跳转实现，所以传过来主题类型也只能从url传参入手。</p>
-<h4 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程"></a>实现过程</h4><p>URL采用GET请求方式时，可以传入参数，具体如下：</p>
-<pre><code>https://devdroid.cn?nightmode=1
+                <p>有时候我们会临时写一些简单的Java代码执行，验证执行结果。不一定适合使用IDEA这样比较繁重的工具，但是直接使用记事本编写，采用命令执行又比较复杂。这时候类似于Notepad++、EditPlus这类常用的文本编辑工具就可以临时顶上来了。<br>现在Notepad++、EditPlus等都支持直接运行Java、C等代码（开发环境需单独安装）。<br>因为我现在用的比较多的是Notepad++（免费），所以我们就以Notepad++为例，简单配置一下如何再Notepad++运行Java代码。<br>我使用的是Windows 11，其他系统操作类似。<br>准备工作：</p>
+<ul>
+<li>安装Notepad++，<a target="_blank" rel="noopener" href="https://notepad-plus.en.softonic.com/">参考官网</a>。</li>
+<li>安装Java环境，参考：<a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-environment-setup.html">Java 开发环境配置</a>。</li>
+</ul>
+<p>开始进行相关配置：<br>首先打开Notepad++，在工具栏依次打开：插件-插件管理，勾选NPPExec，点击右上角安装。<br>若发现界面语言是英语，可以先把界面语言切换成中文，在工具栏依次点击：Settings-Preferences-General-Localization，选择中文简体。然后再进行插件下载。<br>插件下载后，在工具栏依次点击插件-NPPExec-Excute NppExec Script…，在输入框输入：</p>
+<pre><code>NPP_SAVE
+javac.exe -encoding UTF-8 &quot;$(FILE_NAME)&quot;
+java.exe &quot;$(NAME_PART)&quot;
 </code></pre>
-<p>上面url片段中，请求参数为nightmode，传入的值为1。该方式能很好的实现类传递，满足需求。所以咱们就实现博客解析url参数并进行主题的切换能力。<br>显而易见，我们从客户端跳转到博客时，会默认打开主页。基于这个原理，我们只需要实现主页获取url并解析参数即可，我们找到\blog\themes\matery\layout\index.ejs文件，并在文件中追加如下script代码：</p>
-<pre><code>&lt;script&gt;
-    try &#123;
-        var reg = new RegExp(&quot;(^|&amp;)nightmode=([^&amp;]*)(&amp;|$)&quot;);
-        var r = window.location.href.split(&#39;?&#39;)[1].match(reg);
-        if(r != null) &#123;
-          &#39;1&#39; === r[2]?($(&#39;body&#39;).addClass(&#39;DarkMode&#39;), localStorage.setItem(&#39;isDark&#39;, &#39;1&#39;), $(&#39;#nightMode&#39;).removeClass(&#39;fa-lightbulb-o&#39;).addClass(&#39;fa-moon-o&#39;)):($(&#39;body&#39;).removeClass(&#39;DarkMode&#39;), localStorage.setItem(&#39;isDark&#39;, &#39;0&#39;),$(&#39;#nightMode&#39;).removeClass(&#39;fa-moon-o&#39;).addClass(&#39;fa-lightbulb-o&#39;))
-        &#125;
-    &#125; catch(e) &#123;
-        
-    &#125;
-&lt;/script&gt;
+<p>此时点击Save…，弹出框中重新命名：Java编译加执行。再点击Save进行保存，最后点击OK。此时若打开的文件不是可执行的Java程序，界面会弹出控制台，输出：</p>
+<pre><code>NPP_SAVE: 新文件 1
+javac.exe -encoding UTF-8 &quot;新文件 1&quot;
+Process started (PID=12040) &gt;&gt;&gt;
+javac: 无效的标记: 新文件 1
+用法: javac &lt;options&gt; &lt;source files&gt;
+-help 用于列出可能的选项
+&lt;&lt;&lt; Process finished (PID=12040). (Exit code 2)
+java.exe &quot;新文件 1&quot;
+Process started (PID=10196) &gt;&gt;&gt;
+错误: 找不到或无法加载主类 新文件 1
+&lt;&lt;&lt; Process finished (PID=10196). (Exit code 1)
+================ READY ================
 </code></pre>
-<p>其中，window.location.href为url的全部内容。我们通过正则表达式RegExp解析出nightmode参数的值。判断当nightmode为1时，切换到暗色主题，并缓存主题类型；否则切换到亮色主题，并缓存主题类型。<br>此时我们可以通过浏览器访问：<a href="https://devdroid.cn/?nightmode=1">https://devdroid.cn?nightmode=1</a>，打开博客的暗色主题；通过浏览器访问：<a href="https://devdroid.cn/?nightmode=0">https://devdroid.cn?nightmode=0</a>，打开博客的亮色主题。</p>
-<p>博客实现了解析url的能力，这时候客户端只需要做兼容即可，兼容代码如下：</p>
-<pre class="line-numbers language-java"><code class="language-java">String url <span class="token operator">=</span> <span class="token function">getIntent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getStringExtra</span><span class="token punctuation">(</span><span class="token string">"url"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">if</span><span class="token punctuation">(</span>TextUtils<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">boolean</span> isNightMode <span class="token operator">=</span> LauncherModel<span class="token punctuation">.</span><span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getSharedPreferencesManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getBoolean</span><span class="token punctuation">(</span>IPreferencesIds<span class="token punctuation">.</span>KEY_THEME_NIGHT_MODE<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  url <span class="token operator">=</span> <span class="token string">"https://devdroid.cn?nightmode="</span><span class="token operator">+</span><span class="token punctuation">(</span>isNightMode<span class="token operator">?</span><span class="token number">1</span><span class="token operator">:</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<p>此时打开的程序若是Java程序，则会执行一次，并在控制台输出结果：<br>我写的测试程序如下：</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HelloWorld</span><span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Hello World!你好啊"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-WebViewClient webViewClient <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WebViewClient</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token annotation punctuation">@Override</span>
-  <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">shouldOverrideUrlLoading</span><span class="token punctuation">(</span>WebView view<span class="token punctuation">,</span> String url<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">shouldOverrideUrlLoading</span><span class="token punctuation">(</span>view<span class="token punctuation">,</span> url<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    view<span class="token punctuation">.</span><span class="token function">loadUrl</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>此时通过客户端判断祖逖类型并传递到博客中的功能就实现了。</p>
-<p>相关代码请参考：<a target="_blank" rel="noopener" href="https://github.com/gurecn/sleepassistant">睡眠助理</a></p>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>输出结结果如下：</p>
+<pre><code>NPP_SAVE: C:\Users\Administrator\Desktop\HelloWorld.java
+javac.exe -encoding UTF-8 &quot;HelloWorld.java&quot;
+Process started (PID=2604) &gt;&gt;&gt;
+&lt;&lt;&lt; Process finished (PID=2604). (Exit code 0)
+java.exe &quot;HelloWorld&quot;
+Process started (PID=9676) &gt;&gt;&gt;
+Hello World!你好啊&lt;&lt;&lt; Process finished (PID=9676). (Exit code 0)
+================ READY ================
+</code></pre>
+<p>此时配置就完成了。<br>后续执行java程序有两种方式：</p>
+<ul>
+<li>可以使用快捷键F6，在弹出窗口中点击OK执行。</li>
+<li>可以在工具栏，点击Excute NppExec Script按钮，在弹出窗口中点击OK执行。</li>
+</ul>
+<p>我们也可以在工具栏依次点击插件-NPPExec-Excute Advanced Options中进行包括菜单在内的各项设置。</p>
 
             </div>
             <hr />
@@ -507,9 +519,9 @@ WebViewClient webViewClient <span class="token operator">=</span> <span class="t
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《Hexo获取url参数实现主题自适应》
+                    《Notepad++运行JAVA代码》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2021/11/29/hexo-huo-qu-url-can-shu-shi-xian-zhu-ti-zi-gua-ying/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2022/01/11/notepad-yun-xing-java-dai-ma/" property="cc:attributionName"
                rel="cc:attributionURL">
                 Gure
             </a> 采用
@@ -811,34 +823,30 @@ WebViewClient webViewClient <span class="token operator">=</span> <span class="t
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/11/30/zheng-ze-biao-da-shi-zhi-ding-zi-fu-hou-cha-ru-shu-ju/">
+                <a href="/2022/01/11/notepad-yun-xing-java-dai-ma/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="正则表达式指定字符后插入数据">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="Notepad++运行JAVA代码">
                         
-                        <span class="card-title">正则表达式指定字符后插入数据</span>
+                        <span class="card-title">Notepad++运行JAVA代码</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            需求背景睡眠助理添加了古诗词显示效果，API接口返回的古诗词数据如下：
-{
-    "status": "success",
-    "data": {
-        "id": "5b8b9572e116fb3714e6faba",
- 
+                            有时候我们会临时写一些简单的Java代码执行，验证执行结果。不一定适合使用IDEA这样比较繁重的工具，但是直接使用记事本编写，采用命令执行又比较复杂。这时候类似于Notepad++、EditPlus这类常用的文本编辑工具就可以临时顶上来了。
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2021-11-30
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2022-01-11
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -851,11 +859,12 @@ WebViewClient webViewClient <span class="token operator">=</span> <span class="t
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" target="_blank">
-                        <span class="chip bg-color">正则表达式</span>
+                    <a href="/tags/%E5%B7%A5%E5%85%B7/" target="_blank">
+                        <span class="chip bg-color">工具</span>
                     </a>
                     
                 </div>
@@ -869,32 +878,31 @@ WebViewClient webViewClient <span class="token operator">=</span> <span class="t
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/11/29/hexo-bo-ke-shi-xian-shen-se-zhu-ti-qie-huan/">
+                <a href="/2022/01/07/yin-gong-zuo-xin-teng/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="Hexo博客实现深色主题切换">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="因工作心疼">
                         
-                        <span class="card-title">Hexo博客实现深色主题切换</span>
+                        <span class="card-title">因工作心疼</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            需求背景开源应用内嵌个人博客，由于应用做了深色主题兼容，然而当前博客不支持深色主题，导致夜间查看时屏幕很刺眼。遂研究Hexo Matery主题博客支持深色主题模式。最终效果可参考个人博客：卓技卓品
-实现过程第一步，在Web界面添加切换深色主
+                            工作到心疼。这不是形容词，也不是夸张语气，是真切感受到身体的揪心，同时也是第二次因为工作感到身体的不适。第一次是在第一家公司，那是2016年。作为一个新人，初涉工作，被公司放到Android开发团队小组长的位置上（能新手作为小组长，可以想象
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-11-29
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2022-01-07
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Web/" class="post-category" target="_blank">
-                                    Web
+                            <a href="/categories/%E6%97%A5%E5%B8%B8/" class="post-category" target="_blank">
+                                    日常
                                 </a>
                             
                             
@@ -904,8 +912,8 @@ WebViewClient webViewClient <span class="token operator">=</span> <span class="t
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/hexo/" target="_blank">
-                        <span class="chip bg-color">hexo</span>
+                    <a href="/tags/%E6%84%9F%E6%82%9F/" target="_blank">
+                        <span class="chip bg-color">感悟</span>
                     </a>
                     
                 </div>

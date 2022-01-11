@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devdroid.cn/"/>
-  <updated>2022-01-07T10:30:33.740Z</updated>
+  <updated>2022-01-11T05:55:04.744Z</updated>
   <id>https://devdroid.cn/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Notepad++运行JAVA代码</title>
+    <link href="https://devdroid.cn/2022/01/11/notepad-yun-xing-java-dai-ma/"/>
+    <id>https://devdroid.cn/2022/01/11/notepad-yun-xing-java-dai-ma/</id>
+    <published>2022-01-11T05:52:01.000Z</published>
+    <updated>2022-01-11T05:55:04.744Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;有时候我们会临时写一些简单的Java代码执行，验证执行结果。不一定适合使用IDEA这样比较繁重的工具，但是直接使用记事本编写，采用命令执行又比较复杂。这时候类似于Notepad++、EditPlus这类常用的文本编辑工具就可以临时顶上来了。&lt;br&gt;现在Notepad++、E
+        
+      
+    
+    </summary>
+    
+      <category term="Java" scheme="https://devdroid.cn/categories/Java/"/>
+    
+    
+      <category term="工具" scheme="https://devdroid.cn/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
   
   <entry>
     <title>因工作心疼</title>
@@ -518,32 +544,6 @@
     
     
       <category term="正则表达式" scheme="https://devdroid.cn/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hexo获取url参数实现主题自适应</title>
-    <link href="https://devdroid.cn/2021/11/29/hexo-huo-qu-url-can-shu-shi-xian-zhu-ti-zi-gua-ying/"/>
-    <id>https://devdroid.cn/2021/11/29/hexo-huo-qu-url-can-shu-shi-xian-zhu-ti-zi-gua-ying/</id>
-    <published>2021-11-29T10:13:33.000Z</published>
-    <updated>2022-01-07T09:32:07.876Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h4 id=&quot;需求背景&quot;&gt;&lt;a href=&quot;#需求背景&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="Web" scheme="https://devdroid.cn/categories/Web/"/>
-    
-    
-      <category term="hexo" scheme="https://devdroid.cn/tags/hexo/"/>
     
   </entry>
   

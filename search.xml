@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Notepad++运行JAVA代码</title>
+      <link href="/2022/01/11/notepad-yun-xing-java-dai-ma/"/>
+      <url>/2022/01/11/notepad-yun-xing-java-dai-ma/</url>
+      
+        <content type="html"><![CDATA[<p>有时候我们会临时写一些简单的Java代码执行，验证执行结果。不一定适合使用IDEA这样比较繁重的工具，但是直接使用记事本编写，采用命令执行又比较复杂。这时候类似于Notepad++、EditPlus这类常用的文本编辑工具就可以临时顶上来了。<br>现在Notepad++、EditPlus等都支持直接运行Java、C等代码（开发环境需单独安装）。<br>因为我现在用的比较多的是Notepad++（免费），所以我们就以Notepad++为例，简单配置一下如何再Notepad++运行Java代码。<br>我使用的是Windows 11，其他系统操作类似。<br>准备工作：</p><ul><li>安装Notepad++，<a href="https://notepad-plus.en.softonic.com/">参考官网</a>。</li><li>安装Java环境，参考：<a href="https://www.runoob.com/java/java-environment-setup.html">Java 开发环境配置</a>。</li></ul><p>开始进行相关配置：<br>首先打开Notepad++，在工具栏依次打开：插件-插件管理，勾选NPPExec，点击右上角安装。<br>若发现界面语言是英语，可以先把界面语言切换成中文，在工具栏依次点击：Settings-Preferences-General-Localization，选择中文简体。然后再进行插件下载。<br>插件下载后，在工具栏依次点击插件-NPPExec-Excute NppExec Script…，在输入框输入：</p><pre><code>NPP_SAVEjavac.exe -encoding UTF-8 &quot;$(FILE_NAME)&quot;java.exe &quot;$(NAME_PART)&quot;</code></pre><p>此时点击Save…，弹出框中重新命名：Java编译加执行。再点击Save进行保存，最后点击OK。此时若打开的文件不是可执行的Java程序，界面会弹出控制台，输出：</p><pre><code>NPP_SAVE: 新文件 1javac.exe -encoding UTF-8 &quot;新文件 1&quot;Process started (PID=12040) &gt;&gt;&gt;javac: 无效的标记: 新文件 1用法: javac &lt;options&gt; &lt;source files&gt;-help 用于列出可能的选项&lt;&lt;&lt; Process finished (PID=12040). (Exit code 2)java.exe &quot;新文件 1&quot;Process started (PID=10196) &gt;&gt;&gt;错误: 找不到或无法加载主类 新文件 1&lt;&lt;&lt; Process finished (PID=10196). (Exit code 1)================ READY ================</code></pre><p>此时打开的程序若是Java程序，则会执行一次，并在控制台输出结果：<br>我写的测试程序如下：</p><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HelloWorld</span><span class="token punctuation">{</span>    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">{</span>        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Hello World!你好啊"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>输出结结果如下：</p><pre><code>NPP_SAVE: C:\Users\Administrator\Desktop\HelloWorld.javajavac.exe -encoding UTF-8 &quot;HelloWorld.java&quot;Process started (PID=2604) &gt;&gt;&gt;&lt;&lt;&lt; Process finished (PID=2604). (Exit code 0)java.exe &quot;HelloWorld&quot;Process started (PID=9676) &gt;&gt;&gt;Hello World!你好啊&lt;&lt;&lt; Process finished (PID=9676). (Exit code 0)================ READY ================</code></pre><p>此时配置就完成了。<br>后续执行java程序有两种方式：</p><ul><li>可以使用快捷键F6，在弹出窗口中点击OK执行。</li><li>可以在工具栏，点击Excute NppExec Script按钮，在弹出窗口中点击OK执行。</li></ul><p>我们也可以在工具栏依次点击插件-NPPExec-Excute Advanced Options中进行包括菜单在内的各项设置。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 工具 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>因工作心疼</title>
       <link href="/2022/01/07/yin-gong-zuo-xin-teng/"/>
       <url>/2022/01/07/yin-gong-zuo-xin-teng/</url>
