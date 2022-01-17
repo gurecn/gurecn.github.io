@@ -5,8 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="google-site-verification" content="BZSSTWCG6ygfXci-M6fHXRUOICCdvw9XUlROWGENjyA" />
-    <meta name="keywords" content="Android捕获系统崩溃的日志, Java C/C++ Vue Gure gurecn Android 卓技卓品">
-    <meta name="description" content="背景这是最早参加工作时候学习的一个技术，程序在运行时遇到崩溃时，作为开发人员如何感知并解决？应用异常在所难免，所以处理异常情况下应用出现的崩溃就非常有必要。崩溃顾名思义，不像普通的异常，它们是无法预知且不可控的。因此捕获应用崩溃日志数据的意">
+    <meta name="keywords" content="Java代码防止反编译, Java C/C++ Vue Gure gurecn Android 卓技卓品">
+    <meta name="description" content="当前项目需要向客户提供Java服务端与客户端插件所需的SDK组件。做Android、Java开发的都知道，提供jar包给客户时，随便反编译一下代码基本就一览无余了，完全没有安全感。由于公司是做安全业务能力支持，SDK实现对客户业务数据进行加">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +14,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Android捕获系统崩溃的日志 | 卓技卓品</title>
+    <title>Java代码防止反编译 | 卓技卓品</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -260,13 +260,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Android捕获系统崩溃的日志
+                        Java代码防止反编译
                     </div>
                 </div>
             </div>
@@ -377,8 +377,8 @@
                     
                     <div class="article-tag">
                         
-                        <a href="/tags/%E5%BA%94%E7%94%A8/" target="_blank">
-                            <span class="chip bg-color">应用</span>
+                        <a href="/tags/%E6%B7%B7%E6%B7%86/" target="_blank">
+                            <span class="chip bg-color">混淆</span>
                         </a>
                         
                     </div>
@@ -389,8 +389,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                        <a href="/categories/Android/" class="post-category" target="_blank">
-                            Android
+                        <a href="/categories/Java/" class="post-category" target="_blank">
+                            Java
                         </a>
                         
                     </div>
@@ -401,7 +401,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-11-27
+                    2022-01-17
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -438,108 +438,134 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>这是最早参加工作时候学习的一个技术，程序在运行时遇到崩溃时，作为开发人员如何感知并解决？<br>应用异常在所难免，所以处理异常情况下应用出现的崩溃就非常有必要。<br>崩溃顾名思义，不像普通的异常，它们是无法预知且不可控的。<br>因此捕获应用崩溃日志数据的意义很大。开发者能通过捕获到的崩溃日志分析问题，继而解决问题。<br>最早做Android开发时我很奇怪，应用已经崩溃了，那么谁来负责捕获这个异常？应用本身的代码怎么获取到异常信息并且保存呢？难道需要开发一个伴侣应用进行监测？当时想捕获崩溃日志是不可能实现的。</p>
-<h3 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h3><p>通过了解异常捕获和抛出的过程和原理，发现崩溃异常出现之后的一系列操作都是可控的。<br>应用中异常会不断出现，有些异常没有被捕获处理，这样就会导致应用崩溃。因为这时候异常信息就交给系统虚拟机进行处理，虚拟机会Crash该应用，导致应用出现崩溃的情况。<br>我们捕获崩溃日志就是在异常交给虚拟机处理之前，应用本身获取日志信息，并进行保存或者上传的操作。从而实现获取异常日志，分析日志的功能。</p>
-<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><p>具体实现就非常简单了，这里以把崩溃日志保存成日志文件的方式为例，说明整个处理过程。</p>
-<ul>
-<li>首先创建捕获全局异常的类，捕获应用中未处理的异常，即崩溃情况。</li>
-</ul>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>hbd<span class="token punctuation">.</span>mobilepstn<span class="token punctuation">.</span>utils<span class="token punctuation">;</span>
+                <p>当前项目需要向客户提供Java服务端与客户端插件所需的SDK组件。<br>做Android、Java开发的都知道，提供jar包给客户时，随便反编译一下代码基本就一览无余了，完全没有安全感。<br>由于公司是做安全业务能力支持，SDK实现对客户业务数据进行加解密能力。那么就需要防止用户反编译与Debug调试，否则数据密钥、加密过程就完全暴漏出来了。<br>今天就研究一下jar包防止反编译操作。<br>第一个措施是使用混淆功能，让代码可读性变差。第二种是对jar包进行注入。</p>
+<h4 id="方式一：代码混淆"><a href="#方式一：代码混淆" class="headerlink" title="方式一：代码混淆"></a>方式一：代码混淆</h4><p>当我们把java代码打包成SDK时，如是未使用混淆配置时，打出来的jar包除了进行一些代码优化，阅读效果和源码基本上没有太大区别。<br>此时我们可以配置开启混淆，以Android Studio Gradle为例，配置如下：</p>
+<pre><code>buildTypes &#123;
+    release &#123;
+        minifyEnabled true
+        proguardFiles getDefaultProguardFile(&#39;proguard-android.txt&#39;), &#39;proguard-rules.pro&#39;
+    &#125;
+    debug &#123;
+        minifyEnabled true
+        proguardFiles getDefaultProguardFile(&#39;proguard-android.txt&#39;), &#39;proguard-rules.pro&#39;
+    &#125;
+&#125;
+</code></pre>
+<p>此时需要注意，在混淆配置文件中需要设置不混淆的类和方法，否则程序运行时会崩溃。<br>找到proguard-rules.pro文件，进行相关配置，相关配置及规则如下：</p>
+<pre><code># 代码混淆压缩比，在0~7之间，默认为5，一般不做修改
+-optimizationpasses 5
+# 混合时不使用大小写混合，混合后的类名为小写
+-dontusemixedcaseclassnames
+# 指定不去忽略非公共库的类
+-dontskipnonpubliclibraryclasses
+# 这句话能够使我们的项目混淆后产生映射文件
+# 包含有类名-&gt;混淆后类名的映射关系
+-verbose
+# 指定不去忽略非公共库的类成员
+-dontskipnonpubliclibraryclassmembers
+# 不做预校验，preverify是proguard的四个步骤之一，Android不需要preverify，去掉这一步能够加快混淆速度。
+-dontpreverify
+# 保留Annotation不混淆
+-keepattributes *Annotation*,InnerClasses
+# 避免混淆泛型
+-keepattributes Signature
+# 抛出异常时保留代码行号
+-keepattributes SourceFile,LineNumberTable
+# 指定混淆是采用的算法，后面的参数是一个过滤器
+# 这个过滤器是谷歌推荐的算法，一般不做更改
+-optimizations !code/simplification/cast,!field/*,!class/merging/*
 
-<span class="token keyword">import</span> android<span class="token punctuation">.</span>content<span class="token punctuation">.</span>Context<span class="token punctuation">;</span>
-<span class="token keyword">import</span> android<span class="token punctuation">.</span>os<span class="token punctuation">.</span>Environment<span class="token punctuation">;</span>
-<span class="token keyword">import</span> android<span class="token punctuation">.</span>os<span class="token punctuation">.</span>Looper<span class="token punctuation">;</span>
-<span class="token keyword">import</span> android<span class="token punctuation">.</span>util<span class="token punctuation">.</span>Log<span class="token punctuation">;</span>
-<span class="token keyword">import</span> android<span class="token punctuation">.</span>widget<span class="token punctuation">.</span>Toast<span class="token punctuation">;</span>
-<span class="token keyword">import</span> java<span class="token punctuation">.</span>io<span class="token punctuation">.</span>File<span class="token punctuation">;</span>
-<span class="token keyword">import</span> java<span class="token punctuation">.</span>io<span class="token punctuation">.</span>FileWriter<span class="token punctuation">;</span>
-<span class="token keyword">import</span> java<span class="token punctuation">.</span>io<span class="token punctuation">.</span>IOException<span class="token punctuation">;</span>
-<span class="token keyword">import</span> java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>Thread<span class="token punctuation">.</span>UncaughtExceptionHandler<span class="token punctuation">;</span>
-<span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>Date<span class="token punctuation">;</span>
+# 保留Nsdk中方法不被混淆
+-keep class com.encrypt.Nsdk&#123; *; &#125;
+# 保留org.bitcoin包下类、方法不被混淆
+-keep class org.bitcoin.** &#123;*;&#125;
+#所有View的子类及其子类的get、set方法都不进行混淆
+-keepclassmembers public class * extends android.view.View &#123;
+   void set*(***);
+   *** get*();
+&#125;
+# 不混淆Enum类型的指定方法
+-keepclassmembers enum * &#123;
+    public static **[] values();
+    public static ** valueOf(java.lang.String);
+&#125;
+# 不提示兼容库的错误警告
+-dontwarn android.support.**
+#忽略警告
+-ignorewarnings
+#保护泛型
+-keepattributes InnerClasses,Signature
+</code></pre>
+<p>此时重新编译SDK，会发现未声明保护的类和方法已经被混淆了。</p>
+<img src="混淆效果.png" width="459.5" height="161" alt="显示效果" >
 
-<span class="token comment" spellcheck="true">/**
- * User:Gurecn  gurecn@gmail.com
- * Date:2016/9/20
- * I'm glad to share my knowledge with you all.
- * 全局异常处理.
- */</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">CrashHandler</span> <span class="token keyword">implements</span> <span class="token class-name">UncaughtExceptionHandler</span> <span class="token punctuation">{</span>
-   <span class="token keyword">private</span> <span class="token keyword">static</span> CrashHandler instance<span class="token punctuation">;</span>
-   <span class="token keyword">private</span> Context ctx<span class="token punctuation">;</span>
-   <span class="token keyword">public</span> <span class="token keyword">static</span> CrashHandler <span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">if</span> <span class="token punctuation">(</span>instance <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-         instance <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">CrashHandler</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-      <span class="token punctuation">}</span>
-      <span class="token keyword">return</span> instance<span class="token punctuation">;</span>
-   <span class="token punctuation">}</span>
-
-   <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">init</span><span class="token punctuation">(</span>Context ctx<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">this</span><span class="token punctuation">.</span>ctx <span class="token operator">=</span> ctx<span class="token punctuation">;</span>
-      Thread<span class="token punctuation">.</span><span class="token function">setDefaultUncaughtExceptionHandler</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token punctuation">}</span>
-
-   <span class="token annotation punctuation">@Override</span>
-   <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">uncaughtException</span><span class="token punctuation">(</span>Thread arg0<span class="token punctuation">,</span> Throwable arg1<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      String logdir<span class="token punctuation">;</span>
-      <span class="token keyword">if</span> <span class="token punctuation">(</span>Environment<span class="token punctuation">.</span><span class="token function">getExternalStorageDirectory</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-         logdir <span class="token operator">=</span> Environment<span class="token punctuation">.</span><span class="token function">getExternalStorageDirectory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getAbsolutePath</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> File<span class="token punctuation">.</span>separator <span class="token operator">+</span> <span class="token string">"hbdLog"</span><span class="token punctuation">;</span>
-         File file <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">File</span><span class="token punctuation">(</span>logdir<span class="token punctuation">)</span><span class="token punctuation">;</span>
-         <span class="token keyword">boolean</span> mkSuccess<span class="token punctuation">;</span>
-         <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>file<span class="token punctuation">.</span><span class="token function">isDirectory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            mkSuccess <span class="token operator">=</span> file<span class="token punctuation">.</span><span class="token function">mkdirs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>mkSuccess<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-               mkSuccess <span class="token operator">=</span> file<span class="token punctuation">.</span><span class="token function">mkdirs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-         <span class="token punctuation">}</span>
-         <span class="token keyword">try</span> <span class="token punctuation">{</span>
-            FileWriter fw <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FileWriter</span><span class="token punctuation">(</span>logdir <span class="token operator">+</span> File<span class="token punctuation">.</span>separator <span class="token operator">+</span> <span class="token string">"error.log"</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>fw <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-               fw<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-               StackTraceElement<span class="token punctuation">[</span><span class="token punctuation">]</span> stackTrace <span class="token operator">=</span> arg1<span class="token punctuation">.</span><span class="token function">getStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-               fw<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>arg1<span class="token punctuation">.</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-               <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> stackTrace<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                  fw<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token string">"file:"</span> <span class="token operator">+</span> stackTrace<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">getFileName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">" class:"</span> <span class="token operator">+</span> stackTrace<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">getClassName</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-                  <span class="token operator">+</span> <span class="token string">" method:"</span> <span class="token operator">+</span> stackTrace<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">getMethodName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">" line:"</span> <span class="token operator">+</span> stackTrace<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">getLineNumber</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-               <span class="token punctuation">}</span>
-               fw<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-               fw<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-         <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">IOException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            Log<span class="token punctuation">.</span><span class="token function">e</span><span class="token punctuation">(</span><span class="token string">"crash handler"</span><span class="token punctuation">,</span> <span class="token string">"load file failed..."</span><span class="token punctuation">,</span> e<span class="token punctuation">.</span><span class="token function">getCause</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-         <span class="token punctuation">}</span>
-      <span class="token punctuation">}</span>
-      arg1<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-      <span class="token keyword">new</span> <span class="token class-name">Thread</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-         <span class="token annotation punctuation">@Override</span>
-         <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            Looper<span class="token punctuation">.</span><span class="token function">prepare</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            Toast<span class="token punctuation">.</span><span class="token function">makeText</span><span class="token punctuation">(</span>ctx<span class="token punctuation">,</span> <span class="token string">"遇到异常了.你能把hbdLog/error.log给我们，我们一起完善"</span><span class="token punctuation">,</span> Toast<span class="token punctuation">.</span>LENGTH_LONG<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            Looper<span class="token punctuation">.</span><span class="token function">loop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-         <span class="token punctuation">}</span>
-      <span class="token punctuation">}</span><span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-      <span class="token keyword">try</span> <span class="token punctuation">{</span>
-         Thread<span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">3000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-      <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">InterruptedException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-         e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-      <span class="token punctuation">}</span>
-      System<span class="token punctuation">.</span><span class="token function">exit</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token punctuation">}</span>
+<h4 id="方式二：代码注入"><a href="#方式二：代码注入" class="headerlink" title="方式二：代码注入"></a>方式二：代码注入</h4><p>当对jar进行混淆后，SDK反编译后的阅读效果会有一定的难度。<br>但是项目结构其实没有变更，所以对于熟悉反编译人员，仍然能够分析代码逻辑，混淆后代码效果如下：</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">a</span><span class="token punctuation">(</span><span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> var0<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  com<span class="token punctuation">.</span>csizg<span class="token punctuation">.</span>encrypt<span class="token punctuation">.</span>e<span class="token punctuation">.</span>a<span class="token punctuation">.</span><span class="token function">a</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> <span class="token string">"textEncrypt"</span><span class="token punctuation">,</span> <span class="token string">"data:"</span> <span class="token operator">+</span> var0<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> d<span class="token punctuation">.</span><span class="token function">a</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">a</span><span class="token punctuation">(</span>var0<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<ul>
-<li>然后将捕获异常类应用到APP中，仅需要在Application中的OnCreate方法中添加两句话，使其生效：</li>
-</ul>
-<pre class="line-numbers language-java"><code class="language-java">CrashHandler crashHandler <span class="token operator">=</span> CrashHandler<span class="token punctuation">.</span><span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-crashHandler<span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>其中最关键的设置生效的方式是调用系统提供的setDefaultUncaughtExceptionHandler方法。<br>查询源码发现注释如下：</p>
-<blockquote>
-<p>Set the default handler invoked when a thread abruptly terminates due to an uncaught exception, and no other handler has been defined for that thread.<br>Uncaught exception handling is controlled first by the thread, then by the thread’s ThreadGroup object and finally by the default uncaught exception handler. If the thread does not have an explicit uncaught exception handler set, and the thread’s thread group (including parent thread groups) does not specialize its uncaughtException method, then the default handler’s uncaughtException method will be invoked.<br>By setting the default uncaught exception handler, an application can change the way in which uncaught exceptions are handled (such as logging to a specific device, or file) for those threads that would already accept whatever “default” behavior the system provided.<br>Note that the default uncaught exception handler should not usually defer to the thread’s ThreadGroup object, as that could cause infinite recursion.</p>
-</blockquote>
-<p>翻译：</p>
-<blockquote>
-<p>设置当线程由于未捕获的异常（_uncaught exception_）而突然终止时调用的默认处理程序，并且没有为该线程定义其他处理程序（_gurecn：重复设置时以最后一次设置为准_）。<br>未捕获的异常处理首先由线程控制，然后由线程的 ThreadGroup 对象控制，最后由默认的未捕获异常处理程序控制。如果线程没有设置显式的未捕获异常处理程序，并且线程的线程组（包括父线程组）没有专门化其 uncaughtException 方法，则将调用默认处理程序的 uncaughtException 方法。<br>通过设置默认的未捕获异常处理程序，应用程序可以为那些已经接受系统提供的任何“默认”行为的线程更改处理未捕获异常的方式（例如记录到特定设备或文件）。<br>请注意，默认的未捕获异常处理程序通常不应遵循线程的 ThreadGroup 对象，因为这可能会导致无限递归。（_gurecn：启动-崩溃-启动-崩溃。。。。此时手机一般会提示：该应用多次崩溃，建议强制关闭。_）</p>
-</blockquote>
+
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">b</span><span class="token punctuation">(</span><span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> var0<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  com<span class="token punctuation">.</span>csizg<span class="token punctuation">.</span>encrypt<span class="token punctuation">.</span>e<span class="token punctuation">.</span>a<span class="token punctuation">.</span><span class="token function">a</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> <span class="token string">"textDecrypt"</span><span class="token punctuation">,</span> <span class="token string">"data:"</span> <span class="token operator">+</span> var0<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> var1 <span class="token operator">=</span> d<span class="token punctuation">.</span><span class="token function">a</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">b</span><span class="token punctuation">(</span>var0<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  com<span class="token punctuation">.</span>csizg<span class="token punctuation">.</span>encrypt<span class="token punctuation">.</span>e<span class="token punctuation">.</span>a<span class="token punctuation">.</span><span class="token function">a</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> <span class="token string">"textDecrypt"</span><span class="token punctuation">,</span> <span class="token string">"bytes length:"</span> <span class="token operator">+</span> var1<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> var1<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">boolean</span> <span class="token function">c</span><span class="token punctuation">(</span><span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> var0<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> d<span class="token punctuation">.</span><span class="token function">a</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">c</span><span class="token punctuation">(</span>var0<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">public</span> <span class="token keyword">synchronized</span> <span class="token keyword">void</span> <span class="token function">a</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  com<span class="token punctuation">.</span>csizg<span class="token punctuation">.</span>encrypt<span class="token punctuation">.</span>e<span class="token punctuation">.</span>a<span class="token punctuation">.</span><span class="token function">a</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> c <span class="token operator">+</span> <span class="token string">" nSdkVerify start"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  com<span class="token punctuation">.</span>csizg<span class="token punctuation">.</span>encrypt<span class="token punctuation">.</span>a<span class="token punctuation">.</span>a var1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">com<span class="token punctuation">.</span>csizg<span class="token punctuation">.</span>encrypt<span class="token punctuation">.</span>a<span class="token punctuation">.</span>a</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  var1<span class="token punctuation">.</span><span class="token function">a</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  com<span class="token punctuation">.</span>csizg<span class="token punctuation">.</span>encrypt<span class="token punctuation">.</span>e<span class="token punctuation">.</span>a<span class="token punctuation">.</span><span class="token function">a</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> c <span class="token operator">+</span> <span class="token string">"nSdkVerify end"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">private</span> <span class="token keyword">class</span> <span class="token class-name">a</span> <span class="token punctuation">{</span>
+  <span class="token keyword">private</span> <span class="token function">a</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">a</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    com<span class="token punctuation">.</span>csizg<span class="token punctuation">.</span>encrypt<span class="token punctuation">.</span>e<span class="token punctuation">.</span>a<span class="token punctuation">.</span><span class="token function">a</span><span class="token punctuation">(</span>com<span class="token punctuation">.</span>csizg<span class="token punctuation">.</span>encrypt<span class="token punctuation">.</span>a<span class="token punctuation">.</span>c<span class="token punctuation">,</span> com<span class="token punctuation">.</span>csizg<span class="token punctuation">.</span>encrypt<span class="token punctuation">.</span>a<span class="token punctuation">.</span>c <span class="token operator">+</span> <span class="token string">"1111111111111"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    com<span class="token punctuation">.</span>csizg<span class="token punctuation">.</span>b<span class="token punctuation">.</span>b<span class="token punctuation">.</span><span class="token function">a</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">b</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>此时我们可以使用注入的方式，让jar反编译失败，。<br>为了实现注入并不影响jar包内原有程序功能，我们先在源代码中创建几个内部类和不使用的方法，可以在方法中输入日志等操作，此时最好定义一些便于寻找的标记，比如一串指定的字符串等。</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">synchronized</span> <span class="token keyword">void</span> <span class="token function">verify</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    LogUtil<span class="token punctuation">.</span><span class="token function">d</span><span class="token punctuation">(</span><span class="token string">"Utils"</span><span class="token punctuation">,</span> <span class="token string">"SdkVerify start"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Verify token <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Verify</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    token<span class="token punctuation">.</span><span class="token function">getToken</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    LogUtil<span class="token punctuation">.</span><span class="token function">d</span><span class="token punctuation">(</span><span class="token string">"Utils"</span><span class="token punctuation">,</span> <span class="token string">"token:"</span> <span class="token operator">+</span> token<span class="token punctuation">.</span><span class="token function">getToken</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">private</span> <span class="token keyword">class</span> <span class="token class-name">Verify</span><span class="token punctuation">{</span>
+    <span class="token keyword">public</span> String <span class="token function">getToken</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        MessagePackage<span class="token punctuation">.</span><span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">verify</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        LogUtil<span class="token punctuation">.</span><span class="token function">d</span><span class="token punctuation">(</span><span class="token string">"NetUtils"</span><span class="token punctuation">,</span><span class="token string">"1111111111111"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token string">"111"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>然后我们正常编译出jar文件，开始执行注入了。<br>我们使用压缩软件7z或winrar等，打开jar包，找到我们写有预置内部类的文件使用记事本或文本编辑器打开。因为class文件可读性很差，此时我们可以借助于反编译软件，找到对应的文件后再在压缩包内定位指定的字符串。</p>
+<img src="编辑器查看.png" width="375" height="147" alt="编辑器查看" >
+
+<p>接下来注入代码，我们可以直接删除字符串或者随便写入一些内容（因为该方法不会被调用，所以不会影响程序原有功能）。</p>
+<img src="编辑器注入.png" width="291.5" height="150" alt="编辑器注入" >
+
+<p>完成后我们可以在反编译软件进行查看。此时可以看到，有数据注入的class文件会反编译失败，其他未被注入的文件反编译成功。</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">a</span><span class="token punctuation">(</span><span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> bytes<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">/* compiled code */</span> <span class="token punctuation">}</span>
+
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">b</span><span class="token punctuation">(</span><span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> bytes<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">/* compiled code */</span> <span class="token punctuation">}</span>
+
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">boolean</span> <span class="token function">c</span><span class="token punctuation">(</span><span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> bytes<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">/* compiled code */</span> <span class="token punctuation">}</span>
+
+<span class="token keyword">public</span> <span class="token keyword">synchronized</span> <span class="token keyword">void</span> <span class="token function">a</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">/* compiled code */</span> <span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>此时我们代码隐藏工作就实现了。</p>
+<p>jarsigner C:\Users\Administrator\Desktop\jarsigner\usdk_java_csizg_0.2.1.jar xindunkey</p>
 
             </div>
             <hr />
@@ -574,9 +600,9 @@ crashHandler<span class="token punctuation">.</span><span class="token function"
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《Android捕获系统崩溃的日志》
+                    《Java代码防止反编译》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2021/11/27/android-bu-huo-xi-tong-beng-kui-de-ri-zhi/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2022/01/17/java-dai-ma-fang-zhi-fan-bian-yi/" property="cc:attributionName"
                rel="cc:attributionURL">
                 Gure
             </a> 采用
@@ -878,47 +904,48 @@ crashHandler<span class="token punctuation">.</span><span class="token function"
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/11/29/hexo-bo-ke-shi-xian-shen-se-zhu-ti-qie-huan/">
+                <a href="/2022/01/17/java-dai-ma-fang-zhi-fan-bian-yi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="Hexo博客实现深色主题切换">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="Java代码防止反编译">
                         
-                        <span class="card-title">Hexo博客实现深色主题切换</span>
+                        <span class="card-title">Java代码防止反编译</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            需求背景开源应用内嵌个人博客，由于应用做了深色主题兼容，然而当前博客不支持深色主题，导致夜间查看时屏幕很刺眼。遂研究Hexo Matery主题博客支持深色主题模式。最终效果可参考个人博客：卓技卓品
-实现过程第一步，在Web界面添加切换深色主
+                            当前项目需要向客户提供Java服务端与客户端插件所需的SDK组件。做Android、Java开发的都知道，提供jar包给客户时，随便反编译一下代码基本就一览无余了，完全没有安全感。由于公司是做安全业务能力支持，SDK实现对客户业务数据进行加
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2021-11-29
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2022-01-17
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Web/" class="post-category" target="_blank">
-                                    Web
+                            <a href="/categories/Java/" class="post-category" target="_blank">
+                                    Java
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/hexo/" target="_blank">
-                        <span class="chip bg-color">hexo</span>
+                    <a href="/tags/%E6%B7%B7%E6%B7%86/" target="_blank">
+                        <span class="chip bg-color">混淆</span>
                     </a>
                     
                 </div>
@@ -932,32 +959,31 @@ crashHandler<span class="token punctuation">.</span><span class="token function"
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/11/25/yin-dao-yong-hu-jin-xing-hao-ping/">
+                <a href="/2022/01/11/notepad-yun-xing-java-dai-ma/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="引导用户进行好评">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="Notepad++运行JAVA代码">
                         
-                        <span class="card-title">引导用户进行好评</span>
+                        <span class="card-title">Notepad++运行JAVA代码</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            背景最近发现我们的产品在google play商店的评分下滑的很厉害，已经影响到产品的市场推荐能力。产品和研发一期沟通解决这个问题。
-思路首先最好的方式当然是在产品体验层面进行优化，比如体验更友好、介面更整洁、移除用户比较厌倦的广告等。但是
+                            有时候我们会临时写一些简单的Java代码执行，验证执行结果。不一定适合使用IDEA这样比较繁重的工具，但是直接使用记事本编写，采用命令执行又比较复杂。这时候类似于Notepad++、EditPlus这类常用的文本编辑工具就可以临时顶上来了。
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-11-25
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2022-01-11
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%97%A5%E5%B8%B8/" class="post-category" target="_blank">
-                                    日常
+                            <a href="/categories/Java/" class="post-category" target="_blank">
+                                    Java
                                 </a>
                             
                             
@@ -967,8 +993,8 @@ crashHandler<span class="token punctuation">.</span><span class="token function"
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E4%BA%A7%E5%93%81/" target="_blank">
-                        <span class="chip bg-color">产品</span>
+                    <a href="/tags/%E5%B7%A5%E5%85%B7/" target="_blank">
+                        <span class="chip bg-color">工具</span>
                     </a>
                     
                 </div>
