@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devdroid.cn/"/>
-  <updated>2022-01-17T09:47:10.270Z</updated>
+  <updated>2022-01-24T09:36:13.941Z</updated>
   <id>https://devdroid.cn/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Android Studio编译Jar包运行异常</title>
+    <link href="https://devdroid.cn/2022/01/24/android-studio-bian-yi-jar-bao-yun-xing-yi-chang/"/>
+    <id>https://devdroid.cn/2022/01/24/android-studio-bian-yi-jar-bao-yun-xing-yi-chang/</id>
+    <published>2022-01-24T09:26:48.000Z</published>
+    <updated>2022-01-24T09:36:13.941Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;上面两篇博客介绍了Jar包如何进行签名和反编译，今天介绍一下使用Android studio编译Jar包及使用的问题。&lt;br&gt;首先介绍一下如何使用Android studio编译Jar包。&lt;/p&gt;
+&lt;h4 id=&quot;编译Jar文件&quot;&gt;&lt;a href=&quot;#编译Jar文件&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Java" scheme="https://devdroid.cn/categories/Java/"/>
+    
+    
+      <category term="混淆" scheme="https://devdroid.cn/tags/%E6%B7%B7%E6%B7%86/"/>
+    
+  </entry>
   
   <entry>
     <title>Jar包签名处理</title>
@@ -517,32 +544,6 @@
     
     
       <category term="应用" scheme="https://devdroid.cn/tags/%E5%BA%94%E7%94%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>增加系统TextView长按菜单</title>
-    <link href="https://devdroid.cn/2021/12/03/zeng-jia-xi-tong-textview-chang-an-cai-dan/"/>
-    <id>https://devdroid.cn/2021/12/03/zeng-jia-xi-tong-textview-chang-an-cai-dan/</id>
-    <published>2021-12-03T09:35:02.000Z</published>
-    <updated>2021-12-03T09:38:24.702Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;今天介绍一下在Android6.0+版本上新增的一个新特性：通过Text Selection实现系统中应用EditText、TextView的文本选择菜单和提供文本处理功能。参考：&lt;a
-        
-      
-    
-    </summary>
-    
-      <category term="Android" scheme="https://devdroid.cn/categories/Android/"/>
-    
-    
-      <category term="特性" scheme="https://devdroid.cn/tags/%E7%89%B9%E6%80%A7/"/>
     
   </entry>
   
