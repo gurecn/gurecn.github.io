@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devdroid.cn/"/>
-  <updated>2022-01-24T09:36:13.941Z</updated>
+  <updated>2022-03-24T08:58:31.109Z</updated>
   <id>https://devdroid.cn/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>自定义ClassLoader加密Java代码</title>
+    <link href="https://devdroid.cn/2022/01/27/zi-ding-yi-classloader-jia-mi-java-dai-ma/"/>
+    <id>https://devdroid.cn/2022/01/27/zi-ding-yi-classloader-jia-mi-java-dai-ma/</id>
+    <published>2022-01-27T08:00:05.000Z</published>
+    <updated>2022-03-24T08:58:31.109Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;前面几篇博客介绍了Jar包如何进行签名、防止反编译，在实际项目中使用注入的方式防止反编译确实有效，但是同时会引入新的问题。今天使用一种新的方式来实现代码保护。&lt;/p&gt;
+&lt;h3 id=&quot;注入问题&quot;&gt;&lt;a href=&quot;#注入问题&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Java" scheme="https://devdroid.cn/categories/Java/"/>
+    
+    
+      <category term="混淆" scheme="https://devdroid.cn/tags/%E6%B7%B7%E6%B7%86/"/>
+    
+  </entry>
   
   <entry>
     <title>Android Studio编译Jar包运行异常</title>
@@ -508,33 +535,6 @@
         
         
           &lt;p&gt;之前一篇文章《&lt;a
-        
-      
-    
-    </summary>
-    
-      <category term="Android" scheme="https://devdroid.cn/categories/Android/"/>
-    
-    
-      <category term="应用" scheme="https://devdroid.cn/tags/%E5%BA%94%E7%94%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ScrollView只显示最后一个控件</title>
-    <link href="https://devdroid.cn/2021/12/03/scrollview-zhi-xian-shi-zui-hou-yi-ge-kong-jian/"/>
-    <id>https://devdroid.cn/2021/12/03/scrollview-zhi-xian-shi-zui-hou-yi-ge-kong-jian/</id>
-    <published>2021-12-03T10:01:40.000Z</published>
-    <updated>2021-12-06T02:38:12.122Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;因为诗词的数据有可能较多，一屏不一定显示完，所以使用ScrollView实现滑动显示。但是发现当最后一个条目内容很多（ScrollView嵌套的LinearLayout最后一个TextView独自能够占满一屏）时，会出现只显示最后一个控件的现象。&lt;/p&gt;
-&lt;p&gt;实现代码如下
         
       
     
