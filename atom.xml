@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devdroid.cn/"/>
-  <updated>2022-03-24T08:58:31.109Z</updated>
+  <updated>2022-03-24T10:42:00.206Z</updated>
   <id>https://devdroid.cn/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用多态隐藏方法实现</title>
+    <link href="https://devdroid.cn/2022/02/01/shi-yong-duo-tai-yin-cang-fang-fa-shi-xian/"/>
+    <id>https://devdroid.cn/2022/02/01/shi-yong-duo-tai-yin-cang-fang-fa-shi-xian/</id>
+    <published>2022-02-01T10:39:40.000Z</published>
+    <updated>2022-03-24T10:42:00.206Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;需求背景&quot;&gt;&lt;a href=&quot;#需求背景&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Java" scheme="https://devdroid.cn/categories/Java/"/>
+    
+    
+      <category term="混淆" scheme="https://devdroid.cn/tags/%E6%B7%B7%E6%B7%86/"/>
+    
+  </entry>
   
   <entry>
     <title>自定义ClassLoader加密Java代码</title>
@@ -518,32 +544,6 @@
     
     
       <category term="兼容性" scheme="https://devdroid.cn/tags/%E5%85%BC%E5%AE%B9%E6%80%A7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>屏蔽应用内TextView Selection菜单</title>
-    <link href="https://devdroid.cn/2021/12/07/ping-bi-ying-yong-nei-textview-selection-cai-dan/"/>
-    <id>https://devdroid.cn/2021/12/07/ping-bi-ying-yong-nei-textview-selection-cai-dan/</id>
-    <published>2021-12-07T08:29:00.000Z</published>
-    <updated>2021-12-07T08:32:55.072Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;之前一篇文章《&lt;a
-        
-      
-    
-    </summary>
-    
-      <category term="Android" scheme="https://devdroid.cn/categories/Android/"/>
-    
-    
-      <category term="应用" scheme="https://devdroid.cn/tags/%E5%BA%94%E7%94%A8/"/>
     
   </entry>
   
