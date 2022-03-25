@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devdroid.cn/"/>
-  <updated>2022-03-24T10:42:00.206Z</updated>
+  <updated>2022-03-25T03:35:44.384Z</updated>
   <id>https://devdroid.cn/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>加载网页提示无法打开</title>
+    <link href="https://devdroid.cn/2022/02/02/jia-zai-wang-ye-ti-shi-wu-fa-da-kai/"/>
+    <id>https://devdroid.cn/2022/02/02/jia-zai-wang-ye-ti-shi-wu-fa-da-kai/</id>
+    <published>2022-02-02T03:31:08.000Z</published>
+    <updated>2022-03-25T03:35:44.384Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;需求背景&quot;&gt;&lt;a href=&quot;#需求背景&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="https://devdroid.cn/categories/Android/"/>
+    
+    
+      <category term="兼容性" scheme="https://devdroid.cn/tags/%E5%85%BC%E5%AE%B9%E6%80%A7/"/>
+    
+  </entry>
   
   <entry>
     <title>使用多态隐藏方法实现</title>
@@ -518,32 +544,6 @@
     
     
       <category term="感悟" scheme="https://devdroid.cn/tags/%E6%84%9F%E6%82%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>优化状态栏沉浸显示</title>
-    <link href="https://devdroid.cn/2021/12/08/you-hua-zhuang-tai-lan-chen-jin-xian-shi/"/>
-    <id>https://devdroid.cn/2021/12/08/you-hua-zhuang-tai-lan-chen-jin-xian-shi/</id>
-    <published>2021-12-08T05:28:12.000Z</published>
-    <updated>2022-01-07T09:35:35.111Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h3 id=&quot;需求背景&quot;&gt;&lt;a href=&quot;#需求背景&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="Android" scheme="https://devdroid.cn/categories/Android/"/>
-    
-    
-      <category term="兼容性" scheme="https://devdroid.cn/tags/%E5%85%BC%E5%AE%B9%E6%80%A7/"/>
     
   </entry>
   
