@@ -482,7 +482,8 @@
         <span class="token attr-name"><span class="token namespace">android:</span>text</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>我想吐槽<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>RelativeLayout</span><span class="token punctuation">></span></span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>注：布局中相关资源文件、图片等，可参考开源项目<a target="_blank" rel="noopener" href="https://github.com/gurecn/sleepassistant">睡眠助理</a>。<br>二、将图片文件解析成Bitmap<br>我们使用BitmapFactory，将图片解析成Bitmap对象用于显示。由于缩略图无需太高分辨率，我们设置尺寸为原来的1/4。</p>
+<p>注：布局中相关资源文件、图片等，可参考开源项目<a target="_blank" rel="noopener" href="https://github.com/gurecn/sleepassistant">睡眠助理</a>。</p>
+<h3 id="二、将图片文件解析成Bitmap"><a href="#二、将图片文件解析成Bitmap" class="headerlink" title="二、将图片文件解析成Bitmap"></a>二、将图片文件解析成Bitmap</h3><p>我们使用BitmapFactory，将图片解析成Bitmap对象用于显示。由于缩略图无需太高分辨率，我们设置尺寸为原来的1/4。</p>
 <pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
  * 图片文件解析成Bitmap
  * @param imagePath 截图图片路径
@@ -503,7 +504,7 @@
     <span class="token keyword">return</span> null<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>三、使用PopupWindow显示缩略图<br>我们创建PopupWindow，使用步骤一的资源文件显示缩略图。并且实现其中按钮的点击事件，实现点击反馈功能。</p>
+<h3 id="三、使用PopupWindow显示缩略图"><a href="#三、使用PopupWindow显示缩略图" class="headerlink" title="三、使用PopupWindow显示缩略图"></a>三、使用PopupWindow显示缩略图</h3><p>我们创建PopupWindow，使用步骤一的资源文件显示缩略图。并且实现其中按钮的点击事件，实现点击反馈功能。</p>
 <pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
  * 弹窗显示
  * @param screenshoth
@@ -541,7 +542,7 @@
     <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>四、回调接口调用<br>最后，我们在截图回调接口中调用接口，实现功能：</p>
+<h3 id="四、回调接口调用"><a href="#四、回调接口调用" class="headerlink" title="四、回调接口调用"></a>四、回调接口调用</h3><p>最后，我们在截图回调接口中调用接口，实现功能：</p>
 <pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@Override</span>
 <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onShot</span><span class="token punctuation">(</span>String imagePath<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     Log<span class="token punctuation">.</span><span class="token function">d</span><span class="token punctuation">(</span><span class="token string">"BaseActivity"</span><span class="token punctuation">,</span> <span class="token string">"onShot:"</span> <span class="token operator">+</span> imagePath<span class="token punctuation">)</span><span class="token punctuation">;</span>
