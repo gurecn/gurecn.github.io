@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devdroid.cn/"/>
-  <updated>2022-03-31T10:10:08.023Z</updated>
+  <updated>2022-04-01T09:53:14.935Z</updated>
   <id>https://devdroid.cn/</id>
   
   <author>
@@ -15,6 +15,59 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>实现应用内截屏反馈</title>
+    <link href="https://devdroid.cn/2022/02/16/shi-xian-ying-yong-nei-jie-ping-fan-kui/"/>
+    <id>https://devdroid.cn/2022/02/16/shi-xian-ying-yong-nei-jie-ping-fan-kui/</id>
+    <published>2022-02-16T09:45:29.000Z</published>
+    <updated>2022-04-01T09:53:14.935Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="https://devdroid.cn/categories/Android/"/>
+    
+    
+      <category term="应用" scheme="https://devdroid.cn/tags/%E5%BA%94%E7%94%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Gradle依赖方式配置</title>
+    <link href="https://devdroid.cn/2022/02/13/gradle-yi-lai-fang-shi-pei-zhi/"/>
+    <id>https://devdroid.cn/2022/02/13/gradle-yi-lai-fang-shi-pei-zhi/</id>
+    <published>2022-02-13T09:45:04.000Z</published>
+    <updated>2022-04-01T10:05:39.775Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;我们做的SDK项目是打包成一个Jar包提供给客户App集成使用的。&lt;br&gt;在我们SDK数据加密中依赖了bcprov包，添加依赖直接在build.gradle添加即可，比较简单：&lt;/p&gt;
+&lt;pre class=&quot;line-numbers
+        
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="https://devdroid.cn/categories/Android/"/>
+    
+    
+      <category term="特性" scheme="https://devdroid.cn/tags/%E7%89%B9%E6%80%A7/"/>
+    
+  </entry>
   
   <entry>
     <title>正则判断字符串包含数组元素</title>
@@ -477,58 +530,6 @@
         
         
           &lt;h4 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h4&gt;&lt;p&gt;iOS很早就有系统级别的放大镜控件供开发者使用，Android在9版本（API 级别
-        
-      
-    
-    </summary>
-    
-      <category term="Android" scheme="https://devdroid.cn/categories/Android/"/>
-    
-    
-      <category term="特性" scheme="https://devdroid.cn/tags/%E7%89%B9%E6%80%A7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>使用多线程处理耗时操作</title>
-    <link href="https://devdroid.cn/2021/12/17/shi-yong-duo-xian-cheng-chu-li-hao-shi-cao-zuo/"/>
-    <id>https://devdroid.cn/2021/12/17/shi-yong-duo-xian-cheng-chu-li-hao-shi-cao-zuo/</id>
-    <published>2021-12-17T11:13:28.000Z</published>
-    <updated>2022-01-07T09:34:38.955Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h4 id=&quot;需求背景&quot;&gt;&lt;a href=&quot;#需求背景&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="Android" scheme="https://devdroid.cn/categories/Android/"/>
-    
-    
-      <category term="优化" scheme="https://devdroid.cn/tags/%E4%BC%98%E5%8C%96/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android桌面插件（微件）实现</title>
-    <link href="https://devdroid.cn/2021/12/14/android-zhuo-mian-cha-jian-wei-jian-shi-xian/"/>
-    <id>https://devdroid.cn/2021/12/14/android-zhuo-mian-cha-jian-wei-jian-shi-xian/</id>
-    <published>2021-12-14T06:03:45.000Z</published>
-    <updated>2021-12-14T06:38:52.174Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h3 id=&quot;需求背景&quot;&gt;&lt;a href=&quot;#需求背景&quot; class=&quot;headerlink&quot;
         
       
     

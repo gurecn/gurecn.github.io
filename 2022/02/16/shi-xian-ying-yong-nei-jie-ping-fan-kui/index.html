@@ -5,8 +5,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="google-site-verification" content="BZSSTWCG6ygfXci-M6fHXRUOICCdvw9XUlROWGENjyA" />
-    <meta name="keywords" content="因工作心疼, Java C/C++ Vue Gure gurecn Android 卓技卓品">
-    <meta name="description" content="工作到心疼。这不是形容词，也不是夸张语气，是真切感受到身体的揪心，同时也是第二次因为工作感到身体的不适。第一次是在第一家公司，那是2016年。作为一个新人，初涉工作，被公司放到Android开发团队小组长的位置上（能新手作为小组长，可以想象">
+    <meta name="keywords" content="实现应用内截屏反馈, Java C/C++ Vue Gure gurecn Android 卓技卓品">
+    <meta name="description" content="背景发现招商银行等应用内有一个比较好玩的功能：当在应用内截屏时，会主动产出一个窗口，询问用户是否需要咨询客服。这个功能很有趣，那么就在开源项目实现。先查看一下招商银行的效果：
+
+
+从截图上我们看到当有截屏时，应用会自动弹出窗口，显示截屏内容">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +17,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>因工作心疼 | 卓技卓品</title>
+    <title>实现应用内截屏反馈 | 卓技卓品</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -260,13 +263,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        因工作心疼
+                        实现应用内截屏反馈
                     </div>
                 </div>
             </div>
@@ -377,8 +380,8 @@
                     
                     <div class="article-tag">
                         
-                        <a href="/tags/%E6%84%9F%E6%82%9F/" target="_blank">
-                            <span class="chip bg-color">感悟</span>
+                        <a href="/tags/%E5%BA%94%E7%94%A8/" target="_blank">
+                            <span class="chip bg-color">应用</span>
                         </a>
                         
                     </div>
@@ -389,8 +392,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                        <a href="/categories/%E6%97%A5%E5%B8%B8/" class="post-category" target="_blank">
-                            日常
+                        <a href="/categories/Android/" class="post-category" target="_blank">
+                            Android
                         </a>
                         
                     </div>
@@ -401,7 +404,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-01-07
+                    2022-02-16
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -415,7 +418,7 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    931
+                    762
                 </div>
                 
 
@@ -438,8 +441,116 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>工作到心疼。<br>这不是形容词，也不是夸张语气，是真切感受到身体的揪心，同时也是第二次因为工作感到身体的不适。<br>第一次是在第一家公司，那是2016年。<br>作为一个新人，初涉工作，被公司放到Android开发团队小组长的位置上（能新手作为小组长，可以想象其他成员的技术能力）。<br>项目是一款游戏竞技交流软件，包含即时通信、微博、游戏排名接入。由于是新手，我们在项目里引入特别多三方库。有的资源只使用了其中一个工具就全部引入，导致代码冲突经常出现，代码规范各人各样。现在想起来整个团队乱得一团糟。<br>瀑布流功能也一样，是Github上直接白嫖的一个控件。Github上面的资源大家都懂，资源特别多，随便就能找到适合的项目。但这些资源有一个通病：基本功能没问题，可实际项目上一旦使用，算是入了坑。细节会出现各种问题需要调试，包括兼容性均未适配。<br>果然其中最严重的一个问题是排序，发现三列中总有一列特别长，一列特别短，不对称。对当时的我来说，真的是想尽一切办法也解决不了，包括联系那个韩国的作者（无回复）。<br>愁到什么程度呢？你能想到吗？愁到梦里都在解决这个问题，真的是做梦时都在考虑这个问题如何解决。当时感受到为解决不了的问题而心疼。<br>现在随着经验越来越多，学会了如何避免踩坑，如何使用Github。</p>
-<p>但是最近又遇到了揪心的事情。首先是因为公司技术发愁。<br>公司由于资金问题，导致员工离职较多。现在从售前、技术、运维、售后这些对外的人员全部欠缺。最头疼的一点，之前售前留下的很多坑转交到了我这边。当时走的急，没有交接人员，现在项目要推进，临时把我拉过来顶上。有些客户提出的需求完全没有可行性分析和实现能力的研究，却被之前人员承诺下来并写入立项文件。诸如此类焦头烂额，为这类事愁。<br>同时也为自己技术能力不足发愁。<br>公司与华为合作的项目中，公司负责的模块一直问题不断，这件事也发愁。同时出现问题、解决问题，这是正常的流程。但作为一个移动端Android开发人员，我发现每次提供给后台的需求，研发总能找到取巧的方案实现，同时存在一个小漏洞。<br>公司作为一个初创企业，测试不充分，但是华为整体发布后问题一下子被暴露出来。比如批量导入，存在批量100条，其中1条数据重复，那么100条都导入失败；比如使用延时10分钟开始处理缓存数据，结果成循环定时10分钟启动1个新任务，服务器积压很多线程任务无法结束。<br>与后台技术沟通，他们又总反馈：后台服务器就应该这样做；没有更好的方案；服务器性能高，无所谓等等。感觉自己很无力，这样的项目和质量让我及其不放心。<br>所以，我下定决心了，要自学springboot，和他们一块审核代码。</p>
+                <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>发现招商银行等应用内有一个比较好玩的功能：当在应用内截屏时，会主动产出一个窗口，询问用户是否需要咨询客服。这个功能很有趣，那么就在开源项目实现。<br>先查看一下招商银行的效果：</p>
+<img src="招商银行.png" width = "232" height = "201" alt="招商银行" align=center />
+
+<p>从截图上我们看到当有截屏时，应用会自动弹出窗口，显示截屏内容的缩略图，并提示用户是否需要咨询客服。<br>借助之前几篇文章，我们分别实现了：<a href="/2022/02/04/pan-duan-app-shi-fou-zai-qian-tai/">判断APP是否在前台</a>、<a href="/2022/02/08/shi-xian-ying-yong-nei-jian-ting-jie-ping-dong-zuo/">应用内监听截屏操作</a>、<a href="/2022/02/10/zheng-ze-pan-duan-zi-fu-chuan-bao-han-shu-zu-yuan-su/">正则判断字符串包含数组元素</a>。由以上几个技术积累，实现该功能的技术条件就具备了。<br>今天主要就补齐流程，在获取到截屏文件后，创建缩略图并弹窗显示。</p>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><h3 id="一、创建弹窗布局文件。"><a href="#一、创建弹窗布局文件。" class="headerlink" title="一、创建弹窗布局文件。"></a>一、创建弹窗布局文件。</h3><p>在res/layout路径下，创建ll_screenshot_dialog.xml文件。</p>
+<pre class="line-numbers language-xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="utf-8"?></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>RelativeLayout</span>
+    <span class="token attr-name"><span class="token namespace">xmlns:</span>android</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://schemas.android.com/apk/res/android<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>wrap_content<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>wrap_content<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>background</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@drawable/bg_screen_dialog<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>RelativeLayout</span>
+        <span class="token attr-name"><span class="token namespace">android:</span>id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@+id/rl_screenshot_layout<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>wrap_content<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>wrap_content<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>padding</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>5dp<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ImageView</span>
+            <span class="token attr-name"><span class="token namespace">android:</span>id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@+id/iv_screenshot_image<span class="token punctuation">"</span></span>
+            <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>wrap_content<span class="token punctuation">"</span></span>
+            <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>wrap_content<span class="token punctuation">"</span></span>
+            <span class="token attr-name"><span class="token namespace">android:</span>layout_marginBottom</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>25dp<span class="token punctuation">"</span></span>
+            <span class="token attr-name"><span class="token namespace">android:</span>scaleType</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>centerCrop<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>RelativeLayout</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ImageView</span>
+        <span class="token attr-name"><span class="token namespace">android:</span>id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@+id/iv_screenshot_close<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>background</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@drawable/bg_screenshot_dialog_close<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>wrap_content<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>wrap_content<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_alignParentEnd</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>TextView</span>
+        <span class="token attr-name"><span class="token namespace">android:</span>id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@+id/tv_feed_back<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>25dp<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>paddingBottom</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>5dp<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_alignBottom</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@+id/rl_screenshot_layout<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>textColor</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@color/white<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>gravity</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>center<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>textSize</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>15dp<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>text</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>我想吐槽<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>RelativeLayout</span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>注：布局中相关资源文件、图片等，可参考开源项目<a target="_blank" rel="noopener" href="https://github.com/gurecn/sleepassistant">睡眠助理</a>。<br>二、将图片文件解析成Bitmap<br>我们使用BitmapFactory，将图片解析成Bitmap对象用于显示。由于缩略图无需太高分辨率，我们设置尺寸为原来的1/4。</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+ * 图片文件解析成Bitmap
+ * @param imagePath 截图图片路径
+ * @return Bitmap对象
+ */</span>
+<span class="token keyword">private</span> Bitmap <span class="token function">decodeBitmap</span><span class="token punctuation">(</span>String imagePath<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    BitmapFactory<span class="token punctuation">.</span>Options options <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BitmapFactory<span class="token punctuation">.</span>Options</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    options<span class="token punctuation">.</span>inSampleSize <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">;</span>
+    options<span class="token punctuation">.</span>inPreferredConfig <span class="token operator">=</span> Bitmap<span class="token punctuation">.</span>Config<span class="token punctuation">.</span>RGB_565<span class="token punctuation">;</span>
+    FileInputStream is <span class="token operator">=</span> null<span class="token punctuation">;</span>
+    <span class="token keyword">try</span> <span class="token punctuation">{</span>
+        is <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FileInputStream</span><span class="token punctuation">(</span>imagePath<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Bitmap bmp <span class="token operator">=</span> BitmapFactory<span class="token punctuation">.</span><span class="token function">decodeFileDescriptor</span><span class="token punctuation">(</span>is<span class="token punctuation">.</span><span class="token function">getFD</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> null<span class="token punctuation">,</span> options<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> bmp<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">IOException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>三、使用PopupWindow显示缩略图<br>我们创建PopupWindow，使用步骤一的资源文件显示缩略图。并且实现其中按钮的点击事件，实现点击反馈功能。</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+ * 弹窗显示
+ * @param screenshoth
+ */</span>
+<span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">popupWindow</span><span class="token punctuation">(</span>Bitmap screenshoth<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    LayoutInflater inflater <span class="token operator">=</span> <span class="token punctuation">(</span>LayoutInflater<span class="token punctuation">)</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getSystemService</span><span class="token punctuation">(</span>Context<span class="token punctuation">.</span>LAYOUT_INFLATER_SERVICE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    View view <span class="token operator">=</span> inflater<span class="token punctuation">.</span><span class="token function">inflate</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>layout<span class="token punctuation">.</span>ll_screenshot_dialog<span class="token punctuation">,</span> null<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    ImageView imageView <span class="token operator">=</span> view<span class="token punctuation">.</span><span class="token function">findViewById</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>iv_screenshot_image<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    ImageView imageClose <span class="token operator">=</span> view<span class="token punctuation">.</span><span class="token function">findViewById</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>iv_screenshot_close<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    TextView feedback <span class="token operator">=</span> view<span class="token punctuation">.</span><span class="token function">findViewById</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>tv_feed_back<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    imageView<span class="token punctuation">.</span><span class="token function">setImageBitmap</span><span class="token punctuation">(</span>screenshoth<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> width <span class="token operator">=</span> screenshoth<span class="token punctuation">.</span><span class="token function">getWidth</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> hight <span class="token operator">=</span> screenshoth<span class="token punctuation">.</span><span class="token function">getHeight</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    hight <span class="token operator">=</span> <span class="token function">matchHight</span><span class="token punctuation">(</span>width<span class="token punctuation">,</span> hight<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    PopupWindow popupWindow <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PopupWindow</span><span class="token punctuation">(</span>view<span class="token punctuation">,</span> ViewGroup<span class="token punctuation">.</span>LayoutParams<span class="token punctuation">.</span>WRAP_CONTENT<span class="token punctuation">,</span> ViewGroup<span class="token punctuation">.</span>LayoutParams<span class="token punctuation">.</span>WRAP_CONTENT<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    popupWindow<span class="token punctuation">.</span><span class="token function">setTouchable</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    popupWindow<span class="token punctuation">.</span><span class="token function">setOutsideTouchable</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    popupWindow<span class="token punctuation">.</span><span class="token function">setWidth</span><span class="token punctuation">(</span>width<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    popupWindow<span class="token punctuation">.</span><span class="token function">setHeight</span><span class="token punctuation">(</span>hight<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    imageClose<span class="token punctuation">.</span><span class="token function">setOnClickListener</span><span class="token punctuation">(</span>v <span class="token operator">-</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>popupWindow<span class="token punctuation">.</span><span class="token function">isShowing</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            popupWindow<span class="token punctuation">.</span><span class="token function">dismiss</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    feedback<span class="token punctuation">.</span><span class="token function">setOnClickListener</span><span class="token punctuation">(</span>v <span class="token operator">-</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>popupWindow<span class="token punctuation">.</span><span class="token function">isShowing</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            popupWindow<span class="token punctuation">.</span><span class="token function">dismiss</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        AppUtils<span class="token punctuation">.</span><span class="token function">feedbackDialog</span><span class="token punctuation">(</span>BaseActivity<span class="token punctuation">.</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">runOnUiThread</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">getWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!=</span> null <span class="token operator">&amp;&amp;</span> <span class="token function">getWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getDecorView</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            popupWindow<span class="token punctuation">.</span><span class="token function">showAtLocation</span><span class="token punctuation">(</span><span class="token function">getWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getDecorView</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Gravity<span class="token punctuation">.</span>CENTER <span class="token operator">|</span> Gravity<span class="token punctuation">.</span>RIGHT<span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>四、回调接口调用<br>最后，我们在截图回调接口中调用接口，实现功能：</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@Override</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onShot</span><span class="token punctuation">(</span>String imagePath<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    Log<span class="token punctuation">.</span><span class="token function">d</span><span class="token punctuation">(</span><span class="token string">"BaseActivity"</span><span class="token punctuation">,</span> <span class="token string">"onShot:"</span> <span class="token operator">+</span> imagePath<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Bitmap screenshot <span class="token operator">=</span> <span class="token function">decodeBitmap</span><span class="token punctuation">(</span>imagePath<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">popupWindow</span><span class="token punctuation">(</span>screenshot<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>此时我们运行应用，然后在应用内截屏。发现效果已经实现了。<br><img src="sleepassistant-screenshoth.png" width = "250" height = "235" alt="最终效果" align=center /></p>
+<p>以上相关代码，请参考开源项目<a target="_blank" rel="noopener" href="https://github.com/gurecn/sleepassistant">睡眠助理</a>。</p>
 
             </div>
             <hr />
@@ -474,9 +585,9 @@
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《因工作心疼》
+                    《实现应用内截屏反馈》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2022/01/07/yin-gong-zuo-xin-teng/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2022/02/16/shi-xian-ying-yong-nei-jie-ping-fan-kui/" property="cc:attributionName"
                rel="cc:attributionURL">
                 Gure
             </a> 采用
@@ -776,46 +887,51 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2022/01/11/notepad-yun-xing-java-dai-ma/">
+                <a href="/2022/02/16/shi-xian-ying-yong-nei-jie-ping-fan-kui/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="Notepad++运行JAVA代码">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="实现应用内截屏反馈">
                         
-                        <span class="card-title">Notepad++运行JAVA代码</span>
+                        <span class="card-title">实现应用内截屏反馈</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            有时候我们会临时写一些简单的Java代码执行，验证执行结果。不一定适合使用IDEA这样比较繁重的工具，但是直接使用记事本编写，采用命令执行又比较复杂。这时候类似于Notepad++、EditPlus这类常用的文本编辑工具就可以临时顶上来了。
+                            背景发现招商银行等应用内有一个比较好玩的功能：当在应用内截屏时，会主动产出一个窗口，询问用户是否需要咨询客服。这个功能很有趣，那么就在开源项目实现。先查看一下招商银行的效果：
+
+
+从截图上我们看到当有截屏时，应用会自动弹出窗口，显示截屏内容
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2022-01-11
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2022-02-16
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Java/" class="post-category" target="_blank">
-                                    Java
+                            <a href="/categories/Android/" class="post-category" target="_blank">
+                                    Android
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%B7%A5%E5%85%B7/" target="_blank">
-                        <span class="chip bg-color">工具</span>
+                    <a href="/tags/%E5%BA%94%E7%94%A8/" target="_blank">
+                        <span class="chip bg-color">应用</span>
                     </a>
                     
                 </div>
@@ -829,25 +945,26 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/01/05/fen-xiang-tu-pian-dao-qi-ta-ying-yong/">
+                <a href="/2022/02/13/gradle-yi-lai-fang-shi-pei-zhi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="分享图片到其他应用">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="Gradle依赖方式配置">
                         
-                        <span class="card-title">分享图片到其他应用</span>
+                        <span class="card-title">Gradle依赖方式配置</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            前几篇文章实现了将诗词显示的效果保存到图片中，并显示到图库里。今天我们实现一下将图片分享到其他应用中。实现分享功能的方式有几种，今天我们主要使用两种方式实现：
-方法一我们首先使用系统提供的createChooser方式方式实现。Androi
+                            我们做的SDK项目是打包成一个Jar包提供给客户App集成使用的。在我们SDK数据加密中依赖了bcprov包，添加依赖直接在build.gradle添加即可，比较简单：
+dependencies {
+    implementation f
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2022-01-05
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2022-02-13
                             </span>
                         <span class="publish-author">
                             
@@ -864,8 +981,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E4%B8%89%E6%96%B9%E8%B5%84%E6%BA%90/" target="_blank">
-                        <span class="chip bg-color">三方资源</span>
+                    <a href="/tags/%E7%89%B9%E6%80%A7/" target="_blank">
+                        <span class="chip bg-color">特性</span>
                     </a>
                     
                 </div>
