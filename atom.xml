@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devdroid.cn/"/>
-  <updated>2022-04-01T10:25:06.519Z</updated>
+  <updated>2022-04-02T10:30:02.451Z</updated>
   <id>https://devdroid.cn/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>常用ADB命令</title>
+    <link href="https://devdroid.cn/2022/02/17/chang-yong-adb-ming-ling/"/>
+    <id>https://devdroid.cn/2022/02/17/chang-yong-adb-ming-ling/</id>
+    <published>2022-02-17T10:28:09.000Z</published>
+    <updated>2022-04-02T10:30:02.451Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;需求&quot;&gt;&lt;a href=&quot;#需求&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="日常" scheme="https://devdroid.cn/categories/%E6%97%A5%E5%B8%B8/"/>
+    
+    
+      <category term="技能" scheme="https://devdroid.cn/tags/%E6%8A%80%E8%83%BD/"/>
+    
+  </entry>
   
   <entry>
     <title>实现应用内截屏反馈</title>
@@ -513,32 +539,6 @@
     
     
       <category term="兼容性" scheme="https://devdroid.cn/tags/%E5%85%BC%E5%AE%B9%E6%80%A7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android使用系统放大镜微件</title>
-    <link href="https://devdroid.cn/2021/12/25/android-shi-yong-xi-tong-fang-da-jing-wei-jian/"/>
-    <id>https://devdroid.cn/2021/12/25/android-shi-yong-xi-tong-fang-da-jing-wei-jian/</id>
-    <published>2021-12-25T02:53:20.000Z</published>
-    <updated>2021-12-25T02:59:26.831Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h4 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h4&gt;&lt;p&gt;iOS很早就有系统级别的放大镜控件供开发者使用，Android在9版本（API 级别
-        
-      
-    
-    </summary>
-    
-      <category term="Android" scheme="https://devdroid.cn/categories/Android/"/>
-    
-    
-      <category term="特性" scheme="https://devdroid.cn/tags/%E7%89%B9%E6%80%A7/"/>
     
   </entry>
   
