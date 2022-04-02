@@ -415,7 +415,7 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.6k
+                    1.5k
                 </div>
                 
 
@@ -520,11 +520,10 @@ Currently running services:
 <pre class="line-numbers language-shell"><code class="language-shell">$ adb reboot
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>借助ADB进行截屏，同时把图片复制到电脑桌面：</p>
-<pre class="line-numbers language-shell"><code class="language-shell">PS C:\Users\Administrator\Desktop> adb shell screencap -p /sdcard/Pictures/Screenshots/1.png
-PS C:\Users\Administrator\Desktop> adb pull /sdcard/Pictures/Screenshots/1.png
+<pre class="line-numbers language-shell"><code class="language-shell">$ adb shell screencap -p /sdcard/Pictures/Screenshots/1.png
+$ adb pull /sdcard/Pictures/Screenshots/1.png
 /sdcard/Pictures/Screenshots/1.png: 1 file pulled, 0 skipped. 24.4 MB/s (198215 bytes in 0.008s)
-PS C:\Users\Administrator\Desktop>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>此时可以看到桌面多了一张截屏图片。</p>
 <h2 id="应用管理"><a href="#应用管理" class="headerlink" title="应用管理"></a>应用管理</h2><p>可以安装应用</p>
 <pre class="line-numbers language-shell"><code class="language-shell">$ adb install /c/Users/Administrator/Desktop/Sleepassistant_20220329.apk
@@ -558,15 +557,15 @@ package:/data/app/com.csizg.sagapp-DT-JH_oifQcg0q5Cm4VCBA==/base.apk
 Success
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <h2 id="文件管理"><a href="#文件管理" class="headerlink" title="文件管理"></a>文件管理</h2><p>从手机下载文件：</p>
-<pre class="line-numbers language-shell"><code class="language-shell">PS C:\Users\Administrator\Desktop> adb pull /sdcard/Pictures/Screenshots/1.png
+<pre class="line-numbers language-shell"><code class="language-shell">$ adb pull /sdcard/Pictures/Screenshots/1.png
 /sdcard/Pictures/Screenshots/1.png: 1 file pulled, 0 skipped. 19.6 MB/s (198215 bytes in 0.010s)
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>把文件上传到手机：</p>
-<pre class="line-numbers language-shell"><code class="language-shell">PS C:\Users\Administrator\Desktop> adb push 1.png /sdcard/Pictures/Screenshots/2.png
+<pre class="line-numbers language-shell"><code class="language-shell">$ adb push 1.png /sdcard/Pictures/Screenshots/2.png
 1.png: 1 file pushed, 0 skipped. 427.6 MB/s (198215 bytes in 0.000s)
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>列出目录内容：</p>
-<pre class="line-numbers language-shell"><code class="language-shell">PS C:\Users\Administrator\Desktop> adb shell ls /sdcard/Pictures/Screenshots/
+<pre class="line-numbers language-shell"><code class="language-shell">$ adb shell ls /sdcard/Pictures/Screenshots/
 1.png
 2.png
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
