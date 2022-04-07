@@ -1,6 +1,8 @@
+https://devdroid.cn/2022/02/21/zi-ding-yi-tuo-zhuai-xuan-fu-chuang/
 https://devdroid.cn/2022/02/17/chang-yong-adb-ming-ling/
 https://devdroid.cn/2022/02/16/shi-xian-ying-yong-nei-jie-ping-fan-kui/
 https://devdroid.cn/2022/02/13/gradle-yi-lai-fang-shi-pei-zhi/
+https://devdroid.cn/2022/02/11/lao-ren-jia-jiu-shi-yong-lai-ma-fan-de/
 https://devdroid.cn/2022/02/10/zheng-ze-pan-duan-zi-fu-chuan-bao-han-shu-zu-yuan-su/
 https://devdroid.cn/2022/02/08/shi-xian-ying-yong-nei-jian-ting-jie-ping-dong-zuo/
 https://devdroid.cn/2022/02/04/pan-duan-app-shi-fou-zai-qian-tai/
@@ -19,6 +21,7 @@ https://devdroid.cn/2021/12/29/view-bao-cun-dao-tu-pian-gong-neng-chang-tu-zhi-c
 https://devdroid.cn/2021/12/28/android-10-xi-tong-chuang-jian-wen-jian-shi-bai/
 https://devdroid.cn/2021/12/25/huo-qu-android-shou-ji-di-bu-dao-hang-lan-de-gao-du/
 https://devdroid.cn/2021/12/25/android-shi-yong-xi-tong-fang-da-jing-wei-jian/
+https://devdroid.cn/2021/12/23/you-xie-gan-jue-yin-ge-lie-er-chun-cui/
 https://devdroid.cn/2021/12/17/shi-yong-duo-xian-cheng-chu-li-hao-shi-cao-zuo/
 https://devdroid.cn/2021/12/14/android-zhuo-mian-cha-jian-wei-jian-shi-xian/
 https://devdroid.cn/2021/12/13/wei-meng-xiang-gong-zuo/
