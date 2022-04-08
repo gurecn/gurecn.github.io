@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devdroid.cn/"/>
-  <updated>2022-04-07T10:33:53.044Z</updated>
+  <updated>2022-04-08T06:43:14.372Z</updated>
   <id>https://devdroid.cn/</id>
   
   <author>
@@ -15,6 +15,58 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>视图绑定viewBinding</title>
+    <link href="https://devdroid.cn/2022/03/02/shi-tu-bang-ding-viewbinding/"/>
+    <id>https://devdroid.cn/2022/03/02/shi-tu-bang-ding-viewbinding/</id>
+    <published>2022-03-02T06:28:40.000Z</published>
+    <updated>2022-04-08T06:43:14.372Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="https://devdroid.cn/categories/Android/"/>
+    
+    
+      <category term="新特性" scheme="https://devdroid.cn/tags/%E6%96%B0%E7%89%B9%E6%80%A7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>自定义控件</title>
+    <link href="https://devdroid.cn/2022/02/22/zi-ding-yi-kong-jian/"/>
+    <id>https://devdroid.cn/2022/02/22/zi-ding-yi-kong-jian/</id>
+    <published>2022-02-22T06:28:30.000Z</published>
+    <updated>2022-04-08T07:19:09.423Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;需求背景&quot;&gt;&lt;a href=&quot;#需求背景&quot; class=&quot;headerlink&quot; title=&quot;需求背景&quot;&gt;&lt;/a&gt;需求背景&lt;/h2&gt;&lt;p&gt;上一篇博客《自定义拖拽悬浮窗》时，我们发现在构造参数中有一个特殊的参数AttributeSet
+        
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="https://devdroid.cn/categories/Android/"/>
+    
+    
+      <category term="自定义控件" scheme="https://devdroid.cn/tags/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6/"/>
+    
+  </entry>
   
   <entry>
     <title>自定义拖拽悬浮窗</title>
@@ -487,59 +539,6 @@
     
     
       <category term="三方资源" scheme="https://devdroid.cn/tags/%E4%B8%89%E6%96%B9%E8%B5%84%E6%BA%90/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MediaStore访问共享存储空间中的媒体文件</title>
-    <link href="https://devdroid.cn/2021/12/31/mediastore-fang-wen-gong-xiang-cun-chu-kong-jian-zhong-de-mei-ti-wen-jian/"/>
-    <id>https://devdroid.cn/2021/12/31/mediastore-fang-wen-gong-xiang-cun-chu-kong-jian-zhong-de-mei-ti-wen-jian/</id>
-    <published>2021-12-31T10:22:52.000Z</published>
-    <updated>2021-12-31T10:23:49.733Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;在Android 10（API
-        
-      
-    
-    </summary>
-    
-      <category term="Android" scheme="https://devdroid.cn/categories/Android/"/>
-    
-    
-      <category term="新特性" scheme="https://devdroid.cn/tags/%E6%96%B0%E7%89%B9%E6%80%A7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>View保存到图片功能（长图支持）</title>
-    <link href="https://devdroid.cn/2021/12/29/view-bao-cun-dao-tu-pian-gong-neng-chang-tu-zhi-chi/"/>
-    <id>https://devdroid.cn/2021/12/29/view-bao-cun-dao-tu-pian-gong-neng-chang-tu-zhi-chi/</id>
-    <published>2021-12-29T11:06:02.000Z</published>
-    <updated>2021-12-29T11:07:01.154Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;睡眠助理项目中诗词歌赋功能新增将诗词显示界面保存到图库得功能，类似于小米便签、锤子便签的保存图片功能。&lt;br&gt;上篇博客介绍了Android 10系统中文件创建遇到的问题，今天介绍一下如何将诗词保存成图片。&lt;/p&gt;
-&lt;h4 id=&quot;功能实现&quot;&gt;&lt;a href=&quot;#功能实现&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="Android" scheme="https://devdroid.cn/categories/Android/"/>
-    
-    
-      <category term="特性" scheme="https://devdroid.cn/tags/%E7%89%B9%E6%80%A7/"/>
     
   </entry>
   
