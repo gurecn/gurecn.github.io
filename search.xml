@@ -79,6 +79,81 @@
     
     
     <entry>
+      <title>SIP协议入门基础(3)-应用场景</title>
+      <link href="/2022/03/18/sip-xie-yi-ru-men-ji-chu-3-ying-yong-chang-jing/"/>
+      <url>/2022/03/18/sip-xie-yi-ru-men-ji-chu-3-ying-yong-chang-jing/</url>
+      
+        <content type="html"><![CDATA[<h3 id="SIP通话"><a href="#SIP通话" class="headerlink" title="SIP通话"></a>SIP通话</h3><p>通话消息关键头域：</p><blockquote><p>Request-Line：呼叫请求发送地址，Invite请求消息；<br>Call-ID：该字段唯一标识一个特定的邀请，全局唯一；<br>Content-Length：用来确定每一个SIP消息在通讯流中的结束位置的，当含有消息体不为0；<br>SDP：Invite会话的消息体，供主被叫用户交换媒体信息（媒体协商）；<br>Re-invite：会话刷新，对当前已建立的Invite会话发起修改请求，范围包括通信端口、增加媒体流、codec变更等。 </p></blockquote><img src="通话头.png" width = "961" height = "367" align=center /><h4 id="协商过程"><a href="#协商过程" class="headerlink" title="协商过程"></a>协商过程</h4><p>SIP使用offer/answer模型进行会话协商：<br>媒体协商的offer可以携带在INVITE请求或者2xx响应中(sdp)；Invite携带了SDP协商请求（offer），200 OK响应了协商结果（answer）；<br>媒体协商的answer可以携带在1xx/2xx响应中或者ACK请求中(sdp)；Invite中没有携带SDP请求信息，200 OK响应中携带了offer，ACK中携带answer信息，用来确认媒体协商的结果。</p><img src="通话协商.png" width = "849" height = "300" align=center /><p>协商关键参数（SDP）：</p><img src="协商参数.png" width = "845" height = "585" align=center /><h4 id="单路通话"><a href="#单路通话" class="headerlink" title="单路通话"></a>单路通话</h4><img src="单路通话.png" width = "599" height = "547" align=center /><blockquote><p>1.话机A摘机，拨号，呼叫话机B（Invite）；<br>2.话机B收到来电，开始振铃（180 Ringing）；<br>3.话机B摘机（200 OK）；<br>4.话机A和话机B开始通话（RTP）；<br>5.话机A挂断通话（Bye）；<br>6.通话结束（200 OK）。 </p></blockquote><img src="通话参数.png" width = "554" height = "137" align=center /><h4 id="HOLD通话（通话保持）"><a href="#HOLD通话（通话保持）" class="headerlink" title="HOLD通话（通话保持）"></a>HOLD通话（通话保持）</h4><img src="通话保持.png" width = "537" height = "564" align=center /><blockquote><p>1.话机A和话机B通话中，话机A发起Hold请求（Invite）<br>2.话机B响应，此时处于Held状态（200 OK）<br>3.话机A和话机B保持通话，双方无声（无RTP通讯流）<br>4.话机A发起解Hold请求（Invite）<br>5.话机B应答（200 OK）<br>6.通话恢复（RTP通信流） </p></blockquote><p>抓包流程：Hold发送携带媒体协商为a=sendonly的参数：</p><img src="hold参数.png" width = "366" height = "50" align=center /><h4 id="三方会议"><a href="#三方会议" class="headerlink" title="三方会议"></a>三方会议</h4><img src="三方会议.png" width = "491" height = "564" align=center /><blockquote><p>1.话机A和B通话中，话机A点击Conference（Hold B）<br>PS：点击Conf时，相当于触发一次Hold操作，告知对端先保持通话<br>2.话机B响应，此时处于Held状态（200 OK）<br>3.话机A新起通话呼叫C（Invite C）<br>4.话机A和C建立通话<br>5.话机A再点击Conference建议三方会议（UnHold B） </p></blockquote><img src="会议参数.png" width = "626" height = "377" align=center /><h4 id="Transfer"><a href="#Transfer" class="headerlink" title="Transfer"></a>Transfer</h4><img src="Transfer.png" width = "491" height = "535" align=center /><blockquote><p>话机发起Transfer时，发送Refer请求给服务端。<br>Refer-To：表示要转接的对象<br>Referred-By：表示转接发起人 </p></blockquote><img src="Transfer参数.png" width = "620" height = "430" align=center /><h4 id="通话常见问题"><a href="#通话常见问题" class="headerlink" title="通话常见问题"></a>通话常见问题</h4><ul><li>呼出通话失败</li></ul><blockquote><p>根据服务器返回的错误码排查，常见的错误码包括：<br>488 not acceptable here ：通常SDP协商失败，比如某些codec不支持；SRTP（加密）不匹配<br>404 Not Found：信息用户不存在；需要确认账号格式是否正确<br>408 request timeout：服务器无应答，超时；需要确认服务器是否收到请求 </p></blockquote><ul><li>通话无声/单通</li></ul><blockquote><p>话机无声可能是协商问题也可能是rtp问题。可以分以下几个步骤排查：<br>1.查看协商过程中sdp中携带的内容是否正常（比如sdp里的IP、Audio端口、codec有没异常）<br>2.双方有没RTP包（抓包可过滤udp端口） ，RTP的地址和端口和SDP的是否可以对应上<br>3.检查RTP信息和SDP是否可以对应，比如payload值、ptime间隔等 </p></blockquote><ul><li>通话过程中的回铃音问题</li></ul><blockquote><p>回铃问题主要有两种：<br>一是收到183后的协商问题；<br>二是收到183和180时没有响回铃或者同时播放了彩铃和本地回铃。<br>GUI有相关配置在收到18x后是否继续处理后续收到的18x（Features-&gt;General Information-&gt;180 Ring Workaround） </p></blockquote><ul><li>转接失败（盲转/咨询转/半咨询转/网络会议）</li></ul><blockquote><p>转接失败一般信令现象是话机发REFER后服务器回403，或者干脆没响应，还有一种是回202后就没下文了。<br>如果服务器回403或者没响应，那么确认下是否盲转可以。咨询转不行，有些服务器可能不支持Replace，也可能限制半咨询转。<br>检查下REFER里的From、To、Refer-to地址是否有异常，匿名也会导致失败。<br>转接的时候，是否话机又发一个HOLD出去（Re-Invite），有些服务器会对这个异常（UI有配置控制是否REFER之前要发HOLD）。<br>对比正常可用的示例抓包，分析信令流程有哪些不同。 </p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> 通信协议 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> sip协议 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>SIP协议入门基础(2)-应用场景</title>
+      <link href="/2022/03/16/sip-xie-yi-ru-men-ji-chu-2-ying-yong-chang-jing/"/>
+      <url>/2022/03/16/sip-xie-yi-ru-men-ji-chu-2-ying-yong-chang-jing/</url>
+      
+        <content type="html"><![CDATA[<p>SIP主要应用场景包括：注册、订阅、通话等。</p><h3 id="注册"><a href="#注册" class="headerlink" title="注册"></a>注册</h3><p>注册消息关键头域：</p><ul><li>Request-Line：请求起始行；REGISTER请求消息，指明了要向哪个服务器进行注册</li><li>Call-ID：该字段唯一标识一个特定的邀请，全局唯一</li><li>Contact：指明用户可达位置，表示终端当前的IP地址和注册号码</li><li>Expires：表示该注册生存期为3600s（注册周期）</li></ul><img src="注册.png" width = "320" height = "269" align=center /><img src="注册消息.png" width = "857" height = "428" align=center /><p>当注册信息变更时，终端会执行注销操作，等注销完之后，会执行账号重载。 因此，可以通过变更任一注册信息来完成重新注册过程（比如Expires)。日常业务中，可以通过该方式来捕获注册报文，不需要关闭账号再重新开启。</p><h4 id="注册续约"><a href="#注册续约" class="headerlink" title="注册续约"></a>注册续约</h4><p>话机账号都有一定的生存周期(即注册周期)，当达到该时间后，话机账号需要重新给服务器发续约请求，保证能正确拥有该账号的使用权。</p><blockquote><p>假设：<br>1.话机账号给服务器发送续约请求时，没收到服务器的响应，则话机认为服务器故障，触发掉线状态，让使用者知道当前账号故障<br>2.同理，服务器如果长时间未收到话机账号的续约请求，则认为终端故障或者注销，服务器会显示账号离线状态 </p></blockquote><p>续约机制（重点）：</p><ul><li>当Expires大于1200：话机续约时间 = expires – 600</li><li>当Expires大于30小于1200：话机续约时间 = expires/2</li></ul><p>Expires值先从服务器响应的200OK的Expires头域获取，如果没有则从Contact头域的expires参数获取。如果都没有，那就以终端注册的Expires头域值为准<br>续约请求和注册请求属于同一个对话，当出现200ok中携带多个Contact的情况时SIP会对URI中的host进行匹配获取对应的值：</p><img src="注册续约.png" width = "602" height = "223" align=center /><h4 id="注册保活"><a href="#注册保活" class="headerlink" title="注册保活"></a>注册保活</h4><p>即Keep-Alive，其主要作用：<br>1.维持NAT中的映射表</p><ul><li>使用NAT 的场景话机处于内网服务器处于外网，话机向外发包的时候NAT会为话机分配一个外网地址和端口。这个内外网地址和端口的绑定是有存活时间的，一定时间内没有使用就会被删除，一旦被删除外网的服务器发送的请求就无法被转发到内网的话机。所以需要话机定时发送keepalive数据包来维持绑定，因为只要求发出数据包即可（包内容可以随意），为了减小服务器的负载一般使用default类型的keepalive即可</li></ul><p>2.告知服务器话机还存活</p><ul><li>Notify和Option类型的keepalive主要是一些客户要求，他们的服务器需要定时接收SIP包来判断话机是否存活。当然还有些客户则要求通过keepalive来让话机判断服务器是否存活来进行备份服务器的切换操作。因为这两中类型keepalive需要应用层来处理所以会加大服务器的负载</li></ul><p>目前，话机支持的保活方式：</p><blockquote><p>配置值：<br>Disable：不发包；<br>Default：发送一个普通的udp包（0d0a0d0a）；<br>Option：发送Option消息给注册服务器；<br>Notify：发送Notify消息给注册服务器。 </p></blockquote><img src="注册保活.png" width = "716" height = "173" align=center /><blockquote><p>问：为什么不用注册保活替代注册续约？<br>答：一般注册续约需要涉及写数据库（例如YMS服务器），对于服务器负载较大，而注册保活是链路上的保活，只涉及网络流量。 </p></blockquote><h4 id="注册常见错误"><a href="#注册常见错误" class="headerlink" title="注册常见错误"></a>注册常见错误</h4><p>注册失败问题可以根据服务器返回的错误码即可辨别（望文知意），常见的错误包括： </p><img src="注册问题.png" width = "1155" height = "450" align=center /><h3 id="SIP订阅"><a href="#SIP订阅" class="headerlink" title="SIP订阅"></a>SIP订阅</h3><p>订阅网络中某些资源或呼叫的状态信息，当那些被订阅的资源的状态发生改变时，负责这一资源的网络实体将向订阅者发送通告，通报当前资源状态的变化情况。</p><blockquote><p>通常一个订阅事件包括：SUBSCRIBE和Notify：<br>SUBSCRIBE方法用于发起订阅请求；<br>NOTIFY方法用于通告当前资源状态。<br>话机常见的订阅事件包括：BLF/Blf-List、注册订阅、语音消息订阅等。 </p></blockquote><img src="订阅.png" width = "321" height = "315" align=center /><img src="订阅请求.png" width = "739" height = "113" align=center /><blockquote><p>Event：事件类型，比如dialog、presence、message-summary、reg等；<br>Accept：表明订阅者支持用可扩展标识语言(XML)描述的对话事件包，比如：Accept: application/dialog-info+xml。 </p></blockquote><h4 id="BLF-BLF-List"><a href="#BLF-BLF-List" class="headerlink" title="BLF/BLF List"></a>BLF/BLF List</h4><p>BLF即Busy Lamp Field，该功能使终端具备监控其他账号状态，同时可以通过可编程按键实现快速拨号、截答功能。通过信号灯的亮、灭、闪、颜色等来反映被监控账号所处的状态，包括空闲、呼出回铃、来电、通话等状态。<br>BLF List是用一组可编程按键订阅SIP服务器上某个群组中各账号状态的功能。与BLF的区别为，BLF List中每个可编程按键订阅哪个账号是由服务器配置的，无需使用者手动配置。</p><blockquote><p>SUBSCRIBE ：订阅消息<br>BLF订阅事件有两种：<br>1.Event: dialog<br>dialog类型是监控一个终端中由invite初始化的对话状态，通常携带early（来电）、confirmed（通话）、terminated（空闲）状态。<br>2.Event:<br>presence presence类型是监控一个终端与其他终端的之间的交流，只有offline和online两种状态。 </p><p>Notify：通告消息<br>Body格式不一样，BLF是带单个被监控方信息xml，BLF-List是带多个被监控方信息，中间以分隔符隔开的xml。 </p></blockquote><p>BLF订阅请求后服务器返回的通告数据：</p><img src="通告数据.png" width = "919" height = "401" align=center /><p>BLF List订阅请求后服务器返回的通告数据：</p><img src="BLF List.png" width = "617" height = "289" align=center /><img src="BLF List通告数据2.png" width = "815" height = "256" align=center /><h4 id="BLF常见问题"><a href="#BLF常见问题" class="headerlink" title="BLF常见问题"></a>BLF常见问题</h4><p>BLF常见问题是灯状态不对</p><blockquote><p>1.首先检查是否成功订阅，如果订阅失败，看服务器返回的Response，如果是403/400/489，可能是服务器不支持，要对比正常抓包；<br>2.然后看是否有收到Notify，如果没有收到，那么有没有可能服务器发了但是没收到，如分片问题，可以用TCP试试（抓服务器的包确认服务器有没有发）；<br>3.有Notify，但是状态不对，那么就是检查xml body，看状态是否正常。 </p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> 通信协议 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> sip协议 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>SIP协议入门基础(1)-功能描述</title>
+      <link href="/2022/03/14/sip-xie-yi-ru-men-ji-chu-1-gong-neng-miao-shu/"/>
+      <url>/2022/03/14/sip-xie-yi-ru-men-ji-chu-1-gong-neng-miao-shu/</url>
+      
+        <content type="html"><![CDATA[<p>目前VOIP领域主流两大协议分别是SIP（话机类）和H323（视频会议）。<br>SIP是一个应用层的控制协议，可以用来建立、修改和终止多媒体会话（或者会议）。<br>SIP是和HTML一样的基于文本语言的一种网络通讯协议，SIP消息分为请求和响应两类。</p><img src="通讯层.png" width = "897" height = "420" align=center /><blockquote><p>物理层（网口）-数据链路层（CDP、ARP）-网络层（IPV4/IPV6）-传输层(TCP/UDP)-会话层-表示层-应用层； SIP/DNS/RTCP/RTP ***应用层协议；<br>TCP/UDP ***传输层；<br>IPV4/IPV6 *** 网络层； </p></blockquote><p>SIP在话机功能中的逻辑关系：</p><img src="逻辑图.png" width = "960" height = "567" align=center /><blockquote><p>GUI：图形用户界面（Graphical User Interface，简称 GUI，又称图形用户接口）是指采用图形方式显示的计算机操作用户界面；<br>SIP：应用层的控制协议，建立、修改和终止多媒体会话，SIP消息分为请求（invite）和响应（200 OK）两类。<br>VPM：传输RTP和RTCP，通过编解码（需要协商codec）发送音频数据 。</p></blockquote><ol><li>某某摘机输入对端号码，此时GUI会告知SIP，由SIP向对方发起通话请求；</li><li>SIP消息通过网络为信道媒介完成传输到被叫方；</li><li>对端收到SIP请求，告知GUI，GUI此时会显示来电者的信息并响铃；</li><li>对端接起来电，GUI告知SIP，SIP向对方发起200 OK响应；</li><li>某某收到响应，SIP通知GUI，GUI完成通话建立，此时界面进入到通话状态，开始计时；</li><li>通话过程中的音频数据则由VPM控制，通过传输RTP数据完成两边的音频数据交互。</li></ol><p><strong>关键词</strong>：SIP;VOIP;</p><p><strong>术语描述</strong></p><ul><li>SIP:Session Initiation Protocol，会话初始协议,是一个基于文本的应用层控制协议，用于创建、修改和释放一个或多个参与者的会话；</li><li>VOIP:基于IP的语音传输,Voice over Internet Protocol,是一种语音通话技术，经由网际协议（IP）来达成语音通话与多媒体会议，也就是经由互联网来进行通信。</li></ul><h3 id="请求类消息"><a href="#请求类消息" class="headerlink" title="请求类消息"></a>请求类消息</h3><p>话机向服务器发起请求时，报文的请求类型，请求是用于建立通信的代码<br>比如话机注册时，需要向服务器发送注册请求：</p><img src="请求消息.png" width = "947" height = "89" align=center /><blockquote><p>REGISTER：注册，向服务器注册，让服务器知道自己的存在；<br>SUBSCRIBE：订阅，用于向服务器申请使用某些功能；<br>NOTIFY：通知，用于通知对方某些信息，一般和SUBSCRIBE配套使用；<br>INVITE：邀请（呼叫），用于呼出呼入；<br>CANCEL：取消，用于取消通话，一般是在通话未建立前，取消通话使用该消息；<br>BYE：挂断，用于挂断结束通话，一般是通话建立后，结束通话使用该消息；<br>PRACK：临时确认应答，用于确认是否收到18x，一般是18x里有100rel，才需要发；<br>UPDATE：更新，一般用于通话中通话参数刷新，也用于Sesstion Timer；<br>REFER：转接，用于转接通话；<br>INFO：信息，一般是服务器用于通话中推送信息给终端；<br>PUBLISH：发布信息，与NOTIFY类似，区别是该消息是会话外；<br>MESSAGE：消息，目前仅用于短信；<br>OPTIONS：可选消息，一般用于扩展使用，目前keepalive也可使用该消息；<br>ACK：确认应答，用于指定响应的应答（常见如200OK，其他响应应答如3xx、4xx）。</p></blockquote><h3 id="响应类消息"><a href="#响应类消息" class="headerlink" title="响应类消息"></a>响应类消息</h3><p>SIP的响应：根据不同的情况, 用数字标识</p><blockquote><p>1xx： 1xx: 临时/信息响应；<br>2xx： 成功响应；<br>3xx： 重定向响应；<br>4xx： 客户端出错，表示语法出错；<br>5xx： 服务器出错，表示服务器不能完成合法的请求；<br>6xx： 全局响应，表示任何服务器都无法完成的请求。 </p></blockquote><p>比如：<br><img src="响应消息.png" width = "1027" height = "221" align=center /></p><blockquote><p>图示说明：<br>1.当用户第一次发送INVITE 的时候服务器返回的是一个407需要身份验证。***407表示服务器告知终端需要携带鉴权信息才能被正确响应；<br>2.认证消息包含在第二次发送的INVITE中。 ***终端的第二个请求INVITE中此时会携带鉴权信息；<br>3.服务器收到INVITE后返回100trying。  ***100表示临时响铃；<br>4.10.2.11.167响铃返回180ringing。  ***180表示信息响铃，此时表示响铃；<br>5.10.2.11.242收到200ok后停止回铃音表明已接通。 ***200 OK，表示服务器成功响应终端的请求；<br>6.第二个ACK是单独的一个事务；<br>7.10.2.11.167先断开连接产生一个BYE消息。 ***终端发起Bye请求；<br>8.10.2.11.242返回一个200ok确认收到BYE终止对话。 ***200 OK 响应Bye请求，通话结束。 </p></blockquote><h3 id="SIP消息的头域"><a href="#SIP消息的头域" class="headerlink" title="SIP消息的头域"></a>SIP消息的头域</h3><p>一个SIP消息是由SIP头域、消息正体和其他部分组成。<br>事务的区分是通过Via域中的branch值来决定的，branch值相同代表同一个事务（Transaction）系列<br>对话的唯一标识（Dialog ID）：Dialog ID相同就是在同一个会话里；往后只要查看Dialog ID是不是一样的，就可以确定是不是在同一个会话里。</p><blockquote><p>Request_URI：请求行，即目标地址，信令能不能达到对方，和该头域有一定关系；<br>Via域：用于记录由有助于将响应路由回始发者的请求所采用的SIP路由；<br>From域：表示请求的发起者；<br>To：目标，注意如果是接收方，该头域会用来匹配账号，即用来确定是发给哪个账号；<br>Call-ID：经常用于标识会话，抓包时用颜色标记可以清楚知道哪些信令属于同一个会话；<br>Cseq域：包含一个整数和一个请求的名字，该数字是顺序递增的，每当对话中发起一个新的请求都会引起这个数字的顺序递增；<br>Contact：发送方的联系地址，用于会话后续请求的目标地址（所以通话中请求发错地方一般都是因为这个地址）；<br>Max-Forwards域：适用于任何请求方式中，用来限制前转请求的代理或者网关的数目，每经过一个，其值减一，如果域值为0，则接收者禁止前转此请求；<br>Contact-type域：包含了消息正文的描述；<br>Contact-length域：包含消息正文的长度（字节数）。 </p></blockquote><img src="sip头.png" width = "961" height = "305" align=center /><p>重点：对于日常SIP问题分析时，可以通过过滤Call-ID作为当前会话的唯一表示，帮助我们迅速定位到关键点：</p><img src="过滤定位.png" width = "1165" height = "584" align=center /><h3 id="SIP中一些重要概念"><a href="#SIP中一些重要概念" class="headerlink" title="SIP中一些重要概念"></a>SIP中一些重要概念</h3><p>T1：0.5，用于SIP重传定时器，每次重传的间隔标准是T1、2T1、4T1、8T1…（针对UDP）<br>T2：4，每次重传间隔的最大值，即上述间隔最大不能超过T2，即默认4秒</p><ul><li>使用UDP来传输SIP时，消息的丢失和接受消息的顺序错乱都是有可能的。因为UDP只能保证传输的内容是无错的，但是不能保证传输的内容一定会到达目的地。</li><li>Request发送之后启动T1计时器。如果在T1时间过后都没有收到response，就要重发request。如果收到了一个临时的response（1xx），T1就被忽略，而一个时间更长的计时器T2就开始计时。如果在T1时间过后都没有收到response，就要重发request。</li><li>每次重发request之后，计时器就会翻倍，但最大不超过T2。如果超过T2，每次就按T2时间重发。在重发了10次之后，这种指数级的增长过程会停止。</li></ul><img src="应答重传.png" width = "1048" height = "353" align=center /><p>T4：5，应答重传的等待时间（如ACK)<br>Local SIP port：本地SIP监听端口，针对UDP/TCP<br>TLS SIP port：本地SIP TLS监听端口</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 通信协议 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> sip协议 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>一生中最棒的老师</title>
       <link href="/2022/03/10/yi-sheng-zhong-zui-bang-de-lao-shi/"/>
       <url>/2022/03/10/yi-sheng-zhong-zui-bang-de-lao-shi/</url>

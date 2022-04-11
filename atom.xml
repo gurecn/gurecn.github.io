@@ -96,6 +96,86 @@
   </entry>
   
   <entry>
+    <title>SIP协议入门基础(3)-应用场景</title>
+    <link href="https://devdroid.cn/2022/03/18/sip-xie-yi-ru-men-ji-chu-3-ying-yong-chang-jing/"/>
+    <id>https://devdroid.cn/2022/03/18/sip-xie-yi-ru-men-ji-chu-3-ying-yong-chang-jing/</id>
+    <published>2022-03-18T02:30:42.000Z</published>
+    <updated>2022-04-11T08:56:45.155Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;SIP通话&quot;&gt;&lt;a href=&quot;#SIP通话&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="通信协议" scheme="https://devdroid.cn/categories/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/"/>
+    
+    
+      <category term="sip协议" scheme="https://devdroid.cn/tags/sip%E5%8D%8F%E8%AE%AE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SIP协议入门基础(2)-应用场景</title>
+    <link href="https://devdroid.cn/2022/03/16/sip-xie-yi-ru-men-ji-chu-2-ying-yong-chang-jing/"/>
+    <id>https://devdroid.cn/2022/03/16/sip-xie-yi-ru-men-ji-chu-2-ying-yong-chang-jing/</id>
+    <published>2022-03-16T11:30:28.000Z</published>
+    <updated>2022-04-11T08:50:13.085Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;SIP主要应用场景包括：注册、订阅、通话等。&lt;/p&gt;
+&lt;h3 id=&quot;注册&quot;&gt;&lt;a href=&quot;#注册&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="通信协议" scheme="https://devdroid.cn/categories/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/"/>
+    
+    
+      <category term="sip协议" scheme="https://devdroid.cn/tags/sip%E5%8D%8F%E8%AE%AE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SIP协议入门基础(1)-功能描述</title>
+    <link href="https://devdroid.cn/2022/03/14/sip-xie-yi-ru-men-ji-chu-1-gong-neng-miao-shu/"/>
+    <id>https://devdroid.cn/2022/03/14/sip-xie-yi-ru-men-ji-chu-1-gong-neng-miao-shu/</id>
+    <published>2022-03-14T08:30:08.000Z</published>
+    <updated>2022-04-11T08:43:58.066Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;目前VOIP领域主流两大协议分别是SIP（话机类）和H323（视频会议）。&lt;br&gt;SIP是一个应用层的控制协议，可以用来建立、修改和终止多媒体会话（或者会议）。&lt;br&gt;SIP是和HTML一样的基于文本语言的一种网络通讯协议，SIP消息分为请求和响应两类。&lt;/p&gt;
+&lt;img
+        
+      
+    
+    </summary>
+    
+      <category term="通信协议" scheme="https://devdroid.cn/categories/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/"/>
+    
+    
+      <category term="sip协议" scheme="https://devdroid.cn/tags/sip%E5%8D%8F%E8%AE%AE/"/>
+    
+  </entry>
+  
+  <entry>
     <title>一生中最棒的老师</title>
     <link href="https://devdroid.cn/2022/03/10/yi-sheng-zhong-zui-bang-de-lao-shi/"/>
     <id>https://devdroid.cn/2022/03/10/yi-sheng-zhong-zui-bang-de-lao-shi/</id>
@@ -458,86 +538,6 @@
     
     
       <category term="混淆" scheme="https://devdroid.cn/tags/%E6%B7%B7%E6%B7%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>自定义ClassLoader加密Java代码</title>
-    <link href="https://devdroid.cn/2022/01/27/zi-ding-yi-classloader-jia-mi-java-dai-ma/"/>
-    <id>https://devdroid.cn/2022/01/27/zi-ding-yi-classloader-jia-mi-java-dai-ma/</id>
-    <published>2022-01-27T08:00:05.000Z</published>
-    <updated>2022-03-24T08:58:31.109Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;前面几篇博客介绍了Jar包如何进行签名、防止反编译，在实际项目中使用注入的方式防止反编译确实有效，但是同时会引入新的问题。今天使用一种新的方式来实现代码保护。&lt;/p&gt;
-&lt;h3 id=&quot;注入问题&quot;&gt;&lt;a href=&quot;#注入问题&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="Java" scheme="https://devdroid.cn/categories/Java/"/>
-    
-    
-      <category term="混淆" scheme="https://devdroid.cn/tags/%E6%B7%B7%E6%B7%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android Studio编译Jar包运行异常</title>
-    <link href="https://devdroid.cn/2022/01/24/android-studio-bian-yi-jar-bao-yun-xing-yi-chang/"/>
-    <id>https://devdroid.cn/2022/01/24/android-studio-bian-yi-jar-bao-yun-xing-yi-chang/</id>
-    <published>2022-01-24T09:26:48.000Z</published>
-    <updated>2022-01-24T09:36:13.941Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;上面两篇博客介绍了Jar包如何进行签名和反编译，今天介绍一下使用Android studio编译Jar包及使用的问题。&lt;br&gt;首先介绍一下如何使用Android studio编译Jar包。&lt;/p&gt;
-&lt;h4 id=&quot;编译Jar文件&quot;&gt;&lt;a href=&quot;#编译Jar文件&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="Java" scheme="https://devdroid.cn/categories/Java/"/>
-    
-    
-      <category term="混淆" scheme="https://devdroid.cn/tags/%E6%B7%B7%E6%B7%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Jar包签名处理</title>
-    <link href="https://devdroid.cn/2022/01/17/jar-bao-qian-ming-chu-li/"/>
-    <id>https://devdroid.cn/2022/01/17/jar-bao-qian-ming-chu-li/</id>
-    <published>2022-01-17T09:40:32.000Z</published>
-    <updated>2022-01-17T09:47:10.270Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;下面分析一下jar包签名。&lt;br&gt;最近我在使用时，发现拿到他们代码放到项目中，使用时一直报错。网上查找发现是签名认证失败导致的。所以我就研究了一下对jar的签名操作。&lt;br&gt;JDK环境安装及环境变量的配置跳过，不清楚的可以参考：&lt;a
-        
-      
-    
-    </summary>
-    
-      <category term="Java" scheme="https://devdroid.cn/categories/Java/"/>
-    
-    
-      <category term="应用" scheme="https://devdroid.cn/tags/%E5%BA%94%E7%94%A8/"/>
     
   </entry>
   
