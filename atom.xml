@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>卓技卓品</title>
   
-  <subtitle>卓越的技术带来卓越的产品</subtitle>
+  <subtitle>源于技术，止于卓品</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devdroid.cn/"/>
-  <updated>2022-04-08T10:16:44.184Z</updated>
+  <updated>2022-04-14T01:08:36.504Z</updated>
   <id>https://devdroid.cn/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>即使平庸依然为傲</title>
-    <link href="https://devdroid.cn/2022/03/30/ji-shi-ping-yong-yi-ran-wei-ao/"/>
-    <id>https://devdroid.cn/2022/03/30/ji-shi-ping-yong-yi-ran-wei-ao/</id>
-    <published>2022-03-30T10:11:40.000Z</published>
-    <updated>2022-04-08T10:16:44.184Z</updated>
+    <title>#汽水瓶#能者多喝</title>
+    <link href="https://devdroid.cn/2022/03/31/qi-shui-ping-neng-zhe-duo-he/"/>
+    <id>https://devdroid.cn/2022/03/31/qi-shui-ping-neng-zhe-duo-he/</id>
+    <published>2022-03-31T01:02:59.000Z</published>
+    <updated>2022-04-14T01:08:36.504Z</updated>
     
     <summary type="html">
     
@@ -29,16 +29,42 @@
       
         
         
-          &lt;p&gt;文/独慕溪&lt;br&gt;从小我们便对父母有种误解，感觉自己如果没有活成父母期待中的样子，就一定会让父母失望。&lt;br&gt;其实事实并不是这样。&lt;br&gt;妹妹九月份以优异的成绩顺利升入市重点高中，但是好景不长，初中时一直成绩名列前茅的她，高中首次月考成绩便下滑到了十名开外，她开始焦虑又惶恐
+          &lt;h3 id=&quot;描述&quot;&gt;&lt;a href=&quot;#描述&quot; class=&quot;headerlink&quot;
         
       
     
     </summary>
     
-      <category term="日常" scheme="https://devdroid.cn/categories/%E6%97%A5%E5%B8%B8/"/>
+      <category term="算法" scheme="https://devdroid.cn/categories/%E7%AE%97%E6%B3%95/"/>
     
     
-      <category term="感悟" scheme="https://devdroid.cn/tags/%E6%84%9F%E6%82%9F/"/>
+      <category term="模拟" scheme="https://devdroid.cn/tags/%E6%A8%A1%E6%8B%9F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>即使平庸依然为傲</title>
+    <link href="https://devdroid.cn/2022/03/30/ji-shi-ping-yong-yi-ran-wei-ao/"/>
+    <id>https://devdroid.cn/2022/03/30/ji-shi-ping-yong-yi-ran-wei-ao/</id>
+    <published>2022-03-30T10:11:40.000Z</published>
+    <updated>2022-04-14T01:11:24.023Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;从小我们便对父母有种误解，感觉自己如果没有活成父母期待中的样子，就一定会让父母失望。&lt;br&gt;其实事实并不是这样。&lt;br&gt;妹妹九月份以优异的成绩顺利升入市重点高中，但是好景不长，初中时一直成绩名列前茅的她，高中首次月考成绩便下滑到了十名开外，她开始焦虑又惶恐起来，状态一次不如
+        
+      
+    
+    </summary>
+    
+      <category term="故事" scheme="https://devdroid.cn/categories/%E6%95%85%E4%BA%8B/"/>
+    
+    
+      <category term="转载" scheme="https://devdroid.cn/tags/%E8%BD%AC%E8%BD%BD/"/>
     
   </entry>
   
@@ -47,7 +73,7 @@
     <link href="https://devdroid.cn/2022/03/24/ma-gei-ni-diu-ren-liao/"/>
     <id>https://devdroid.cn/2022/03/24/ma-gei-ni-diu-ren-liao/</id>
     <published>2022-03-24T10:11:10.000Z</published>
-    <updated>2022-04-08T10:15:50.933Z</updated>
+    <updated>2022-04-14T01:13:49.406Z</updated>
     
     <summary type="html">
     
@@ -55,17 +81,16 @@
       
         
         
-          &lt;p&gt;小小&lt;/p&gt;
-&lt;p&gt;妈妈赶到医院时，医生已经把管子都拔掉，呼吸机也停了。爸爸安静地躺在那儿，像熟睡一样。&lt;br&gt;我握住他的右手，姐姐握着他的左手，陪他度过生命中最后的时光。在重症监护室的这 14 天零 6
+          &lt;p&gt;妈妈赶到医院时，医生已经把管子都拔掉，呼吸机也停了。爸爸安静地躺在那儿，像熟睡一样。&lt;br&gt;我握住他的右手，姐姐握着他的左手，陪他度过生命中最后的时光。在重症监护室的这 14 天零 6
         
       
     
     </summary>
     
-      <category term="日常" scheme="https://devdroid.cn/categories/%E6%97%A5%E5%B8%B8/"/>
+      <category term="故事" scheme="https://devdroid.cn/categories/%E6%95%85%E4%BA%8B/"/>
     
     
-      <category term="感悟" scheme="https://devdroid.cn/tags/%E6%84%9F%E6%82%9F/"/>
+      <category term="转载" scheme="https://devdroid.cn/tags/%E8%BD%AC%E8%BD%BD/"/>
     
   </entry>
   
@@ -74,7 +99,7 @@
     <link href="https://devdroid.cn/2022/03/18/bu-hui-zai-you-di-er-ge-ni/"/>
     <id>https://devdroid.cn/2022/03/18/bu-hui-zai-you-di-er-ge-ni/</id>
     <published>2022-03-18T10:10:59.000Z</published>
-    <updated>2022-04-08T10:14:55.292Z</updated>
+    <updated>2022-04-14T01:11:43.565Z</updated>
     
     <summary type="html">
     
@@ -82,16 +107,16 @@
       
         
         
-          &lt;p&gt;佚名&lt;br&gt;很小的时候，她就听身边的人说她是要来的孩子。椴树开花时，赶花人生下了她，又辗转托人送掉了她，然后又赶别的花去了。她回家问他。他说：听他们瞎说！然后拉着她到镜子前，指着一大一小两张脸说：别人家的孩子谁能长得跟我一样漂亮？&lt;br&gt;她笑了，镜子里的他刀条脸，又黑又瘦，
+          &lt;p&gt;很小的时候，她就听身边的人说她是要来的孩子。椴树开花时，赶花人生下了她，又辗转托人送掉了她，然后又赶别的花去了。她回家问他。他说：听他们瞎说！然后拉着她到镜子前，指着一大一小两张脸说：别人家的孩子谁能长得跟我一样漂亮？&lt;br&gt;她笑了，镜子里的他刀条脸，又黑又瘦，实在与漂亮沾
         
       
     
     </summary>
     
-      <category term="日常" scheme="https://devdroid.cn/categories/%E6%97%A5%E5%B8%B8/"/>
+      <category term="故事" scheme="https://devdroid.cn/categories/%E6%95%85%E4%BA%8B/"/>
     
     
-      <category term="感悟" scheme="https://devdroid.cn/tags/%E6%84%9F%E6%82%9F/"/>
+      <category term="转载" scheme="https://devdroid.cn/tags/%E8%BD%AC%E8%BD%BD/"/>
     
   </entry>
   
@@ -180,7 +205,7 @@
     <link href="https://devdroid.cn/2022/03/10/yi-sheng-zhong-zui-bang-de-lao-shi/"/>
     <id>https://devdroid.cn/2022/03/10/yi-sheng-zhong-zui-bang-de-lao-shi/</id>
     <published>2022-03-10T10:10:48.000Z</published>
-    <updated>2022-04-08T10:14:18.961Z</updated>
+    <updated>2022-04-14T01:11:56.814Z</updated>
     
     <summary type="html">
     
@@ -194,10 +219,10 @@
     
     </summary>
     
-      <category term="日常" scheme="https://devdroid.cn/categories/%E6%97%A5%E5%B8%B8/"/>
+      <category term="故事" scheme="https://devdroid.cn/categories/%E6%95%85%E4%BA%8B/"/>
     
     
-      <category term="感悟" scheme="https://devdroid.cn/tags/%E6%84%9F%E6%82%9F/"/>
+      <category term="转载" scheme="https://devdroid.cn/tags/%E8%BD%AC%E8%BD%BD/"/>
     
   </entry>
   
@@ -206,7 +231,7 @@
     <link href="https://devdroid.cn/2022/03/03/zong-you-ren-ai-zhao-ni/"/>
     <id>https://devdroid.cn/2022/03/03/zong-you-ren-ai-zhao-ni/</id>
     <published>2022-03-03T10:10:34.000Z</published>
-    <updated>2022-04-08T10:13:32.617Z</updated>
+    <updated>2022-04-14T01:12:04.728Z</updated>
     
     <summary type="html">
     
@@ -220,10 +245,10 @@
     
     </summary>
     
-      <category term="日常" scheme="https://devdroid.cn/categories/%E6%97%A5%E5%B8%B8/"/>
+      <category term="故事" scheme="https://devdroid.cn/categories/%E6%95%85%E4%BA%8B/"/>
     
     
-      <category term="感悟" scheme="https://devdroid.cn/tags/%E6%84%9F%E6%82%9F/"/>
+      <category term="转载" scheme="https://devdroid.cn/tags/%E8%BD%AC%E8%BD%BD/"/>
     
   </entry>
   
@@ -389,7 +414,7 @@
     <link href="https://devdroid.cn/2022/02/11/lao-ren-jia-jiu-shi-yong-lai-ma-fan-de/"/>
     <id>https://devdroid.cn/2022/02/11/lao-ren-jia-jiu-shi-yong-lai-ma-fan-de/</id>
     <published>2022-02-11T10:21:41.000Z</published>
-    <updated>2022-04-07T10:26:34.062Z</updated>
+    <updated>2022-04-14T01:11:06.368Z</updated>
     
     <summary type="html">
     
@@ -404,10 +429,10 @@
     
     </summary>
     
-      <category term="日常" scheme="https://devdroid.cn/categories/%E6%97%A5%E5%B8%B8/"/>
+      <category term="故事" scheme="https://devdroid.cn/categories/%E6%95%85%E4%BA%8B/"/>
     
     
-      <category term="感悟" scheme="https://devdroid.cn/tags/%E6%84%9F%E6%82%9F/"/>
+      <category term="转载" scheme="https://devdroid.cn/tags/%E8%BD%AC%E8%BD%BD/"/>
     
   </entry>
   
@@ -512,32 +537,6 @@
     
     
       <category term="兼容性" scheme="https://devdroid.cn/tags/%E5%85%BC%E5%AE%B9%E6%80%A7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>使用多态隐藏方法实现</title>
-    <link href="https://devdroid.cn/2022/02/01/shi-yong-duo-tai-yin-cang-fang-fa-shi-xian/"/>
-    <id>https://devdroid.cn/2022/02/01/shi-yong-duo-tai-yin-cang-fang-fa-shi-xian/</id>
-    <published>2022-02-01T10:39:40.000Z</published>
-    <updated>2022-03-24T10:42:00.206Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h3 id=&quot;需求背景&quot;&gt;&lt;a href=&quot;#需求背景&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="Java" scheme="https://devdroid.cn/categories/Java/"/>
-    
-    
-      <category term="混淆" scheme="https://devdroid.cn/tags/%E6%B7%B7%E6%B7%86/"/>
     
   </entry>
   
