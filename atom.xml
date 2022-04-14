@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devdroid.cn/"/>
-  <updated>2022-04-14T01:08:36.504Z</updated>
+  <updated>2022-04-14T08:52:20.202Z</updated>
   <id>https://devdroid.cn/</id>
   
   <author>
@@ -15,6 +15,58 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>#合唱队#唱歌不易</title>
+    <link href="https://devdroid.cn/2022/04/07/he-chang-dui-chang-ge-bu-yi/"/>
+    <id>https://devdroid.cn/2022/04/07/he-chang-dui-chang-ge-bu-yi/</id>
+    <published>2022-04-07T08:40:40.000Z</published>
+    <updated>2022-04-14T08:52:20.202Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;描述&quot;&gt;&lt;a href=&quot;#描述&quot; class=&quot;headerlink&quot; title=&quot;描述&quot;&gt;&lt;/a&gt;描述&lt;/h3&gt;&lt;p&gt;设K位同学从左到右依次编号为 1，2…，K ，他们的身高分别为T1,T2,…,TK，若存在（1≤i≤K）
+        
+      
+    
+    </summary>
+    
+      <category term="算法" scheme="https://devdroid.cn/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="动态规划" scheme="https://devdroid.cn/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>#购物单#购物快乐</title>
+    <link href="https://devdroid.cn/2022/04/06/gou-wu-dan-gou-wu-kuai-le/"/>
+    <id>https://devdroid.cn/2022/04/06/gou-wu-dan-gou-wu-kuai-le/</id>
+    <published>2022-04-06T08:40:31.000Z</published>
+    <updated>2022-04-14T08:57:35.905Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;描述&quot;&gt;&lt;a href=&quot;#描述&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="算法" scheme="https://devdroid.cn/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="动态规划" scheme="https://devdroid.cn/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+    
+  </entry>
   
   <entry>
     <title>#汽水瓶#能者多喝</title>
@@ -485,58 +537,6 @@
     
     
       <category term="应用" scheme="https://devdroid.cn/tags/%E5%BA%94%E7%94%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>判断APP是否在前台</title>
-    <link href="https://devdroid.cn/2022/02/04/pan-duan-app-shi-fou-zai-qian-tai/"/>
-    <id>https://devdroid.cn/2022/02/04/pan-duan-app-shi-fou-zai-qian-tai/</id>
-    <published>2022-02-04T10:01:42.000Z</published>
-    <updated>2022-03-31T10:03:13.863Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;背景说明&quot;&gt;&lt;a href=&quot;#背景说明&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="Android" scheme="https://devdroid.cn/categories/Android/"/>
-    
-    
-      <category term="应用" scheme="https://devdroid.cn/tags/%E5%BA%94%E7%94%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>加载网页提示无法打开</title>
-    <link href="https://devdroid.cn/2022/02/02/jia-zai-wang-ye-ti-shi-wu-fa-da-kai/"/>
-    <id>https://devdroid.cn/2022/02/02/jia-zai-wang-ye-ti-shi-wu-fa-da-kai/</id>
-    <published>2022-02-02T03:31:08.000Z</published>
-    <updated>2022-03-25T03:35:44.384Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h3 id=&quot;需求背景&quot;&gt;&lt;a href=&quot;#需求背景&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="Android" scheme="https://devdroid.cn/categories/Android/"/>
-    
-    
-      <category term="兼容性" scheme="https://devdroid.cn/tags/%E5%85%BC%E5%AE%B9%E6%80%A7/"/>
     
   </entry>
   

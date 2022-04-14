@@ -415,14 +415,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.2k
+                    2.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    10 分
+                    11 分
                 </div>
                 
                 
@@ -707,6 +707,29 @@ intent4<span class="token punctuation">.</span><span class="token function">addF
 remoteViews<span class="token punctuation">.</span><span class="token function">setOnClickPendingIntent</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>rlContent<span class="token punctuation">,</span> PendingIntent<span class="token punctuation">.</span><span class="token function">getActivity</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> intent4<span class="token punctuation">,</span> PendingIntent<span class="token punctuation">.</span>FLAG_UPDATE_CURRENT<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>此时此时界面打开就没有问题了。</p>
+<h3 id="问题更新（2022-04-14）"><a href="#问题更新（2022-04-14）" class="headerlink" title="问题更新（2022.04.14）"></a>问题更新（2022.04.14）</h3><h4 id="长按微件有边框"><a href="#长按微件有边框" class="headerlink" title="长按微件有边框"></a>长按微件有边框</h4><p>最近发信一个新问题，就是我开发的微件当作应用图标使用，当长按微件会出现一个边框，如下图美团微件。但是我长按有些应用的微件时，他们竟然和长按应用图标一样，不会出现边框。当时很费解，然后查询资料、对比代码，这个小问题竟然搞了一下午。</p>
+<img src="长按效果.jpg.png" width = "370" height = "266" alt="长安边框" align=center />
+
+<p>最终发现是配置问题，当我移除resizeMode时，功能正常了。</p>
+<pre class="line-numbers language-xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="utf-8"?></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>appwidget-provider</span>
+    <span class="token attr-name"><span class="token namespace">xmlns:</span>android</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://schemas.android.com/apk/res/android<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>minWidth</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>250dp<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>minHeight</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>60dp<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>updatePeriodMillis</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>30<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>initialLayout</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@layout/widget_layout_shici<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>resizeMode</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>none|horizontal|vertical<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>widgetCategory</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>home_screen<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><code>android:resizeMode=&quot;none|horizontal|vertical&quot;</code>是什么呢？</p>
+<p>看描述：</p>
+<blockquote>
+<p>The rules by which a widget can be resized. See RESIZE_NONE, RESIZE_NONE, RESIZE_HORIZONTAL, RESIZE_VERTICAL, RESIZE_BOTH.<br>This field corresponds to the android:resizeMode attribute in the AppWidget meta-data file.<br>Value is either 0 or a combination of RESIZE_HORIZONTAL, and RESIZE_VERTICAL</p>
+</blockquote>
+<p>翻译：</p>
+<blockquote>
+<p>可以调整小部件大小的规则。 请参阅 RESIZE_NONE、RESIZE_NONE、RESIZE_HORIZONTAL、RESIZE_VERTICAL、RESIZE_BOTH。<br>该字段对应于 AppWidget 元数据文件中的 android:resizeMode 属性。<br>值为 0 或 RESIZE_HORIZONTAL 和 RESIZE_VERTICAL 的组合</p>
+</blockquote>
 
             </div>
             <hr />
@@ -1307,7 +1330,7 @@ remoteViews<span class="token punctuation">.</span><span class="token function">
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">84k</span>
+            <span class="white-color">86.7k</span>
             
 
             <br>
