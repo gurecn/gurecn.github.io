@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devdroid.cn/"/>
-  <updated>2022-04-20T02:21:20.366Z</updated>
+  <updated>2022-04-20T07:14:00.137Z</updated>
   <id>https://devdroid.cn/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>#兄弟单词#谁是我的兄弟</title>
+    <link href="https://devdroid.cn/2022/04/15/xiong-di-dan-ci-shui-shi-wo-de-xiong-di/"/>
+    <id>https://devdroid.cn/2022/04/15/xiong-di-dan-ci-shui-shi-wo-de-xiong-di/</id>
+    <published>2022-04-15T07:09:05.000Z</published>
+    <updated>2022-04-20T07:14:00.137Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;描述&quot;&gt;&lt;a href=&quot;#描述&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="算法" scheme="https://devdroid.cn/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="查找" scheme="https://devdroid.cn/tags/%E6%9F%A5%E6%89%BE/"/>
+    
+  </entry>
   
   <entry>
     <title>#接雨水#能接多少水</title>
@@ -512,33 +538,6 @@
     
     
       <category term="特性" scheme="https://devdroid.cn/tags/%E7%89%B9%E6%80%A7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>老人家就是用来麻烦的</title>
-    <link href="https://devdroid.cn/2022/02/11/lao-ren-jia-jiu-shi-yong-lai-ma-fan-de/"/>
-    <id>https://devdroid.cn/2022/02/11/lao-ren-jia-jiu-shi-yong-lai-ma-fan-de/</id>
-    <published>2022-02-11T10:21:41.000Z</published>
-    <updated>2022-04-14T01:11:06.368Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;文 / 漠漠轻寒&lt;br&gt;我惊奇地发现，从前那个开朗乐观有点大男子主义的父亲又回来了。我很不解，难道父亲真是劳累命，一辈子要忙忙碌碌才会高兴吗？&lt;/p&gt;
-&lt;p&gt;“ 孝 “ 是很难做的一个字。&lt;br&gt;母亲去世以后，老家便只剩下年近 70
-        
-      
-    
-    </summary>
-    
-      <category term="故事" scheme="https://devdroid.cn/categories/%E6%95%85%E4%BA%8B/"/>
-    
-    
-      <category term="转载" scheme="https://devdroid.cn/tags/%E8%BD%AC%E8%BD%BD/"/>
     
   </entry>
   

@@ -5,9 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="google-site-verification" content="BZSSTWCG6ygfXci-M6fHXRUOICCdvw9XUlROWGENjyA" />
-    <meta name="keywords" content="Android Studio编译Jar包运行异常, Java C/C++ Vue Gure gurecn Android 卓技卓品">
-    <meta name="description" content="上面两篇博客介绍了Jar包如何进行签名和反编译，今天介绍一下使用Android studio编译Jar包及使用的问题。首先介绍一下如何使用Android studio编译Jar包。
-编译Jar文件首先我们通过Android studio打开">
+    <meta name="keywords" content="#兄弟单词#谁是我的兄弟, Java C/C++ Vue Gure gurecn Android 卓技卓品">
+    <meta name="description" content="描述定义一个单词的“兄弟单词”为：交换该单词字母顺序（注：可以交换任意次），而不添加、删除、修改原有的字母就能生成的单词。兄弟单词要求和原来的单词不同。例如： ab 和 ba 是兄弟单词。 ab 和 ab 则不是兄弟单词。现在给定你 n 个">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -15,7 +14,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Android Studio编译Jar包运行异常 | 卓技卓品</title>
+    <title>#兄弟单词#谁是我的兄弟 | 卓技卓品</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -261,13 +260,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Android Studio编译Jar包运行异常
+                        #兄弟单词#谁是我的兄弟
                     </div>
                 </div>
             </div>
@@ -378,8 +377,8 @@
                     
                     <div class="article-tag">
                         
-                        <a href="/tags/%E6%B7%B7%E6%B7%86/" target="_blank">
-                            <span class="chip bg-color">混淆</span>
+                        <a href="/tags/%E6%9F%A5%E6%89%BE/" target="_blank">
+                            <span class="chip bg-color">查找</span>
                         </a>
                         
                     </div>
@@ -390,8 +389,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                        <a href="/categories/Java/" class="post-category" target="_blank">
-                            Java
+                        <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category" target="_blank">
+                            算法
                         </a>
                         
                     </div>
@@ -402,7 +401,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-01-24
+                    2022-04-15
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -416,14 +415,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.8k
+                    743
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    7 分
+                    3 分
                 </div>
                 
                 
@@ -439,147 +438,70 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>上面两篇博客介绍了Jar包如何进行签名和反编译，今天介绍一下使用Android studio编译Jar包及使用的问题。<br>首先介绍一下如何使用Android studio编译Jar包。</p>
-<h4 id="编译Jar文件"><a href="#编译Jar文件" class="headerlink" title="编译Jar文件"></a>编译Jar文件</h4><p>首先我们通过Android studio打开需要编译成Jar包的项目，然后找到build.gradle文件，创建一个task，命名成makeJar，内容如下：</p>
-<pre class="line-numbers language-shell"><code class="language-shell">task makeJar  {
-    copy {
-        from('build/intermediates/bundles/release/')
-        into('build/libs/')
-        include('classes.jar')
-        rename('classes.jar', "uSDK_Java.jar".toLowerCase())
-    }
-}
-
-makeJar.dependsOn(build)
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>此时，重新编译项目，会发现在右侧Gradle菜单栏内，依次点击app-Tasks-other-makeJar。双击makeJar，会进行编译操作。当编译成功后，会输出如下日志(截取关键部分)：</p>
+                <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><p>定义一个单词的“兄弟单词”为：交换该单词字母顺序（注：可以交换任意次），而不添加、删除、修改原有的字母就能生成的单词。<br>兄弟单词要求和原来的单词不同。例如： ab 和 ba 是兄弟单词。 ab 和 ab 则不是兄弟单词。<br>现在给定你 n 个单词，另外再给你一个单词 x ，让你寻找 x 的兄弟单词里，按字典序排列后的第 k 个单词是什么？<br>注意：字典中可能有重复单词。</p>
+<p>数据范围：1≤n≤1000 ，输入的字符串长度满足 1≤length≤10  ， 1≤k&lt;n<br>输入描述：<br>输入只有一行。 先输入字典中单词的个数n，再输入n个单词作为字典单词。 然后输入一个单词x 最后后输入一个整数k<br>输出描述：<br>第一行输出查找到x的兄弟单词的个数m 第二行输出查找到的按照字典顺序排序后的第k个兄弟单词，没有符合第k个的话则不用输出。</p>
+<p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/03ba8aeeef73400ca7a37a5f3370fe68?tpId=37&tqId=21250&rp=1&ru=/exam/oj/ta&qru=/exam/oj/ta&sourceUrl=/exam/oj/ta?page=1&tpId=37&type=37&difficulty=undefined&judgeStatus=undefined&tags=&title=">华为机试题（HJ27 查找兄弟单词）</a></p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>兄弟单词就是包含字母相同，但是顺序不通的单词，同时顺序相同的单词不属于兄弟单词。<br>该问题没有想到简单的实现，最终还是挨个单词判断是否是兄弟单词。<br>在判断是否是兄弟单词时有两种方式：</p>
 <blockquote>
-<p>14:42:30: Executing task ‘makeJar’…<br>Executing tasks: [makeJar] in project C:\develop\DevProject\Android\Library\app<br>:app:preBuild UP-TO-DATE<br>:app:preDebugUnitTestBuild UP-TO-DATE<br>:app:javaPreCompileDebugUnitTest<br>:app:compileDebugUnitTestJavaWithJavac NO-SOURCE<br>:app:mockableAndroidJar<br>:app:test UP-TO-DATE<br>:app:check<br>:app:build<br>:app:makeJar<br>Deprecated Gradle features were used in this build, making it incompatible with Gradle 5.0.<br>See <a target="_blank" rel="noopener" href="https://docs.gradle.org/4.6/userguide/command_line_interface.html#sec:command_line_warnings">https://docs.gradle.org/4.6/userguide/command_line_interface.html#sec:command_line_warnings</a><br>BUILD SUCCESSFUL in 28s<br>55 actionable tasks: 29 executed, 26 up-to-date<br>14:43:00: Task execution finished ‘makeJar’.</p>
+<p>1.单词排序：将单词组成的字母转换成正序或倒叙，然后比较两个排序后的单词是否相同；</p>
+<p>2.计算权重：为每个单词计算权重。因字母有26个，权重是数字是总数值可能很大，我就将权重定义成字符+数字的形式。比如AbcC权重为：a1b1c2。然后比较两个单词权重，一样时即为兄弟单词。</p>
 </blockquote>
-<p>我们看到BUILD SUCCESSFUL提示，因为Task中我们设置目标文件输出到build/libs/，我们打开项目中app/build/libs路径，会看到输出的Jar包（若是没有创建libs文件夹，可以再执行一次makeJar，在我这边发现需要执行两次才能输出）。<br>此时我们已经能够将Java文件打包成Jar文件了。</p>
-<h4 id="混淆配置"><a href="#混淆配置" class="headerlink" title="混淆配置"></a>混淆配置</h4><p>此时我们解压Jar包，可以发现资源文件和方法都没有混淆，下面我们开启混淆功能。<br>我们继续找到build.gradle文件，配置buildTypes方法:</p>
-<pre class="line-numbers language-shell"><code class="language-shell">buildTypes {
-    release {
-        minifyEnabled true
-        proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-    }
-    debug {
-        minifyEnabled true
-        proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-    }
-}
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>然后在app路径下创建proguard-rules.pro文件，在文件内配置混淆规则。</p>
-<pre class="line-numbers language-shell"><code class="language-shell"># 代码混淆压缩比，在0~7之间，默认为5，一般不做修改
--optimizationpasses 5
-# 混合时不使用大小写混合，混合后的类名为小写
--dontusemixedcaseclassnames
-# 指定不去忽略非公共库的类
--dontskipnonpubliclibraryclasses
-# 这句话能够使我们的项目混淆后产生映射文件
-# 包含有类名->混淆后类名的映射关系
--verbose
-# 指定不去忽略非公共库的类成员
--dontskipnonpubliclibraryclassmembers
-# 不做预校验，preverify是proguard的四个步骤之一，Android不需要preverify，去掉这一步能够加快混淆速度。
--dontpreverify
-# 保留Annotation不混淆
--keepattributes *Annotation*,InnerClasses
-# 避免混淆泛型
--keepattributes Signature
-# 抛出异常时保留代码行号
--keepattributes SourceFile,LineNumberTable
-# 指定混淆是采用的算法，后面的参数是一个过滤器
-# 这个过滤器是谷歌推荐的算法，一般不做更改
--optimizations !code/simplification/cast,!field/*,!class/merging/*
-# 保留本地native方法不被混淆
--keepclasseswithmembernames class * {
-    native <methods>;
-}
-# 保留bitcoin方法不被混淆
--keep class org.bitcoin.** {*;}
--keep class org.bitcoinj.** {*;}
-#所有View的子类及其子类的get、set方法都不进行混淆
--keepclassmembers public class * extends android.view.View {
-   void set*(***);
-   *** get*();
-}
-# 不混淆Activity中参数类型为View的所有方法
--keepclassmembers class * extends android.app.Activity {
-   public void *(android.view.View);
-}
-# 不混淆Enum类型的指定方法
--keepclassmembers enum * {
-    public static **[] values();
-    public static ** valueOf(java.lang.String);
-}
-# 不混淆Parcelable和它的子类，还有Creator成员变量
--keepclassmembers class * implements android.os.Parcelable {
-  public static final android.os.Parcelable$Creator CREATOR;
-}
-
-# 不提示兼容库的错误警告
--dontwarn android.support.**
-#忽略警告
--ignorewarnings
-#保护泛型
--keepattributes InnerClasses,Signature
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>需注意，项目中有一部分对外调用的方法和Java文件,或者引用的第三方资源是不能混淆的，否则会在运行时找不到对应的Java类或方法。<br>此时我们再次运行makeJar，重新编译Jar文件，发现输出的Jar文件被混淆了。</p>
-<h4 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h4><p>此时我们将Jar文件放到Android项目进行依赖使用是没问题的，各项功能均正常。但是当我们把Jar文件依赖到Java工程或Spring项目时，就会报错：</p>
+<p>代码如下：</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>Collections<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>LinkedList<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>Scanner<span class="token punctuation">;</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Main</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> Scanner in <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Scanner</span><span class="token punctuation">(</span>System<span class="token punctuation">.</span>in<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        String input <span class="token operator">=</span> in<span class="token punctuation">.</span><span class="token function">nextLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">handle</span><span class="token punctuation">(</span>input<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">/**
+     * 处理数据
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">handle</span> <span class="token punctuation">(</span>String input<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        String<span class="token punctuation">[</span><span class="token punctuation">]</span> words <span class="token operator">=</span> input<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">" "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> number <span class="token operator">=</span> Integer<span class="token punctuation">.</span><span class="token function">parseInt</span><span class="token punctuation">(</span>words<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//待判断单词数量</span>
+        <span class="token keyword">int</span> index <span class="token operator">=</span> Integer<span class="token punctuation">.</span><span class="token function">parseInt</span><span class="token punctuation">(</span>words<span class="token punctuation">[</span>words<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//输出兄弟单词的索引</span>
+        String staWord <span class="token operator">=</span> words<span class="token punctuation">[</span>words<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//基准单词</span>
+        <span class="token keyword">int</span> length <span class="token operator">=</span> staWord<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        String staWordWeight <span class="token operator">=</span> <span class="token function">getWeight</span><span class="token punctuation">(</span>staWord<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//基准单词权重</span>
+        LinkedList<span class="token operator">&lt;</span>String<span class="token operator">></span> brothers <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i<span class="token operator">&lt;=</span> number<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            String word <span class="token operator">=</span> words<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>length <span class="token operator">!=</span> word<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">||</span> word<span class="token punctuation">.</span><span class="token function">equalsIgnoreCase</span><span class="token punctuation">(</span>staWord<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token keyword">continue</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>staWordWeight<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token function">getWeight</span><span class="token punctuation">(</span>word<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                brothers<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>word<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        Collections<span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span>brothers<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>brothers<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>brothers<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">>=</span> index<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>brothers<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>index <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">/**
+     * 获取单词权重
+     */</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> String <span class="token function">getWeight</span><span class="token punctuation">(</span>String word<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> weight <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span><span class="token number">26</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">char</span> ch<span class="token operator">:</span>word<span class="token punctuation">.</span><span class="token function">toCharArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">int</span> index <span class="token operator">=</span> Character<span class="token punctuation">.</span><span class="token function">toLowerCase</span><span class="token punctuation">(</span>ch<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token string">'a'</span><span class="token punctuation">;</span>
+            weight<span class="token punctuation">[</span>index<span class="token punctuation">]</span> <span class="token operator">+=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        StringBuilder sb <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">StringBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">&lt;</span><span class="token number">26</span><span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>weight<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span>
+            sb<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">char</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token string">'a'</span> <span class="token operator">+</span> i<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>weight<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> sb<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>运行结果：</p>
 <blockquote>
-<p>Exception in thread “main” java.lang.VerifyError: Expecting a stackmap frame at branch target 18<br>Exception Details:<br>Location:<br> com/test/encrypt/sdk.nSdkEncrypt([B)[B @11: ifne<br>Reason:<br> Expected stackmap frame at this location.<br>Bytecode:<br> 0x0000000: 1205 120b b800 372a b700 2b9a 0007 03bc<br> 0x0000010: 08b0 2bb8 0031 b0<br>at springboottest.springboot.TestSdkService.init(TestSdkService.java:14)<br>at springboottest.springboot.TestSdkService.main(TestSdkService.java:60)</p>
+<p>提交结果：答案正确 运行时间：63ms 占用内存：12444KB 使用语言：Java 用例通过率：100.00%</p>
 </blockquote>
-<p>看错误代码是一个VerifyError错误。<br>网上查询资料，有相关解决方案，比如：</p>
-<blockquote>
-<p>在项目的tool bar中，看到自己的项目，点击三角选择：“Edit configuration”<br>把VM option改成“-noverify”</p>
-</blockquote>
-<p>此时运行发现正常了。<br>但是这种方法治标不治本，发现Spring项目配置该参数无法生效。并且配置noverify存在很大的安全风险，项目安全扫描有可能会报风险，所以最终无法使用该取巧的方案解决，还需要从编译Jar方案上找原因并解决。<br>测试几次，我发现，在混淆配置中，只要关闭混淆，那么编译的包就没有问题，只要开启混淆，哪怕项目中所欲代码都通过keep配置成不混淆，那么编译的包也不行。可用的配置如下：</p>
-<pre class="line-numbers language-shell"><code class="language-shell">buildTypes {
-    release {
-        minifyEnabled false
-        proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-    }
-    debug {
-        minifyEnabled false
-        proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-    }
-}
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>这样看了，确实是混淆出现了问题且不是代码本身的问题。<br>经过查看混淆配置，发现有一个配置项：</p>
-<blockquote>
-<p>#不做预校验，preverify是proguard的四个步骤之一，Android不需要preverify，去掉这一步能够加快混淆速度。<br>-dontpreverify</p>
-</blockquote>
-<p>原来Android在使用Jar等资源时，为了节约时间，去掉了预校验功能。所以我们编译的Jar文件在Android项目使用没有问题，但是在Java 项目中会报错。我们关闭该策略，再次编译，发现仍然不行。再次分析发现，原来在build.gradle中，我们引用了系统预置的混淆配置文件proguard-android.txt：</p>
-<pre class="line-numbers language-shell"><code class="language-shell">buildTypes {
-    release {
-        minifyEnabled false
-        proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-    }
-    debug {
-        minifyEnabled false
-        proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-    }
-}
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>系统预置的混淆配置文件proguard-android.txt中配置了-dontpreverify，相当于默认关闭了预校验能力。我们调整一下代码，将系统proguard-android.txt下载下来，移除-dontpreverify，手动关联：</p>
-<pre class="line-numbers language-shell"><code class="language-shell">buildTypes {
-    release {
-        minifyEnabled true
-        proguardFiles 'proguard-android-optimize.txt', 'proguard-rules.pro'
-    }
-    debug {
-        minifyEnabled true
-        proguardFiles 'proguard-android-optimize.txt', 'proguard-rules.pro'
-    }
-}
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>此时我们在proguard-rules.pro同级添加修改后的proguard-android-optimize.txt文件，再次编译Jar文件。发现在Java环境下终于可以执行了。</p>
-<h4 id="新问题（待解决）"><a href="#新问题（待解决）" class="headerlink" title="新问题（待解决）"></a>新问题（待解决）</h4><p>做了以上配置后，项目依赖使用都没有问题了。但出现了一个新问题：在混淆时，当移除-dontpreverify配置编译了Jar文件，使用《<a href="/2022/01/17/java-dai-ma-fang-zhi-fan-bian-yi/">Java代码防止反编译</a>》描述的代码注入方式，防止非法进行反编译会报错，提示：</p>
-<blockquote>
-<p>springboottest/springboot/TestSdkService.java:[46,27] 无法将类 com.sdk.encrypt.sdk中的方法 nSdkDecrypt应用到给定类型;<br>[ERROR]   需要: java.lang.String,java.lang.String<br>[ERROR]   找到: java.lang.String<br>[ERROR]   原因: 实际参数列表和形式参数列表长度不同</p>
-</blockquote>
-<p>初步怀疑时注入代码后，原有的校验被破坏导致的。由于不影响当前功能，所以该问题没有很着急，对应的解决方案还在研究。后面有方案了再整理完善。</p>
 
             </div>
             <hr />
@@ -614,9 +536,9 @@ makeJar.dependsOn(build)
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《Android Studio编译Jar包运行异常》
+                    《#兄弟单词#谁是我的兄弟》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2022/01/24/android-studio-bian-yi-jar-bao-yun-xing-yi-chang/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2022/04/15/xiong-di-dan-ci-shui-shi-wo-de-xiong-di/" property="cc:attributionName"
                rel="cc:attributionURL">
                 Gure
             </a> 采用
@@ -916,47 +838,48 @@ makeJar.dependsOn(build)
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2022/01/27/zi-ding-yi-classloader-jia-mi-java-dai-ma/">
+                <a href="/2022/04/15/xiong-di-dan-ci-shui-shi-wo-de-xiong-di/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="自定义ClassLoader加密Java代码">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="#兄弟单词#谁是我的兄弟">
                         
-                        <span class="card-title">自定义ClassLoader加密Java代码</span>
+                        <span class="card-title">#兄弟单词#谁是我的兄弟</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            前面几篇博客介绍了Jar包如何进行签名、防止反编译，在实际项目中使用注入的方式防止反编译确实有效，但是同时会引入新的问题。今天使用一种新的方式来实现代码保护。
-注入问题通过以上博客，借助于Jar包签名及代码注入后，项目依赖使用都没有问题了。
+                            描述定义一个单词的“兄弟单词”为：交换该单词字母顺序（注：可以交换任意次），而不添加、删除、修改原有的字母就能生成的单词。兄弟单词要求和原来的单词不同。例如： ab 和 ba 是兄弟单词。 ab 和 ab 则不是兄弟单词。现在给定你 n 个
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2022-01-27
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2022-04-15
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Java/" class="post-category" target="_blank">
-                                    Java
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category" target="_blank">
+                                    算法
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%B7%B7%E6%B7%86/" target="_blank">
-                        <span class="chip bg-color">混淆</span>
+                    <a href="/tags/%E6%9F%A5%E6%89%BE/" target="_blank">
+                        <span class="chip bg-color">查找</span>
                     </a>
                     
                 </div>
@@ -970,32 +893,34 @@ makeJar.dependsOn(build)
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/01/17/jar-bao-qian-ming-chu-li/">
+                <a href="/2022/04/13/jie-yu-shui-neng-jie-duo-shao-shui/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="Jar包签名处理">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="#接雨水#能接多少水">
                         
-                        <span class="card-title">Jar包签名处理</span>
+                        <span class="card-title">#接雨水#能接多少水</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            下面分析一下jar包签名。最近我在使用时，发现拿到他们代码放到项目中，使用时一直报错。网上查找发现是签名认证失败导致的。所以我就研究了一下对jar的签名操作。JDK环境安装及环境变量的配置跳过，不清楚的可以参考：Java 开发环境配置。
-签
+                            描述给定一个整形数组arr，已知其中所有的值都是非负的，将这个数组看作一个柱子高度图，计算按此排列的柱子，下雨之后能接多少雨水。（数组以外的区域高度视为0）。
+
+
+数据范围：数组长度$0≤n≤2×10^5$，数组中每个值满足$0&lt;va
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2022-01-17
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2022-04-13
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Java/" class="post-category" target="_blank">
-                                    Java
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category" target="_blank">
+                                    算法
                                 </a>
                             
                             
@@ -1005,8 +930,12 @@ makeJar.dependsOn(build)
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%BA%94%E7%94%A8/" target="_blank">
-                        <span class="chip bg-color">应用</span>
+                    <a href="/tags/%E6%A8%A1%E6%8B%9F/" target="_blank">
+                        <span class="chip bg-color">模拟</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" target="_blank">
+                        <span class="chip bg-color">双指针</span>
                     </a>
                     
                 </div>
