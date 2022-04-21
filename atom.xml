@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devdroid.cn/"/>
-  <updated>2022-04-20T07:14:00.137Z</updated>
+  <updated>2022-04-21T02:32:54.979Z</updated>
   <id>https://devdroid.cn/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Android注解限定参数</title>
+    <link href="https://devdroid.cn/2022/04/19/android-zhu-jie-xian-ding-can-shu/"/>
+    <id>https://devdroid.cn/2022/04/19/android-zhu-jie-xian-ding-can-shu/</id>
+    <published>2022-04-19T02:24:12.000Z</published>
+    <updated>2022-04-21T02:32:54.979Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;需求&quot;&gt;&lt;a href=&quot;#需求&quot; class=&quot;headerlink&quot; title=&quot;需求&quot;&gt;&lt;/a&gt;需求&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;以下方式均使用Android Studio进行开发测试。我发现在intellij
+        
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="https://devdroid.cn/categories/Android/"/>
+    
+    
+      <category term="特性" scheme="https://devdroid.cn/tags/%E7%89%B9%E6%80%A7/"/>
+    
+  </entry>
   
   <entry>
     <title>#兄弟单词#谁是我的兄弟</title>
@@ -511,33 +537,6 @@
     
     
       <category term="应用" scheme="https://devdroid.cn/tags/%E5%BA%94%E7%94%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Gradle依赖方式配置</title>
-    <link href="https://devdroid.cn/2022/02/13/gradle-yi-lai-fang-shi-pei-zhi/"/>
-    <id>https://devdroid.cn/2022/02/13/gradle-yi-lai-fang-shi-pei-zhi/</id>
-    <published>2022-02-13T09:45:04.000Z</published>
-    <updated>2022-04-01T10:05:39.775Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;我们做的SDK项目是打包成一个Jar包提供给客户App集成使用的。&lt;br&gt;在我们SDK数据加密中依赖了bcprov包，添加依赖直接在build.gradle添加即可，比较简单：&lt;/p&gt;
-&lt;pre class=&quot;line-numbers
-        
-      
-    
-    </summary>
-    
-      <category term="Android" scheme="https://devdroid.cn/categories/Android/"/>
-    
-    
-      <category term="特性" scheme="https://devdroid.cn/tags/%E7%89%B9%E6%80%A7/"/>
     
   </entry>
   
