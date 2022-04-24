@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devdroid.cn/"/>
-  <updated>2022-04-22T10:12:34.987Z</updated>
+  <updated>2022-04-24T05:48:01.465Z</updated>
   <id>https://devdroid.cn/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>国密SSL VPN握手抓包分析</title>
+    <link href="https://devdroid.cn/2022/04/24/guo-mi-ssl-vpn-wo-shou-zhua-bao-fen-xi/"/>
+    <id>https://devdroid.cn/2022/04/24/guo-mi-ssl-vpn-wo-shou-zhua-bao-fen-xi/</id>
+    <published>2022-04-24T05:44:54.000Z</published>
+    <updated>2022-04-24T05:48:01.465Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;准备工作&quot;&gt;&lt;a href=&quot;#准备工作&quot; class=&quot;headerlink&quot; title=&quot;准备工作&quot;&gt;&lt;/a&gt;准备工作&lt;/h2&gt;&lt;p&gt;Windows PC电脑；&lt;br&gt;国密SSL
+        
+      
+    
+    </summary>
+    
+      <category term="通信协议" scheme="https://devdroid.cn/categories/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/"/>
+    
+    
+      <category term="sip协议" scheme="https://devdroid.cn/tags/sip%E5%8D%8F%E8%AE%AE/"/>
+    
+  </entry>
   
   <entry>
     <title>#字符串合并处理#</title>
@@ -506,32 +532,6 @@
         
         
           &lt;h2 id=&quot;需求背景&quot;&gt;&lt;a href=&quot;#需求背景&quot; class=&quot;headerlink&quot; title=&quot;需求背景&quot;&gt;&lt;/a&gt;需求背景&lt;/h2&gt;&lt;p&gt;上一篇博客《自定义拖拽悬浮窗》时，我们发现在构造参数中有一个特殊的参数AttributeSet
-        
-      
-    
-    </summary>
-    
-      <category term="Android" scheme="https://devdroid.cn/categories/Android/"/>
-    
-    
-      <category term="自定义控件" scheme="https://devdroid.cn/tags/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>自定义拖拽悬浮窗</title>
-    <link href="https://devdroid.cn/2022/02/21/zi-ding-yi-tuo-zhuai-xuan-fu-chuang/"/>
-    <id>https://devdroid.cn/2022/02/21/zi-ding-yi-tuo-zhuai-xuan-fu-chuang/</id>
-    <published>2022-02-21T10:16:45.000Z</published>
-    <updated>2022-04-07T10:33:53.044Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h3 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h3&gt;&lt;p&gt;使用Android Studio创建一个新项目时，在选择模板中有一个Basic
         
       
     

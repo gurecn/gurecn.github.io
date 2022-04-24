@@ -260,7 +260,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -415,14 +415,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.9k
+                    2.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    8 分
+                    10 分
                 </div>
                 
                 
@@ -441,9 +441,9 @@
                 <h4 id="需求背景"><a href="#需求背景" class="headerlink" title="需求背景"></a>需求背景</h4><p>大家可能会有注意到，每逢重大节日，很多应用图标会自动调整，类似于春节版、国庆版等等。<br>这个功能最简单的实现方式可能就是发布一个新的版本了，直接替换相关资源，然后应用升级体验。<br>但是这种方式工作量较大，很不方便。并且像今日头条、支付宝这类软件，我们好像也没有注意到有应用升级就实现了图标替换，很神奇吧，今天我们就实现这个功能。</p>
 <h4 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程"></a>实现过程</h4><p>以开源项目<a target="_blank" rel="noopener" href="https://github.com/gurecn/sleepassistant">睡眠助手</a>为例，实现应用切换图标功能。<br>首先我们找到清单文件AndroidManifest.xml，可以看到启动Activity配置如下：</p>
 <pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>activity</span>
-    <span class="token attr-name"><span class="token namespace">android:</span>exported</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span>
-    <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>.activity.GuideActivity<span class="token punctuation">"</span></span>
-    <span class="token attr-name"><span class="token namespace">android:</span>theme</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@style/AppTheme.Launcher<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+          <span class="token attr-name"><span class="token namespace">android:</span>exported</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span>
+          <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>.activity.GuideActivity<span class="token punctuation">"</span></span>
+          <span class="token attr-name"><span class="token namespace">android:</span>theme</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@style/AppTheme.Launcher<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>intent-filter</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>action</span> <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>android.intent.action.MAIN<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>category</span> <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>android.intent.category.LAUNCHER<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
@@ -542,15 +542,12 @@ Error <span class="token keyword">while</span> Launching activity
 <p>翻译：</p>
 <pre><code>setComponentEnabledSetting（ComponentName，int，int）的标志参数，用于指示给定用户的包限制状态将在更新组件状态后序列化到磁盘。请注意，这是同步磁盘访问，因此使用此标志的调用应该在后台线程上运行。
 </code></pre>
-<p>测试发现：使用DONT_KILL_APP时，应用在3秒内退出；使用SYNCHRONOUS应用立即退出。<br>但是DONT_KILL_APP实际和描述不符啊，难道这就是所谓的不可预测？为什么会这样呢？<br>网上查阅资料，大多回答是一头雾水，有人反馈是Android系统的一个系统级bug。自己到谷歌社区查找主题，通过官方人员沟通，了解到：当使用DONT_KILL_APP时，Application不会主动结束进程，但是由于作为启动页的GuideActivity被设置为COMPONENT_ENABLED_STATE_DISABLED（不可用），这时候APP会将GuideActivity创建的任务栈清空，由于APP所有Activity都是由GuideActivity任务栈创建的，所以就看到类似于退出应用的效果。<br>好了，原因确定了，那么就看如何解决了。</p>
-<p>此时我们只需要使用新的任务栈启动SettingsActivity，然后在SettingsActivity内清空启动栈，应用就不会退出了。</p>
+<p>测试发现：使用DONT_KILL_APP时，应用在3秒内退出；使用SYNCHRONOUS应用立即退出。<br>但是DONT_KILL_APP和实际不符啊，为什么呢？<br>网上查阅资料，大多回答是一头雾水，有人反馈是Android系统的一个系统级bug。自己到谷歌社区查找主题，通过官方人员沟通，了解到：当使用DONT_KILL_APP时，Application不会主动结束进程，但是由于作为启动页的GuideActivity被设置为COMPONENT_ENABLED_STATE_DISABLED（不可用），这时候APP会将GuideActivity创建的任务栈清空，由于APP所有Activity都是由GuideActivity任务栈创建的，所以就看到类似于退出应用的效果。<br>好了，原因确定了，那么就看如何解决了。<br>此时我们只需要使用新的任务栈启动SettingsActivity，然后在SettingsActivity内清空启动栈，应用就不会退出了。</p>
 <pre class="line-numbers language-java"><code class="language-java">Intent intent <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Intent</span><span class="token punctuation">(</span>mAppCompatActivity<span class="token punctuation">,</span> SettingsActivity<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 intent<span class="token punctuation">.</span><span class="token function">addFlags</span><span class="token punctuation">(</span>Intent<span class="token punctuation">.</span>FLAG_ACTIVITY_NEW_DOCUMENT <span class="token operator">|</span> Intent<span class="token punctuation">.</span>FLAG_ACTIVITY_MULTIPLE_TASK<span class="token punctuation">)</span><span class="token punctuation">;</span>
 mAppCompatActivity<span class="token punctuation">.</span><span class="token function">startActivity</span><span class="token punctuation">(</span>intent<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>注意：<br>实际使用时，发现setComponentEnabledSetting生效速度较慢，大概有3s左右。在3s内启动应用，会仍然调用原来的启动页面，导致3s退出应用时，将新建的任务栈清空，应用退出。</p>
-<p>原因了解了，通过代码验证，确实可以借助上面的方式实现图标变更。<br><strong>但是该方案还存在一个弊端：当GuideActivity设置不可用时，应用内其他页面需要跳转到GuideActivity时是不能实现的，同时也无法跳转到activity-alias定义的NewGuideActivity中，这个暂时没有找到解决方案。</strong></p>
-<p>通过谷歌官方人员沟通，了解到官方不建议通过使用activity-alias方式实现这种功能，他们提供了一种新的方案。</p>
+<p><em>注意：</em><br>_实际使用时，发现_setComponentEnabledSetting生效速度较慢，大概有3s左右。在3s内启动应用，会仍然调用原来的启动页面，导致3s退出应用时，将新建的任务栈清空，应用退出。<br>原因了解了，通过代码验证，确实可以借助上面的方式实现图标变更。<br>但是该方案还存在一个弊端：当GuideActivity设置不可用时，应用内其他页面需要跳转到GuideActivity时是不能实现的，同时也无法跳转到activity-alias定义的NewGuideActivity中，这个暂时没有找到解决方案。<br>通过谷歌官方人员沟通，了解到官方不建议通过使用activity-alias方式实现这种功能，他们提供了一种新的方案。</p>
 <h4 id="最终方案"><a href="#最终方案" class="headerlink" title="最终方案"></a>最终方案</h4><p>谷歌认为，图标变更功能应该使用独立的LAUNCHER Activity实现，而不应借助activity-alias。<br>最建议方案如下：<br>首先创建类文件NewGuideActivity，实现如下代码：</p>
 <pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">NewGuideActivity</span> <span class="token keyword">extends</span> <span class="token class-name">GuideActivity</span><span class="token punctuation">{</span>
 
@@ -570,8 +567,9 @@ mAppCompatActivity<span class="token punctuation">.</span><span class="token fun
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>intent-filter</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>activity</span><span class="token punctuation">></span></span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>这时候，NewGuideActivity就是一个真实的LAUNCHER了。由于NewGuideActivity直接继承GuideActivity，本身没有任何实质代码，所以功能也是完全一致的。对于NewGuideActivity、GuideActivity的设置和activity-alias方式类似。这个能够满足变更的需求。<br>​</p>
+<p>这时候，NewGuideActivity就是一个真实的LAUNCHER了。由于NewGuideActivity直接继承GuideActivity，本身没有任何实质代码，所以功能也是完全一致的。对于NewGuideActivity、GuideActivity的设置和activity-alias方式类似。这个能够满足变更的需求。</p>
 <p>以上相关代码请参考开源项目：<a target="_blank" rel="noopener" href="https://github.com/gurecn/sleepassistant">睡眠助手</a></p>
+<h4 id="问题更新（2022-04-15）"><a href="#问题更新（2022-04-15）" class="headerlink" title="问题更新（2022/04/15）"></a>问题更新（2022/04/15）</h4><p>最近发现在华为手机上每天显示的日历图标都是当天日期+当天星期。我特意测试了一下，当华为应用未打开时，修改手机时间、修改手机语言、修改手机字体等操作，图标均会立即更新。<br>按照博客的技术，我们能够实现应用图标的动态变化，但是因为应用保活问题，我们无法做到像华为日历那样应用在不执行时能够及时更新。并且还有一个问题，最大月由31天、再加上周数、语言等因素，那么华为若是通过icon调整图标的话，需要的图标文件会非常多，这显然不合理。<br>本着学习研究的态度，我就反编译一下华为日历，看看它是怎么做到的。<br>不编译不知道，一编译吓一跳。<br>项目里不但没有手机上显示的当前天数图标，并且默认图标（手机上显示红底）也不是项目里的图标（蓝底）。怎么可能呢？<br>静下心来，仔细怎么能实现这种情况呢？<br>首先想到应该是华为日历应用内自己绘制图标，同时监听系统日期变化，在变更时更新图标。若是这样实现的，那么肯定会有图标绘制的代码，并且会有PackageManager进行配置。然后开启了漫长的代码分析之路。最终发现确实有图标绘制，但是全部是用于菜单图标，完全没有修改Activity图标的。并且项目清单文件中也没有创建很多activity-alias。该方式学习失败。<br>然后想找一下是不是系统开的特殊接口，华为日历作为预置的系统应用直接调用了系统接口？然后全部代码分析，找相关关键字，但是仍然失败了。<br>忽然灵机一动，有没有可能是华为系统的一个特性，日历应用允许更新图标？然后就下载了七八个其他日历应用，验证一下。发现只有华为日历能够更新图标。仍然失败了。<br>最后才想到，做的开源项目中应用锁模块显示全部应用时日历图标与桌面中实际显示的不一样，那么是不是桌面做了处理？顺着这个思路拿到华为桌面应用（华为预置两个桌面应用launcher与settings，实际逻辑在settings中实现），发现确实是桌面对日历做了处理，替换了日历本身的图标（巨坑）。<br>又下载微软日历验证想法，发现确实是，我只需要把项目设置成日历应用（<code>&lt;category android:name=&quot;android.intent.category.APP_CALENDAR&quot;/&gt;</code>），微软会自动替换应用图标，并做到显示当前日期功能。<br>将近一天的工作都在分析上了，最终也没有实现日历这样随日期更新图标的能力。</p>
 
             </div>
             <hr />
@@ -916,7 +914,7 @@ mAppCompatActivity<span class="token punctuation">.</span><span class="token fun
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="增加系统TextView长按菜单">
+                        <img src="/medias/featureimages/24.jpg" class="responsive-img" alt="增加系统TextView长按菜单">
                         
                         <span class="card-title">增加系统TextView长按菜单</span>
                     </div>
@@ -966,7 +964,7 @@ mAppCompatActivity<span class="token punctuation">.</span><span class="token fun
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/24.jpg" class="responsive-img" alt="正则表达式指定字符后插入数据">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="正则表达式指定字符后插入数据">
                         
                         <span class="card-title">正则表达式指定字符后插入数据</span>
                     </div>
@@ -1176,7 +1174,7 @@ mAppCompatActivity<span class="token punctuation">.</span><span class="token fun
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">91.4k</span>
+            <span class="white-color">93.1k</span>
             
 
             <br>
