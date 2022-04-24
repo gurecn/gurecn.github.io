@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>bintray关闭项目编译失败</title>
+      <link href="/2022/04/24/bintray-guan-bi-xiang-mu-bian-yi-shi-bai/"/>
+      <url>/2022/04/24/bintray-guan-bi-xiang-mu-bian-yi-shi-bai/</url>
+      
+        <content type="html"><![CDATA[<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>导入一个旧项目，在编译时失败：</p><blockquote><p>Could not determine the dependencies of task ‘:app:compileDebugKotlin’.</p><p>&gt; Could not resolve all files for configuration ‘:app:debugRuntimeClasspath’.<br>&gt; Could not resolve androidx.room:room-common:[2.2.3].<br>   Required by:<br>       project :app &gt; androidx.room:room-runtime:2.2.3<br>       project :app &gt; androidx.room:room-rxjava2:2.2.3<br>        &gt; Failed to list versions for androidx.room:room-common.<br>         &gt; Unable to load Maven meta-data from <a href="https://dl.bintray.com/relish-wang/maven/androidx/room/room-common/maven-metadata.xml">https://dl.bintray.com/relish-wang/maven/androidx/room/room-common/maven-metadata.xml</a>.<br>              &gt; Could not get resource ‘<a href="https://dl.bintray.com/relish-wang/maven/androidx/room/room-common/maven-metadata.xml&#39;">https://dl.bintray.com/relish-wang/maven/androidx/room/room-common/maven-metadata.xml&#39;</a>.<br>              &gt; Could not GET ‘<a href="https://dl.bintray.com/relish-wang/maven/androidx/room/room-common/maven-metadata.xml&#39;.Received">https://dl.bintray.com/relish-wang/maven/androidx/room/room-common/maven-metadata.xml&#39;.Received</a> status code 502 from server: Bad Gateway</p></blockquote><p>此时我们看到错误：<code>Received status code 502 from server: Bad Gateway</code>。<br>查询资料了解到，原来JCenter关闭了：<a href="https://jfrog.com/blog/into-the-sunset-bintray-jcenter-gocenter-and-chartcenter/">jfrog关于bintray的更新</a>，中文翻译：<a href="https://zhuanlan.zhihu.com/p/363156372">Jcenter服务即将关闭，改用mavenCentral</a>。<br>官方建议改成其他库，比如mavenCentral。但是并不是所有以来的开源项目都能够及时迁移到mavenCentral，同时也不是所有的版本都会迁移过去，所以就出现了编译错误。</p><h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><p>针对这种问题，我们只能更换镜像资源，在国内我们可以使用阿里云的镜像。比如我项目原来配置如下：</p><pre class="line-numbers language-groovy"><code class="language-groovy">allprojects <span class="token punctuation">{</span>    repositories <span class="token punctuation">{</span>        <span class="token function">mavenCentral</span><span class="token punctuation">(</span><span class="token punctuation">)</span>        <span class="token function">google</span><span class="token punctuation">(</span><span class="token punctuation">)</span>        maven <span class="token punctuation">{</span> url <span class="token string">"https://jitpack.io"</span> <span class="token punctuation">}</span>        maven <span class="token punctuation">{</span> url <span class="token string">"https://dl.bintray.com/relish-wang/maven/"</span> <span class="token punctuation">}</span>    <span class="token punctuation">}</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>此时项目编译失败，错误如需求中展示。<br>此时我们更换成国内阿里镜像：】</p><pre class="line-numbers language-groovy"><code class="language-groovy">allprojects <span class="token punctuation">{</span>    repositories <span class="token punctuation">{</span>        <span class="token function">mavenCentral</span><span class="token punctuation">(</span><span class="token punctuation">)</span>        <span class="token function">google</span><span class="token punctuation">(</span><span class="token punctuation">)</span>        maven <span class="token punctuation">{</span>            url <span class="token string">'https://maven.aliyun.com/repository/public/'</span>        <span class="token punctuation">}</span>    <span class="token punctuation">}</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>此时再次编译项目，发现已经能够正常运行了。<br>有些项目在阿里镜像库中没有及时收录，可能编译继续出错，此时我们可以使用浏览器访问<a href="https://developer.aliyun.com/mvn/guide">阿里云云效 Maven</a>，查询看一下已经收录的版本，然后将依赖变更成对应的版本即可。<br>比如项目中依赖的<code>implementation &#39;com.flyco.tablayout:FlycoTabLayout_Lib:3.0.0&#39;</code>在使用时尚未收录，我们可以更改成其他版本<code>implementation &#39;com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar&#39;</code>。<br>此时编译成功。</p><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>因为镜像库可以理解成一个下载站，所以对他的维护需要大量的带宽和存储资源。而本身镜像库优势非盈利的开源项目，所以很多企业都慢慢的关闭或收窄。<br>当前国内用的比较多的开源库就是阿里云，除此之外还有：<br><a href="https://mirrors.huaweicloud.com/home">华为云开源镜像站</a><br><a href="http://mirrors.163.com/">网易开源镜像站</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Android </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 技能 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>国密SSL VPN握手抓包分析</title>
       <link href="/2022/04/24/guo-mi-ssl-vpn-wo-shou-zhua-bao-fen-xi/"/>
       <url>/2022/04/24/guo-mi-ssl-vpn-wo-shou-zhua-bao-fen-xi/</url>
@@ -20,7 +45,7 @@
       
         <tags>
             
-            <tag> sip协议 </tag>
+            <tag> SSL VPN </tag>
             
         </tags>
       
