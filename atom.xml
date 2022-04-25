@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devdroid.cn/"/>
-  <updated>2022-04-24T09:35:07.916Z</updated>
+  <updated>2022-04-25T03:48:42.857Z</updated>
   <id>https://devdroid.cn/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>你像我见过的那个男孩</title>
+    <link href="https://devdroid.cn/2022/04/25/ni-xiang-wo-jian-guo-de-na-ge-nan-hai/"/>
+    <id>https://devdroid.cn/2022/04/25/ni-xiang-wo-jian-guo-de-na-ge-nan-hai/</id>
+    <published>2022-04-25T03:19:06.000Z</published>
+    <updated>2022-04-25T03:48:42.857Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;center&gt;&lt;b&gt;我不知道为什么来北京，现在你要走了。亲爱的，能走，就不要回来了。by王云超&lt;/b&gt;&lt;/center&gt;
+
+&lt;p&gt;我还会记得京城吗？还会记得永安里站那个姑娘吗？&lt;/p&gt;
+&lt;center&gt;&lt;b&gt;1&lt;/b&gt;&lt;/center&gt;
+
+&lt;p&gt;2007年夏，石家庄，我抛下新买
+        
+      
+    
+    </summary>
+    
+      <category term="故事" scheme="https://devdroid.cn/categories/%E6%95%85%E4%BA%8B/"/>
+    
+    
+      <category term="转载" scheme="https://devdroid.cn/tags/%E8%BD%AC%E8%BD%BD/"/>
+    
+      <category term="漂生活" scheme="https://devdroid.cn/tags/%E6%BC%82%E7%94%9F%E6%B4%BB/"/>
+    
+  </entry>
   
   <entry>
     <title>bintray关闭项目编译失败</title>
@@ -517,32 +550,6 @@
     
     
       <category term="转载" scheme="https://devdroid.cn/tags/%E8%BD%AC%E8%BD%BD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>视图绑定viewBinding</title>
-    <link href="https://devdroid.cn/2022/03/02/shi-tu-bang-ding-viewbinding/"/>
-    <id>https://devdroid.cn/2022/03/02/shi-tu-bang-ding-viewbinding/</id>
-    <published>2022-03-02T06:28:40.000Z</published>
-    <updated>2022-04-08T06:43:14.372Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="Android" scheme="https://devdroid.cn/categories/Android/"/>
-    
-    
-      <category term="新特性" scheme="https://devdroid.cn/tags/%E6%96%B0%E7%89%B9%E6%80%A7/"/>
     
   </entry>
   
