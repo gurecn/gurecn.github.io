@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devdroid.cn/"/>
-  <updated>2022-04-25T03:48:42.857Z</updated>
+  <updated>2022-04-26T10:06:01.125Z</updated>
   <id>https://devdroid.cn/</id>
   
   <author>
@@ -15,6 +15,62 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>#IP转换#</title>
+    <link href="https://devdroid.cn/2022/04/26/ip-zhuan-huan/"/>
+    <id>https://devdroid.cn/2022/04/26/ip-zhuan-huan/</id>
+    <published>2022-04-26T09:58:57.000Z</published>
+    <updated>2022-04-26T10:06:01.125Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;描述&quot;&gt;&lt;a href=&quot;#描述&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="算法" scheme="https://devdroid.cn/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="模拟" scheme="https://devdroid.cn/tags/%E6%A8%A1%E6%8B%9F/"/>
+    
+      <category term="字符串" scheme="https://devdroid.cn/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>#密码截取#最长回文串</title>
+    <link href="https://devdroid.cn/2022/04/26/mi-ma-jie-qu-zui-chang-hui-wen-chuan/"/>
+    <id>https://devdroid.cn/2022/04/26/mi-ma-jie-qu-zui-chang-hui-wen-chuan/</id>
+    <published>2022-04-26T09:58:44.000Z</published>
+    <updated>2022-04-26T10:03:30.834Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;描述&quot;&gt;&lt;a href=&quot;#描述&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="算法" scheme="https://devdroid.cn/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="字符串" scheme="https://devdroid.cn/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+    
+      <category term="回文串" scheme="https://devdroid.cn/tags/%E5%9B%9E%E6%96%87%E4%B8%B2/"/>
+    
+  </entry>
   
   <entry>
     <title>你像我见过的那个男孩</title>
@@ -498,58 +554,6 @@
     
     
       <category term="sip协议" scheme="https://devdroid.cn/tags/sip%E5%8D%8F%E8%AE%AE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>一生中最棒的老师</title>
-    <link href="https://devdroid.cn/2022/03/10/yi-sheng-zhong-zui-bang-de-lao-shi/"/>
-    <id>https://devdroid.cn/2022/03/10/yi-sheng-zhong-zui-bang-de-lao-shi/</id>
-    <published>2022-03-10T10:10:48.000Z</published>
-    <updated>2022-04-14T01:11:56.814Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;开学的第一天，她站在五年级的学生们面前，说了个谎。她看着她的学生，说她会平等地爱班里的每一位同学。但这是不可能的，那是因为坐在前排的一个小男孩，他叫泰迪•斯托达德。&lt;br&gt;汤普森夫人发现，泰迪根本无法与其他孩子们玩到一起去。他的衣服很邋遢，身上也不整洁，而且不怎么受大家欢迎
-        
-      
-    
-    </summary>
-    
-      <category term="故事" scheme="https://devdroid.cn/categories/%E6%95%85%E4%BA%8B/"/>
-    
-    
-      <category term="转载" scheme="https://devdroid.cn/tags/%E8%BD%AC%E8%BD%BD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>总有人爱着你</title>
-    <link href="https://devdroid.cn/2022/03/03/zong-you-ren-ai-zhao-ni/"/>
-    <id>https://devdroid.cn/2022/03/03/zong-you-ren-ai-zhao-ni/</id>
-    <published>2022-03-03T10:10:34.000Z</published>
-    <updated>2022-04-14T01:12:04.728Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;小白兔有一家糖果铺，小老虎有一个冰淇淋机。兔妈妈告诉小白兔，如果你喜欢一个人呐，就给一颗糖他。小白兔喜欢上了小老虎，那么那么喜欢，忍不住就把整个店子送给了他。回家后兔妈妈问她，那小老虎喜欢你吗。小白兔直点头，妈妈说，那他为什么不给你吃个冰淇淋呢。&lt;br&gt;小白兔说，他是要给我
-        
-      
-    
-    </summary>
-    
-      <category term="故事" scheme="https://devdroid.cn/categories/%E6%95%85%E4%BA%8B/"/>
-    
-    
-      <category term="转载" scheme="https://devdroid.cn/tags/%E8%BD%AC%E8%BD%BD/"/>
     
   </entry>
   
