@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devdroid.cn/"/>
-  <updated>2022-05-09T04:36:32.780Z</updated>
+  <updated>2022-05-10T03:28:00.060Z</updated>
   <id>https://devdroid.cn/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>#蛇形矩阵#一起找规律</title>
+    <link href="https://devdroid.cn/2022/05/10/she-xing-ju-zhen-yi-qi-zhao-gui-lu/"/>
+    <id>https://devdroid.cn/2022/05/10/she-xing-ju-zhen-yi-qi-zhao-gui-lu/</id>
+    <published>2022-05-10T03:27:10.000Z</published>
+    <updated>2022-05-10T03:28:00.060Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;描述&quot;&gt;&lt;a href=&quot;#描述&quot; class=&quot;headerlink&quot; title=&quot;描述&quot;&gt;&lt;/a&gt;描述&lt;/h3&gt;&lt;p&gt;蛇形矩阵是由1开始的自然数依次排列成的一个矩阵上三角形。&lt;br&gt;例如，当输入5时，应该输出的三角形为：&lt;br&gt;1 3 6 10
+        
+      
+    
+    </summary>
+    
+      <category term="算法" scheme="https://devdroid.cn/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="数组" scheme="https://devdroid.cn/tags/%E6%95%B0%E7%BB%84/"/>
+    
+      <category term="规律" scheme="https://devdroid.cn/tags/%E8%A7%84%E5%BE%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>Win 11 安卓子系统（WSA）</title>
@@ -517,33 +545,6 @@
         
         
           &lt;h3 id=&quot;SIP通话&quot;&gt;&lt;a href=&quot;#SIP通话&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="通信协议" scheme="https://devdroid.cn/categories/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/"/>
-    
-    
-      <category term="sip协议" scheme="https://devdroid.cn/tags/sip%E5%8D%8F%E8%AE%AE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>SIP协议入门基础(2)-应用场景</title>
-    <link href="https://devdroid.cn/2022/03/16/sip-xie-yi-ru-men-ji-chu-2-ying-yong-chang-jing/"/>
-    <id>https://devdroid.cn/2022/03/16/sip-xie-yi-ru-men-ji-chu-2-ying-yong-chang-jing/</id>
-    <published>2022-03-16T11:30:28.000Z</published>
-    <updated>2022-04-11T08:50:13.085Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;SIP主要应用场景包括：注册、订阅、通话等。&lt;/p&gt;
-&lt;h3 id=&quot;注册&quot;&gt;&lt;a href=&quot;#注册&quot; class=&quot;headerlink&quot;
         
       
     
