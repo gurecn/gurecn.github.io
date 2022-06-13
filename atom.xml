@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devdroid.cn/"/>
-  <updated>2022-05-10T03:28:00.060Z</updated>
+  <updated>2022-06-13T05:52:49.051Z</updated>
   <id>https://devdroid.cn/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>如何从坏心情中走出来？</title>
+    <link href="https://devdroid.cn/2022/06/13/ru-he-cong-pi-xin-qing-zhong-zou-chu-lai/"/>
+    <id>https://devdroid.cn/2022/06/13/ru-he-cong-pi-xin-qing-zhong-zou-chu-lai/</id>
+    <published>2022-06-13T05:42:26.000Z</published>
+    <updated>2022-06-13T05:52:49.051Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;我想，每个人，应该或多或少，都经历过坏心情的困扰。&lt;/p&gt;
+&lt;p&gt;这些坏心情，有时可能来自外界的坏消息，有时可能来自内心的担忧和焦虑，它们都有一个共通点：总是无孔不入，顽固地钻入我们的脑海中，破坏我们的状态，让我们无心工作，陷入情绪的低潮之中。&lt;/p&gt;
+&lt;p&gt;就像在我们的心
+        
+      
+    
+    </summary>
+    
+      <category term="故事" scheme="https://devdroid.cn/categories/%E6%95%85%E4%BA%8B/"/>
+    
+    
+      <category term="转载" scheme="https://devdroid.cn/tags/%E8%BD%AC%E8%BD%BD/"/>
+    
+  </entry>
   
   <entry>
     <title>#蛇形矩阵#一起找规律</title>
@@ -528,32 +556,6 @@
     
     
       <category term="转载" scheme="https://devdroid.cn/tags/%E8%BD%AC%E8%BD%BD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>SIP协议入门基础(3)-应用场景</title>
-    <link href="https://devdroid.cn/2022/03/18/sip-xie-yi-ru-men-ji-chu-3-ying-yong-chang-jing/"/>
-    <id>https://devdroid.cn/2022/03/18/sip-xie-yi-ru-men-ji-chu-3-ying-yong-chang-jing/</id>
-    <published>2022-03-18T02:30:42.000Z</published>
-    <updated>2022-04-11T08:56:45.155Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h3 id=&quot;SIP通话&quot;&gt;&lt;a href=&quot;#SIP通话&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="通信协议" scheme="https://devdroid.cn/categories/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/"/>
-    
-    
-      <category term="sip协议" scheme="https://devdroid.cn/tags/sip%E5%8D%8F%E8%AE%AE/"/>
     
   </entry>
   
