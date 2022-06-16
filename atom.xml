@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devdroid.cn/"/>
-  <updated>2022-06-13T06:20:11.751Z</updated>
+  <updated>2022-06-16T09:09:32.697Z</updated>
   <id>https://devdroid.cn/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>校验应用签名</title>
+    <link href="https://devdroid.cn/2022/06/16/xiao-yan-ying-yong-qian-ming/"/>
+    <id>https://devdroid.cn/2022/06/16/xiao-yan-ying-yong-qian-ming/</id>
+    <published>2022-06-16T09:08:25.000Z</published>
+    <updated>2022-06-16T09:09:32.697Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="https://devdroid.cn/categories/Android/"/>
+    
+    
+      <category term="应用" scheme="https://devdroid.cn/tags/%E5%BA%94%E7%94%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>如何从坏心情中走出来？</title>
@@ -521,32 +547,6 @@
         
         
           &lt;p&gt;妈妈赶到医院时，医生已经把管子都拔掉，呼吸机也停了。爸爸安静地躺在那儿，像熟睡一样。&lt;br&gt;我握住他的右手，姐姐握着他的左手，陪他度过生命中最后的时光。在重症监护室的这 14 天零 6
-        
-      
-    
-    </summary>
-    
-      <category term="故事" scheme="https://devdroid.cn/categories/%E6%95%85%E4%BA%8B/"/>
-    
-    
-      <category term="转载" scheme="https://devdroid.cn/tags/%E8%BD%AC%E8%BD%BD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>不会再有第二个你</title>
-    <link href="https://devdroid.cn/2022/03/18/bu-hui-zai-you-di-er-ge-ni/"/>
-    <id>https://devdroid.cn/2022/03/18/bu-hui-zai-you-di-er-ge-ni/</id>
-    <published>2022-03-18T10:10:59.000Z</published>
-    <updated>2022-04-14T01:11:43.565Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;很小的时候，她就听身边的人说她是要来的孩子。椴树开花时，赶花人生下了她，又辗转托人送掉了她，然后又赶别的花去了。她回家问他。他说：听他们瞎说！然后拉着她到镜子前，指着一大一小两张脸说：别人家的孩子谁能长得跟我一样漂亮？&lt;br&gt;她笑了，镜子里的他刀条脸，又黑又瘦，实在与漂亮沾
         
       
     

@@ -5,8 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="google-site-verification" content="BZSSTWCG6ygfXci-M6fHXRUOICCdvw9XUlROWGENjyA" />
-    <meta name="keywords" content="判断APP是否在前台, Java C/C++ Vue Gure gurecn Android 卓技卓品">
-    <meta name="description" content="背景说明发现招商银行等应用内有一个比较好玩的功能：当在应用内截屏时，会主动产出一个窗口，询问用户是否需要咨询客服。这个功能很有趣，那么就在开源项目实现。应用要实现在应用内截屏时，弹出提示，那么首先就需要实现判断当前是否处于前台。今天就实现不">
+    <meta name="keywords" content="校验应用签名, Java C/C++ Vue Gure gurecn Android 卓技卓品">
+    <meta name="description" content="背景Android应用反编译工具较多，应用反编译、二次打包操作非常频繁，我们有办法避免应用被非法打包吗？可以通过代码混淆、加壳、加密操作来实现代码的获取，具体实现可以参考之前的博客。关于防止应用的二次打包，我们可以借助于Android系统的">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +14,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>判断APP是否在前台 | 卓技卓品</title>
+    <title>校验应用签名 | 卓技卓品</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -260,13 +260,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        判断APP是否在前台
+                        校验应用签名
                     </div>
                 </div>
             </div>
@@ -401,7 +401,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-02-04
+                    2022-06-16
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -415,7 +415,7 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    965
+                    954
                 </div>
                 
 
@@ -438,134 +438,148 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="背景说明"><a href="#背景说明" class="headerlink" title="背景说明"></a>背景说明</h2><p>发现招商银行等应用内有一个比较好玩的功能：当在应用内截屏时，会主动产出一个窗口，询问用户是否需要咨询客服。这个功能很有趣，那么就在开源项目实现。<br>应用要实现在应用内截屏时，弹出提示，那么首先就需要实现判断当前是否处于前台。今天就实现不借助任何权限实现判断当前是否处在应用内（应用是否处于前台）。</p>
-<h2 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h2><p>判断当前应用是否在前台，可以借助于多种方式。<br>第一种方式可以借助系统权限，获取当前应用顶层Activity，通过包名或进程来判断是否处于前台。<br>使用这种方式首先需要获取GET_TASKS权限。但是从Android L开始，谷歌开始对getRunningTasks和getRecentTasks等接口进行限制使用，默认情况下，普通的第三方应用（非系统应用）不能使用该接口，哪怕权限已经获取也会受到限制。<br>第二种方式可以借助应用自身维护Activity栈状态，通过自己维护的状态判断当前应用是否处于前台。<br>今天我们就实现不借助任何权限实现判断当前是否处在应用内（应用是否处于前台）。</p>
-<h2 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程"></a>实现过程</h2><h3 id="第一步定义接口"><a href="#第一步定义接口" class="headerlink" title="第一步定义接口"></a>第一步定义接口</h3><p>首先定义一个接口IApplication，定义管理Activity栈的抽象方法。</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">IApplication</span> <span class="token punctuation">{</span>
-  <span class="token keyword">void</span> <span class="token function">addActivityToStack</span><span class="token punctuation">(</span>Activity activity<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-  <span class="token keyword">void</span> <span class="token function">removeActivityFromStack</span><span class="token punctuation">(</span>Activity activity<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-  <span class="token keyword">void</span> <span class="token function">addActivityStart</span><span class="token punctuation">(</span>Activity activity<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-  <span class="token keyword">void</span> <span class="token function">addActivityPause</span><span class="token punctuation">(</span>Activity activity<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-  <span class="token keyword">void</span> <span class="token function">finishAllActivity</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-  <span class="token keyword">boolean</span> <span class="token function">isForegroundStack</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>Android应用反编译工具较多，应用反编译、二次打包操作非常频繁，我们有办法避免应用被非法打包吗？<br>可以通过代码混淆、加壳、加密操作来实现代码的获取，具体实现可以参考之前的博客。关于防止应用的二次打包，我们可以借助于Android系统的签名机制来实现。</p>
+<h3 id="应用内校验"><a href="#应用内校验" class="headerlink" title="应用内校验"></a>应用内校验</h3><p>Android系统中安装的应用必须进行可靠的签名文件对安装包进行签名，未被签名的应用会安装失败。<br>签名信息中包含开发者等有效的校验数据。不同的开发人员创建的签名文件不同。<br>我们可以把签名文件当作一个个人印章，每个人使用不同的印章，并且和实际中的印章不同，因为RSA密钥随机生成，所以签名文件是不可伪造的。<br>为了防止应用被二次打包，我们可以从签名校验操作入手。由于开发人员的签名都是唯一的且应用必须签名才可以安装。那么我们可以在应用启动时校验该应用自身签名是否是我们的进行的签名。若发现签名被篡改，则提示用户拒绝服务。</p>
+<h4 id="获取应用签名"><a href="#获取应用签名" class="headerlink" title="获取应用签名"></a>获取应用签名</h4><p>首先获取应用的签名值。</p>
+<pre class="line-numbers language-bash"><code class="language-bash">  /**
+   * 获取应用签名值
+   */
+  @SuppressLint<span class="token punctuation">(</span><span class="token string">"PackageManagerGetSignatures"</span><span class="token punctuation">)</span>
+  public static byte<span class="token punctuation">[</span><span class="token punctuation">]</span> getInstalledAPPSignature<span class="token punctuation">(</span>Context context, String packageName<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    PackageInfo packageInfo<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>context <span class="token operator">==</span> null <span class="token operator">||</span> TextUtils.isEmpty<span class="token punctuation">(</span>packageName<span class="token punctuation">))</span> <span class="token punctuation">{</span>
+      Log.e<span class="token punctuation">(</span>TAG, <span class="token string">"packageName is null or context is null"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">return</span> new byte<span class="token punctuation">[</span>0<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    try <span class="token punctuation">{</span>
+      PackageManager packageManager <span class="token operator">=</span> context.getPackageManager<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span>packageManager <span class="token operator">==</span> null <span class="token operator">||</span> <span class="token punctuation">(</span>packageInfo <span class="token operator">=</span> packageManager.getPackageInfo<span class="token punctuation">(</span>packageName, PackageManager.GET_SIGNATURES<span class="token punctuation">))</span> <span class="token operator">==</span> null<span class="token punctuation">))</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> packageInfo.signatures<span class="token punctuation">[</span>0<span class="token punctuation">]</span>.toByteArray<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span> catch <span class="token punctuation">(</span>PackageManager.NameNotFoundException e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      Log.e<span class="token punctuation">(</span>TAG, <span class="token string">"PackageManager.NameNotFoundException : "</span> + e.getMessage<span class="token punctuation">(</span><span class="token punctuation">))</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> new byte<span class="token punctuation">[</span>0<span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="对签名编码"><a href="#对签名编码" class="headerlink" title="对签名编码"></a>对签名编码</h4><p>然后我们对签名进行哈希，获取签名的散列值，同时对散列值进行hex编码。</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+* 数据16进制编码
+*/</span>
+<span class="token keyword">private</span> <span class="token keyword">static</span> String <span class="token function">getHexString</span><span class="token punctuation">(</span><span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> hashSignature<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>hashSignature <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    StringBuilder stringBuffer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">StringBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">byte</span> b <span class="token operator">:</span> hashSignature<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>b <span class="token operator">&amp;</span> <span class="token number">255</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">16</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            stringBuffer<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">"0"</span> <span class="token operator">+</span> Integer<span class="token punctuation">.</span><span class="token function">toHexString</span><span class="token punctuation">(</span>b <span class="token operator">&amp;</span> <span class="token number">255</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            stringBuffer<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>Integer<span class="token punctuation">.</span><span class="token function">toHexString</span><span class="token punctuation">(</span>b <span class="token operator">&amp;</span> <span class="token number">255</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> stringBuffer<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span>Locale<span class="token punctuation">.</span>ENGLISH<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>六个抽象方法作用分别为：</p>
-<blockquote>
-<p>addActivityToStack：Activity进栈方法，当应用中Activity调用onCreate时调用该方法。<br>removeActivityFromStack：Activity出栈方法，当应用中Activity调用onDestroy时调用该方法。<br>addActivityStart：Activity显示方法，当应用中Activity调用onStart时调用该方法。<br>addActivityPause：Activity隐藏方法，当应用中Activity调用onPause时调用该方法。<br>finishAllActivity：退出应用时，清空所有Activity。<br>isForegroundStack：判断当前应用是否在前台。</p>
-</blockquote>
-<h3 id="第二步创建FrontiaApplication"><a href="#第二步创建FrontiaApplication" class="headerlink" title="第二步创建FrontiaApplication"></a>第二步创建FrontiaApplication</h3><p>接下来我们创建FrontiaApplication，继承Application，同时实现IApplication接口。<br>在FrontiaApplication我们创建两个List列表activitiesInStack、activitiesInStart，分别保存栈队列Activity和当前处于Start状态的Activity。</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">FrontiaApplication</span> <span class="token keyword">extends</span> <span class="token class-name">Application</span> <span class="token keyword">implements</span> <span class="token class-name">IApplication</span> <span class="token punctuation">{</span>
-  <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> String TAG <span class="token operator">=</span> <span class="token string">"FrontiaApplication"</span><span class="token punctuation">;</span>
-  <span class="token keyword">private</span> List<span class="token operator">&lt;</span>Activity<span class="token operator">></span> activitiesInStack <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token keyword">private</span> List<span class="token operator">&lt;</span>Activity<span class="token operator">></span> activitiesInStart <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-  <span class="token annotation punctuation">@Override</span>
-  <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">addActivityToStack</span><span class="token punctuation">(</span>Activity activity<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>activitiesInStack<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>activity<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">public</span> <span class="token keyword">static</span> String <span class="token function">getInstalledAppHash</span><span class="token punctuation">(</span>Context context<span class="token punctuation">,</span> String packageName<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> installedAPPSignature <span class="token operator">=</span> <span class="token function">getInstalledAPPSignature</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span> packageName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>installedAPPSignature <span class="token operator">==</span> null <span class="token operator">||</span> installedAPPSignature<span class="token punctuation">.</span>length <span class="token operator">&lt;=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">""</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">try</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token function">getHexString</span><span class="token punctuation">(</span>MessageDigest<span class="token punctuation">.</span><span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token string">"SHA-256"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">digest</span><span class="token punctuation">(</span>installedAPPSignature<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">NoSuchAlgorithmException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        Log<span class="token punctuation">.</span><span class="token function">e</span><span class="token punctuation">(</span>TAG<span class="token punctuation">,</span> <span class="token string">"NoSuchAlgorithmException"</span> <span class="token operator">+</span> e<span class="token punctuation">.</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token string">""</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
   <span class="token punctuation">}</span>
-
-  <span class="token annotation punctuation">@Override</span>
-  <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">removeActivityFromStack</span><span class="token punctuation">(</span>Activity activity<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>activitiesInStack<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>activity<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="校验签名"><a href="#校验签名" class="headerlink" title="校验签名"></a>校验签名</h4><p>最后一步，我们获取自己的签名值，与应用实际签名进行校验。校验通过继续服务，否则拒绝服务。</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+* 校验应用签名值
+*/</span>
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">boolean</span> <span class="token function">doCheckInstalled</span><span class="token punctuation">(</span>Context context<span class="token punctuation">,</span> String signature<span class="token punctuation">,</span> String packageName<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>TextUtils<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span>packageName<span class="token punctuation">)</span> <span class="token operator">||</span> TextUtils<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span>signature<span class="token punctuation">)</span> <span class="token operator">||</span> context <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> signature<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token function">getInstalledAppHash</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span> packageName<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="安装包校验"><a href="#安装包校验" class="headerlink" title="安装包校验"></a>安装包校验</h3><p>以上是对应用启动是校验本身是否被篡改。<br>我们同时可以在应用升级时校验安装包是否被劫持、更换，此时可以获取安装包文件的签名信息进行校验。<br>实现代码如下：</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">PkgSignManager</span> <span class="token punctuation">{</span>
+  <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> String TAG <span class="token operator">=</span> <span class="token string">"PkgSignManager"</span><span class="token punctuation">;</span>
 
-  <span class="token annotation punctuation">@Override</span>
-  <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">addActivityStart</span><span class="token punctuation">(</span>Activity activity<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    activitiesInStart<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>activity<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">/**
+   * 获取安装包签名信息
+   */</span>
+  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">getUnInstalledAPPSignature</span><span class="token punctuation">(</span>Context context<span class="token punctuation">,</span> String archiveFilePath<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    PackageInfo packageArchiveInfo<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>context <span class="token operator">==</span> null <span class="token operator">||</span> TextUtils<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span>archiveFilePath<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      Log<span class="token punctuation">.</span><span class="token function">e</span><span class="token punctuation">(</span>TAG<span class="token punctuation">,</span> <span class="token string">"archiveFilePath is null or context is null"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">byte</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">try</span> <span class="token punctuation">{</span>
+      PackageManager packageManager <span class="token operator">=</span> context<span class="token punctuation">.</span><span class="token function">getPackageManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span>packageManager <span class="token operator">==</span> null <span class="token operator">||</span> <span class="token punctuation">(</span>packageArchiveInfo <span class="token operator">=</span> packageManager<span class="token punctuation">.</span><span class="token function">getPackageArchiveInfo</span><span class="token punctuation">(</span>archiveFilePath<span class="token punctuation">,</span> PackageManager<span class="token punctuation">.</span>GET_SIGNATURES<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">==</span> null<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> packageArchiveInfo<span class="token punctuation">.</span>signatures<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">toByteArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      Log<span class="token punctuation">.</span><span class="token function">e</span><span class="token punctuation">(</span>TAG<span class="token punctuation">,</span> <span class="token string">"getUnInstalledAPPSignature exception : "</span> <span class="token operator">+</span> e<span class="token punctuation">.</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">byte</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
-
-  <span class="token annotation punctuation">@Override</span>
-  <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">addActivityPause</span><span class="token punctuation">(</span>Activity activity<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    activitiesInStart<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>activity<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">public</span> <span class="token keyword">static</span> String <span class="token function">getUnInstalledAppHash</span><span class="token punctuation">(</span>Context context<span class="token punctuation">,</span> String archiveFilePath<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> unInstalledAPPSignature <span class="token operator">=</span> <span class="token function">getUnInstalledAPPSignature</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span> archiveFilePath<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>unInstalledAPPSignature <span class="token operator">==</span> null <span class="token operator">||</span> unInstalledAPPSignature<span class="token punctuation">.</span>length <span class="token operator">&lt;=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token string">""</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token function">getHashHex</span><span class="token punctuation">(</span>unInstalledAPPSignature<span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
-
-  <span class="token annotation punctuation">@Override</span>
-  <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">finishAllActivity</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token keyword">this</span><span class="token punctuation">.</span>activitiesInStack<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      Activity activity <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>activitiesInStack<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-      <span class="token keyword">if</span> <span class="token punctuation">(</span>activity <span class="token operator">!=</span> null <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>activity<span class="token punctuation">.</span><span class="token function">isFinishing</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        activity<span class="token punctuation">.</span><span class="token function">finish</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">/**
+   * 获取数据SHA-256摘要
+   */</span>
+  <span class="token keyword">private</span> <span class="token keyword">static</span> String <span class="token function">getHashHex</span><span class="token punctuation">(</span><span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> installedAPPSignature<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">try</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token function">getHexString</span><span class="token punctuation">(</span>MessageDigest<span class="token punctuation">.</span><span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token string">"SHA-256"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">digest</span><span class="token punctuation">(</span>installedAPPSignature<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">NoSuchAlgorithmException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      Log<span class="token punctuation">.</span><span class="token function">e</span><span class="token punctuation">(</span>TAG<span class="token punctuation">,</span> <span class="token string">"NoSuchAlgorithmException"</span> <span class="token operator">+</span> e<span class="token punctuation">.</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">return</span> <span class="token string">""</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment" spellcheck="true">/**
+   * 数据16进制编码
+   */</span>
+  <span class="token keyword">private</span> <span class="token keyword">static</span> String <span class="token function">getHexString</span><span class="token punctuation">(</span><span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> hashSignature<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>hashSignature <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    StringBuilder stringBuffer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">StringBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">byte</span> b <span class="token operator">:</span> hashSignature<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>b <span class="token operator">&amp;</span> <span class="token number">255</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">16</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        stringBuffer<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">"0"</span> <span class="token operator">+</span> Integer<span class="token punctuation">.</span><span class="token function">toHexString</span><span class="token punctuation">(</span>b <span class="token operator">&amp;</span> <span class="token number">255</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        stringBuffer<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>Integer<span class="token punctuation">.</span><span class="token function">toHexString</span><span class="token punctuation">(</span>b <span class="token operator">&amp;</span> <span class="token number">255</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
       <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>activitiesInStack<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> stringBuffer<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span>Locale<span class="token punctuation">.</span>ENGLISH<span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
 
-  <span class="token annotation punctuation">@Override</span>
-  <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isForegroundStack</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> activitiesInStart<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">/**
+   * 校验签名
+   */</span>
+  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">boolean</span> <span class="token function">doCheckArchiveApk</span><span class="token punctuation">(</span>Context context<span class="token punctuation">,</span> String signature<span class="token punctuation">,</span> String archiveFilePath<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>TextUtils<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span>archiveFilePath<span class="token punctuation">)</span> <span class="token operator">||</span> TextUtils<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span>signature<span class="token punctuation">)</span> <span class="token operator">||</span> context <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    String packageName <span class="token operator">=</span> context<span class="token punctuation">.</span><span class="token function">getPackageName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    String unInstalledAppHash <span class="token operator">=</span> <span class="token function">getUnInstalledAppHash</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span> archiveFilePath<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>TextUtils<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span>packageName<span class="token punctuation">)</span> <span class="token operator">||</span> TextUtils<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span>unInstalledAppHash<span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token operator">!</span>signature<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>unInstalledAppHash<span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="第三步使用FrontiaApplication"><a href="#第三步使用FrontiaApplication" class="headerlink" title="第三步使用FrontiaApplication"></a>第三步使用FrontiaApplication</h3><p>使应用Application继承FrontiaApplication，或者直接将FrontiaApplication配置成应用Application。</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">TheApplication</span> <span class="token keyword">extends</span> <span class="token class-name">FrontiaApplication</span> <span class="token punctuation">{</span>
-    <span class="token keyword">private</span> <span class="token keyword">static</span> TheApplication sInstance<span class="token punctuation">;</span>
-
-    <span class="token keyword">public</span> <span class="token function">TheApplication</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        sInstance <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">public</span> <span class="token keyword">static</span> TheApplication <span class="token function">getApplication</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> sInstance<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token comment" spellcheck="true">//原Application内容。。。</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="第四步调用FrontiaApplication的方法"><a href="#第四步调用FrontiaApplication的方法" class="headerlink" title="第四步调用FrontiaApplication的方法"></a>第四步调用FrontiaApplication的方法</h3><p>使应用内所有Activity在生命周期中onCreate、onStart、onPause、onDestroy调用FrontiaApplication中实现的方法。或者在所有Activity的父类BaseActivity对应生命周期中调用。</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BaseActivity</span> <span class="token keyword">extends</span> <span class="token class-name">AppCompatActivity</span> <span class="token punctuation">{</span>
-
-    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onCreate</span><span class="token punctuation">(</span>Bundle savedInstanceState<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onCreate</span><span class="token punctuation">(</span>savedInstanceState<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        Application application <span class="token operator">=</span> <span class="token function">getApplication</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>application <span class="token keyword">instanceof</span> <span class="token class-name">IApplication</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token punctuation">(</span><span class="token punctuation">(</span>IApplication<span class="token punctuation">)</span> application<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addActivityToStack</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onDestroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onDestroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        Application application <span class="token operator">=</span> <span class="token function">getApplication</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>application <span class="token keyword">instanceof</span> <span class="token class-name">IApplication</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token punctuation">(</span><span class="token punctuation">(</span>IApplication<span class="token punctuation">)</span> application<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">removeActivityFromStack</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onStart</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onStart</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        Application application <span class="token operator">=</span> <span class="token function">getApplication</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>application <span class="token keyword">instanceof</span> <span class="token class-name">IApplication</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token punctuation">(</span><span class="token punctuation">(</span>IApplication<span class="token punctuation">)</span> application<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addActivityStart</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        MediaContentObserver<span class="token punctuation">.</span><span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">stareObserve</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onPause</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onPause</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        Application application <span class="token operator">=</span> <span class="token function">getApplication</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>application <span class="token keyword">instanceof</span> <span class="token class-name">IApplication</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token punctuation">(</span><span class="token punctuation">(</span>IApplication<span class="token punctuation">)</span> application<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addActivityPause</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-    
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>至此，所有代码都完成了。<br>当我们需要判断是否在前台时，直接判断方法即可：</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">boolean</span> isForegroundStack <span class="token operator">=</span> TheApplication<span class="token punctuation">.</span><span class="token function">getApplication</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">isForegroundStack</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>isForegroundStack<span class="token punctuation">)</span><span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">//当前应用不在前台</span>
-    <span class="token keyword">return</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>通过该方式，可以借助于FrontiaApplication进行扩展实现便捷的对应用管理。<br>同时可以实现在不需要申请任何权限的情况下，通过自己维护的队列状态判断当前应用是否处于前台。</p>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
             </div>
             <hr />
@@ -600,9 +614,9 @@
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《判断APP是否在前台》
+                    《校验应用签名》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2022/02/04/pan-duan-app-shi-fou-zai-qian-tai/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2022/06/16/xiao-yan-ying-yong-qian-ming/" property="cc:attributionName"
                rel="cc:attributionURL">
                 Gure
             </a> 采用
@@ -902,29 +916,30 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2022/02/08/shi-xian-ying-yong-nei-jian-ting-jie-ping-dong-zuo/">
+                <a href="/2022/06/16/xiao-yan-ying-yong-qian-ming/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="实现应用内监听截屏动作">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="校验应用签名">
                         
-                        <span class="card-title">实现应用内监听截屏动作</span>
+                        <span class="card-title">校验应用签名</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            背景说明发现招商银行等应用内有一个比较好玩的功能：当在应用内截屏时，会主动产出一个窗口，询问用户是否需要咨询客服。这个功能很有趣，那么就在开源项目实现。应用要实现在应用内截屏时，弹出提示，需要监听应用内监听截屏事件。今天就实现监听截屏事件，
+                            背景Android应用反编译工具较多，应用反编译、二次打包操作非常频繁，我们有办法避免应用被非法打包吗？可以通过代码混淆、加壳、加密操作来实现代码的获取，具体实现可以参考之前的博客。关于防止应用的二次打包，我们可以借助于Android系统的
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2022-02-08
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2022-06-16
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -937,6 +952,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -955,34 +971,32 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/02/02/jia-zai-wang-ye-ti-shi-wu-fa-da-kai/">
+                <a href="/2022/06/13/ru-he-cong-pi-xin-qing-zhong-zou-chu-lai/">
                     <div class="card-image">
                         
+                        <img src="/medias/images/xinqing.jpg" class="responsive-img" alt="如何从坏心情中走出来？">
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="加载网页提示无法打开">
-                        
-                        <span class="card-title">加载网页提示无法打开</span>
+                        <span class="card-title">如何从坏心情中走出来？</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            需求背景睡眠助理客户端添加了博客地址菜单，点击跳转到个人博客。在浏览博客过程中，发现部分网页会弹出网页无法打开的提示：
-
-
-分析定位经分析发现，WebView在加载页面的时候，页面判断当前屏幕尺寸。当判断出设备是手机时，往往会被重定向不是h
+                            我想，每个人，应该或多或少，都经历过坏心情的困扰。
+这些坏心情，有时可能来自外界的坏消息，有时可能来自内心的担忧和焦虑，它们都有一个共通点：总是无孔不入，顽固地钻入我们的脑海中，破坏我们的状态，让我们无心工作，陷入情绪的低潮之中。
+就像在我
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2022-02-02
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2022-06-13
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Android/" class="post-category" target="_blank">
-                                    Android
+                            <a href="/categories/%E6%95%85%E4%BA%8B/" class="post-category" target="_blank">
+                                    故事
                                 </a>
                             
                             
@@ -992,8 +1006,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%85%BC%E5%AE%B9%E6%80%A7/" target="_blank">
-                        <span class="chip bg-color">兼容性</span>
+                    <a href="/tags/%E8%BD%AC%E8%BD%BD/" target="_blank">
+                        <span class="chip bg-color">转载</span>
                     </a>
                     
                 </div>
