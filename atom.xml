@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devdroid.cn/"/>
-  <updated>2022-06-16T09:09:32.697Z</updated>
+  <updated>2022-06-22T10:24:01.597Z</updated>
   <id>https://devdroid.cn/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>API31行为变更:组件导出</title>
+    <link href="https://devdroid.cn/2022/06/22/api31-xing-wei-bian-geng-zu-jian-dao-chu/"/>
+    <id>https://devdroid.cn/2022/06/22/api31-xing-wei-bian-geng-zu-jian-dao-chu/</id>
+    <published>2022-06-22T10:16:23.000Z</published>
+    <updated>2022-06-22T10:24:01.597Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h3&gt;&lt;p&gt;2022年5月，Android 13（API 33，
+        
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="https://devdroid.cn/categories/Android/"/>
+    
+    
+      <category term="新特性" scheme="https://devdroid.cn/tags/%E6%96%B0%E7%89%B9%E6%80%A7/"/>
+    
+  </entry>
   
   <entry>
     <title>校验应用签名</title>
@@ -521,32 +547,6 @@
         
         
           &lt;p&gt;从小我们便对父母有种误解，感觉自己如果没有活成父母期待中的样子，就一定会让父母失望。&lt;br&gt;其实事实并不是这样。&lt;br&gt;妹妹九月份以优异的成绩顺利升入市重点高中，但是好景不长，初中时一直成绩名列前茅的她，高中首次月考成绩便下滑到了十名开外，她开始焦虑又惶恐起来，状态一次不如
-        
-      
-    
-    </summary>
-    
-      <category term="故事" scheme="https://devdroid.cn/categories/%E6%95%85%E4%BA%8B/"/>
-    
-    
-      <category term="转载" scheme="https://devdroid.cn/tags/%E8%BD%AC%E8%BD%BD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>妈给你丢人了</title>
-    <link href="https://devdroid.cn/2022/03/24/ma-gei-ni-diu-ren-liao/"/>
-    <id>https://devdroid.cn/2022/03/24/ma-gei-ni-diu-ren-liao/</id>
-    <published>2022-03-24T10:11:10.000Z</published>
-    <updated>2022-04-14T01:13:49.406Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;妈妈赶到医院时，医生已经把管子都拔掉，呼吸机也停了。爸爸安静地躺在那儿，像熟睡一样。&lt;br&gt;我握住他的右手，姐姐握着他的左手，陪他度过生命中最后的时光。在重症监护室的这 14 天零 6
         
       
     
