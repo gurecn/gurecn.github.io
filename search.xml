@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>应用发布版本说明</title>
+      <link href="/2022/07/01/ying-yong-fa-bu-ban-ben-shuo-ming/"/>
+      <url>/2022/07/01/ying-yong-fa-bu-ban-ben-shuo-ming/</url>
+      
+        <content type="html"><![CDATA[<h3 id="Alpha"><a href="#Alpha" class="headerlink" title="Alpha"></a>Alpha</h3><p>此版本表示该软件仅仅是一个初步完成品。通常只在软件开发者内部交流，也有很少一部分发布给专业测试人员。一般而言，该版本软件的Bug较多，普通用户最好不要安装。</p><h3 id="canary"><a href="#canary" class="headerlink" title="canary"></a>canary</h3><blockquote><p>Canary的中文翻译是「金丝雀」。<br>为什么叫金丝雀呢？<br>这个要追溯到全民挖矿的年代，那时候大家下矿井挖矿之前会先放些金丝雀进去，为什么呢？<br>因为金丝雀可以测试矿坑里面的空气是否对人体有损伤，是否会让矿工发生气体中毒事件。如果金丝雀进去矿坑没事，那么人才能进去挖矿。</p></blockquote><p>软件开发行业引入Canary版本，实现软件的早期检测和反馈，其实就是灰度测试版本、不稳定的开发版本，以便发现问题并解决问题。<br>该版本会频繁的发布更新供用户进行尝新体验。Canary构建会搜集用户反馈并将修复结果汇集发布到更稳定的版本。</p><h3 id="dev"><a href="#dev" class="headerlink" title="dev"></a>dev</h3><p>与Canary版本比，dev版本更接近于稳定版本，但仍有许多错误需要通过测试。<br>dev融合最新功能体验，汇集Canary版本的稳定特性，此版本更新频率低于Canary版本。如果您想要版本相对稳定来解决一些旧版本的错误，同时又想轻松地进行操作，则可以使用此版本。</p><h3 id="beta"><a href="#beta" class="headerlink" title="beta"></a>beta</h3><p>这是Dev频道的稳定版本，并且错误最少，这也是最终构建之前的公共BETA版本。 开发者会从现实世界的使用中获得大量反馈，因此很多问题都可以得到解决。</p><h3 id="Preview-release-RC"><a href="#Preview-release-RC" class="headerlink" title="Preview release/RC"></a>Preview release/RC</h3><p>预发布版本、候选版本，一般来说这是系统的发行预览版，稳定性最高的预览版。它是面向大众的拥有完整功能和完善性能的版本，而不是用来测试最新的系统的。</p><h3 id="Trial（试用版）"><a href="#Trial（试用版）" class="headerlink" title="Trial（试用版）"></a>Trial（试用版）</h3><p>该版本软件通常都有时间限制，过期之后用户如果希望继续使用，一般得交纳一定的费用进行注册或购买。有些试用版软件还在功能上做了一定的限制。</p><h3 id="Release-Final-Stable"><a href="#Release-Final-Stable" class="headerlink" title="Release/Final/Stable"></a>Release/Final/Stable</h3><p>该版本意味“最终版本”，在前面版本的一系列测试版之后，终归会有一个正式版本，是最终交付用户使用的一个版本。该版本有时也称为标准版。</p><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>不同软件对发布版本使用不同，比较常用的是：Alpha-Beta-RC-Release。<br>Chrome 浏览器提供 4 种发布版本：金丝雀版（Canary）-开发者版（Dev）-测试版（Beta）-稳定版（Stable）。<br>Windows提供4种发布版本：Dev-Beta-Release Preview-Release。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 日常 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 技能 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>API31行为变更:组件导出</title>
       <link href="/2022/06/22/api31-xing-wei-bian-geng-zu-jian-dao-chu/"/>
       <url>/2022/06/22/api31-xing-wei-bian-geng-zu-jian-dao-chu/</url>

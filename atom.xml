@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devdroid.cn/"/>
-  <updated>2022-06-22T10:24:01.597Z</updated>
+  <updated>2022-07-01T05:25:47.233Z</updated>
   <id>https://devdroid.cn/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>应用发布版本说明</title>
+    <link href="https://devdroid.cn/2022/07/01/ying-yong-fa-bu-ban-ben-shuo-ming/"/>
+    <id>https://devdroid.cn/2022/07/01/ying-yong-fa-bu-ban-ben-shuo-ming/</id>
+    <published>2022-07-01T05:21:37.000Z</published>
+    <updated>2022-07-01T05:25:47.233Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;Alpha&quot;&gt;&lt;a href=&quot;#Alpha&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="日常" scheme="https://devdroid.cn/categories/%E6%97%A5%E5%B8%B8/"/>
+    
+    
+      <category term="技能" scheme="https://devdroid.cn/tags/%E6%8A%80%E8%83%BD/"/>
+    
+  </entry>
   
   <entry>
     <title>API31行为变更:组件导出</title>
@@ -530,32 +556,6 @@
     
     
       <category term="模拟" scheme="https://devdroid.cn/tags/%E6%A8%A1%E6%8B%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>即使平庸依然为傲</title>
-    <link href="https://devdroid.cn/2022/03/30/ji-shi-ping-yong-yi-ran-wei-ao/"/>
-    <id>https://devdroid.cn/2022/03/30/ji-shi-ping-yong-yi-ran-wei-ao/</id>
-    <published>2022-03-30T10:11:40.000Z</published>
-    <updated>2022-04-14T01:11:24.023Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;从小我们便对父母有种误解，感觉自己如果没有活成父母期待中的样子，就一定会让父母失望。&lt;br&gt;其实事实并不是这样。&lt;br&gt;妹妹九月份以优异的成绩顺利升入市重点高中，但是好景不长，初中时一直成绩名列前茅的她，高中首次月考成绩便下滑到了十名开外，她开始焦虑又惶恐起来，状态一次不如
-        
-      
-    
-    </summary>
-    
-      <category term="故事" scheme="https://devdroid.cn/categories/%E6%95%85%E4%BA%8B/"/>
-    
-    
-      <category term="转载" scheme="https://devdroid.cn/tags/%E8%BD%AC%E8%BD%BD/"/>
     
   </entry>
   
