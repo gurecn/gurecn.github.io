@@ -4,11 +4,61 @@
   
     
     <entry>
+      <title>Win11 安卓子系统无法访问网络</title>
+      <link href="/2022/07/04/win11-an-zhuo-zi-xi-tong-wu-fa-fang-wen-wang-luo/"/>
+      <url>/2022/07/04/win11-an-zhuo-zi-xi-tong-wu-fa-fang-wen-wang-luo/</url>
+      
+        <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>在《<a href="/2022/05/09/win-11-an-zhuo-zi-xi-tong-wsa/">Win-11-安卓子系统（WSA）</a>》篇中，我们介绍了Win 11电脑如何安装、体验Android子系统，并安装了微信等程序体验相关功能。<br>当时虽然发现有些应用没有开发Windows客户端，这时候要使用应用只能使用手机。但是并没有觉得Android子系统有什么必要性。因为平时我们使用电脑办公时，没有时间再去玩手机，人很难一心二用，同时在电脑上使用Android应用和Windows应用，前台应用也只能放一个。<br>今天看到梁文道的播客《八分》更新了，想及时听到这集更新。但是此时没有手机的耳机，而看理想APP又没有软件客户端。那么解决方案就很明显，只能在Win 11上安卓子系统中安装看理想客户端进行收听。<br>下载、安装客户端都很顺利，但是在登录客户端时提示无网络连接，但是电脑网络是正常的。接下来就探讨一下解决安卓子系统联网的过程。</p><h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><p>查询资料发现该类问题比较普遍，网上解决方案也有多个。</p><h3 id="方案一，借助于ADB实现。"><a href="#方案一，借助于ADB实现。" class="headerlink" title="方案一，借助于ADB实现。"></a>方案一，借助于ADB实现。</h3><p>ADB环境安装环节跳过，不知道的可以参考上篇《<a href="/2022/05/09/win-11-an-zhuo-zi-xi-tong-wsa/">Win-11-安卓子系统（WSA）</a>》文章。<br>安装ADB环境后，我们执行ADB命令：</p><pre class="line-numbers language-shell"><code class="language-shell">adb shell settings put global captive_portal_https_url https://www.google.cn/generate_204adb shell settings put global captive_portal_http_url https://www.google.cn/generate_204<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>执行完成后，控制台没有任何输出。<br>此时我们重启安卓子系统及看理想客户端，发现此时网络依然没有恢复，仍然提示无网络连接。<br>显然该方式没能解决问题，或者说没能完全解决问题。</p><h3 id="方案二Hyper-v配置"><a href="#方案二Hyper-v配置" class="headerlink" title="方案二Hyper-v配置"></a>方案二Hyper-v配置</h3><h4 id="Hyper-V管理器配置"><a href="#Hyper-V管理器配置" class="headerlink" title="Hyper-V管理器配置"></a>Hyper-V管理器配置</h4><p>同时点击<code>Win</code> + <code>Q</code>键，在搜索栏输入<code>Hyper-v</code>,会看到Hyper-V管理器，点击打开Hyper-V管理器，</p><img src="hyperv配置.png" width="1208" height="550" alt="hyper-v配置" align=center><p>按照上图的步骤，<br>1、点击<code>当前PC电脑名称</code>；2、点击<code>虚拟交换机管理器</code>;3、点击<code>WSL</code>。<br>选择<code>外部网络（E）</code>，选择当前电脑使用的网卡适配器。<br>注意：一般一台电脑会有多个网卡适配器，但一般情况下处于启用状态的只有一个，其他都是停用状态，此时需要选择启用的适配器才行。<br>然后点击确定。<br>如果此时系统报错，并未执行切换适配器操作，则需要先按照以下操作到网络适配器进行配置。</p><h4 id="网络适配器配置"><a href="#网络适配器配置" class="headerlink" title="网络适配器配置"></a>网络适配器配置</h4><p>同时点击<code>Win</code> + <code>Q</code>键，在搜索栏输入<code>控制面板</code>,查看方式选择<code>类别</code>,依次<code>查看网络状态和任务</code>，<br><code>更改适配器设置</code>。<br>然后右键点击状态为<code>已启用</code>的适配器，选择<code>属性</code>，切换到<code>共享</code>选项卡，将<code>Internet 连接共享</code>下两个复选框全部<strong>取消。</strong>然后点击确定。<br>按照以上步骤进行网络适配器配置后，重新进行Hyper-V管理器配置。</p><h4 id="子系统Wifi配置"><a href="#子系统Wifi配置" class="headerlink" title="子系统Wifi配置"></a>子系统Wifi配置</h4><p>最后，我们打开安卓子系统的Android设置页面，可借助上篇博客中的<code>WSA工具箱</code>进入，按照正常的Android手机设置类似，依次选择<code>网络和互联网</code>，<code>互联网</code>，<code>VirtWifi</code>。<br>点击右上角编辑按钮，点击<code>高级选项</code>，<code>IP设置</code>，选择<code>DHCP</code>。</p><img src="子系统Wifi配置.png" width="749" height="586" alt="子系统Wifi配置" align=center><p>最后点击保存。<br>此时再次刷新看理想客户端，发现已经能够连接互联网了。</p><h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>应用界面如下，收听播客正常了。</p><img src="kanlixiang1.png" width="472" height="349" alt="看理想客户端" align=center><p>最后也无法确定是<code>方案一</code>+<code>方案二</code>两个共同解决的问题，还是完全是<code>方案二</code>解决的问题。因为问题已经解决了，我懒得再尝试一遍。所以把两个方案都放上面，同样问题的同学可以先尝试<code>方案二</code>，未解决时在<code>方案二</code>基础上再尝试<code>方案一</code>。</p><p>当前可以确认一点的是：只有<code>方案一</code>是不生效的。</p><p>最后，不讲看理想客户端其他方面好坏，只说界面，在Win 11上适配还是挺好。再放一个播放界面：</p><img src="kanlixiangplay.png" width="592" height="602" alt="看理想播放页" align=center>]]></content>
+      
+      
+      <categories>
+          
+          <category> 日常 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 技能 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>应用发布版本说明</title>
       <link href="/2022/07/01/ying-yong-fa-bu-ban-ben-shuo-ming/"/>
       <url>/2022/07/01/ying-yong-fa-bu-ban-ben-shuo-ming/</url>
       
         <content type="html"><![CDATA[<h3 id="Alpha"><a href="#Alpha" class="headerlink" title="Alpha"></a>Alpha</h3><p>此版本表示该软件仅仅是一个初步完成品。通常只在软件开发者内部交流，也有很少一部分发布给专业测试人员。一般而言，该版本软件的Bug较多，普通用户最好不要安装。</p><h3 id="canary"><a href="#canary" class="headerlink" title="canary"></a>canary</h3><blockquote><p>Canary的中文翻译是「金丝雀」。<br>为什么叫金丝雀呢？<br>这个要追溯到全民挖矿的年代，那时候大家下矿井挖矿之前会先放些金丝雀进去，为什么呢？<br>因为金丝雀可以测试矿坑里面的空气是否对人体有损伤，是否会让矿工发生气体中毒事件。如果金丝雀进去矿坑没事，那么人才能进去挖矿。</p></blockquote><p>软件开发行业引入Canary版本，实现软件的早期检测和反馈，其实就是灰度测试版本、不稳定的开发版本，以便发现问题并解决问题。<br>该版本会频繁的发布更新供用户进行尝新体验。Canary构建会搜集用户反馈并将修复结果汇集发布到更稳定的版本。</p><h3 id="dev"><a href="#dev" class="headerlink" title="dev"></a>dev</h3><p>与Canary版本比，dev版本更接近于稳定版本，但仍有许多错误需要通过测试。<br>dev融合最新功能体验，汇集Canary版本的稳定特性，此版本更新频率低于Canary版本。如果您想要版本相对稳定来解决一些旧版本的错误，同时又想轻松地进行操作，则可以使用此版本。</p><h3 id="beta"><a href="#beta" class="headerlink" title="beta"></a>beta</h3><p>这是Dev频道的稳定版本，并且错误最少，这也是最终构建之前的公共BETA版本。 开发者会从现实世界的使用中获得大量反馈，因此很多问题都可以得到解决。</p><h3 id="Preview-release-RC"><a href="#Preview-release-RC" class="headerlink" title="Preview release/RC"></a>Preview release/RC</h3><p>预发布版本、候选版本，一般来说这是系统的发行预览版，稳定性最高的预览版。它是面向大众的拥有完整功能和完善性能的版本，而不是用来测试最新的系统的。</p><h3 id="Trial（试用版）"><a href="#Trial（试用版）" class="headerlink" title="Trial（试用版）"></a>Trial（试用版）</h3><p>该版本软件通常都有时间限制，过期之后用户如果希望继续使用，一般得交纳一定的费用进行注册或购买。有些试用版软件还在功能上做了一定的限制。</p><h3 id="Release-Final-Stable"><a href="#Release-Final-Stable" class="headerlink" title="Release/Final/Stable"></a>Release/Final/Stable</h3><p>该版本意味“最终版本”，在前面版本的一系列测试版之后，终归会有一个正式版本，是最终交付用户使用的一个版本。该版本有时也称为标准版。</p><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>不同软件对发布版本使用不同，比较常用的是：Alpha-Beta-RC-Release。<br>Chrome 浏览器提供 4 种发布版本：金丝雀版（Canary）-开发者版（Dev）-测试版（Beta）-稳定版（Stable）。<br>Windows提供4种发布版本：Dev-Beta-Release Preview-Release。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 日常 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 技能 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>OpenJDK和OracleJDK区别</title>
+      <link href="/2022/06/28/openjdk-he-oraclejdk-qu-bie/"/>
+      <url>/2022/06/28/openjdk-he-oraclejdk-qu-bie/</url>
+      
+        <content type="html"><![CDATA[<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>SunJDK、OracleJDK（Java Development Kit，我们下文直接直接称为JDK）是SUN公司（后被甲骨文收购）开发的针对Java开发人员免费的软件开发工具包。JDK是整个Java的核心，包括了Java运行环境、Java工具和Java基础类库。使用JRL（Java Research License，Java研究授权协议）发布。<br>OpenJDK是JDK的开放源代码版本，OpenJDK以GPL协议的形式放出，其他公司可随意修改代码，并可用于商业活动。这就是谷歌、华为、阿里等公司开发系统、应用时选择基于OpenJDK的原因。当前基于OpenJDK，阿里开源了Dragonwell JDK，华为开源了毕昇JDK，腾讯开源了Kona。<br>在JDK7的时候，OpenJDK开始成为JDK的主干开发分支。JDK7是在OpenJDK7的基础上发布的，两者大部分原始码都相同，只有少部分代码被替换掉。比如做加密的小伙伴可能会用到<code>javax.caypto</code>包，<code>javax.caypto</code>其实就是JDK所独有的，在OpenJDK中无法使用。<br>基本上OpenJDK与JDK版本是相对应的，只是有发布时间的差别。但是有一个特殊的版本就是OpenJDK6。OpenJDK6是JDK7的一个分支，并且尽量去除Java SE7的新特性，使其尽量的符合Java6的标准。</p><h3 id="归纳"><a href="#归纳" class="headerlink" title="归纳"></a>归纳</h3><p>关于JDK和OpenJDK的区别，可以归纳为以下几点：</p><ul><li><h4 id="授权协议不同："><a href="#授权协议不同：" class="headerlink" title="授权协议不同："></a>授权协议不同：</h4></li></ul><p>OpenJDK采用GPL V2协议放出，而JDK则采用JRL协议。<br>两者协议虽然都是开放源代码的，但是在使用上的不同在于GPL V2允许在商业上使用，而JRL只允许个人研究使用。</p><blockquote><p>GPL 协议，在开源协议里被称为”病毒”协议，只要是基于 GPL 协议开源的代码来开发，那么这项目也必须开源。<br>JRL 协议，是 Sun公司自己制定的协议Java Research License。 Sun公司公开代码，但代码的所有权完全归Sun公司所有，其他人能看不能改。</p></blockquote><p>Oracle在JDK <code>1.8.0_211-b12</code>版本之后已将<strong>协议从BCL修改为可以按照商业用途收费的OTN</strong>协议，如果JDK 至最新版本的JDK会导致未经许可违规使用。新许可允许个人和开发免费使用，而企业用户或进行具有商业用途(盈利目的)的应用或工具的开发时是要收费的。</p><blockquote><p>BCL协议，即Oracle Binary Code License Agreement，协议规定你可以使用JDK，但是不能进行修改（和JRL类似），私用和商用都可以，但是JDK中的某些商业特性，是需要付费才可以使用的。<br>OTN协议，即Oracle Technology Network License Agreement，<code>1.8.0_211</code>后发布的JDK用的都是这个协议，可以私用，商用需要付费。</p></blockquote><ul><li><h4 id="OpenJDK不包含Deployment功能："><a href="#OpenJDK不包含Deployment功能：" class="headerlink" title="OpenJDK不包含Deployment功能："></a>OpenJDK不包含Deployment功能：</h4></li></ul><p>Deployment（部署）功能包括：Browser Plugin、Java Web Start、Java控制面板，这些功能在Openjdk中是找不到的。</p><ul><li><h4 id="OpenJDK源代码不完整："><a href="#OpenJDK源代码不完整：" class="headerlink" title="OpenJDK源代码不完整："></a>OpenJDK源代码不完整：</h4></li></ul><p>采用GPL协议的OpenJDK中，JDK的一部分源代码因为产权的问题无法开放给OpenJDK使用，其中最主要的部份就是JMX中的可选元件SNMP部份的代码。<br>因此这些不能开放的源代码将它作成plug，以供OpenJDK编译时使用，你也可以选择不要使用plug。而IcedTea 则为这些不完整的部分开发了相同功能的源代码，促使OpenJDK更加完整。</p><blockquote><p>IcedTea 项目最初是由于 OpenJDK 不完整（因产权而造成的障碍）而创立的，社区需要一个完整的开源工具链及代码库，IcedTea 长期以来一直是 OpenJDK 的一套补丁。</p></blockquote><ul><li><h4 id="部分源代码用开源代码替换："><a href="#部分源代码用开源代码替换：" class="headerlink" title="部分源代码用开源代码替换："></a>部分源代码用开源代码替换：</h4></li></ul><p>由于产权的问题，很多产权不是SUN的源代码被替换成一些功能相同的开源代码，比如说字体栅格化引擎，使用Free Type代替。</p><ul><li><h4 id="OpenJDK只包含最精简的JDK："><a href="#OpenJDK只包含最精简的JDK：" class="headerlink" title="OpenJDK只包含最精简的JDK："></a>OpenJDK只包含最精简的JDK：</h4></li></ul><p>OpenJDK不包含其他的软件包，比如Rhino Java DB JAXP等。并且可以分离的软件包也都是尽量的分离，但这大多数都是自由软件，开发者可自己下载加入。</p><ul><li><h4 id="OpenJDK不能使用Java商标："><a href="#OpenJDK不能使用Java商标：" class="headerlink" title="OpenJDK不能使用Java商标："></a>OpenJDK不能使用Java商标：</h4></li></ul><p>在安装openjdk的机器上，输入<code>java -version</code>显示的是openjdk。</p><ul><li><h4 id="发布形式不同："><a href="#发布形式不同：" class="headerlink" title="发布形式不同："></a>发布形式不同：</h4></li></ul><p>JDK只发布二进制安装包；OpenJDK只发布源码。</p><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>在Java体系中，还是有很多不自由的成分，源代码的开发不够彻底，希望Oracle能够让JCP（Java 全球管理组织 Java Community Process）更自由开放一些，这也是所有Java社区所希望的。</p>]]></content>
       
       
       <categories>

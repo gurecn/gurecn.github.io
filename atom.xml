@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devdroid.cn/"/>
-  <updated>2022-07-01T05:25:47.233Z</updated>
+  <updated>2022-07-04T10:05:54.694Z</updated>
   <id>https://devdroid.cn/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Win11 安卓子系统无法访问网络</title>
+    <link href="https://devdroid.cn/2022/07/04/win11-an-zhuo-zi-xi-tong-wu-fa-fang-wen-wang-luo/"/>
+    <id>https://devdroid.cn/2022/07/04/win11-an-zhuo-zi-xi-tong-wu-fa-fang-wen-wang-luo/</id>
+    <published>2022-07-04T09:54:23.000Z</published>
+    <updated>2022-07-04T10:05:54.694Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h2&gt;&lt;p&gt;在《&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="日常" scheme="https://devdroid.cn/categories/%E6%97%A5%E5%B8%B8/"/>
+    
+    
+      <category term="技能" scheme="https://devdroid.cn/tags/%E6%8A%80%E8%83%BD/"/>
+    
+  </entry>
   
   <entry>
     <title>应用发布版本说明</title>
@@ -30,6 +56,32 @@
         
         
           &lt;h3 id=&quot;Alpha&quot;&gt;&lt;a href=&quot;#Alpha&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="日常" scheme="https://devdroid.cn/categories/%E6%97%A5%E5%B8%B8/"/>
+    
+    
+      <category term="技能" scheme="https://devdroid.cn/tags/%E6%8A%80%E8%83%BD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>OpenJDK和OracleJDK区别</title>
+    <link href="https://devdroid.cn/2022/06/28/openjdk-he-oraclejdk-qu-bie/"/>
+    <id>https://devdroid.cn/2022/06/28/openjdk-he-oraclejdk-qu-bie/</id>
+    <published>2022-06-28T06:06:16.000Z</published>
+    <updated>2022-07-01T09:11:43.500Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h3&gt;&lt;p&gt;SunJDK、OracleJDK（Java Development
         
       
     
@@ -504,58 +556,6 @@
     
     
       <category term="动态规划" scheme="https://devdroid.cn/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>#购物单#购物快乐</title>
-    <link href="https://devdroid.cn/2022/04/06/gou-wu-dan-gou-wu-kuai-le/"/>
-    <id>https://devdroid.cn/2022/04/06/gou-wu-dan-gou-wu-kuai-le/</id>
-    <published>2022-04-06T08:40:31.000Z</published>
-    <updated>2022-04-14T08:57:35.905Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;描述&quot;&gt;&lt;a href=&quot;#描述&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="算法" scheme="https://devdroid.cn/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-      <category term="动态规划" scheme="https://devdroid.cn/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>#汽水瓶#能者多喝</title>
-    <link href="https://devdroid.cn/2022/03/31/qi-shui-ping-neng-zhe-duo-he/"/>
-    <id>https://devdroid.cn/2022/03/31/qi-shui-ping-neng-zhe-duo-he/</id>
-    <published>2022-03-31T01:02:59.000Z</published>
-    <updated>2022-04-14T01:08:36.504Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h3 id=&quot;描述&quot;&gt;&lt;a href=&quot;#描述&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="算法" scheme="https://devdroid.cn/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-      <category term="模拟" scheme="https://devdroid.cn/tags/%E6%A8%A1%E6%8B%9F/"/>
     
   </entry>
   
