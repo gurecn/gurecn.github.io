@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devdroid.cn/"/>
-  <updated>2022-07-06T09:12:26.234Z</updated>
+  <updated>2022-07-07T03:40:00.364Z</updated>
   <id>https://devdroid.cn/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://devdroid.cn/2022/07/06/api33-xing-wei-bian-geng-cun-chu-quan-xian-diao-zheng/"/>
     <id>https://devdroid.cn/2022/07/06/api33-xing-wei-bian-geng-cun-chu-quan-xian-diao-zheng/</id>
     <published>2022-07-06T09:05:17.000Z</published>
-    <updated>2022-07-06T09:12:26.234Z</updated>
+    <updated>2022-07-07T03:40:00.364Z</updated>
     
     <summary type="html">
     
@@ -37,6 +37,8 @@
     
       <category term="Android" scheme="https://devdroid.cn/categories/Android/"/>
     
+    
+      <category term="新特性" scheme="https://devdroid.cn/tags/%E6%96%B0%E7%89%B9%E6%80%A7/"/>
     
   </entry>
   
