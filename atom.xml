@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devdroid.cn/"/>
-  <updated>2022-07-04T10:05:54.694Z</updated>
+  <updated>2022-07-06T09:12:26.234Z</updated>
   <id>https://devdroid.cn/</id>
   
   <author>
@@ -17,11 +17,35 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>API33行为变更-存储权限调整</title>
+    <link href="https://devdroid.cn/2022/07/06/api33-xing-wei-bian-geng-cun-chu-quan-xian-diao-zheng/"/>
+    <id>https://devdroid.cn/2022/07/06/api33-xing-wei-bian-geng-cun-chu-quan-xian-diao-zheng/</id>
+    <published>2022-07-06T09:05:17.000Z</published>
+    <updated>2022-07-06T09:12:26.234Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h3&gt;&lt;p&gt;2022年5月，Android 13（API 33，
+        
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="https://devdroid.cn/categories/Android/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>Win11 安卓子系统无法访问网络</title>
     <link href="https://devdroid.cn/2022/07/04/win11-an-zhuo-zi-xi-tong-wu-fa-fang-wen-wang-luo/"/>
     <id>https://devdroid.cn/2022/07/04/win11-an-zhuo-zi-xi-tong-wu-fa-fang-wen-wang-luo/</id>
     <published>2022-07-04T09:54:23.000Z</published>
-    <updated>2022-07-04T10:05:54.694Z</updated>
+    <updated>2022-07-05T01:52:07.427Z</updated>
     
     <summary type="html">
     
@@ -530,32 +554,6 @@
     
     
       <category term="排序" scheme="https://devdroid.cn/tags/%E6%8E%92%E5%BA%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>#合唱队#唱歌不易</title>
-    <link href="https://devdroid.cn/2022/04/07/he-chang-dui-chang-ge-bu-yi/"/>
-    <id>https://devdroid.cn/2022/04/07/he-chang-dui-chang-ge-bu-yi/</id>
-    <published>2022-04-07T08:40:40.000Z</published>
-    <updated>2022-04-14T08:52:20.202Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h3 id=&quot;描述&quot;&gt;&lt;a href=&quot;#描述&quot; class=&quot;headerlink&quot; title=&quot;描述&quot;&gt;&lt;/a&gt;描述&lt;/h3&gt;&lt;p&gt;设K位同学从左到右依次编号为 1，2…，K ，他们的身高分别为T1,T2,…,TK，若存在（1≤i≤K）
-        
-      
-    
-    </summary>
-    
-      <category term="算法" scheme="https://devdroid.cn/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-      <category term="动态规划" scheme="https://devdroid.cn/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
     
   </entry>
   
