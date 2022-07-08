@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Word批量删除浮动图片</title>
+      <link href="/2022/07/08/word-pi-liang-shan-chu-fu-dong-tu-pian/"/>
+      <url>/2022/07/08/word-pi-liang-shan-chu-fu-dong-tu-pian/</url>
+      
+        <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>网络找了一个行业规范文档，由于是PDF格式文档，使用阅读器只能加载一部分目录，所以就使用工具转成了Word格式。<br>转换完成后目录结构确实正常了，但是随之而来出现了一个新的问题：原来PDF文档中的水印内容被转换成了悬动显示的图片。因为是水印，所以每一页都有一个，这极大的影响了阅读体验。<br>我发现可以选中改图片手动删除。但一页一页删除大概300页的文档，工作量大和效率底，确实不可执行。<br>那就想办法批量处理。</p><h2 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h2><h3 id="方案一：全部替换"><a href="#方案一：全部替换" class="headerlink" title="方案一：全部替换"></a>方案一：全部替换</h3><p>首先想到的方案就是使用替换功能，由于图片不同于文字，替换时在查找内容中选择<code>特殊格式</code>-<code>图形(I)</code>，此时点击查找，期望将水印的图片进行移除。<br>但是很遗憾的发现，由于浮动显示的图片不是<code>嵌入</code>到文字中，所以所有的水印图片都没办法查询到。<br>点击查询提示：<code>未查询到搜索项。</code><br>这种方法不行，那只能换一种方式实现。</p><h3 id="方案二：使用VBA宏实现"><a href="#方案二：使用VBA宏实现" class="headerlink" title="方案二：使用VBA宏实现"></a>方案二：使用VBA宏实现</h3><p>首先编写vba代码，代码如下：</p><pre class="line-numbers language-basic"><code class="language-basic"><span class="token keyword">Sub</span> DeleteShapes<span class="token punctuation">(</span><span class="token punctuation">)</span>  Application.ScreenUpdating <span class="token operator">=</span> False  <span class="token keyword">Do</span> <span class="token keyword">While</span> ActiveDocument.Shapes.Count <span class="token operator">></span> <span class="token number">0</span>    <span class="token keyword">For</span> Each Shape <span class="token function">In</span> ActiveDocument.Shapes      Shape.<span class="token function">Delete</span>    <span class="token keyword">Next</span>  <span class="token keyword">Loop</span>  Application.ScreenUpdating <span class="token operator">=</span> True<span class="token keyword">End</span> <span class="token keyword">Sub</span>  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>然后再office中定义执行宏。依次点击菜单栏<code>视图</code>- <code>宏</code>-<code>查看宏</code>，若是没定义过宏此时界面是空白。我们输入一个宏名，可以命名为：<code>DeleteShapes</code>，然后点击<code>创建</code>，输入以上代码然后保存。<br>最后我们重新点击菜单栏执行<code>视图</code>- <code>宏</code>-<code>查看宏</code>，然后选择<code>运行</code>。<br>代码执行后，可以看到，所有的浮动水印图片都被移除了。</p><h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>需要注意的是，通过PDF转换的Word文档中，可能部分内容并不是规范格式。这就导致移除浮动图片时可能会错误的移除一些与浮动图片组合内容，或者转换时误识别的图片，导致执行宏后文档内容缺失。所以执行宏后需要再与原始文档进行对照，缺失的部分进行补充。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 日常 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 技能 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>API33行为变更-存储权限调整</title>
       <link href="/2022/07/06/api33-xing-wei-bian-geng-cun-chu-quan-xian-diao-zheng/"/>
       <url>/2022/07/06/api33-xing-wei-bian-geng-cun-chu-quan-xian-diao-zheng/</url>

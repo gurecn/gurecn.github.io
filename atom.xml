@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devdroid.cn/"/>
-  <updated>2022-07-07T04:24:11.532Z</updated>
+  <updated>2022-07-08T08:44:39.419Z</updated>
   <id>https://devdroid.cn/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Word批量删除浮动图片</title>
+    <link href="https://devdroid.cn/2022/07/08/word-pi-liang-shan-chu-fu-dong-tu-pian/"/>
+    <id>https://devdroid.cn/2022/07/08/word-pi-liang-shan-chu-fu-dong-tu-pian/</id>
+    <published>2022-07-08T08:26:37.000Z</published>
+    <updated>2022-07-08T08:44:39.419Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="日常" scheme="https://devdroid.cn/categories/%E6%97%A5%E5%B8%B8/"/>
+    
+    
+      <category term="技能" scheme="https://devdroid.cn/tags/%E6%8A%80%E8%83%BD/"/>
+    
+  </entry>
   
   <entry>
     <title>API33行为变更-存储权限调整</title>
@@ -530,32 +556,6 @@
       <category term="模拟" scheme="https://devdroid.cn/tags/%E6%A8%A1%E6%8B%9F/"/>
     
       <category term="双指针" scheme="https://devdroid.cn/tags/%E5%8F%8C%E6%8C%87%E9%92%88/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>#字符串排序#</title>
-    <link href="https://devdroid.cn/2022/04/11/zi-fu-chuan-pai-xu/"/>
-    <id>https://devdroid.cn/2022/04/11/zi-fu-chuan-pai-xu/</id>
-    <published>2022-04-11T01:21:35.000Z</published>
-    <updated>2022-04-20T01:25:06.961Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h3 id=&quot;描述&quot;&gt;&lt;a href=&quot;#描述&quot; class=&quot;headerlink&quot; title=&quot;描述&quot;&gt;&lt;/a&gt;描述&lt;/h3&gt;&lt;p&gt;编写一个程序，将输入字符串中的字符按如下规则排序。&lt;br&gt;规则 1 ：英文字母从 A 到 Z 排列，不区分大小写。&lt;br&gt;如，输入：
-        
-      
-    
-    </summary>
-    
-      <category term="算法" scheme="https://devdroid.cn/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-      <category term="排序" scheme="https://devdroid.cn/tags/%E6%8E%92%E5%BA%8F/"/>
     
   </entry>
   
