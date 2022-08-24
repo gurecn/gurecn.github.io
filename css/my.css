@@ -1,0 +1,124 @@
+/* Here is your custom css styles. */
+/* 修改首页轮播的标题大小 */
+@media only screen and (max-width: 601px) {
+    .bg-cover .title {
+        font-size: 2.5rem;
+    }
+}
+
+/* 修改博客标题的字体大小 */
+@media only screen and (max-width: 601px) {
+    header .brand-logo .logo-span {
+        font-size: 1.5rem;
+    }
+}
+
+
+/* 深色模式按钮设置 */
+#sma {
+	background: #000;
+	width: 38px;
+	height: 38px;
+	display: block;
+	position: fixed;
+	border-radius: 50%;
+	right: 15px;
+	bottom: 170px;
+	padding-top: 15px;
+	margin-bottom: 0;
+	z-index: 998;
+	cursor: pointer;
+}
+
+#sma .fa-moon-o {
+	position: absolute;
+	right: 8px;
+	bottom: 8px;
+	font-size: 1.48rem!important;
+}
+#sma .fa-lightbulb-o  {
+	position: absolute;
+	right: 13px;
+	bottom: 8px;
+	font-size: 1.5rem!important;
+}
+
+.fa-moon-o:before {
+	content: "\f186";
+}
+.fa-comments:before {
+	content: "\f086";
+}
+
+/* 深色主题配色 */
+/* 字体颜色变灰白色 */
+body.DarkMode .fas,
+body.DarkMode .title,
+body.DarkMode .row .text,
+body.DarkMode article .article-content .summary,
+body.DarkMode .card .card-image .card-title,
+body.DarkMode .fa-moon-o:before,
+body.DarkMode .fa-lightbulb-o:before,
+body.DarkMode article .article-tags .chip,
+body.DarkMode .chip-container .tag-title,
+body.DarkMode div.jqcloud a,
+body.DarkMode .friends-container .tag-title,
+body.DarkMode .frind-ship .title h1,
+body.DarkMode .card .card-content p,
+body.DarkMode .card .card-content .dss,
+body.DarkMode .v[data-class='v'] .vcount,
+body.DarkMode .v[data-class='v'] .vcount .vnum,
+body.DarkMode pre code,
+body.DarkMode h1,
+body.DarkMode h2,
+body.DarkMode h3,
+body.DarkMode h4,
+body.DarkMode h5,
+body.DarkMode h6,
+body.DarkMode li,
+body.DarkMode p,
+body.DarkMode header .side-nav .mobile-head .logo-name,
+body.DarkMode header .side-nav .mobile-head .logo-desc,
+body.DarkMode header .side-nav .menu-list a,
+body.DarkMode .bg-cover .post-title,
+body.DarkMode.read .bg-cover .description {
+  color: rgba(255, 255, 255, 0.6);
+}
+/* 背景颜色变灰色 */
+body.DarkMode .card,
+body.DarkMode .block-with-text:after {
+  background-color: #282c34;
+}
+/* 背景颜色变黑色 */
+body.DarkMode,
+body.DarkMode .v[data-class='v'] .vcount,
+body.DarkMode #rewardModal .modal-content,
+body.DarkMode .modal,
+body.DarkMode header .side-nav,
+body.DarkMode header .side-nav .menu-list .m-nav-show {
+  background-color: #12121c;
+}
+/* 改变透明度 */
+body.DarkMode .aplayer {
+  background: #2f3742 !important;
+}
+body.DarkMode img,
+body.DarkMode strong {
+  filter: brightness(0.7);
+}
+/* 统计图滤镜 */
+body.DarkMode #post-calendar,
+body.DarkMode #category-radar,
+body.DarkMode #tags-chart,
+body.DarkMode #categories-chart,
+body.DarkMode #posts-chart {
+    filter: invert(1);
+}
+/*toc目录滤镜*/
+body.DarkMode .toc-widget{
+  filter: invert(1);
+}
+/* Skill bar text color */
+body.DarkMode .skillbar .skill-bar-percent {
+    color: #000;
+}

@@ -1,0 +1,554 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>卓技卓品</title>
+  
+  <subtitle>源于技术，止于卓品</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://devdroid.cn/"/>
+  <updated>2022-08-24T09:09:56.906Z</updated>
+  <id>https://devdroid.cn/</id>
+  
+  <author>
+    <name>Gure</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>优化终端/Shell显示效果</title>
+    <link href="https://devdroid.cn/2022/08/24/you-hua-zhong-duan-shell-xian-shi-xiao-guo/"/>
+    <id>https://devdroid.cn/2022/08/24/you-hua-zhong-duan-shell-xian-shi-xiao-guo/</id>
+    <published>2022-08-24T09:05:06.000Z</published>
+    <updated>2022-08-24T09:09:56.906Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;各个操作系统都有自己默认的 Shell，如 Windows 操作系统下的「Powershell、提示命令符」、macOS 与 Linux 系统的 bash、zsh 等；带图形版界面的系统也都会预置终端仿真器（Terminal Emulator），如 macOS
+        
+      
+    
+    </summary>
+    
+      <category term="日常" scheme="https://devdroid.cn/categories/%E6%97%A5%E5%B8%B8/"/>
+    
+    
+      <category term="工具" scheme="https://devdroid.cn/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>HarmonyOS 3.0放弃Java语言</title>
+    <link href="https://devdroid.cn/2022/08/24/harmonyos-3-0-fang-qi-java-yu-yan/"/>
+    <id>https://devdroid.cn/2022/08/24/harmonyos-3-0-fang-qi-java-yu-yan/</id>
+    <published>2022-08-24T08:42:33.000Z</published>
+    <updated>2022-08-24T09:32:18.892Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;由于上一个问题，基于API
+        
+      
+    
+    </summary>
+    
+      <category term="HarmonyOS" scheme="https://devdroid.cn/categories/HarmonyOS/"/>
+    
+    
+      <category term="应用" scheme="https://devdroid.cn/tags/%E5%BA%94%E7%94%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>HarmonyOS无法编译app格式应用</title>
+    <link href="https://devdroid.cn/2022/08/22/harmonyos-wu-fa-bian-yi-app-ge-shi-ying-yong/"/>
+    <id>https://devdroid.cn/2022/08/22/harmonyos-wu-fa-bian-yi-app-ge-shi-ying-yong/</id>
+    <published>2022-08-22T01:19:03.000Z</published>
+    <updated>2022-08-22T01:27:40.415Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;研究HarmonyOS应用开发，首先做一个集成个人博客的客户端。&lt;br&gt;HarmonyOS应用开发流程和Android应用开发流程不同。Android应用直接再Android
+        
+      
+    
+    </summary>
+    
+      <category term="HarmonyOS" scheme="https://devdroid.cn/categories/HarmonyOS/"/>
+    
+    
+      <category term="应用" scheme="https://devdroid.cn/tags/%E5%BA%94%E7%94%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>搭建Hexo博客发布失败</title>
+    <link href="https://devdroid.cn/2022/08/16/da-jian-hexo-bo-ke-fa-bu-shi-bai/"/>
+    <id>https://devdroid.cn/2022/08/16/da-jian-hexo-bo-ke-fa-bu-shi-bai/</id>
+    <published>2022-08-16T03:08:48.000Z</published>
+    <updated>2022-08-16T03:10:39.542Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h4 id=&quot;问题描述&quot;&gt;&lt;a href=&quot;#问题描述&quot; class=&quot;headerlink&quot; title=&quot;问题描述&quot;&gt;&lt;/a&gt;问题描述&lt;/h4&gt;&lt;p&gt;最近在开发HarmonyOS应用，安装开发工具&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="Web" scheme="https://devdroid.cn/categories/Web/"/>
+    
+    
+      <category term="hexo" scheme="https://devdroid.cn/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>HarmonyOS应用WebView网页交互</title>
+    <link href="https://devdroid.cn/2022/08/15/harmonyos-ying-yong-webview-wang-ye-jiao-hu/"/>
+    <id>https://devdroid.cn/2022/08/15/harmonyos-ying-yong-webview-wang-ye-jiao-hu/</id>
+    <published>2022-08-15T10:46:31.000Z</published>
+    <updated>2022-08-15T10:49:26.271Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;研究HarmonyOS应用开发，首先考虑做一个集成个人博客的客户端。&lt;br&gt;可以直接使用&lt;code&gt;WebView&lt;/code&gt;，功能很简单，所以编码也很快。&lt;br&gt;&lt;code&gt;WebView&lt;/code&gt;的介绍和使用可以参考&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="HarmonyOS" scheme="https://devdroid.cn/categories/HarmonyOS/"/>
+    
+    
+      <category term="应用" scheme="https://devdroid.cn/tags/%E5%BA%94%E7%94%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>HarmonyOS应用配置Ability主题</title>
+    <link href="https://devdroid.cn/2022/08/03/harmonyos-ying-yong-pei-zhi-ability-zhu-ti/"/>
+    <id>https://devdroid.cn/2022/08/03/harmonyos-ying-yong-pei-zhi-ability-zhu-ti/</id>
+    <published>2022-08-03T10:19:11.000Z</published>
+    <updated>2022-08-03T10:24:18.907Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;研究HarmonyOS应用开发，首先考虑做一个集成个人博客的客户端。&lt;br&gt;可以直接使用&lt;code&gt;WebView&lt;/code&gt;，功能很简单，所以编码也很快。&lt;code&gt;WebView&lt;/code&gt;的使用可以直接参考&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="HarmonyOS" scheme="https://devdroid.cn/categories/HarmonyOS/"/>
+    
+    
+      <category term="应用" scheme="https://devdroid.cn/tags/%E5%BA%94%E7%94%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>HarmonyOS应用开发环境</title>
+    <link href="https://devdroid.cn/2022/07/29/harmonyos-ying-yong-kai-fa-huan-jing/"/>
+    <id>https://devdroid.cn/2022/07/29/harmonyos-ying-yong-kai-fa-huan-jing/</id>
+    <published>2022-07-29T08:11:49.000Z</published>
+    <updated>2022-08-16T03:28:31.812Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;img src=&quot;/medias/images/harmonyOS.jpg&quot; width = &quot;650&quot; height = &quot;366&quot; align=center
+        
+      
+    
+    </summary>
+    
+      <category term="HarmonyOS" scheme="https://devdroid.cn/categories/HarmonyOS/"/>
+    
+    
+      <category term="环境" scheme="https://devdroid.cn/tags/%E7%8E%AF%E5%A2%83/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Word批量删除浮动图片</title>
+    <link href="https://devdroid.cn/2022/07/08/word-pi-liang-shan-chu-fu-dong-tu-pian/"/>
+    <id>https://devdroid.cn/2022/07/08/word-pi-liang-shan-chu-fu-dong-tu-pian/</id>
+    <published>2022-07-08T08:26:37.000Z</published>
+    <updated>2022-07-08T08:44:39.419Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="日常" scheme="https://devdroid.cn/categories/%E6%97%A5%E5%B8%B8/"/>
+    
+    
+      <category term="技能" scheme="https://devdroid.cn/tags/%E6%8A%80%E8%83%BD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>API33行为变更-存储权限调整</title>
+    <link href="https://devdroid.cn/2022/07/06/api33-xing-wei-bian-geng-cun-chu-quan-xian-diao-zheng/"/>
+    <id>https://devdroid.cn/2022/07/06/api33-xing-wei-bian-geng-cun-chu-quan-xian-diao-zheng/</id>
+    <published>2022-07-06T09:05:17.000Z</published>
+    <updated>2022-07-07T04:24:11.532Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h3&gt;&lt;p&gt;2022年5月，Android 13（API 33，
+        
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="https://devdroid.cn/categories/Android/"/>
+    
+    
+      <category term="新特性" scheme="https://devdroid.cn/tags/%E6%96%B0%E7%89%B9%E6%80%A7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Win11 安卓子系统无法访问网络</title>
+    <link href="https://devdroid.cn/2022/07/04/win11-an-zhuo-zi-xi-tong-wu-fa-fang-wen-wang-luo/"/>
+    <id>https://devdroid.cn/2022/07/04/win11-an-zhuo-zi-xi-tong-wu-fa-fang-wen-wang-luo/</id>
+    <published>2022-07-04T09:54:23.000Z</published>
+    <updated>2022-07-05T01:52:07.427Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h2&gt;&lt;p&gt;在《&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="日常" scheme="https://devdroid.cn/categories/%E6%97%A5%E5%B8%B8/"/>
+    
+    
+      <category term="技能" scheme="https://devdroid.cn/tags/%E6%8A%80%E8%83%BD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>应用发布版本说明</title>
+    <link href="https://devdroid.cn/2022/07/01/ying-yong-fa-bu-ban-ben-shuo-ming/"/>
+    <id>https://devdroid.cn/2022/07/01/ying-yong-fa-bu-ban-ben-shuo-ming/</id>
+    <published>2022-07-01T05:21:37.000Z</published>
+    <updated>2022-07-01T05:25:47.233Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;Alpha&quot;&gt;&lt;a href=&quot;#Alpha&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="日常" scheme="https://devdroid.cn/categories/%E6%97%A5%E5%B8%B8/"/>
+    
+    
+      <category term="技能" scheme="https://devdroid.cn/tags/%E6%8A%80%E8%83%BD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>OpenJDK和OracleJDK区别</title>
+    <link href="https://devdroid.cn/2022/06/28/openjdk-he-oraclejdk-qu-bie/"/>
+    <id>https://devdroid.cn/2022/06/28/openjdk-he-oraclejdk-qu-bie/</id>
+    <published>2022-06-28T06:06:16.000Z</published>
+    <updated>2022-07-01T09:11:43.500Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h3&gt;&lt;p&gt;SunJDK、OracleJDK（Java Development
+        
+      
+    
+    </summary>
+    
+      <category term="日常" scheme="https://devdroid.cn/categories/%E6%97%A5%E5%B8%B8/"/>
+    
+    
+      <category term="技能" scheme="https://devdroid.cn/tags/%E6%8A%80%E8%83%BD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>API31行为变更:组件导出</title>
+    <link href="https://devdroid.cn/2022/06/22/api31-xing-wei-bian-geng-zu-jian-dao-chu/"/>
+    <id>https://devdroid.cn/2022/06/22/api31-xing-wei-bian-geng-zu-jian-dao-chu/</id>
+    <published>2022-06-22T10:16:23.000Z</published>
+    <updated>2022-06-22T10:24:01.597Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h3&gt;&lt;p&gt;2022年5月，Android 13（API 33，
+        
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="https://devdroid.cn/categories/Android/"/>
+    
+    
+      <category term="新特性" scheme="https://devdroid.cn/tags/%E6%96%B0%E7%89%B9%E6%80%A7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>校验应用签名</title>
+    <link href="https://devdroid.cn/2022/06/16/xiao-yan-ying-yong-qian-ming/"/>
+    <id>https://devdroid.cn/2022/06/16/xiao-yan-ying-yong-qian-ming/</id>
+    <published>2022-06-16T09:08:25.000Z</published>
+    <updated>2022-06-16T09:09:32.697Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="https://devdroid.cn/categories/Android/"/>
+    
+    
+      <category term="应用" scheme="https://devdroid.cn/tags/%E5%BA%94%E7%94%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何从坏心情中走出来？</title>
+    <link href="https://devdroid.cn/2022/06/13/ru-he-cong-pi-xin-qing-zhong-zou-chu-lai/"/>
+    <id>https://devdroid.cn/2022/06/13/ru-he-cong-pi-xin-qing-zhong-zou-chu-lai/</id>
+    <published>2022-06-13T05:42:26.000Z</published>
+    <updated>2022-08-16T03:27:28.110Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;我想，每个人，应该或多或少，都经历过坏心情的困扰。&lt;/p&gt;
+&lt;p&gt;这些坏心情，有时可能来自外界的坏消息，有时可能来自内心的担忧和焦虑，它们都有一个共通点：总是无孔不入，顽固地钻入我们的脑海中，破坏我们的状态，让我们无心工作，陷入情绪的低潮之中。&lt;/p&gt;
+&lt;p&gt;就像在我们的心
+        
+      
+    
+    </summary>
+    
+      <category term="故事" scheme="https://devdroid.cn/categories/%E6%95%85%E4%BA%8B/"/>
+    
+    
+      <category term="转载" scheme="https://devdroid.cn/tags/%E8%BD%AC%E8%BD%BD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>#蛇形矩阵#一起找规律</title>
+    <link href="https://devdroid.cn/2022/05/10/she-xing-ju-zhen-yi-qi-zhao-gui-lu/"/>
+    <id>https://devdroid.cn/2022/05/10/she-xing-ju-zhen-yi-qi-zhao-gui-lu/</id>
+    <published>2022-05-10T03:27:10.000Z</published>
+    <updated>2022-05-10T03:28:00.060Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;描述&quot;&gt;&lt;a href=&quot;#描述&quot; class=&quot;headerlink&quot; title=&quot;描述&quot;&gt;&lt;/a&gt;描述&lt;/h3&gt;&lt;p&gt;蛇形矩阵是由1开始的自然数依次排列成的一个矩阵上三角形。&lt;br&gt;例如，当输入5时，应该输出的三角形为：&lt;br&gt;1 3 6 10
+        
+      
+    
+    </summary>
+    
+      <category term="算法" scheme="https://devdroid.cn/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="数组" scheme="https://devdroid.cn/tags/%E6%95%B0%E7%BB%84/"/>
+    
+      <category term="规律" scheme="https://devdroid.cn/tags/%E8%A7%84%E5%BE%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Win 11 安卓子系统（WSA）</title>
+    <link href="https://devdroid.cn/2022/05/09/win-11-an-zhuo-zi-xi-tong-wsa/"/>
+    <id>https://devdroid.cn/2022/05/09/win-11-an-zhuo-zi-xi-tong-wsa/</id>
+    <published>2022-05-09T04:17:10.000Z</published>
+    <updated>2022-05-09T04:36:32.780Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;适用于 Android™️ 的 Windows 子系统（WSA）使你的 Windows 11 设备能够运行 Amazon Appstore 中提供的 Android 应用程序。由于WSA使用的Amazon
+        
+      
+    
+    </summary>
+    
+      <category term="日常" scheme="https://devdroid.cn/categories/%E6%97%A5%E5%B8%B8/"/>
+    
+    
+      <category term="技能" scheme="https://devdroid.cn/tags/%E6%8A%80%E8%83%BD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>#IP转换#</title>
+    <link href="https://devdroid.cn/2022/04/26/ip-zhuan-huan/"/>
+    <id>https://devdroid.cn/2022/04/26/ip-zhuan-huan/</id>
+    <published>2022-04-26T09:58:57.000Z</published>
+    <updated>2022-04-26T10:06:01.125Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;描述&quot;&gt;&lt;a href=&quot;#描述&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="算法" scheme="https://devdroid.cn/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="字符串" scheme="https://devdroid.cn/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+    
+      <category term="模拟" scheme="https://devdroid.cn/tags/%E6%A8%A1%E6%8B%9F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>#密码截取#最长回文串</title>
+    <link href="https://devdroid.cn/2022/04/26/mi-ma-jie-qu-zui-chang-hui-wen-chuan/"/>
+    <id>https://devdroid.cn/2022/04/26/mi-ma-jie-qu-zui-chang-hui-wen-chuan/</id>
+    <published>2022-04-26T09:58:44.000Z</published>
+    <updated>2022-04-26T10:03:30.834Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;描述&quot;&gt;&lt;a href=&quot;#描述&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="算法" scheme="https://devdroid.cn/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="字符串" scheme="https://devdroid.cn/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+    
+      <category term="回文串" scheme="https://devdroid.cn/tags/%E5%9B%9E%E6%96%87%E4%B8%B2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>你像我见过的那个男孩</title>
+    <link href="https://devdroid.cn/2022/04/25/ni-xiang-wo-jian-guo-de-na-ge-nan-hai/"/>
+    <id>https://devdroid.cn/2022/04/25/ni-xiang-wo-jian-guo-de-na-ge-nan-hai/</id>
+    <published>2022-04-25T03:19:06.000Z</published>
+    <updated>2022-04-25T03:48:42.857Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;center&gt;&lt;b&gt;我不知道为什么来北京，现在你要走了。亲爱的，能走，就不要回来了。by王云超&lt;/b&gt;&lt;/center&gt;
+
+&lt;p&gt;我还会记得京城吗？还会记得永安里站那个姑娘吗？&lt;/p&gt;
+&lt;center&gt;&lt;b&gt;1&lt;/b&gt;&lt;/center&gt;
+
+&lt;p&gt;2007年夏，石家庄，我抛下新买
+        
+      
+    
+    </summary>
+    
+      <category term="故事" scheme="https://devdroid.cn/categories/%E6%95%85%E4%BA%8B/"/>
+    
+    
+      <category term="转载" scheme="https://devdroid.cn/tags/%E8%BD%AC%E8%BD%BD/"/>
+    
+      <category term="漂生活" scheme="https://devdroid.cn/tags/%E6%BC%82%E7%94%9F%E6%B4%BB/"/>
+    
+  </entry>
+  
+</feed>
