@@ -604,9 +604,9 @@
       
         <tags>
             
-            <tag> 技能 </tag>
-            
             <tag> Android </tag>
+            
+            <tag> Gradle </tag>
             
         </tags>
       
@@ -1461,6 +1461,8 @@
         <tags>
             
             <tag> 混淆 </tag>
+            
+            <tag> Gradle </tag>
             
         </tags>
       
