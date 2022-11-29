@@ -4,25 +4,52 @@
   
     
     <entry>
-      <title>Telegram（Android）分析（一）项目运行</title>
-      <link href="/2022/11/25/telegram-android-fen-xi-yi-xiang-mu-yun-xing/"/>
-      <url>/2022/11/25/telegram-android-fen-xi-yi-xiang-mu-yun-xing/</url>
+      <title>Telegram源码分析（二）应用图标变更</title>
+      <link href="/2022/11/29/telegram-yuan-ma-fen-xi-er-ying-yong-tu-biao-bian-geng/"/>
+      <url>/2022/11/29/telegram-yuan-ma-fen-xi-er-ying-yong-tu-biao-bian-geng/</url>
       
-        <content type="html"><![CDATA[<h3 id="项目背景"><a href="#项目背景" class="headerlink" title="项目背景"></a>项目背景</h3><p>由于身处安全行业，所以主攻信息安全、数据加密相关领域。在该领域，比较典型的一个开源项目就是Telegram了。<br><a href="https://telegram.org/">Telegram </a>是一款基于云的移动和桌面消息传递应用程序，专注于安全性和速度。Telegram在国内俗称纸飞机，其号称是最为“自由而安全”的通讯软件，在通讯中实现了用户匿名、信息端对端加密、聊天信息定时销毁、“阅后即焚”等功能。<br>因为Telegram在国内不提供服务节点，所以使用Telegram软件，前提需要具备科学上网能力。</p><img src="logo.png" alt="Telegram" width="415.2" height="286" align="middle" /><blockquote><p>Telegram is a messaging app with a focus on speed and security, it’s super-fast, simple and free. You can use Telegram on all your devices <strong>at the same time</strong> — your messages sync seamlessly across any number of your phones, tablets or computers. Telegram has over <strong>700 million</strong> monthly active users and is one of the <strong>10 most downloaded apps</strong> in the world.</p></blockquote><p>翻译为：</p><blockquote><p>Telegram 是一款专注于速度和安全性的消息传递应用程序，它超级快速、简单且免费。 您可以<strong>同时</strong>在所有设备上使用 Telegram——您的消息可以在任意数量的手机、平板电脑或计算机上无缝同步。 Telegram 每月有超过 <strong>7 亿</strong>活跃用户，是全球<strong>下载次数最多的 10 个应用程序</strong>之一。</p></blockquote><p>官方发行的Telegram客户端软件与部分的非官方客户端是开放源代码的，然而服务端软件是封闭源代码的专有软件。<br>本着技术研究的原则，本系列主要研究一下Telegram（Android）端项目。</p><h3 id="项目运行"><a href="#项目运行" class="headerlink" title="项目运行"></a>项目运行</h3><h4 id="源码下载"><a href="#源码下载" class="headerlink" title="源码下载"></a>源码下载</h4><p>首先我们进行源码下载。Telegram项目源码托管在Github上。我们打开项目<a href="https://github.com/DrKLO/Telegram">资源地址</a>。我们可以使用<code>git clone</code>命令将项目同步下来：<code> git clone git@github.com:DrKLO/Telegram.git</code>。<br><strong>注意：不建议Fork项目到自己账号下。因为Telegram更新非常频繁，Fork项目后获取项目更新会相对麻烦。</strong><br>项目同步后，我们切换到<code>master</code>分支。此时会看到项目主要结构：</p><pre class="line-numbers language-java"><code class="language-java">    C<span class="token operator">:</span>\ThirdParty\Telegram    ├── apkdiff<span class="token punctuation">.</span>py    ├── build<span class="token punctuation">.</span>gradle    ├── Dockerfile    ├── local<span class="token punctuation">.</span>properties    ├── README<span class="token punctuation">.</span>md    ├── settings<span class="token punctuation">.</span>gradle    ├── TMessagesProj    <span class="token operator">|</span>  ├── build    <span class="token operator">|</span>  ├── build<span class="token punctuation">.</span>gradle    <span class="token operator">|</span>  ├── config    <span class="token operator">|</span>  <span class="token operator">|</span>  ├── debug    <span class="token operator">|</span>  <span class="token operator">|</span>  ├── devdroid<span class="token punctuation">.</span>jks    <span class="token operator">|</span>  <span class="token operator">|</span>  ├── release    <span class="token operator">|</span>  <span class="token operator">|</span>  └── release<span class="token punctuation">.</span>keystore    <span class="token operator">|</span>  ├── jni    <span class="token operator">|</span>  ├── libs    <span class="token operator">|</span>  ├── proguard<span class="token operator">-</span>rules<span class="token punctuation">.</span>pro    <span class="token operator">|</span>  └── src    ├── TMessagesProj_App    <span class="token operator">|</span>  ├── build    <span class="token operator">|</span>  ├── build<span class="token punctuation">.</span>gradle    <span class="token operator">|</span>  ├── google<span class="token operator">-</span>services<span class="token punctuation">.</span>json    <span class="token operator">|</span>  └── src    ├── TMessagesProj_AppHockeyApp    <span class="token operator">|</span>  ├── build<span class="token punctuation">.</span>gradle    <span class="token operator">|</span>  ├── google<span class="token operator">-</span>services<span class="token punctuation">.</span>json    <span class="token operator">|</span>  └── src    ├── TMessagesProj_AppHuawei    <span class="token operator">|</span>  ├── agconnect<span class="token operator">-</span>services<span class="token punctuation">.</span>json    <span class="token operator">|</span>  ├── build    <span class="token operator">|</span>  ├── build<span class="token punctuation">.</span>gradle    <span class="token operator">|</span>  ├── google<span class="token operator">-</span>services<span class="token punctuation">.</span>json    <span class="token operator">|</span>  └── src    └── Tools    └── EmojiTextureMaker<span class="token punctuation">.</span>m    directory<span class="token operator">:</span> <span class="token number">47</span> file<span class="token operator">:</span> <span class="token number">42</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h4 id="创建新分支"><a href="#创建新分支" class="headerlink" title="创建新分支"></a>创建新分支</h4><p>为了确保项目每次能顺利同步最新版本代码，我们新建一个新分支（<code>devdroid</code>），后续Telegram本地调整我们均在新分支进行。这样主分支（Master）每次更新代码都不会产生冲突。<br>基于master分支创建并切换到新分支：<code>git checkout -b devdroid</code>。<br>在新分支修改项目配置，实现项目正常运行。</p><h4 id="修改打包证书"><a href="#修改打包证书" class="headerlink" title="修改打包证书"></a>修改打包证书</h4><p>我们进入项目中<code>TMessagesProj/config</code>路径下，替换项目打包签名证书。没有签名证书的，可参考<a href="/2022/01/17/jar-bao-qian-ming-chu-li/">Jar包签名处理</a>生成签名证书。<br>然后进入项目中<code>gradle.properties</code>文件中，修改自己签名证书的password、alias等信息：</p><pre><code>RELEASE_KEY_PASSWORD=123456passwordRELEASE_KEY_ALIAS=tmessagesRELEASE_STORE_PASSWORD=123456password</code></pre><p>同时我们到<code>Telegram\TMessagesProj_App\build.gradle</code>、<code>Telegram\TMessagesProj_AppHuawei\build.gradle</code>中，修改签名证书的文件名。</p><img src="gradle-keystore.png" alt="build.gradle" width="759.2" height="343" align="middle" /><h4 id="创建api-id"><a href="#创建api-id" class="headerlink" title="创建api_id"></a>创建api_id</h4><p>由于Telegram客户端软件是开放源代码的，而服务端软件是封闭源代码的专有软件。所以我们要自编译Telegram客户端，需要到Telegram官网注册所需的api_id，以支持自编译APP能够正常兼容官方Telegram消息和联系人。<br>我们进入Telegram官网申请api连接：<a href="https://core.telegram.org/api/obtaining_api_id">https://core.telegram.org/api/obtaining_api_id</a>。能看到英文介绍获取api_id的方式。</p><blockquote><p>In order to obtain an <strong>API id</strong> and develop your own application using the Telegram API you need to do the following:</p><ul><li>Sign up for Telegram using any application.</li><li>Log in to your Telegram core: <a href="https://my.telegram.org/">https://my.telegram.org</a>.</li><li>Go to <a href="https://my.telegram.org/apps">“API development tools”</a> and fill out the form.</li><li>You will get basic addresses as well as the <strong>api_id</strong> and <strong>api_hash</strong> parameters required for user authorization.</li><li>For the moment each number can only have one api_id connected to it.</li></ul><p>We will be sending important developer notifications to the phone number that you use in this process, so please use an up-to-date number connected to your active Telegram account.</p></blockquote><p>翻译：</p><blockquote><p>为了获得 API id 并使用 Telegram API 开发您自己的应用程序，您需要执行以下操作：<br>● 使用任何应用程序注册电报。<br>● 登录您的 Telegram 核心：<a href="https://my.telegram.org/">https://my.telegram.org</a>。<br>● 转到“API 开发工具”并填写表格。<br>● 您将获得基本地址以及用户授权所需的api_id 和api_hash 参数。<br>● 目前每个号码只能绑定一个api_id。<br>我们将向您在此过程中使用的电话号码发送重要的开发者通知，因此请使用连接到您的有效 Telegram 帐户的最新号码。</p></blockquote><p>点击<a href="https://my.telegram.org/">https://my.telegram.org</a>，登录账号。<br>注意：</p><ul><li>此时输入Telegram的注册账号，手机号需要带国家码。比如中国格式为：+8613611253465.</li><li>此时验证码会发送到Telegram官方客户端中，需要您手机或电脑登录账号才能获取验证码。验证码为数字、字母等组合。示例为：Seev5GM9ncs。</li></ul><p>登录完成后，进入”API development tools”并填写相关信息，此时页面会跳转到api_id信息页面。<br>此时 api_id获取完成。</p><h4 id="配置api-id"><a href="#配置api-id" class="headerlink" title="配置api_id"></a>配置api_id</h4><p>进入项目中，我们找到配置文件<code>TMessagesProj/src/main/java/org/telegram/messenger/BuildVars.java</code>，打开修改api_id中APP_ID、APP_HASH为api_id信息页面中App api_id、App api_hash数据。经验证实际应用名与title等相关配置可以不同。</p><pre><code>public static int APP_ID = 1555xxx;public static String APP_HASH = &quot;321a49ff2xxxxxx66885e7&quot;;</code></pre><p>以上配置完成后，就可以正常运行项目了。<br>第一次编译时间会很久，要有耐心等待。编译完成后可以安装到手机测试。</p><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><img src="telegram-launcher.png" alt="Telegram" width="321.6" height="174" align="middle" /><p>直接运行的客户端为Beta版本，可以和正式版共存。<br>安装到手机上后效果如上图，其中左侧是自己打包的Telegram客户端，右侧为官方发布的版本。<br>两个客户端可以登录相同账号，功能完全一样，两个客户端之间消息会实时同步。<br>关于运行相关的介绍到此结束，后续相关代码会同步到Github上，需要的伙伴可以参考。</p>]]></content>
+        <content type="html"><![CDATA[<h5 id="背景分析"><a href="#背景分析" class="headerlink" title="背景分析"></a>背景分析</h5><p>之前我们写过一篇文章专门分析应用图标切换功能<a href="/2021/12/02/android-dong-tai-bian-geng-tu-biao-he-ying-yong-ming/">《Android动态变更图标和应用名》</a>。<br>但是那篇文章最后遗留一个问题没有从根本上解决：切换图标后，原来启动<code>LaunchActivity</code>已被禁用了，激活了新图标的<code>NewLaunchActivity</code>。那么应用内跳转时指定的Activity仍然是被禁用的<code>LaunchActivity</code>。此时就会出现跳转问题。<br>看到Telegram有这个功能，就优先分析一下其处理逻辑。重新分析一下其如何实现应用图标调整且不影响应用内的跳转的。</p><h5 id="功能效果"><a href="#功能效果" class="headerlink" title="功能效果"></a>功能效果</h5><p>首先看一下Telegram相关的功能。<br>进入到应用设置界面，会看到有一项图标管理菜单，借助于图标管理我们可以切换应用图标。效果如下：</p><img src="image1.png" alt="设置" width="374.4" height="154" align="middle" /><p>切换前后在手机桌面显示效果如下（Telegram Beta版本调整了应用图标）：</p><p><img src="image2.png" alt="图标调整前" width="320" height="192" align="middle" /><img src="image3.png" alt="图标调整后" width="320" height="192" align="middle" /></p><p>图标调整前后，Telegram使用功能均正常。</p><h5 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h5><p>我们查看Telegram<code>AndroidManifest.xml</code>文件，发现在<code>application</code>内定义了<code>targetActivity</code>为<code>LaunchActivity</code>的6个<code>activity-alias</code>。<code>activity-alias</code>中内容类似，如下：</p><pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>activity-alias</span>  <span class="token attr-name"><span class="token namespace">android:</span>enabled</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span>  <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>org.telegram.messenger.DefaultIcon<span class="token punctuation">"</span></span>  <span class="token attr-name"><span class="token namespace">android:</span>targetActivity</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>org.telegram.ui.LaunchActivity<span class="token punctuation">"</span></span>  <span class="token attr-name"><span class="token namespace">android:</span>exported</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>intent-filter</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>action</span> <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>android.intent.action.MAIN<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>category</span> <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>android.intent.category.LAUNCHER<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>category</span> <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>android.intent.category.MULTIWINDOW_LAUNCHER<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>intent-filter</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>activity-alias</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>activity-alias</span>  <span class="token attr-name"><span class="token namespace">android:</span>enabled</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>false<span class="token punctuation">"</span></span>  <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>org.telegram.messenger.AquaIcon<span class="token punctuation">"</span></span>  <span class="token attr-name"><span class="token namespace">android:</span>targetActivity</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>org.telegram.ui.LaunchActivity<span class="token punctuation">"</span></span>  <span class="token attr-name"><span class="token namespace">android:</span>icon</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@mipmap/icon_4_launcher<span class="token punctuation">"</span></span>  <span class="token attr-name"><span class="token namespace">android:</span>roundIcon</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@mipmap/icon_4_launcher_round<span class="token punctuation">"</span></span>  <span class="token attr-name"><span class="token namespace">android:</span>exported</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>intent-filter</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>action</span> <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>android.intent.action.MAIN<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>category</span> <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>android.intent.category.LAUNCHER<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>category</span> <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>android.intent.category.MULTIWINDOW_LAUNCHER<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>intent-filter</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>activity-alias</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>再来看一下<code>Activity</code>的定义：</p><pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>activity</span>  <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>org.telegram.ui.LaunchActivity<span class="token punctuation">"</span></span>  <span class="token attr-name"><span class="token namespace">android:</span>theme</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@style/Theme.TMessages.Start<span class="token punctuation">"</span></span>  <span class="token attr-name"><span class="token namespace">android:</span>configChanges</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>keyboard|keyboardHidden|orientation|screenSize|uiMode<span class="token punctuation">"</span></span>  <span class="token attr-name"><span class="token namespace">android:</span>hardwareAccelerated</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@bool/useHardwareAcceleration<span class="token punctuation">"</span></span>  <span class="token attr-name"><span class="token namespace">android:</span>launchMode</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>singleTask<span class="token punctuation">"</span></span>  <span class="token attr-name"><span class="token namespace">android:</span>windowSoftInputMode</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>adjustResize<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>intent-filter</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>action</span> <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>android.intent.action.MAIN<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>intent-filter</span><span class="token punctuation">></span></span>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>intent-filter</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>action</span> <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>android.intent.action.SEND<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>category</span> <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>android.intent.category.DEFAULT<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>data</span> <span class="token attr-name"><span class="token namespace">android:</span>mimeType</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>image/*<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>intent-filter</span><span class="token punctuation">></span></span>  <span class="token comment" spellcheck="true">&lt;!--省略n多intent-filter--></span>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta-data</span> <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>android.service.chooser.chooser_target_service<span class="token punctuation">"</span></span> <span class="token attr-name"><span class="token namespace">android:</span>value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>androidx.sharetarget.ChooserTargetServiceCompat<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta-data</span> <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>android.app.shortcuts<span class="token punctuation">"</span></span> <span class="token attr-name"><span class="token namespace">android:</span>resource</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@xml/shortcuts<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>activity</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>从这里可以分析到，每一个<code>activity-alias</code>都是预设的应用图标。默认<code>DefaultIcon</code>是激活状态，其他几个图标都是不可用状态。所有的应用图标实际的承载<code>activity</code>均为<code>LaunchActivity</code>。<br>可以猜想：要实现不影响应用内功能跳转，有一种方式是可行的：<code>LaunchActivity</code>状态一直都是激活的，当切换图标时仅改变<code>activity-alias</code>的状态。这时应用页面切换使用<code>LaunchActivity</code>作为跳转页面，<code>activity-alias</code>不直接参与页面跳转。<br>我们继续分析代码。使用<code>activity-alias</code>进行图标切换是在<code>LauncherIconController</code>中实现的。在<code>LauncherIconController</code>中有一个枚举（<code>enum</code>）对象<code>LauncherIcon</code>，部分代码如下：</p><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">enum</span> LauncherIcon <span class="token punctuation">{</span>    <span class="token function">DEFAULT</span><span class="token punctuation">(</span><span class="token string">"DefaultIcon"</span><span class="token punctuation">,</span> R<span class="token punctuation">.</span>drawable<span class="token punctuation">.</span>icon_background_sa<span class="token punctuation">,</span> R<span class="token punctuation">.</span>mipmap<span class="token punctuation">.</span>icon_foreground_sa<span class="token punctuation">,</span> R<span class="token punctuation">.</span>string<span class="token punctuation">.</span>AppIconDefault<span class="token punctuation">)</span><span class="token punctuation">,</span>    <span class="token function">VINTAGE</span><span class="token punctuation">(</span><span class="token string">"VintageIcon"</span><span class="token punctuation">,</span> R<span class="token punctuation">.</span>drawable<span class="token punctuation">.</span>icon_6_background_sa<span class="token punctuation">,</span> R<span class="token punctuation">.</span>mipmap<span class="token punctuation">.</span>icon_6_foreground_sa<span class="token punctuation">,</span> R<span class="token punctuation">.</span>string<span class="token punctuation">.</span>AppIconVintage<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">,</span>    <span class="token function">AQUA</span><span class="token punctuation">(</span><span class="token string">"AquaIcon"</span><span class="token punctuation">,</span> R<span class="token punctuation">.</span>drawable<span class="token punctuation">.</span>icon_4_background_sa<span class="token punctuation">,</span> R<span class="token punctuation">.</span>mipmap<span class="token punctuation">.</span>icon_foreground_sa<span class="token punctuation">,</span> R<span class="token punctuation">.</span>string<span class="token punctuation">.</span>AppIconAqua<span class="token punctuation">)</span><span class="token punctuation">,</span>    <span class="token function">PREMIUM</span><span class="token punctuation">(</span><span class="token string">"PremiumIcon"</span><span class="token punctuation">,</span> R<span class="token punctuation">.</span>drawable<span class="token punctuation">.</span>icon_3_background_sa<span class="token punctuation">,</span> R<span class="token punctuation">.</span>mipmap<span class="token punctuation">.</span>icon_3_foreground_sa<span class="token punctuation">,</span> R<span class="token punctuation">.</span>string<span class="token punctuation">.</span>AppIconPremium<span class="token punctuation">)</span><span class="token punctuation">,</span>    <span class="token function">TURBO</span><span class="token punctuation">(</span><span class="token string">"TurboIcon"</span><span class="token punctuation">,</span> R<span class="token punctuation">.</span>drawable<span class="token punctuation">.</span>icon_5_background_sa<span class="token punctuation">,</span> R<span class="token punctuation">.</span>mipmap<span class="token punctuation">.</span>icon_5_foreground_sa<span class="token punctuation">,</span> R<span class="token punctuation">.</span>string<span class="token punctuation">.</span>AppIconTurbo<span class="token punctuation">)</span><span class="token punctuation">,</span>    <span class="token function">NOX</span><span class="token punctuation">(</span><span class="token string">"NoxIcon"</span><span class="token punctuation">,</span> R<span class="token punctuation">.</span>drawable<span class="token punctuation">.</span>icon_2_background_sa<span class="token punctuation">,</span> R<span class="token punctuation">.</span>mipmap<span class="token punctuation">.</span>icon_foreground_sa<span class="token punctuation">,</span> R<span class="token punctuation">.</span>string<span class="token punctuation">.</span>AppIconNox<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">// 省略部分代码</span>    <span class="token keyword">public</span> ComponentName <span class="token function">getComponentName</span><span class="token punctuation">(</span>Context ctx<span class="token punctuation">)</span> <span class="token punctuation">{</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>componentName <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>            componentName <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ComponentName</span><span class="token punctuation">(</span>ctx<span class="token punctuation">.</span><span class="token function">getPackageName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"org.telegram.messenger."</span> <span class="token operator">+</span> key<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">}</span>        <span class="token keyword">return</span> componentName<span class="token punctuation">;</span>    <span class="token punctuation">}</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>在枚举对象<code>LauncherIcon</code>中，定义了图标的key、背景色、前景色、标题、是否需要订阅。<br>看方法<code>getComponentName</code>，该方法返回<code>org.telegram.messenger.&quot; + key</code>，这里和<code>AndroidManifest.xml</code>中对应起来。下面我们会看到使用该方法进行图标切换。<br>当应用图标变更时，我们找到设置中图标变更相关页面的布局。因为Telegram主要界面绘制采用<code>命令式UI</code>的方式，所以相关UI的布局主要使用编码的方式实现的。若是我们使用Android通用的<code>声明式UI</code>，则可以在xml中声明布局、图标等相关资源，这样代码更清晰和容易理解。关于<code>命令式UI</code>的部分方法后续继续研究。<br>Telegram在设置页面自定义了集成<code>RecyclerListView</code>的<code>AppIconsSelectorCell</code>，在点击方法中<code>setOnItemClickListener</code>，可以看到：</p><pre class="line-numbers language-java"><code class="language-java">LauncherIconController<span class="token punctuation">.</span>LauncherIcon icon <span class="token operator">=</span> availableIcons<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>position<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">if</span> <span class="token punctuation">(</span>icon<span class="token punctuation">.</span>premium <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>UserConfig<span class="token punctuation">.</span><span class="token function">hasPremiumOnAccounts</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>    fragment<span class="token punctuation">.</span><span class="token function">showDialog</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">PremiumFeatureBottomSheet</span><span class="token punctuation">(</span>fragment<span class="token punctuation">,</span> PremiumPreviewFragment<span class="token punctuation">.</span>PREMIUM_FEATURE_APPLICATION_ICONS<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token keyword">return</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token keyword">if</span> <span class="token punctuation">(</span>LauncherIconController<span class="token punctuation">.</span><span class="token function">isEnabled</span><span class="token punctuation">(</span>icon<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>    <span class="token keyword">return</span><span class="token punctuation">;</span><span class="token punctuation">}</span>LauncherIconController<span class="token punctuation">.</span><span class="token function">setIcon</span><span class="token punctuation">(</span>icon<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>首先<code>availableIcons</code>存放的是上述<code>LauncherIconController</code>中<code>LauncherIcon</code>枚举数据：</p><pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@SuppressLint</span><span class="token punctuation">(</span><span class="token string">"NotifyDataSetChanged"</span><span class="token punctuation">)</span><span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">updateIconsVisibility</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>    availableIcons<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    availableIcons<span class="token punctuation">.</span><span class="token function">addAll</span><span class="token punctuation">(</span>Arrays<span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span>LauncherIconController<span class="token punctuation">.</span>LauncherIcon<span class="token punctuation">.</span><span class="token function">values</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token function">getAdapter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">notifyDataSetChanged</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>同时，在<code>setOnItemClickListener</code>时，会调用<code>LauncherIconController.setIcon(icon);</code>方法。<code>setIcon</code>实现如下：</p><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">setIcon</span><span class="token punctuation">(</span>LauncherIcon icon<span class="token punctuation">)</span> <span class="token punctuation">{</span>    Context ctx <span class="token operator">=</span> ApplicationLoader<span class="token punctuation">.</span>applicationContext<span class="token punctuation">;</span>    PackageManager pm <span class="token operator">=</span> ctx<span class="token punctuation">.</span><span class="token function">getPackageManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token keyword">for</span> <span class="token punctuation">(</span>LauncherIcon i <span class="token operator">:</span> LauncherIcon<span class="token punctuation">.</span><span class="token function">values</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>        pm<span class="token punctuation">.</span><span class="token function">setComponentEnabledSetting</span><span class="token punctuation">(</span>i<span class="token punctuation">.</span><span class="token function">getComponentName</span><span class="token punctuation">(</span>ctx<span class="token punctuation">)</span><span class="token punctuation">,</span> i <span class="token operator">==</span> icon <span class="token operator">?</span> PackageManager<span class="token punctuation">.</span>COMPONENT_ENABLED_STATE_ENABLED <span class="token operator">:</span>                                      PackageManager<span class="token punctuation">.</span>COMPONENT_ENABLED_STATE_DISABLED<span class="token punctuation">,</span> PackageManager<span class="token punctuation">.</span>DONT_KILL_APP<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>在这里可以看到，最终仍然使用的是<code>PackageManager</code>中<code>setComponentEnabledSetting</code>方法。此时仅将<code>getComponentName</code>组件（图标组件）设置为<code>COMPONENT_ENABLED_STATE_DISABLED</code>或<code>COMPONENT_ENABLED_STATE_ENABLED</code>，此时并没有对<code>Activity</code>进行修改。<br>至此图标变更的功能已经完成了。<br>执行完方法后会发现图标会自动变更。此时打开应用使用，发现功能均正常。</p><h5 id="结果总结"><a href="#结果总结" class="headerlink" title="结果总结"></a>结果总结</h5><p>至此代码分析完成，通过对比，发现Telegram的方法和最早博文中的方法，差距点在于<code>setComponentEnabledSetting</code>的对象。<br>旧博文中把<code>Activity</code>作为对象，那么就会导致当前<code>Activity</code>不可用，应用内跳转就会出现问题。而Telegram巧妙的将对象转移到<code>activity-alias</code>上，不影响<code>targetActivity</code>的使用。</p><ul><li><input checked="" disabled="" type="checkbox"> get新技能！</li></ul>]]></content>
       
       
       <categories>
           
-          <category> Android </category>
+          <category> Java </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 新特性 </tag>
+            <tag> Telegram </tag>
+            
+            <tag> Android </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Telegram源码分析（一）项目运行</title>
+      <link href="/2022/11/25/telegram-yuan-ma-fen-xi-yi-xiang-mu-yun-xing/"/>
+      <url>/2022/11/25/telegram-yuan-ma-fen-xi-yi-xiang-mu-yun-xing/</url>
+      
+        <content type="html"><![CDATA[<h3 id="项目背景"><a href="#项目背景" class="headerlink" title="项目背景"></a>项目背景</h3><p>由于身处安全行业，所以主攻信息安全、数据加密相关领域。在该领域，比较典型的一个开源项目就是Telegram了。<br><a href="https://telegram.org/">Telegram </a>是一款基于云的移动和桌面消息传递应用程序，专注于安全性和速度。Telegram在国内俗称纸飞机，其号称是最为“自由而安全”的通讯软件，在通讯中实现了用户匿名、信息端对端加密、聊天信息定时销毁、“阅后即焚”等功能。<br>因为Telegram在国内不提供服务节点，所以使用Telegram软件，前提需要具备科学上网能力。</p><img src="logo.png" alt="Telegram" width="415.2" height="286" align="middle" /><blockquote><p>Telegram is a messaging app with a focus on speed and security, it’s super-fast, simple and free. You can use Telegram on all your devices <strong>at the same time</strong> — your messages sync seamlessly across any number of your phones, tablets or computers. Telegram has over <strong>700 million</strong> monthly active users and is one of the <strong>10 most downloaded apps</strong> in the world.</p></blockquote><p>翻译为：</p><blockquote><p>Telegram 是一款专注于速度和安全性的消息传递应用程序，它超级快速、简单且免费。 您可以<strong>同时</strong>在所有设备上使用 Telegram——您的消息可以在任意数量的手机、平板电脑或计算机上无缝同步。 Telegram 每月有超过 <strong>7 亿</strong>活跃用户，是全球<strong>下载次数最多的 10 个应用程序</strong>之一。</p></blockquote><p>官方发行的Telegram客户端软件与部分的非官方客户端是开放源代码的，然而服务端软件是封闭源代码的专有软件。<br>本着技术研究的原则，本系列主要研究一下Telegram（Android）端项目。</p><h3 id="项目运行"><a href="#项目运行" class="headerlink" title="项目运行"></a>项目运行</h3><h4 id="源码下载"><a href="#源码下载" class="headerlink" title="源码下载"></a>源码下载</h4><p>首先我们进行源码下载。Telegram项目源码托管在Github上。我们打开项目<a href="https://github.com/DrKLO/Telegram">资源地址</a>。我们可以使用<code>git clone</code>命令将项目同步下来：<code> git clone git@github.com:DrKLO/Telegram.git</code>。<br><strong>注意：不建议Fork项目到自己账号下。因为Telegram更新非常频繁，Fork项目后获取项目更新会相对麻烦。</strong><br>项目同步后，我们切换到<code>master</code>分支。此时会看到项目主要结构：</p><pre class="line-numbers language-java"><code class="language-java">    C<span class="token operator">:</span>\ThirdParty\Telegram    ├── apkdiff<span class="token punctuation">.</span>py    ├── build<span class="token punctuation">.</span>gradle    ├── Dockerfile    ├── local<span class="token punctuation">.</span>properties    ├── README<span class="token punctuation">.</span>md    ├── settings<span class="token punctuation">.</span>gradle    ├── TMessagesProj    <span class="token operator">|</span>  ├── build    <span class="token operator">|</span>  ├── build<span class="token punctuation">.</span>gradle    <span class="token operator">|</span>  ├── config    <span class="token operator">|</span>  <span class="token operator">|</span>  ├── debug    <span class="token operator">|</span>  <span class="token operator">|</span>  ├── devdroid<span class="token punctuation">.</span>jks    <span class="token operator">|</span>  <span class="token operator">|</span>  ├── release    <span class="token operator">|</span>  <span class="token operator">|</span>  └── release<span class="token punctuation">.</span>keystore    <span class="token operator">|</span>  ├── jni    <span class="token operator">|</span>  ├── libs    <span class="token operator">|</span>  ├── proguard<span class="token operator">-</span>rules<span class="token punctuation">.</span>pro    <span class="token operator">|</span>  └── src    ├── TMessagesProj_App    <span class="token operator">|</span>  ├── build    <span class="token operator">|</span>  ├── build<span class="token punctuation">.</span>gradle    <span class="token operator">|</span>  ├── google<span class="token operator">-</span>services<span class="token punctuation">.</span>json    <span class="token operator">|</span>  └── src    ├── TMessagesProj_AppHockeyApp    <span class="token operator">|</span>  ├── build<span class="token punctuation">.</span>gradle    <span class="token operator">|</span>  ├── google<span class="token operator">-</span>services<span class="token punctuation">.</span>json    <span class="token operator">|</span>  └── src    ├── TMessagesProj_AppHuawei    <span class="token operator">|</span>  ├── agconnect<span class="token operator">-</span>services<span class="token punctuation">.</span>json    <span class="token operator">|</span>  ├── build    <span class="token operator">|</span>  ├── build<span class="token punctuation">.</span>gradle    <span class="token operator">|</span>  ├── google<span class="token operator">-</span>services<span class="token punctuation">.</span>json    <span class="token operator">|</span>  └── src    └── Tools    └── EmojiTextureMaker<span class="token punctuation">.</span>m    directory<span class="token operator">:</span> <span class="token number">47</span> file<span class="token operator">:</span> <span class="token number">42</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h4 id="创建新分支"><a href="#创建新分支" class="headerlink" title="创建新分支"></a>创建新分支</h4><p>为了确保项目每次能顺利同步最新版本代码，我们新建一个新分支（<code>devdroid</code>），后续Telegram本地调整我们均在新分支进行。这样主分支（Master）每次更新代码都不会产生冲突。<br>基于master分支创建并切换到新分支：<code>git checkout -b devdroid</code>。<br>在新分支修改项目配置，实现项目正常运行。</p><h4 id="修改打包证书"><a href="#修改打包证书" class="headerlink" title="修改打包证书"></a>修改打包证书</h4><p>我们进入项目中<code>TMessagesProj/config</code>路径下，替换项目打包签名证书。没有签名证书的，可参考<a href="/2022/01/17/jar-bao-qian-ming-chu-li/">Jar包签名处理</a>生成签名证书。<br>然后进入项目中<code>gradle.properties</code>文件中，修改自己签名证书的password、alias等信息：</p><pre><code>RELEASE_KEY_PASSWORD=123456passwordRELEASE_KEY_ALIAS=tmessagesRELEASE_STORE_PASSWORD=123456password</code></pre><p>同时我们到<code>Telegram\TMessagesProj_App\build.gradle</code>、<code>Telegram\TMessagesProj_AppHuawei\build.gradle</code>中，修改签名证书的文件名。</p><img src="gradle-keystore.png" alt="build.gradle" width="759.2" height="343" align="middle" /><h4 id="创建api-id"><a href="#创建api-id" class="headerlink" title="创建api_id"></a>创建api_id</h4><p>由于Telegram客户端软件是开放源代码的，而服务端软件是封闭源代码的专有软件。所以我们要自编译Telegram客户端，需要到Telegram官网注册所需的api_id，以支持自编译APP能够正常兼容官方Telegram消息和联系人。<br>我们进入Telegram官网申请api连接：<a href="https://core.telegram.org/api/obtaining_api_id">https://core.telegram.org/api/obtaining_api_id</a>。能看到英文介绍获取api_id的方式。</p><blockquote><p>In order to obtain an <strong>API id</strong> and develop your own application using the Telegram API you need to do the following:</p><ul><li>Sign up for Telegram using any application.</li><li>Log in to your Telegram core: <a href="https://my.telegram.org/">https://my.telegram.org</a>.</li><li>Go to <a href="https://my.telegram.org/apps">“API development tools”</a> and fill out the form.</li><li>You will get basic addresses as well as the <strong>api_id</strong> and <strong>api_hash</strong> parameters required for user authorization.</li><li>For the moment each number can only have one api_id connected to it.</li></ul><p>We will be sending important developer notifications to the phone number that you use in this process, so please use an up-to-date number connected to your active Telegram account.</p></blockquote><p>翻译：</p><blockquote><p>为了获得 API id 并使用 Telegram API 开发您自己的应用程序，您需要执行以下操作：<br>● 使用任何应用程序注册电报。<br>● 登录您的 Telegram 核心：<a href="https://my.telegram.org/">https://my.telegram.org</a>。<br>● 转到“API 开发工具”并填写表格。<br>● 您将获得基本地址以及用户授权所需的api_id 和api_hash 参数。<br>● 目前每个号码只能绑定一个api_id。<br>我们将向您在此过程中使用的电话号码发送重要的开发者通知，因此请使用连接到您的有效 Telegram 帐户的最新号码。</p></blockquote><p>点击<a href="https://my.telegram.org/">https://my.telegram.org</a>，登录账号。<br>注意：</p><ul><li>此时输入Telegram的注册账号，手机号需要带国家码。比如中国格式为：+8613611253465.</li><li>此时验证码会发送到Telegram官方客户端中，需要您手机或电脑登录账号才能获取验证码。验证码为数字、字母等组合。示例为：Seev5GM9ncs。</li></ul><p>登录完成后，进入”API development tools”并填写相关信息，此时页面会跳转到api_id信息页面。<br>此时 api_id获取完成。</p><h4 id="配置api-id"><a href="#配置api-id" class="headerlink" title="配置api_id"></a>配置api_id</h4><p>进入项目中，我们找到配置文件<code>TMessagesProj/src/main/java/org/telegram/messenger/BuildVars.java</code>，打开修改api_id中APP_ID、APP_HASH为api_id信息页面中App api_id、App api_hash数据。经验证实际应用名与title等相关配置可以不同。</p><pre><code>public static int APP_ID = 1555xxx;public static String APP_HASH = &quot;321a49ff2xxxxxx66885e7&quot;;</code></pre><p>以上配置完成后，就可以正常运行项目了。<br>第一次编译时间会很久，要有耐心等待。编译完成后可以安装到手机测试。</p><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><img src="telegram-launcher.png" alt="Telegram" width="321.6" height="174" align="middle" /><p>直接运行的客户端为Beta版本，可以和正式版共存。<br>安装到手机上后效果如上图，其中左侧是自己打包的Telegram客户端，右侧为官方发布的版本。<br>两个客户端可以登录相同账号，功能完全一样，两个客户端之间消息会实时同步。<br>关于运行相关的介绍到此结束，后续相关代码会同步到Github上，需要的伙伴可以参考。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java </category>
+          
+      </categories>
+      
+      
+        <tags>
             
             <tag> Telegram </tag>
+            
+            <tag> Android </tag>
             
         </tags>
       
@@ -40,7 +67,7 @@
       
       <categories>
           
-          <category> 日常 </category>
+          <category> 技能 </category>
           
       </categories>
       
@@ -48,6 +75,8 @@
         <tags>
             
             <tag> 工具 </tag>
+            
+            <tag> 终端 </tag>
             
         </tags>
       
@@ -215,14 +244,16 @@
       
       <categories>
           
-          <category> 日常 </category>
+          <category> 技能 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 技能 </tag>
+            <tag> 批量 </tag>
+            
+            <tag> office </tag>
             
         </tags>
       
@@ -240,14 +271,16 @@
       
       <categories>
           
-          <category> Android </category>
+          <category> Java </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 新特性 </tag>
+            <tag> 特性 </tag>
+            
+            <tag> Android </tag>
             
         </tags>
       
@@ -265,14 +298,14 @@
       
       <categories>
           
-          <category> 日常 </category>
+          <category> 技能 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 技能 </tag>
+            <tag> WSA </tag>
             
         </tags>
       
@@ -290,14 +323,14 @@
       
       <categories>
           
-          <category> 日常 </category>
+          <category> 技能 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 技能 </tag>
+            <tag> 版本号 </tag>
             
         </tags>
       
@@ -315,14 +348,16 @@
       
       <categories>
           
-          <category> 日常 </category>
+          <category> Java </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 技能 </tag>
+            <tag> OpenJDK </tag>
+            
+            <tag> OracleJDK </tag>
             
         </tags>
       
@@ -340,14 +375,16 @@
       
       <categories>
           
-          <category> Android </category>
+          <category> Java </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 新特性 </tag>
+            <tag> 特性 </tag>
+            
+            <tag> Android </tag>
             
         </tags>
       
@@ -365,7 +402,7 @@
       
       <categories>
           
-          <category> Android </category>
+          <category> Java </category>
           
       </categories>
       
@@ -373,6 +410,8 @@
         <tags>
             
             <tag> 应用 </tag>
+            
+            <tag> Android </tag>
             
         </tags>
       
@@ -390,7 +429,7 @@
       
       <categories>
           
-          <category> 故事 </category>
+          <category> 其他 </category>
           
       </categories>
       
@@ -398,6 +437,8 @@
         <tags>
             
             <tag> 转载 </tag>
+            
+            <tag> 故事 </tag>
             
         </tags>
       
@@ -415,7 +456,7 @@
       
       <categories>
           
-          <category> 算法 </category>
+          <category> 技能 </category>
           
       </categories>
       
@@ -425,6 +466,8 @@
             <tag> 数组 </tag>
             
             <tag> 规律 </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -442,14 +485,14 @@
       
       <categories>
           
-          <category> 日常 </category>
+          <category> 技能 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 技能 </tag>
+            <tag> WSA </tag>
             
         </tags>
       
@@ -467,7 +510,7 @@
       
       <categories>
           
-          <category> 算法 </category>
+          <category> 技能 </category>
           
       </categories>
       
@@ -477,6 +520,8 @@
             <tag> 字符串 </tag>
             
             <tag> 模拟 </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -494,7 +539,7 @@
       
       <categories>
           
-          <category> 算法 </category>
+          <category> 技能 </category>
           
       </categories>
       
@@ -504,6 +549,8 @@
             <tag> 字符串 </tag>
             
             <tag> 回文串 </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -521,7 +568,7 @@
       
       <categories>
           
-          <category> 故事 </category>
+          <category> 其他 </category>
           
       </categories>
       
@@ -531,6 +578,8 @@
             <tag> 转载 </tag>
             
             <tag> 漂生活 </tag>
+            
+            <tag> 故事 </tag>
             
         </tags>
       
@@ -548,7 +597,7 @@
       
       <categories>
           
-          <category> Android </category>
+          <category> Java </category>
           
       </categories>
       
@@ -556,6 +605,8 @@
         <tags>
             
             <tag> 技能 </tag>
+            
+            <tag> Android </tag>
             
         </tags>
       
@@ -573,7 +624,7 @@
       
       <categories>
           
-          <category> 通信协议 </category>
+          <category> 技能 </category>
           
       </categories>
       
@@ -598,7 +649,7 @@
       
       <categories>
           
-          <category> 算法 </category>
+          <category> 技能 </category>
           
       </categories>
       
@@ -608,6 +659,8 @@
             <tag> 字符串 </tag>
             
             <tag> 排序 </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -625,7 +678,7 @@
       
       <categories>
           
-          <category> 算法 </category>
+          <category> 技能 </category>
           
       </categories>
       
@@ -635,6 +688,8 @@
             <tag> 字符串 </tag>
             
             <tag> 模拟 </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -652,7 +707,7 @@
       
       <categories>
           
-          <category> Android </category>
+          <category> Java </category>
           
       </categories>
       
@@ -660,6 +715,8 @@
         <tags>
             
             <tag> 特性 </tag>
+            
+            <tag> Android </tag>
             
         </tags>
       
@@ -677,7 +734,7 @@
       
       <categories>
           
-          <category> 算法 </category>
+          <category> 技能 </category>
           
       </categories>
       
@@ -685,6 +742,8 @@
         <tags>
             
             <tag> 查找 </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -702,7 +761,7 @@
       
       <categories>
           
-          <category> 算法 </category>
+          <category> 技能 </category>
           
       </categories>
       
@@ -712,6 +771,8 @@
             <tag> 模拟 </tag>
             
             <tag> 双指针 </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -729,7 +790,7 @@
       
       <categories>
           
-          <category> 算法 </category>
+          <category> 技能 </category>
           
       </categories>
       
@@ -737,6 +798,8 @@
         <tags>
             
             <tag> 排序 </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -754,7 +817,7 @@
       
       <categories>
           
-          <category> 算法 </category>
+          <category> 技能 </category>
           
       </categories>
       
@@ -762,6 +825,8 @@
         <tags>
             
             <tag> 动态规划 </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -779,7 +844,7 @@
       
       <categories>
           
-          <category> 算法 </category>
+          <category> 技能 </category>
           
       </categories>
       
@@ -787,6 +852,8 @@
         <tags>
             
             <tag> 动态规划 </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -804,7 +871,7 @@
       
       <categories>
           
-          <category> 算法 </category>
+          <category> 技能 </category>
           
       </categories>
       
@@ -812,6 +879,8 @@
         <tags>
             
             <tag> 模拟 </tag>
+            
+            <tag> 算法 </tag>
             
         </tags>
       
@@ -829,7 +898,7 @@
       
       <categories>
           
-          <category> 故事 </category>
+          <category> 其他 </category>
           
       </categories>
       
@@ -837,6 +906,8 @@
         <tags>
             
             <tag> 转载 </tag>
+            
+            <tag> 故事 </tag>
             
         </tags>
       
@@ -854,7 +925,7 @@
       
       <categories>
           
-          <category> 故事 </category>
+          <category> 其他 </category>
           
       </categories>
       
@@ -862,6 +933,8 @@
         <tags>
             
             <tag> 转载 </tag>
+            
+            <tag> 故事 </tag>
             
         </tags>
       
@@ -879,7 +952,7 @@
       
       <categories>
           
-          <category> 故事 </category>
+          <category> 其他 </category>
           
       </categories>
       
@@ -887,6 +960,8 @@
         <tags>
             
             <tag> 转载 </tag>
+            
+            <tag> 故事 </tag>
             
         </tags>
       
@@ -904,7 +979,7 @@
       
       <categories>
           
-          <category> 通信协议 </category>
+          <category> 技能 </category>
           
       </categories>
       
@@ -929,7 +1004,7 @@
       
       <categories>
           
-          <category> 通信协议 </category>
+          <category> 技能 </category>
           
       </categories>
       
@@ -954,7 +1029,7 @@
       
       <categories>
           
-          <category> 通信协议 </category>
+          <category> 技能 </category>
           
       </categories>
       
@@ -979,7 +1054,7 @@
       
       <categories>
           
-          <category> 故事 </category>
+          <category> 其他 </category>
           
       </categories>
       
@@ -987,6 +1062,8 @@
         <tags>
             
             <tag> 转载 </tag>
+            
+            <tag> 故事 </tag>
             
         </tags>
       
@@ -1004,7 +1081,7 @@
       
       <categories>
           
-          <category> 故事 </category>
+          <category> 其他 </category>
           
       </categories>
       
@@ -1012,6 +1089,8 @@
         <tags>
             
             <tag> 转载 </tag>
+            
+            <tag> 故事 </tag>
             
         </tags>
       
@@ -1029,14 +1108,16 @@
       
       <categories>
           
-          <category> Android </category>
+          <category> Java </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 新特性 </tag>
+            <tag> 特性 </tag>
+            
+            <tag> Android </tag>
             
         </tags>
       
@@ -1054,7 +1135,7 @@
       
       <categories>
           
-          <category> Android </category>
+          <category> Java </category>
           
       </categories>
       
@@ -1062,6 +1143,8 @@
         <tags>
             
             <tag> 自定义控件 </tag>
+            
+            <tag> Android </tag>
             
         </tags>
       
@@ -1079,7 +1162,7 @@
       
       <categories>
           
-          <category> Android </category>
+          <category> Java </category>
           
       </categories>
       
@@ -1087,6 +1170,8 @@
         <tags>
             
             <tag> 自定义控件 </tag>
+            
+            <tag> Android </tag>
             
         </tags>
       
@@ -1104,14 +1189,16 @@
       
       <categories>
           
-          <category> 日常 </category>
+          <category> 技能 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 技能 </tag>
+            <tag> 命令 </tag>
+            
+            <tag> ADB </tag>
             
         </tags>
       
@@ -1129,7 +1216,7 @@
       
       <categories>
           
-          <category> Android </category>
+          <category> Java </category>
           
       </categories>
       
@@ -1137,6 +1224,8 @@
         <tags>
             
             <tag> 应用 </tag>
+            
+            <tag> Android </tag>
             
         </tags>
       
@@ -1154,14 +1243,16 @@
       
       <categories>
           
-          <category> Android </category>
+          <category> Java </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 特性 </tag>
+            <tag> Android </tag>
+            
+            <tag> Gradle </tag>
             
         </tags>
       
@@ -1179,7 +1270,7 @@
       
       <categories>
           
-          <category> 故事 </category>
+          <category> 其他 </category>
           
       </categories>
       
@@ -1187,6 +1278,8 @@
         <tags>
             
             <tag> 转载 </tag>
+            
+            <tag> 故事 </tag>
             
         </tags>
       
@@ -1211,7 +1304,7 @@
       
         <tags>
             
-            <tag> 正则表达式 </tag>
+            <tag> 正则 </tag>
             
         </tags>
       
@@ -1229,7 +1322,7 @@
       
       <categories>
           
-          <category> Android </category>
+          <category> Java </category>
           
       </categories>
       
@@ -1237,6 +1330,8 @@
         <tags>
             
             <tag> 应用 </tag>
+            
+            <tag> Android </tag>
             
         </tags>
       
@@ -1254,7 +1349,7 @@
       
       <categories>
           
-          <category> Android </category>
+          <category> Java </category>
           
       </categories>
       
@@ -1262,6 +1357,8 @@
         <tags>
             
             <tag> 应用 </tag>
+            
+            <tag> Android </tag>
             
         </tags>
       
@@ -1279,7 +1376,7 @@
       
       <categories>
           
-          <category> Android </category>
+          <category> Java </category>
           
       </categories>
       
@@ -1287,6 +1384,8 @@
         <tags>
             
             <tag> 兼容性 </tag>
+            
+            <tag> Android </tag>
             
         </tags>
       
@@ -1454,7 +1553,7 @@
       
       <categories>
           
-          <category> 日常 </category>
+          <category> 其他 </category>
           
       </categories>
       
@@ -1479,7 +1578,7 @@
       
       <categories>
           
-          <category> Android </category>
+          <category> Java </category>
           
       </categories>
       
@@ -1487,6 +1586,8 @@
         <tags>
             
             <tag> 三方资源 </tag>
+            
+            <tag> Android </tag>
             
         </tags>
       
@@ -1504,7 +1605,7 @@
       
       <categories>
           
-          <category> Android </category>
+          <category> Java </category>
           
       </categories>
       
@@ -1512,6 +1613,8 @@
         <tags>
             
             <tag> 三方资源 </tag>
+            
+            <tag> Android </tag>
             
         </tags>
       
@@ -1529,14 +1632,16 @@
       
       <categories>
           
-          <category> Android </category>
+          <category> Java </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 新特性 </tag>
+            <tag> 特性 </tag>
+            
+            <tag> Android </tag>
             
         </tags>
       
@@ -1554,7 +1659,7 @@
       
       <categories>
           
-          <category> Android </category>
+          <category> Java </category>
           
       </categories>
       
@@ -1562,6 +1667,8 @@
         <tags>
             
             <tag> 特性 </tag>
+            
+            <tag> Android </tag>
             
         </tags>
       
@@ -1579,14 +1686,16 @@
       
       <categories>
           
-          <category> Android </category>
+          <category> Java </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 新特性 </tag>
+            <tag> 特性 </tag>
+            
+            <tag> Android </tag>
             
         </tags>
       
@@ -1604,7 +1713,7 @@
       
       <categories>
           
-          <category> Android </category>
+          <category> Java </category>
           
       </categories>
       
@@ -1612,6 +1721,8 @@
         <tags>
             
             <tag> 兼容性 </tag>
+            
+            <tag> Android </tag>
             
         </tags>
       
@@ -1629,7 +1740,7 @@
       
       <categories>
           
-          <category> Android </category>
+          <category> Java </category>
           
       </categories>
       
@@ -1637,6 +1748,8 @@
         <tags>
             
             <tag> 特性 </tag>
+            
+            <tag> Android </tag>
             
         </tags>
       
@@ -1654,7 +1767,7 @@
       
       <categories>
           
-          <category> 故事 </category>
+          <category> 其他 </category>
           
       </categories>
       
@@ -1662,6 +1775,8 @@
         <tags>
             
             <tag> 转载 </tag>
+            
+            <tag> 故事 </tag>
             
         </tags>
       
@@ -1679,7 +1794,7 @@
       
       <categories>
           
-          <category> Android </category>
+          <category> Java </category>
           
       </categories>
       
@@ -1687,6 +1802,8 @@
         <tags>
             
             <tag> 优化 </tag>
+            
+            <tag> Android </tag>
             
         </tags>
       
@@ -1704,7 +1821,7 @@
       
       <categories>
           
-          <category> Android </category>
+          <category> Java </category>
           
       </categories>
       
@@ -1712,6 +1829,8 @@
         <tags>
             
             <tag> 特性 </tag>
+            
+            <tag> Android </tag>
             
         </tags>
       
@@ -1729,7 +1848,7 @@
       
       <categories>
           
-          <category> 日常 </category>
+          <category> 其他 </category>
           
       </categories>
       
@@ -1754,7 +1873,7 @@
       
       <categories>
           
-          <category> Android </category>
+          <category> Java </category>
           
       </categories>
       
@@ -1762,6 +1881,8 @@
         <tags>
             
             <tag> 特性 </tag>
+            
+            <tag> Android </tag>
             
         </tags>
       
@@ -1779,7 +1900,7 @@
       
       <categories>
           
-          <category> 日常 </category>
+          <category> 其他 </category>
           
       </categories>
       
@@ -1804,7 +1925,7 @@
       
       <categories>
           
-          <category> Android </category>
+          <category> Java </category>
           
       </categories>
       
@@ -1812,6 +1933,8 @@
         <tags>
             
             <tag> 兼容性 </tag>
+            
+            <tag> Android </tag>
             
         </tags>
       
@@ -1829,7 +1952,7 @@
       
       <categories>
           
-          <category> Android </category>
+          <category> Java </category>
           
       </categories>
       
@@ -1837,6 +1960,8 @@
         <tags>
             
             <tag> 应用 </tag>
+            
+            <tag> Android </tag>
             
         </tags>
       
@@ -1854,7 +1979,7 @@
       
       <categories>
           
-          <category> Android </category>
+          <category> Java </category>
           
       </categories>
       
@@ -1862,6 +1987,8 @@
         <tags>
             
             <tag> 应用 </tag>
+            
+            <tag> Android </tag>
             
         </tags>
       
@@ -1879,7 +2006,7 @@
       
       <categories>
           
-          <category> Android </category>
+          <category> Java </category>
           
       </categories>
       
@@ -1887,6 +2014,8 @@
         <tags>
             
             <tag> 特性 </tag>
+            
+            <tag> Android </tag>
             
         </tags>
       
@@ -1904,7 +2033,7 @@
       
       <categories>
           
-          <category> Android </category>
+          <category> Java </category>
           
       </categories>
       
@@ -1912,6 +2041,8 @@
         <tags>
             
             <tag> 特性 </tag>
+            
+            <tag> Android </tag>
             
         </tags>
       
@@ -1936,7 +2067,7 @@
       
         <tags>
             
-            <tag> 正则表达式 </tag>
+            <tag> 正则 </tag>
             
         </tags>
       
@@ -2004,7 +2135,7 @@
       
       <categories>
           
-          <category> Android </category>
+          <category> Java </category>
           
       </categories>
       
@@ -2012,6 +2143,8 @@
         <tags>
             
             <tag> 应用 </tag>
+            
+            <tag> Android </tag>
             
         </tags>
       
@@ -2029,7 +2162,7 @@
       
       <categories>
           
-          <category> 日常 </category>
+          <category> 其他 </category>
           
       </categories>
       
@@ -2054,7 +2187,7 @@
       
       <categories>
           
-          <category> Android </category>
+          <category> Java </category>
           
       </categories>
       
@@ -2062,6 +2195,8 @@
         <tags>
             
             <tag> 应用 </tag>
+            
+            <tag> Android </tag>
             
         </tags>
       
@@ -2079,7 +2214,7 @@
       
       <categories>
           
-          <category> Android </category>
+          <category> Java </category>
           
       </categories>
       
@@ -2087,6 +2222,8 @@
         <tags>
             
             <tag> 三方资源 </tag>
+            
+            <tag> Android </tag>
             
         </tags>
       
@@ -2104,14 +2241,16 @@
       
       <categories>
           
-          <category> Android </category>
+          <category> Java </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 新特性 </tag>
+            <tag> 特性 </tag>
+            
+            <tag> Android </tag>
             
         </tags>
       
@@ -2154,14 +2293,16 @@
       
       <categories>
           
-          <category> Android </category>
+          <category> Java </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 新特性 </tag>
+            <tag> 特性 </tag>
+            
+            <tag> Android </tag>
             
         </tags>
       
@@ -2179,14 +2320,16 @@
       
       <categories>
           
-          <category> Android </category>
+          <category> Java </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 新特性 </tag>
+            <tag> 特性 </tag>
+            
+            <tag> Android </tag>
             
         </tags>
       
@@ -2229,14 +2372,16 @@
       
       <categories>
           
-          <category> Android </category>
+          <category> Java </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 新特性 </tag>
+            <tag> 特性 </tag>
+            
+            <tag> Android </tag>
             
         </tags>
       
@@ -2254,14 +2399,14 @@
       
       <categories>
           
-          <category> 日常 </category>
+          <category> 技能 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 技能 </tag>
+            <tag> 命令 </tag>
             
         </tags>
       
@@ -2279,7 +2424,7 @@
       
       <categories>
           
-          <category> Android </category>
+          <category> Java </category>
           
       </categories>
       
@@ -2287,6 +2432,8 @@
         <tags>
             
             <tag> 应用 </tag>
+            
+            <tag> Android </tag>
             
         </tags>
       
@@ -2304,7 +2451,7 @@
       
       <categories>
           
-          <category> 故事 </category>
+          <category> 其他 </category>
           
       </categories>
       
@@ -2312,6 +2459,8 @@
         <tags>
             
             <tag> 转载 </tag>
+            
+            <tag> 故事 </tag>
             
         </tags>
       
@@ -2329,7 +2478,7 @@
       
       <categories>
           
-          <category> Android </category>
+          <category> Java </category>
           
       </categories>
       
@@ -2354,7 +2503,7 @@
       
       <categories>
           
-          <category> Android </category>
+          <category> Java </category>
           
       </categories>
       
@@ -2379,7 +2528,7 @@
       
       <categories>
           
-          <category> 故事 </category>
+          <category> 其他 </category>
           
       </categories>
       
@@ -2387,6 +2536,8 @@
         <tags>
             
             <tag> 转载 </tag>
+            
+            <tag> 故事 </tag>
             
         </tags>
       
@@ -2404,7 +2555,7 @@
       
       <categories>
           
-          <category> 故事 </category>
+          <category> 其他 </category>
           
       </categories>
       
@@ -2412,6 +2563,8 @@
         <tags>
             
             <tag> 转载 </tag>
+            
+            <tag> 故事 </tag>
             
         </tags>
       
@@ -2429,7 +2582,7 @@
       
       <categories>
           
-          <category> 日常 </category>
+          <category> 其他 </category>
           
       </categories>
       
@@ -2454,14 +2607,14 @@
       
       <categories>
           
-          <category> 日常 </category>
+          <category> 技能 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 技能 </tag>
+            <tag> 工具 </tag>
             
         </tags>
       
@@ -2479,7 +2632,7 @@
       
       <categories>
           
-          <category> Android </category>
+          <category> Java </category>
           
       </categories>
       
@@ -2487,6 +2640,8 @@
         <tags>
             
             <tag> 应用 </tag>
+            
+            <tag> Android </tag>
             
         </tags>
       
@@ -2554,7 +2709,7 @@
       
       <categories>
           
-          <category> 日常 </category>
+          <category> 其他 </category>
           
       </categories>
       
