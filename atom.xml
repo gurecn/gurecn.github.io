@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devdroid.cn/"/>
-  <updated>2022-11-29T02:38:04.485Z</updated>
+  <updated>2022-11-30T07:06:14.475Z</updated>
   <id>https://devdroid.cn/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>应用测试与分渠道打包</title>
+    <link href="https://devdroid.cn/2022/11/30/ying-yong-ce-shi-yu-fen-qu-dao-da-bao/"/>
+    <id>https://devdroid.cn/2022/11/30/ying-yong-ce-shi-yu-fen-qu-dao-da-bao/</id>
+    <published>2022-11-30T06:58:05.000Z</published>
+    <updated>2022-11-30T07:06:14.475Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h5 id=&quot;需求背景&quot;&gt;&lt;a href=&quot;#需求背景&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Java" scheme="https://devdroid.cn/categories/Java/"/>
+    
+    
+      <category term="Android" scheme="https://devdroid.cn/tags/Android/"/>
+    
+      <category term="Gradle" scheme="https://devdroid.cn/tags/Gradle/"/>
+    
+  </entry>
   
   <entry>
     <title>Telegram源码分析（二）应用图标变更</title>
@@ -531,36 +559,6 @@
     
     
       <category term="WSA" scheme="https://devdroid.cn/tags/WSA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>#IP转换#</title>
-    <link href="https://devdroid.cn/2022/04/26/ip-zhuan-huan/"/>
-    <id>https://devdroid.cn/2022/04/26/ip-zhuan-huan/</id>
-    <published>2022-04-26T09:58:57.000Z</published>
-    <updated>2022-11-29T02:30:59.255Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h3 id=&quot;描述&quot;&gt;&lt;a href=&quot;#描述&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="技能" scheme="https://devdroid.cn/categories/%E6%8A%80%E8%83%BD/"/>
-    
-    
-      <category term="字符串" scheme="https://devdroid.cn/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
-    
-      <category term="模拟" scheme="https://devdroid.cn/tags/%E6%A8%A1%E6%8B%9F/"/>
-    
-      <category term="算法" scheme="https://devdroid.cn/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
