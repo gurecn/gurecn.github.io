@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devdroid.cn/"/>
-  <updated>2022-11-30T07:06:14.475Z</updated>
+  <updated>2022-12-01T04:18:28.292Z</updated>
   <id>https://devdroid.cn/</id>
   
   <author>
@@ -17,11 +17,39 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Python学习笔记（一）</title>
+    <link href="https://devdroid.cn/2022/12/01/python-xue-xi-bi-ji-yi/"/>
+    <id>https://devdroid.cn/2022/12/01/python-xue-xi-bi-ji-yi/</id>
+    <published>2022-12-01T04:17:37.000Z</published>
+    <updated>2022-12-01T04:18:28.292Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;最近在分析一些开源项目时，发现有很大一部分开源项目使用Python语言开发，包括后台使用Python实现，客户端使用Python编译动态链接库使用。比如：&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="Python" scheme="https://devdroid.cn/categories/Python/"/>
+    
+    
+      <category term="学习" scheme="https://devdroid.cn/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="笔记" scheme="https://devdroid.cn/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>应用测试与分渠道打包</title>
     <link href="https://devdroid.cn/2022/11/30/ying-yong-ce-shi-yu-fen-qu-dao-da-bao/"/>
     <id>https://devdroid.cn/2022/11/30/ying-yong-ce-shi-yu-fen-qu-dao-da-bao/</id>
     <published>2022-11-30T06:58:05.000Z</published>
-    <updated>2022-11-30T07:06:14.475Z</updated>
+    <updated>2022-11-30T07:39:33.380Z</updated>
     
     <summary type="html">
     
@@ -533,32 +561,6 @@
       <category term="规律" scheme="https://devdroid.cn/tags/%E8%A7%84%E5%BE%8B/"/>
     
       <category term="算法" scheme="https://devdroid.cn/tags/%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Win 11 安卓子系统（WSA）</title>
-    <link href="https://devdroid.cn/2022/05/09/win-11-an-zhuo-zi-xi-tong-wsa/"/>
-    <id>https://devdroid.cn/2022/05/09/win-11-an-zhuo-zi-xi-tong-wsa/</id>
-    <published>2022-05-09T04:17:10.000Z</published>
-    <updated>2022-11-29T02:32:19.652Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;适用于 Android™️ 的 Windows 子系统（WSA）使你的 Windows 11 设备能够运行 Amazon Appstore 中提供的 Android 应用程序。由于WSA使用的Amazon
-        
-      
-    
-    </summary>
-    
-      <category term="技能" scheme="https://devdroid.cn/categories/%E6%8A%80%E8%83%BD/"/>
-    
-    
-      <category term="WSA" scheme="https://devdroid.cn/tags/WSA/"/>
     
   </entry>
   
