@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devdroid.cn/"/>
-  <updated>2022-12-07T02:19:28.543Z</updated>
+  <updated>2022-12-09T03:50:34.377Z</updated>
   <id>https://devdroid.cn/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python学习笔记（二）</title>
+    <link href="https://devdroid.cn/2022/12/09/python-xue-xi-bi-ji-er/"/>
+    <id>https://devdroid.cn/2022/12/09/python-xue-xi-bi-ji-er/</id>
+    <published>2022-12-09T03:46:20.000Z</published>
+    <updated>2022-12-09T03:50:34.377Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;语句和表达式&quot;&gt;&lt;a href=&quot;#语句和表达式&quot; class=&quot;headerlink&quot; title=&quot;语句和表达式&quot;&gt;&lt;/a&gt;语句和表达式&lt;/h3&gt;&lt;h4 id=&quot;语句&quot;&gt;&lt;a href=&quot;#语句&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Python" scheme="https://devdroid.cn/categories/Python/"/>
+    
+    
+      <category term="学习" scheme="https://devdroid.cn/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="笔记" scheme="https://devdroid.cn/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>应用一键置灰操作（哀悼主题）</title>
@@ -528,36 +556,6 @@
       <category term="应用" scheme="https://devdroid.cn/tags/%E5%BA%94%E7%94%A8/"/>
     
       <category term="Android" scheme="https://devdroid.cn/tags/Android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>如何从坏心情中走出来？</title>
-    <link href="https://devdroid.cn/2022/06/13/ru-he-cong-pi-xin-qing-zhong-zou-chu-lai/"/>
-    <id>https://devdroid.cn/2022/06/13/ru-he-cong-pi-xin-qing-zhong-zou-chu-lai/</id>
-    <published>2022-06-13T05:42:26.000Z</published>
-    <updated>2022-11-29T02:35:21.535Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;我想，每个人，应该或多或少，都经历过坏心情的困扰。&lt;/p&gt;
-&lt;p&gt;这些坏心情，有时可能来自外界的坏消息，有时可能来自内心的担忧和焦虑，它们都有一个共通点：总是无孔不入，顽固地钻入我们的脑海中，破坏我们的状态，让我们无心工作，陷入情绪的低潮之中。&lt;/p&gt;
-&lt;p&gt;就像在我们的心
-        
-      
-    
-    </summary>
-    
-      <category term="其他" scheme="https://devdroid.cn/categories/%E5%85%B6%E4%BB%96/"/>
-    
-    
-      <category term="转载" scheme="https://devdroid.cn/tags/%E8%BD%AC%E8%BD%BD/"/>
-    
-      <category term="故事" scheme="https://devdroid.cn/tags/%E6%95%85%E4%BA%8B/"/>
     
   </entry>
   
