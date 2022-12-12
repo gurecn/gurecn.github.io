@@ -260,7 +260,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -442,14 +442,14 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h5 id="背景分析"><a href="#背景分析" class="headerlink" title="背景分析"></a>背景分析</h5><p>之前我们写过一篇文章专门分析应用图标切换功能<a href="/2021/12/02/android-dong-tai-bian-geng-tu-biao-he-ying-yong-ming/">《Android动态变更图标和应用名》</a>。<br>但是那篇文章最后遗留一个问题没有从根本上解决：切换图标后，原来启动<code>LaunchActivity</code>已被禁用了，激活了新图标的<code>NewLaunchActivity</code>。那么应用内跳转时指定的Activity仍然是被禁用的<code>LaunchActivity</code>。此时就会出现跳转问题。<br>看到Telegram有这个功能，就优先分析一下其处理逻辑。重新分析一下其如何实现应用图标调整且不影响应用内的跳转的。</p>
-<h5 id="功能效果"><a href="#功能效果" class="headerlink" title="功能效果"></a>功能效果</h5><p>首先看一下Telegram相关的功能。<br>进入到应用设置界面，会看到有一项图标管理菜单，借助于图标管理我们可以切换应用图标。效果如下：</p>
+                <h3 id="背景分析"><a href="#背景分析" class="headerlink" title="背景分析"></a>背景分析</h3><p>之前我们写过一篇文章专门分析应用图标切换功能<a href="/2021/12/02/android-dong-tai-bian-geng-tu-biao-he-ying-yong-ming/">《Android动态变更图标和应用名》</a>。<br>但是那篇文章最后遗留一个问题没有从根本上解决：切换图标后，原来启动<code>LaunchActivity</code>已被禁用了，激活了新图标的<code>NewLaunchActivity</code>。那么应用内跳转时指定的Activity仍然是被禁用的<code>LaunchActivity</code>。此时就会出现跳转问题。<br>看到Telegram有这个功能，就优先分析一下其处理逻辑。重新分析一下其如何实现应用图标调整且不影响应用内的跳转的。</p>
+<h3 id="功能效果"><a href="#功能效果" class="headerlink" title="功能效果"></a>功能效果</h3><p>首先看一下Telegram相关的功能。<br>进入到应用设置界面，会看到有一项图标管理菜单，借助于图标管理我们可以切换应用图标。效果如下：</p>
 <img src="image1.png" alt="设置" width="374.4" height="154" align="middle" />
 
 <p>切换前后在手机桌面显示效果如下（Telegram Beta版本调整了应用图标）：</p>
 <p><img src="image2.png" alt="图标调整前" width="320" height="192" align="middle" /><img src="image3.png" alt="图标调整后" width="320" height="192" align="middle" /></p>
 <p>图标调整前后，Telegram使用功能均正常。</p>
-<h5 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h5><p>我们查看Telegram<code>AndroidManifest.xml</code>文件，发现在<code>application</code>内定义了<code>targetActivity</code>为<code>LaunchActivity</code>的6个<code>activity-alias</code>。<code>activity-alias</code>中内容类似，如下：</p>
+<h3 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h3><p>我们查看Telegram<code>AndroidManifest.xml</code>文件，发现在<code>application</code>内定义了<code>targetActivity</code>为<code>LaunchActivity</code>的6个<code>activity-alias</code>。<code>activity-alias</code>中内容类似，如下：</p>
 <pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>activity-alias</span>
   <span class="token attr-name"><span class="token namespace">android:</span>enabled</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span>
   <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>org.telegram.messenger.DefaultIcon<span class="token punctuation">"</span></span>
@@ -544,7 +544,7 @@ LauncherIconController<span class="token punctuation">.</span><span class="token
 <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>在这里可以看到，最终仍然使用的是<code>PackageManager</code>中<code>setComponentEnabledSetting</code>方法。此时仅将<code>getComponentName</code>组件（图标组件）设置为<code>COMPONENT_ENABLED_STATE_DISABLED</code>或<code>COMPONENT_ENABLED_STATE_ENABLED</code>，此时并没有对<code>Activity</code>进行修改。<br>至此图标变更的功能已经完成了。<br>执行完方法后会发现图标会自动变更。此时打开应用使用，发现功能均正常。</p>
-<h5 id="结果总结"><a href="#结果总结" class="headerlink" title="结果总结"></a>结果总结</h5><p>至此代码分析完成，通过对比，发现Telegram的方法和最早博文中的方法，差距点在于<code>setComponentEnabledSetting</code>的对象。<br>旧博文中把<code>Activity</code>作为对象，那么就会导致当前<code>Activity</code>不可用，应用内跳转就会出现问题。而Telegram巧妙的将对象转移到<code>activity-alias</code>上，不影响<code>targetActivity</code>的使用。</p>
+<h3 id="结果总结"><a href="#结果总结" class="headerlink" title="结果总结"></a>结果总结</h3><p>至此代码分析完成，通过对比，发现Telegram的方法和最早博文中的方法，差距点在于<code>setComponentEnabledSetting</code>的对象。<br>旧博文中把<code>Activity</code>作为对象，那么就会导致当前<code>Activity</code>不可用，应用内跳转就会出现问题。而Telegram巧妙的将对象转移到<code>activity-alias</code>上，不影响<code>targetActivity</code>的使用。</p>
 <ul>
 <li><input checked="" disabled="" type="checkbox"> get新技能！</li>
 </ul>
@@ -892,7 +892,7 @@ LauncherIconController<span class="token punctuation">.</span><span class="token
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="应用测试与分渠道打包">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="应用测试与分渠道打包">
                         
                         <span class="card-title">应用测试与分渠道打包</span>
                     </div>
@@ -945,7 +945,7 @@ LauncherIconController<span class="token punctuation">.</span><span class="token
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Telegram源码分析（一）项目运行">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Telegram源码分析（一）项目运行">
                         
                         <span class="card-title">Telegram源码分析（一）项目运行</span>
                     </div>
@@ -1154,7 +1154,7 @@ LauncherIconController<span class="token punctuation">.</span><span class="token
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">131.7k</span>
+            <span class="white-color">132.4k</span>
             
 
             <br>

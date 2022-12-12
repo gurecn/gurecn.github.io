@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devdroid.cn/"/>
-  <updated>2022-12-09T03:50:34.377Z</updated>
+  <updated>2022-12-12T02:29:18.887Z</updated>
   <id>https://devdroid.cn/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>黑客帝国代码雨效果</title>
+    <link href="https://devdroid.cn/2022/12/12/hei-ke-di-guo-dai-ma-yu-xiao-guo/"/>
+    <id>https://devdroid.cn/2022/12/12/hei-ke-di-guo-dai-ma-yu-xiao-guo/</id>
+    <published>2022-12-12T02:15:19.000Z</published>
+    <updated>2022-12-12T02:29:18.887Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="技能" scheme="https://devdroid.cn/categories/%E6%8A%80%E8%83%BD/"/>
+    
+    
+      <category term="特性" scheme="https://devdroid.cn/tags/%E7%89%B9%E6%80%A7/"/>
+    
+  </entry>
   
   <entry>
     <title>Python学习笔记（二）</title>
@@ -49,7 +75,7 @@
     <link href="https://devdroid.cn/2022/12/07/ying-yong-yi-jian-zhi-hui-cao-zuo-ai-dao-zhu-ti/"/>
     <id>https://devdroid.cn/2022/12/07/ying-yong-yi-jian-zhi-hui-cao-zuo-ai-dao-zhu-ti/</id>
     <published>2022-12-07T02:06:01.000Z</published>
-    <updated>2022-12-07T02:19:28.543Z</updated>
+    <updated>2022-12-12T02:30:14.930Z</updated>
     
     <summary type="html">
     
@@ -57,7 +83,7 @@
       
         
         
-          &lt;h4 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h4&gt;&lt;p&gt;最近发现有很多应用打开后，界面变成了灰色，纪念国家领导人。&lt;/p&gt;
+          &lt;h3 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h3&gt;&lt;p&gt;最近发现有很多应用打开后，界面变成了灰色，纪念国家领导人。&lt;/p&gt;
 &lt;img src=&quot;1.jpg&quot; width=&quot;1427.2&quot;
         
       
@@ -104,7 +130,7 @@
     <link href="https://devdroid.cn/2022/11/30/ying-yong-ce-shi-yu-fen-qu-dao-da-bao/"/>
     <id>https://devdroid.cn/2022/11/30/ying-yong-ce-shi-yu-fen-qu-dao-da-bao/</id>
     <published>2022-11-30T06:58:05.000Z</published>
-    <updated>2022-11-30T07:39:33.380Z</updated>
+    <updated>2022-12-12T02:31:49.903Z</updated>
     
     <summary type="html">
     
@@ -112,7 +138,7 @@
       
         
         
-          &lt;h5 id=&quot;需求背景&quot;&gt;&lt;a href=&quot;#需求背景&quot; class=&quot;headerlink&quot;
+          &lt;h3 id=&quot;需求背景&quot;&gt;&lt;a href=&quot;#需求背景&quot; class=&quot;headerlink&quot;
         
       
     
@@ -132,7 +158,7 @@
     <link href="https://devdroid.cn/2022/11/29/telegram-yuan-ma-fen-xi-er-ying-yong-tu-biao-bian-geng/"/>
     <id>https://devdroid.cn/2022/11/29/telegram-yuan-ma-fen-xi-er-ying-yong-tu-biao-bian-geng/</id>
     <published>2022-11-29T01:57:06.000Z</published>
-    <updated>2022-11-29T02:38:04.485Z</updated>
+    <updated>2022-12-12T02:32:39.134Z</updated>
     
     <summary type="html">
     
@@ -140,7 +166,7 @@
       
         
         
-          &lt;h5 id=&quot;背景分析&quot;&gt;&lt;a href=&quot;#背景分析&quot; class=&quot;headerlink&quot; title=&quot;背景分析&quot;&gt;&lt;/a&gt;背景分析&lt;/h5&gt;&lt;p&gt;之前我们写过一篇文章专门分析应用图标切换功能&lt;a
+          &lt;h3 id=&quot;背景分析&quot;&gt;&lt;a href=&quot;#背景分析&quot; class=&quot;headerlink&quot; title=&quot;背景分析&quot;&gt;&lt;/a&gt;背景分析&lt;/h3&gt;&lt;p&gt;之前我们写过一篇文章专门分析应用图标切换功能&lt;a
         
       
     
@@ -526,34 +552,6 @@
     
     
       <category term="特性" scheme="https://devdroid.cn/tags/%E7%89%B9%E6%80%A7/"/>
-    
-      <category term="Android" scheme="https://devdroid.cn/tags/Android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>校验应用签名</title>
-    <link href="https://devdroid.cn/2022/06/16/xiao-yan-ying-yong-qian-ming/"/>
-    <id>https://devdroid.cn/2022/06/16/xiao-yan-ying-yong-qian-ming/</id>
-    <published>2022-06-16T09:08:25.000Z</published>
-    <updated>2022-11-29T02:30:42.730Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h3 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="Java" scheme="https://devdroid.cn/categories/Java/"/>
-    
-    
-      <category term="应用" scheme="https://devdroid.cn/tags/%E5%BA%94%E7%94%A8/"/>
     
       <category term="Android" scheme="https://devdroid.cn/tags/Android/"/>
     

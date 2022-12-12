@@ -260,7 +260,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -442,14 +442,14 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h5 id="需求背景"><a href="#需求背景" class="headerlink" title="需求背景"></a>需求背景</h5><p>开发人员经常会遇到手机上既要安装正式版本客户端，同时又要在手机上调试、开发新版本客户端功能。有些应用会区分调试版、内部开发版、灰度测试版、粉丝内存版、公测版、正式版等。这时候就会有同时在一部手机安装多个相同应用的需求。<br>由于Android系统采用应用包名（applicationId）区分应用，所以一旦手机上已经安装了正式版本，再安装测试版本时会直接覆盖安装，导致正式版本内已经产生的数据被清除。这个问题不只是影响开发人员，对于测试人员、项目领导仍然是个问题。<br>部分应用在推广时需要区分应用在不同渠道的推广用户数量和用户质量，此时应用分渠道打包能够有效解决相关难题。<br>今天我们就研究一下应用区分测试版、正式版并且能够在相同手机上共存的问题以及应用如何实现分渠道打包统计的问题。<br>首先看一下我们在同一个手机同时安装正式版、测试版且应用图标、应用名做区分的效果：</p>
+                <h3 id="需求背景"><a href="#需求背景" class="headerlink" title="需求背景"></a>需求背景</h3><p>开发人员经常会遇到手机上既要安装正式版本客户端，同时又要在手机上调试、开发新版本客户端功能。有些应用会区分调试版、内部开发版、灰度测试版、粉丝内存版、公测版、正式版等。这时候就会有同时在一部手机安装多个相同应用的需求。<br>由于Android系统采用应用包名（applicationId）区分应用，所以一旦手机上已经安装了正式版本，再安装测试版本时会直接覆盖安装，导致正式版本内已经产生的数据被清除。这个问题不只是影响开发人员，对于测试人员、项目领导仍然是个问题。<br>部分应用在推广时需要区分应用在不同渠道的推广用户数量和用户质量，此时应用分渠道打包能够有效解决相关难题。<br>今天我们就研究一下应用区分测试版、正式版并且能够在相同手机上共存的问题以及应用如何实现分渠道打包统计的问题。<br>首先看一下我们在同一个手机同时安装正式版、测试版且应用图标、应用名做区分的效果：</p>
 <img src="image1.png" width="253.6" height="147" align="middle" />
 
 <p>上图中，正式版本、测试版本是同一个项目的两种打包方式。直接调试运行和选择debug打包时，输出测试版本及对应的图标；现在release打包方式，输出正式版本及对应的图标。<br>下面我们梳理一下实现过程。</p>
-<h5 id="应用共存"><a href="#应用共存" class="headerlink" title="应用共存"></a>应用共存</h5><h6 id="创建config路径"><a href="#创建config路径" class="headerlink" title="创建config路径"></a>创建config路径</h6><p>我们首先在app路径下新建config文件夹，并在config中新建<code>debug</code>、<code>release</code>两个新的文件夹，分别存储两个打包方式的<code>AndroidManifest.xml</code>。</p>
+<h3 id="应用共存"><a href="#应用共存" class="headerlink" title="应用共存"></a>应用共存</h3><h4 id="创建config路径"><a href="#创建config路径" class="headerlink" title="创建config路径"></a>创建config路径</h4><p>我们首先在app路径下新建config文件夹，并在config中新建<code>debug</code>、<code>release</code>两个新的文件夹，分别存储两个打包方式的<code>AndroidManifest.xml</code>。</p>
 <img src="image2.png" width="373.6" height="206" align="middle" />
 
-<h6 id="创建AndroidManifest-xml文件"><a href="#创建AndroidManifest-xml文件" class="headerlink" title="创建AndroidManifest.xml文件"></a>创建AndroidManifest.xml文件</h6><p>在<code>debug</code>、<code>release</code>两个文件夹中创建<code>AndroidManifest.xml</code>文件，分别为<code>debug</code>、<code>release</code>两种打包模式指定不同的图标、应用名。<br><code>debug</code>模式下<code>AndroidManifest.xml</code>文件：</p>
+<h4 id="创建AndroidManifest-xml文件"><a href="#创建AndroidManifest-xml文件" class="headerlink" title="创建AndroidManifest.xml文件"></a>创建AndroidManifest.xml文件</h4><p>在<code>debug</code>、<code>release</code>两个文件夹中创建<code>AndroidManifest.xml</code>文件，分别为<code>debug</code>、<code>release</code>两种打包模式指定不同的图标、应用名。<br><code>debug</code>模式下<code>AndroidManifest.xml</code>文件：</p>
 <pre class="line-numbers language-xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="utf-8"?></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>manifest</span> <span class="token attr-name"><span class="token namespace">xmlns:</span>android</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://schemas.android.com/apk/res/android<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>application</span>
@@ -470,7 +470,7 @@
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>application</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>manifest</span><span class="token punctuation">></span></span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h6 id="调整主AndroidManifest-xml文件"><a href="#调整主AndroidManifest-xml文件" class="headerlink" title="调整主AndroidManifest.xml文件"></a>调整主AndroidManifest.xml文件</h6><p>我们删除应用主AndroidManifest.xml文件中关于图标、应用名相关的配置。打开<code>app/src/main/AndroidManifest.xml</code>文件，调整为：</p>
+<h4 id="调整主AndroidManifest-xml文件"><a href="#调整主AndroidManifest-xml文件" class="headerlink" title="调整主AndroidManifest.xml文件"></a>调整主AndroidManifest.xml文件</h4><p>我们删除应用主AndroidManifest.xml文件中关于图标、应用名相关的配置。打开<code>app/src/main/AndroidManifest.xml</code>文件，调整为：</p>
 <pre class="line-numbers language-xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="utf-8"?></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>manifest</span> <span class="token attr-name"><span class="token namespace">xmlns:</span>android</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://schemas.android.com/apk/res/android<span class="token punctuation">"</span></span>
     <span class="token attr-name"><span class="token namespace">xmlns:</span>tools</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://schemas.android.com/tools<span class="token punctuation">"</span></span>
@@ -490,7 +490,7 @@
     
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>manifest</span><span class="token punctuation">></span></span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h6 id="Gradle使用config配置"><a href="#Gradle使用config配置" class="headerlink" title="Gradle使用config配置"></a>Gradle使用config配置</h6><p>在gradle中，使用config下的AndroidManifest.xml文件。我们打开<code>app/build.gradle</code>，在<code>android</code>项内，与<code>buildTypes</code>同级增加：</p>
+<h4 id="Gradle使用config配置"><a href="#Gradle使用config配置" class="headerlink" title="Gradle使用config配置"></a>Gradle使用config配置</h4><p>在gradle中，使用config下的AndroidManifest.xml文件。我们打开<code>app/build.gradle</code>，在<code>android</code>项内，与<code>buildTypes</code>同级增加：</p>
 <pre class="line-numbers language-groovy"><code class="language-groovy">buildTypes <span class="token punctuation">{</span>
     <span class="token comment" spellcheck="true">// 省略非关联代码</span>
 <span class="token punctuation">}</span>
@@ -503,7 +503,7 @@ sourceSets<span class="token operator">.</span>release <span class="token punctu
 <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>此时我们运行项目，当项目采用debug方式编译时，则会使用config下debug中的配置，应用名为：测试版本，图标为：icon_3_launcher；当项目采用release方式编译时，则会使用config下release中的配置，应用名为：正式版本，图标为：icon_2_launcher。</p>
-<h6 id="Gradle配置应用包名"><a href="#Gradle配置应用包名" class="headerlink" title="Gradle配置应用包名"></a>Gradle配置应用包名</h6><p>但是此时应用仍然仍然不能共存。我们知道Android系统使用应用包名区分应用，所以我们只需要使两种打包方式时应用包名不同即可。<br>我们仍然打开<code>app/build.gradle</code>，在<code>android</code>项内，在<code>buildTypes</code>中为<code>debug</code>项增加：<code>applicationIdSuffix &quot;.beta&quot;</code>。全部配置如下：</p>
+<h4 id="Gradle配置应用包名"><a href="#Gradle配置应用包名" class="headerlink" title="Gradle配置应用包名"></a>Gradle配置应用包名</h4><p>但是此时应用仍然仍然不能共存。我们知道Android系统使用应用包名区分应用，所以我们只需要使两种打包方式时应用包名不同即可。<br>我们仍然打开<code>app/build.gradle</code>，在<code>android</code>项内，在<code>buildTypes</code>中为<code>debug</code>项增加：<code>applicationIdSuffix &quot;.beta&quot;</code>。全部配置如下：</p>
 <pre class="line-numbers language-groovy"><code class="language-groovy">buildTypes <span class="token punctuation">{</span>
     release <span class="token punctuation">{</span>
         <span class="token comment" spellcheck="true">// 签名</span>
@@ -541,12 +541,12 @@ sourceSets<span class="token operator">.</span>release <span class="token punctu
 <p>此时我们发现使用debug方式编译时，应用包名比使用release方式后面多了<code>.beta</code>。应用已经能够共存到同一个手机中了。<br><strong>注意：此时由于两种打包方式，项目代码中对包名的配置并没有变更，所以debug方式打出的包使用旧包名时会出现异常。我们可以将使用包名处调整为不静态写死，改用：</strong><code>BuildConfig.APPLICATION_ID</code><strong>方式即可。</strong></p>
 <pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">static</span> String PACKAGE_NAME <span class="token operator">=</span> BuildConfig<span class="token punctuation">.</span>APPLICATION_ID<span class="token punctuation">;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h5 id="分渠道打包"><a href="#分渠道打包" class="headerlink" title="分渠道打包"></a>分渠道打包</h5><h6 id="新增meta配置"><a href="#新增meta配置" class="headerlink" title="新增meta配置"></a>新增meta配置</h6><p>我们打开<code>app/src/main/AndroidManifest.xml</code>文件，在其中新增一条<code>meta-data</code>：</p>
+<h3 id="分渠道打包"><a href="#分渠道打包" class="headerlink" title="分渠道打包"></a>分渠道打包</h3><h4 id="新增meta配置"><a href="#新增meta配置" class="headerlink" title="新增meta配置"></a>新增meta配置</h4><p>我们打开<code>app/src/main/AndroidManifest.xml</code>文件，在其中新增一条<code>meta-data</code>：</p>
 <pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta-data</span>
   <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>channel<span class="token punctuation">"</span></span>
   <span class="token attr-name"><span class="token namespace">android:</span>value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>${COM_DEVDROID_CHANNEL_VALUE}<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h6 id="Gradle配置channel"><a href="#Gradle配置channel" class="headerlink" title="Gradle配置channel"></a>Gradle配置channel</h6><p>在gradle中，使用config下的AndroidManifest.xml文件。我们打开<code>app/build.gradle</code>，在<code>android</code>项内，与<code>buildTypes</code>同级增加：</p>
+<h4 id="Gradle配置channel"><a href="#Gradle配置channel" class="headerlink" title="Gradle配置channel"></a>Gradle配置channel</h4><p>在gradle中，使用config下的AndroidManifest.xml文件。我们打开<code>app/build.gradle</code>，在<code>android</code>项内，与<code>buildTypes</code>同级增加：</p>
 <pre class="line-numbers language-groovy"><code class="language-groovy">flavorDimensions <span class="token string">"default"</span>
 <span class="token comment" spellcheck="true">//渠道Flavors</span>
 productFlavors <span class="token punctuation">{</span>
@@ -562,13 +562,13 @@ productFlavors <span class="token punctuation">{</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h6 id="按渠道编译项目"><a href="#按渠道编译项目" class="headerlink" title="按渠道编译项目"></a>按渠道编译项目</h6><p>此时我们编译项目时，会看到有多个渠道可供选择，我们可以编译出不同渠道的安装包，选择在不同应用商店使用不同的渠道包。</p>
+<h4 id="按渠道编译项目"><a href="#按渠道编译项目" class="headerlink" title="按渠道编译项目"></a>按渠道编译项目</h4><p>此时我们编译项目时，会看到有多个渠道可供选择，我们可以编译出不同渠道的安装包，选择在不同应用商店使用不同的渠道包。</p>
 <img src="image3.png" width="526.4" height="404" align="middle" />
 
 <p>打完包后，我们反编译相关包，会看到渠道名和包名如下：</p>
 <img src="image4.png" width="592.8" height="286" align="middle" />
 
-<h6 id="代码获取渠道"><a href="#代码获取渠道" class="headerlink" title="代码获取渠道"></a>代码获取渠道</h6><p>应用中在统计数据时，获取应用的渠道，便于数据分析和统计。</p>
+<h4 id="代码获取渠道"><a href="#代码获取渠道" class="headerlink" title="代码获取渠道"></a>代码获取渠道</h4><p>应用中在统计数据时，获取应用的渠道，便于数据分析和统计。</p>
 <pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
 * 获取渠道的方法
 *
@@ -591,7 +591,7 @@ productFlavors <span class="token punctuation">{</span>
 <pre><code>com.devdroid.sleepassistant D/MainActivity: channel:devdroid
 com.devdroid.sleepassistant.beta D/MainActivity: channel:huawei
 </code></pre>
-<h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><p>我们可以采用应用共存的方式，实现测试版本与正式版本等不同版本安装在相同手机，便于研发、测试及运维人员的工作与使用，满足相关需求。<br>通过应用分渠道打包，实现应用分渠道分发，针对一些推广场景中对应用分发、统计和运维分析比较友好，能够有效解决相关需求。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>我们可以采用应用共存的方式，实现测试版本与正式版本等不同版本安装在相同手机，便于研发、测试及运维人员的工作与使用，满足相关需求。<br>通过应用分渠道打包，实现应用分渠道分发，针对一些推广场景中对应用分发、统计和运维分析比较友好，能够有效解决相关需求。</p>
 
             </div>
             <hr />
@@ -936,7 +936,7 @@ com.devdroid.sleepassistant.beta D/MainActivity: channel:huawei
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="Python学习笔记（一）">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Python学习笔记（一）">
                         
                         <span class="card-title">Python学习笔记（一）</span>
                     </div>
@@ -989,7 +989,7 @@ com.devdroid.sleepassistant.beta D/MainActivity: channel:huawei
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Telegram源码分析（二）应用图标变更">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="Telegram源码分析（二）应用图标变更">
                         
                         <span class="card-title">Telegram源码分析（二）应用图标变更</span>
                     </div>
@@ -1198,7 +1198,7 @@ com.devdroid.sleepassistant.beta D/MainActivity: channel:huawei
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">131.7k</span>
+            <span class="white-color">132.4k</span>
             
 
             <br>

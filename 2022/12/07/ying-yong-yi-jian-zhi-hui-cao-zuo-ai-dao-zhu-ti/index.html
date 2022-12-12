@@ -268,7 +268,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -446,7 +446,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><p>最近发现有很多应用打开后，界面变成了灰色，纪念国家领导人。</p>
+                <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>最近发现有很多应用打开后，界面变成了灰色，纪念国家领导人。</p>
 <img src="1.jpg" width="1427.2" height="1022" align="middle" />
 
 <p>浏览器浏览网页时，发现一些网站也进行了置灰。</p>
@@ -454,7 +454,7 @@
 
 
 <p>他们是如何实现的呢？今天就研究一下。</p>
-<h4 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h4><h5 id="方法一：setSaturation"><a href="#方法一：setSaturation" class="headerlink" title="方法一：setSaturation"></a>方法一：setSaturation</h5><p>实现方式比较简单，我们直接给应用内的相关页面的图层配置灰度即可。若是应用内所有界面要求置灰，我们可以给父Activity统一设置。安卓提供了对应的接口：</p>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><h4 id="方法一：setSaturation"><a href="#方法一：setSaturation" class="headerlink" title="方法一：setSaturation"></a>方法一：setSaturation</h4><p>实现方式比较简单，我们直接给应用内的相关页面的图层配置灰度即可。若是应用内所有界面要求置灰，我们可以给父Activity统一设置。安卓提供了对应的接口：</p>
 <pre class="line-numbers language-java"><code class="language-java">Paint paint <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Paint</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 ColorMatrix colorMatrix <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ColorMatrix</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 colorMatrix<span class="token punctuation">.</span><span class="token function">setSaturation</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//设置灰度</span>
@@ -466,9 +466,7 @@ decorView<span class="token punctuation">.</span><span class="token function">se
 <p>其中关键方法是<code>setSaturation</code>，通过该方法设置矩阵的值以影响颜色的饱和度。当设置为0时，将图层颜色映射为灰度；当设置为1时，图层保持本身效果。<br>设置完成后，我们运行APP，发现效果已经置灰了。</p>
 <img src="3.png" width="368.8" height="469" align="middle" />
 
-
-
-<h5 id="方法二：使用矩阵"><a href="#方法二：使用矩阵" class="headerlink" title="方法二：使用矩阵"></a>方法二：使用矩阵</h5><p><code>setSaturation</code>是如何实现图层显示效果调整的呢？<br>查看代码，发现在<code>setSaturation</code>中，我们传入的值被转换成一个 4x5 的数字矩阵，并且借助于预置的数字进行处理，并且只影响前三行和前三列的3*3的矩阵值。<br>当我们传入0时，对应的矩阵值为：</p>
+<h4 id="方法二：使用矩阵"><a href="#方法二：使用矩阵" class="headerlink" title="方法二：使用矩阵"></a>方法二：使用矩阵</h4><p><code>setSaturation</code>是如何实现图层显示效果调整的呢？<br>查看代码，发现在<code>setSaturation</code>中，我们传入的值被转换成一个 4x5 的数字矩阵，并且借助于预置的数字进行处理，并且只影响前三行和前三列的3*3的矩阵值。<br>当我们传入0时，对应的矩阵值为：</p>
 <blockquote>
 <p>0.213f   0.715f   0.072f<br> 0.213f   0.715f   0.072f<br> 0.213f   0.715f   0.072f </p>
 </blockquote>
@@ -492,8 +490,8 @@ View decorView <span class="token operator">=</span> <span class="token function
 decorView<span class="token punctuation">.</span><span class="token function">setLayerType</span><span class="token punctuation">(</span>layerType<span class="token punctuation">,</span> paint<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>此时运行相关，效果是一样的。</p>
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>继续分析，矩阵是如何影响图层色值的呢？</p>
-<h5 id="ColorMatrix"><a href="#ColorMatrix" class="headerlink" title="ColorMatrix"></a>ColorMatrix</h5><p>在Android中，系统使用一个颜色矩阵-ColorMatrix来处理图像的色彩效果，它是一个 4x5 的数字矩阵。颜色值RGBA，分别对应着红、绿、蓝、透明度这四个通道分量，由他们共同决定每个像素点显示的颜色。<br>查看<code>ColorMatrix</code>注释，我们可以分析出来。<br>4x5矩阵，用于变换位图的颜色和alpha分量。矩阵可以作为单个数组传递，处理如下：</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>继续分析，矩阵是如何影响图层色值的呢？</p>
+<h4 id="ColorMatrix"><a href="#ColorMatrix" class="headerlink" title="ColorMatrix"></a>ColorMatrix</h4><p>在Android中，系统使用一个颜色矩阵-ColorMatrix来处理图像的色彩效果，它是一个 4x5 的数字矩阵。颜色值RGBA，分别对应着红、绿、蓝、透明度这四个通道分量，由他们共同决定每个像素点显示的颜色。<br>查看<code>ColorMatrix</code>注释，我们可以分析出来。<br>4x5矩阵，用于变换位图的颜色和alpha分量。矩阵可以作为单个数组传递，处理如下：</p>
 <blockquote>
 <p> a，b，c，d，e，<br>f、 g，h，i，j，<br>k、l，m，n，o，<br>p、q，r，s，t</p>
 </blockquote>
@@ -502,12 +500,12 @@ decorView<span class="token punctuation">.</span><span class="token function">se
 <p>R’=a<em>R+b</em>G+c<em>b+d</em>a+e；<br>G’=f<em>R+G</em>G+h<em>B+i</em>A+j；<br>B’=k<em>R+l</em>G+m<em>B+n</em>A+o；<br>A’=p<em>R+q</em>G+R<em>B+s</em>A+t；</p>
 </blockquote>
 <p>然后，生成的颜色[R’，G’，B’，A’]将每个通道控制在0到255范围内。<br>因此可以看到：第一行abcde 决定新的颜色值中的R（红色）；第二行的fghij 决定新的颜色值中的G（绿色）；第三行 klmno决定新的颜色值中的B（蓝色）；第四行 pqrst 决定新的颜色值中的A（透明度）。<br>而矩阵中的第五列（ejot） 值分别用来决定每个通道的 offset 偏移量。</p>
-<h5 id="显示原图"><a href="#显示原图" class="headerlink" title="显示原图"></a>显示原图</h5><p>我们看到<code>ColorMatrix</code>中提供有<code>reset</code>方法，传入的矩阵为：</p>
+<h4 id="显示原图"><a href="#显示原图" class="headerlink" title="显示原图"></a>显示原图</h4><p>我们看到<code>ColorMatrix</code>中提供有<code>reset</code>方法，传入的矩阵为：</p>
 <blockquote>
 <p>1, 0, 0, 0, 0,<br> 0, 1, 0, 0, 0,<br> 0, 0, 1, 0, 0,<br> 0, 0, 0, 1, 0 </p>
 </blockquote>
 <p>通过矩阵变换的计算公式，得出R1=R，G1=G，B1=B，A1=A。也就是不会对原有颜色进行任何修改，用这个矩阵来初始颜色和重置颜色。</p>
-<h5 id="显示反转"><a href="#显示反转" class="headerlink" title="显示反转"></a>显示反转</h5><p>下面的示例ColorMatrix通过将每个通道缩放-1，然后将结果上移255以保留在标准颜色空间中，来反转传入的颜色。</p>
+<h4 id="显示反转"><a href="#显示反转" class="headerlink" title="显示反转"></a>显示反转</h4><p>下面的示例ColorMatrix通过将每个通道缩放-1，然后将结果上移255以保留在标准颜色空间中，来反转传入的颜色。</p>
 <blockquote>
 <p>-1, 0, 0, 0, 255,<br> 0, -1, 0, 0, 255,<br> 0, 0, -1, 0, 255,<br> 0, 0,  0, 1, 0</p>
 </blockquote>
@@ -856,7 +854,7 @@ decorView<span class="token punctuation">.</span><span class="token function">se
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Python学习笔记（二）">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Python学习笔记（二）">
                         
                         <span class="card-title">Python学习笔记（二）</span>
                     </div>
@@ -909,7 +907,7 @@ decorView<span class="token punctuation">.</span><span class="token function">se
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="Python学习笔记（一）">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Python学习笔记（一）">
                         
                         <span class="card-title">Python学习笔记（一）</span>
                     </div>
@@ -1118,7 +1116,7 @@ decorView<span class="token punctuation">.</span><span class="token function">se
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">131.7k</span>
+            <span class="white-color">132.4k</span>
             
 
             <br>
