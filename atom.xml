@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devdroid.cn/"/>
-  <updated>2022-12-12T02:29:18.887Z</updated>
+  <updated>2022-12-13T07:59:13.648Z</updated>
   <id>https://devdroid.cn/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python元组实现数据交换</title>
+    <link href="https://devdroid.cn/2022/12/13/python-yuan-zu-shi-xian-shu-ju-jiao-huan/"/>
+    <id>https://devdroid.cn/2022/12/13/python-yuan-zu-shi-xian-shu-ju-jiao-huan/</id>
+    <published>2022-12-13T07:54:26.000Z</published>
+    <updated>2022-12-13T07:59:13.648Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;需求&quot;&gt;&lt;a href=&quot;#需求&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Python" scheme="https://devdroid.cn/categories/Python/"/>
+    
+    
+      <category term="学习" scheme="https://devdroid.cn/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="笔记" scheme="https://devdroid.cn/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>黑客帝国代码雨效果</title>
@@ -526,34 +554,6 @@
       <category term="OpenJDK" scheme="https://devdroid.cn/tags/OpenJDK/"/>
     
       <category term="OracleJDK" scheme="https://devdroid.cn/tags/OracleJDK/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>API31行为变更:组件导出</title>
-    <link href="https://devdroid.cn/2022/06/22/api31-xing-wei-bian-geng-zu-jian-dao-chu/"/>
-    <id>https://devdroid.cn/2022/06/22/api31-xing-wei-bian-geng-zu-jian-dao-chu/</id>
-    <published>2022-06-22T10:16:23.000Z</published>
-    <updated>2022-11-29T02:32:34.111Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h3 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h3&gt;&lt;p&gt;2022年5月，Android 13（API 33，
-        
-      
-    
-    </summary>
-    
-      <category term="Java" scheme="https://devdroid.cn/categories/Java/"/>
-    
-    
-      <category term="特性" scheme="https://devdroid.cn/tags/%E7%89%B9%E6%80%A7/"/>
-    
-      <category term="Android" scheme="https://devdroid.cn/tags/Android/"/>
     
   </entry>
   
