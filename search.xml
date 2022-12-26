@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Python命令跳转应用商店问题</title>
+      <link href="/2022/12/26/python-ming-ling-tiao-zhuan-ying-yong-shang-dian-wen-ti/"/>
+      <url>/2022/12/26/python-ming-ling-tiao-zhuan-ying-yong-shang-dian-wen-ti/</url>
+      
+        <content type="html"><![CDATA[<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>由于调试的项目需要使用<code>Python 3.8</code>或以下版本，而我原来安装的是<code>3.10</code>版本。因此重装了<code>Python</code>。<br>新安装我使用了<code>miniconda</code>方式，直接使用命令：<code>conda install python==3.8</code>，下方示例是重复安装，第一次安装日志会不一样。</p><pre class="line-numbers language-python"><code class="language-python">PS C<span class="token punctuation">:</span>\Users\Administrator\Desktop<span class="token operator">></span> conda install python<span class="token operator">==</span><span class="token number">3.8</span>Retrieving notices<span class="token punctuation">:</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>working<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> doneCollecting package metadata <span class="token punctuation">(</span>current_repodata<span class="token punctuation">.</span>json<span class="token punctuation">)</span><span class="token punctuation">:</span> doneSolving environment<span class="token punctuation">:</span> done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><p>安装完成后，将旧版本卸载。流程一切正常，但是就在执行<code>Python</code>命令时出了问题。<br>打开控制台，输入<code>python</code>，发现没有进入<code>Python</code>环境，反而唤起了<code>微软应用商店</code>（<code>Microsoft Store</code>）。</p><img src="tiaozhuan.png" alt="错误" width="600" align="middle" /><h3 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h3><p>出现这种问题的比较常见原因有如下几个。</p><h4 id="应用执行别名"><a href="#应用执行别名" class="headerlink" title="应用执行别名"></a>应用执行别名</h4><p>当我们在一些无意操作中，可能会未某个命令创建应用执行别名。</p><blockquote><p>应用执行别名：实现在<code>cmd</code>或者<code>power shell</code>中直接输入应用执行别名能够直接启动指定应用，而无需双击鼠标运行。<br>例如：<br>为notepad软件设计应用执行别名为word，在<code>power shell</code>中输入word按下<code>enter键</code>之后直接启动notepad软件，不需要双击鼠标打开。可以使用<code>powershell</code>命令<code>set-alias</code>和<code>new-alias</code>来实现设置应用执行别名。命令为：<code>New-Alias &quot;word&quot; &quot;C:\Windows\System32\notepad.exe&quot;</code>。</p></blockquote><p>看完这个解释，大概会明白，当我们不小心为<code>python</code>设置了应用执行别名时，此时执行命令就会直接打开对应的应用。<br>要解决这个问题也很简单。我们进入电脑搜索框，输入<code>应用执行别名</code>进行搜索，打开应用后会看到相关别名（<code>python</code>、<code>python3</code>等关键字）<strong>取消复选框</strong>即可。</p><img src="yingyongzhixingbieming.png" alt="应用执行别名" width="601.6" height="350" align="middle" /><p>取消红框里的选择框，然后重新进入<code>power shell</code>测试，发现我这边正常了。</p><pre class="line-numbers language-python"><code class="language-python">PS C<span class="token punctuation">:</span>\Users\Administrator\Desktop<span class="token operator">></span> pythonPython <span class="token number">3.8</span><span class="token punctuation">.</span><span class="token number">0</span> <span class="token punctuation">(</span>default<span class="token punctuation">,</span> Nov  <span class="token number">6</span> <span class="token number">2019</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">:</span><span class="token number">00</span><span class="token punctuation">:</span><span class="token number">02</span><span class="token punctuation">)</span> <span class="token punctuation">[</span>MSC v<span class="token number">.1916</span> <span class="token number">64</span> bit <span class="token punctuation">(</span>AMD64<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token punctuation">:</span><span class="token punctuation">:</span> Anaconda<span class="token punctuation">,</span> Inc<span class="token punctuation">.</span> on win32Type <span class="token string">"help"</span><span class="token punctuation">,</span> <span class="token string">"copyright"</span><span class="token punctuation">,</span> <span class="token string">"credits"</span> <span class="token operator">or</span> <span class="token string">"license"</span> <span class="token keyword">for</span> more information<span class="token punctuation">.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>若是取消后仍然不行，那可能是环境变量的问题。</p><h4 id="环境变量配置"><a href="#环境变量配置" class="headerlink" title="环境变量配置"></a>环境变量配置</h4><p>我们使用<code>power shell</code>命令时，系统会根据环境变量中匹配到的项进行执行。当一些指令可能存在多个匹配项时，会按照顺序执行先匹配到的变量程序。<br>此时我们可以一次打开<code>此电脑</code>–<code>鼠标右键选择“属性”</code>–<code>高级系统设置</code>–<code>高级</code>– <code>环境变量</code>，分别打开<code>用户变量</code>和<code>系统变量</code>，在<code>Path</code>变量中找到<code>%USERPROFILE%\AppData\Local\Microsoft\WindowsApps</code>，将其移到最后。</p><img src="image.png" alt="环境变量" width="432" height="286" align="middle" /><p>若是<code>系统变量</code>有改动，电脑需要重启才能生效。<br>此时我们重新执行<code>python</code>命令，会发现已经正常了。<br>若是仍然不行，我们可以再激进一些，直接删除<code>%USERPROFILE%\AppData\Local\Microsoft\WindowsApps</code>，此时再次验证功能是否正常。<strong>使用这种方法，我们就没办法直接使用应用商店的命令，也不能默认打开应用商店了</strong>。不过貌似没有什么影响。</p><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>导致一个问题出现的原因会有很多，并且可能会有好几个原因都能够导致同样的异常现象，甚至存在一个现象是由多个原因共同导致的。此时需要我们细心且有耐心的分析蛛丝马迹，多次尝试解决。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Python </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 环境 </tag>
+            
+            <tag> 学习 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Python元组实现数据交换</title>
       <link href="/2022/12/13/python-yuan-zu-shi-xian-shu-ju-jiao-huan/"/>
       <url>/2022/12/13/python-yuan-zu-shi-xian-shu-ju-jiao-huan/</url>
