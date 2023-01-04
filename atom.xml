@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devdroid.cn/"/>
-  <updated>2022-12-26T06:45:14.526Z</updated>
+  <updated>2023-01-04T09:02:24.344Z</updated>
   <id>https://devdroid.cn/</id>
   
   <author>
@@ -17,11 +17,37 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>markdown插入图片显示</title>
+    <link href="https://devdroid.cn/2023/01/04/markdown-cha-ru-tu-pian-xian-shi/"/>
+    <id>https://devdroid.cn/2023/01/04/markdown-cha-ru-tu-pian-xian-shi/</id>
+    <published>2023-01-04T08:50:04.000Z</published>
+    <updated>2023-01-04T09:02:24.344Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="技能" scheme="https://devdroid.cn/categories/%E6%8A%80%E8%83%BD/"/>
+    
+    
+      <category term="markdown" scheme="https://devdroid.cn/tags/markdown/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Python命令跳转应用商店问题</title>
     <link href="https://devdroid.cn/2022/12/26/python-ming-ling-tiao-zhuan-ying-yong-shang-dian-wen-ti/"/>
     <id>https://devdroid.cn/2022/12/26/python-ming-ling-tiao-zhuan-ying-yong-shang-dian-wen-ti/</id>
     <published>2022-12-26T06:31:54.000Z</published>
-    <updated>2022-12-26T06:45:14.526Z</updated>
+    <updated>2022-12-26T06:45:54.902Z</updated>
     
     <summary type="html">
     
@@ -528,32 +554,6 @@
     
     
       <category term="WSA" scheme="https://devdroid.cn/tags/WSA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>应用发布版本说明</title>
-    <link href="https://devdroid.cn/2022/07/01/ying-yong-fa-bu-ban-ben-shuo-ming/"/>
-    <id>https://devdroid.cn/2022/07/01/ying-yong-fa-bu-ban-ben-shuo-ming/</id>
-    <published>2022-07-01T05:21:37.000Z</published>
-    <updated>2022-11-29T02:32:59.639Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h3 id=&quot;Alpha&quot;&gt;&lt;a href=&quot;#Alpha&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="技能" scheme="https://devdroid.cn/categories/%E6%8A%80%E8%83%BD/"/>
-    
-    
-      <category term="版本号" scheme="https://devdroid.cn/tags/%E7%89%88%E6%9C%AC%E5%8F%B7/"/>
     
   </entry>
   

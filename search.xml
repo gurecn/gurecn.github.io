@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>markdown插入图片显示</title>
+      <link href="/2023/01/04/markdown-cha-ru-tu-pian-xian-shi/"/>
+      <url>/2023/01/04/markdown-cha-ru-tu-pian-xian-shi/</url>
+      
+        <content type="html"><![CDATA[<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>写博客文章时，常遇到要在内容中插入图片的情况。此时我们就需要学会如何使用markdown语法插入一张图片。常用的方式有两种：</p><h3 id="实现方案"><a href="#实现方案" class="headerlink" title="实现方案"></a>实现方案</h3><h4 id="md语法方式"><a href="#md语法方式" class="headerlink" title="md语法方式"></a>md语法方式</h4><p>语法如下：<code>![Alt属性文本](图片链接 &quot;可选标题&quot;)</code>。其中：</p><blockquote><p>Alt属性文本:为图片的替代文字。<br>图片链接：图片的链接，可以是本地图片或者是网络图片。<br>可选标题：选择性的 ‘标题’ 属性的文字描述。</p></blockquote><p>例如：</p><blockquote><p><code>![测试图片显示](https://picx.zhimg.com/66c13409f178122ff0d92eba2f53caf4_xl.jpg?source=32738c0c,&quot;卓技卓品&quot;)</code></p></blockquote><p>显示效果如下：<br><img src="https://picx.zhimg.com/66c13409f178122ff0d92eba2f53caf4_xl.jpg?source=32738c0c,%22%E5%8D%93%E6%8A%80%E5%8D%93%E5%93%81%22#crop=0&crop=0&crop=1&crop=1&id=JrXEM&originHeight=200&originWidth=200&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title="><br>采用上面的方式存在一个弊端，就是图片的<code>链接</code>不能修改。当图片链接变动时，通过指定的链接寻找图片时就会报错。此时我们可以直接指定图片内容。<br>语法如下：<code>![Alt属性文本](data:image/png;base64,图片base64str)</code>。其中图片base64str为图片原始文件进行Base64编码后的数据。采用该方法可以将图片直接放到<code>md</code>文件内，避免出现图片链接地址变化导致无法找到的问题。但是采用该方法时，<strong>由于图片文件一般较大，转换成Base64后，数据量会非常长，影响整个文档布局美观</strong>，因此不建议使用。</p><h4 id="img标签方式"><a href="#img标签方式" class="headerlink" title="img标签方式"></a>img标签方式</h4><p>采用md语法时，发现图片默认左对齐，无法实现居中、居右或等比例缩放的效果。<br>若实现以上效果，需要使用html语法中的img标签。<br>语法如下：</p><pre class="line-numbers language-python"><code class="language-python"><span class="token operator">&lt;</span>img src<span class="token operator">=</span><span class="token string">"image1.png"</span> alt<span class="token operator">=</span><span class="token string">"设置效果"</span> width<span class="token operator">=</span><span class="token string">"374.4"</span> height<span class="token operator">=</span><span class="token string">"154"</span> align<span class="token operator">=</span><span class="token string">"middle"</span> <span class="token operator">/</span><span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>其中：</p><blockquote><p>src：图片的链接，可以是本地图片（相对路径）或者是网络图片（网络地址）。<br>align：为图片布局效果，可选择top、bottom、middle、left、right。<br>alt：规定图像的替代文本。<br>width：图片的宽度，可同时指定图片的高度（height）。当不指定高度时，图片会进行等比例缩放。</p></blockquote><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>采用以上两种方式，可以基本满足各类图片的显示效果需求，同时以上两种方式支持jpg、PNG、Gif等多种类型的图片处理。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技能 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> markdown </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Python命令跳转应用商店问题</title>
       <link href="/2022/12/26/python-ming-ling-tiao-zhuan-ying-yong-shang-dian-wen-ti/"/>
       <url>/2022/12/26/python-ming-ling-tiao-zhuan-ying-yong-shang-dian-wen-ti/</url>
