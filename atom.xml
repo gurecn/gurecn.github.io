@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devdroid.cn/"/>
-  <updated>2023-01-04T09:02:24.344Z</updated>
+  <updated>2023-04-23T02:21:39.103Z</updated>
   <id>https://devdroid.cn/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>《坏血》读书笔记</title>
+    <link href="https://devdroid.cn/2023/04/23/pi-xie-du-shu-bi-ji/"/>
+    <id>https://devdroid.cn/2023/04/23/pi-xie-du-shu-bi-ji/</id>
+    <published>2023-04-23T01:17:46.000Z</published>
+    <updated>2023-04-23T02:21:39.103Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;《坏血：一个硅谷巨头的秘密与谎言》是我在2023 年阅读的第 12 本书。&lt;/p&gt;
+&lt;h3 id=&quot;（一）&quot;&gt;&lt;a href=&quot;#（一）&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="其他" scheme="https://devdroid.cn/categories/%E5%85%B6%E4%BB%96/"/>
+    
+    
+      <category term="读书笔记" scheme="https://devdroid.cn/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>markdown插入图片显示</title>
@@ -528,32 +555,6 @@
       <category term="特性" scheme="https://devdroid.cn/tags/%E7%89%B9%E6%80%A7/"/>
     
       <category term="Android" scheme="https://devdroid.cn/tags/Android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Win11 安卓子系统无法访问网络</title>
-    <link href="https://devdroid.cn/2022/07/04/win11-an-zhuo-zi-xi-tong-wu-fa-fang-wen-wang-luo/"/>
-    <id>https://devdroid.cn/2022/07/04/win11-an-zhuo-zi-xi-tong-wu-fa-fang-wen-wang-luo/</id>
-    <published>2022-07-04T09:54:23.000Z</published>
-    <updated>2022-11-29T02:43:52.697Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h2&gt;&lt;p&gt;在《&lt;a
-        
-      
-    
-    </summary>
-    
-      <category term="技能" scheme="https://devdroid.cn/categories/%E6%8A%80%E8%83%BD/"/>
-    
-    
-      <category term="WSA" scheme="https://devdroid.cn/tags/WSA/"/>
     
   </entry>
   
