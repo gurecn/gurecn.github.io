@@ -259,7 +259,7 @@
 </div>
 <script>
 // 每天切换 banner 图.  Switch banner image every day.
-$('.bg-cover').css('background-image', 'url(/medias/banner/0.jpg)');
+$('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay() + '.jpg)');
 </script>
 
     </div>
@@ -513,17 +513,6 @@ $(function () {
     </script> -->
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=查教程获取"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-        dataLayer.push(arguments);
-    }
-
-    gtag('js', new Date());
-    gtag('config', '查教程获取');
-</script>
 
 
 
