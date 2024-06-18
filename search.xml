@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>统信UOS 20专业版重置密码</title>
+      <link href="/2024/06/17/tong-xin-uos-20-zhuan-ye-ban-chong-zhi-mi-ma/"/>
+      <url>/2024/06/17/tong-xin-uos-20-zhuan-ye-ban-chong-zhi-mi-ma/</url>
+      
+        <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>公司使用的鲲泰kuntai D-526-2台式电脑预装统信UOS20专业版系统。<br>因鲲泰项目长时间搁置，电脑被同事搬到仓库，转移时未注意粘贴的密码标签，导致密码丢失。<br>而另外新项目需要编译arm版本的集成资源，采用x86环境交叉编译的方式可以编译，但存在兼容性风险。因此我们又把落灰的鲲泰电脑找回来，尝试密码登录失败，无奈进行密码重置。  </p><h2 id="实现路径"><a href="#实现路径" class="headerlink" title="实现路径"></a>实现路径</h2><p>搜索调研统信UOS系统密码重置的方案，主要方式有两种：</p><ul><li><a href="https://zhuanlan.zhihu.com/p/648892542?utm_id=0" target="_blank" rel="noopener"><del>第一种方式：在系统启动项修改</del></a></li></ul><p>通过验证，发现该方式修改失败。按照教程完成启动项内容调整后，系统仍然进入密码登录界面，无法进入控制台界面。报错信息为：</p><pre class="line-numbers language-bash"><code class="language-bash"> You are <span class="token keyword">in</span> rescue mode <span class="token keyword">.</span> After logging <span class="token keyword">in</span> , <span class="token function">type</span> <span class="token string">" journalctl - xb "</span> to vieu system logs ,<span class="token string">" systemctl reboot "</span> to <span class="token function">reboot</span> ,<span class="token string">" systemctl default "</span> or <span class="token string">" exit "</span> to boot into default mode <span class="token keyword">.</span> Cannot <span class="token function">open</span> access to console , the root account is locked <span class="token keyword">.</span> See sulogin <span class="token punctuation">(</span>8<span class="token punctuation">)</span> <span class="token function">man</span> page <span class="token keyword">for</span> <span class="token function">more</span> details <span class="token keyword">.</span> Press Enter to <span class="token keyword">continue</span> <span class="token keyword">.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><p>由于无法进入控制台执行命令，因此无法继续按照教程执行修改密码命令。<br>该方案无法继续，失败。</p><ul><li><a href="https://faq.uniontech.com/video/function/c452" target="_blank" rel="noopener">第二种方式：使用LiveCD工具进行修改</a></li></ul><p>该方案需要下载LiveCD工具，使用U盘写入工具镜像进行修改。<br>kuntai D-526-2台式机使用飞腾腾锐D2000/8 八核标准版处理器，该处理器对应的工具镜像4.4G。我们按照常规方式，下载镜像与启动U盘制作工具，制作启动盘。<br>启动盘制作完成后，按照操作说明：把U盘插入终端，开机启动项选择U盘启动，等待进入系统即可使用。（注意，我发现教程需要修改启动项内容，实际操作不需要修改，直接选择U盘启动-&gt;选择LiveCD Tools启动项即可正常进入修改可视化界面）。<br><img src="uos_reset_password.png#pic_center" alt="LiveCD工具界面"><br><strong>这个方式过程比较顺利，直接重置完成，启动电脑正常。</strong></p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol><li>LiveCD可以协助运维人员处理忘记密码、磁盘空间满、账号被锁定、分区修复等问题，降低运维难度，Linux系统的运维管理小帮手。UOS系统相关工具地址：<a href="http://livecd.uostools.com/" target="_blank" rel="noopener">uostools group</a>。</li><li>直接使用浏览器下载仅能单线程，LiveCD工具官方推荐IDM多线程下载工具。通过IDM能够达到最大8线程同步下载镜像，将下载时间从4小时缩短到50分钟。get到浏览器下载新方式。但IDM工具只支持Windows、且未购买激活码使用会持续弹框。解决方法有二：<ul><li>参考教程使用免激活版本，<a href="https://www.bilibili.com/video/BV1CE421K7dA/" target="_blank" rel="noopener">IDM 多线程下载工具，永久免费激活，详细安装教程！</a>,测试有效。</li><li>更换其他多线程下载工具，<a href="https://zhuanlan.zhihu.com/p/689855290" target="_blank" rel="noopener">告别迅雷和idm，更好用的下载工具来了</a>，亲测fdm在Ubuntu可行。</li></ul></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> UOS </tag>
+            
+            <tag> 信创 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>写在六一儿童节之后</title>
       <link href="/2024/06/13/xie-zai-liu-yi-er-tong-jie-zhi-hou/"/>
       <url>/2024/06/13/xie-zai-liu-yi-er-tong-jie-zhi-hou/</url>
