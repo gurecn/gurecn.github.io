@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.emzz.cn/"/>
-  <updated>2024-06-18T05:18:49.022Z</updated>
+  <updated>2024-06-19T01:55:47.896Z</updated>
   <id>https://www.emzz.cn/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Github博客搭建避坑指南</title>
+    <link href="https://www.emzz.cn/2024/06/19/hexo-github-bo-ke-da-jian-bi-keng-zhi-nan/"/>
+    <id>https://www.emzz.cn/2024/06/19/hexo-github-bo-ke-da-jian-bi-keng-zhi-nan/</id>
+    <published>2024-06-19T01:26:31.000Z</published>
+    <updated>2024-06-19T01:55:47.896Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;缘由&quot;&gt;&lt;a href=&quot;#缘由&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Web" scheme="https://www.emzz.cn/categories/Web/"/>
+    
+    
+      <category term="Hexo" scheme="https://www.emzz.cn/tags/Hexo/"/>
+    
+      <category term="博客" scheme="https://www.emzz.cn/tags/%E5%8D%9A%E5%AE%A2/"/>
+    
+      <category term="搭建" scheme="https://www.emzz.cn/tags/%E6%90%AD%E5%BB%BA/"/>
+    
+  </entry>
   
   <entry>
     <title>写在父亲节之后</title>
@@ -103,7 +133,7 @@
     <link href="https://www.emzz.cn/2024/06/12/5w2h-godweiyang/"/>
     <id>https://www.emzz.cn/2024/06/12/5w2h-godweiyang/</id>
     <published>2024-06-12T07:27:31.000Z</published>
-    <updated>2024-06-17T02:23:20.672Z</updated>
+    <updated>2024-06-19T01:28:13.750Z</updated>
     
     <summary type="html">
     
@@ -117,10 +147,10 @@
     
     </summary>
     
-      <category term="随笔" scheme="https://www.emzz.cn/categories/%E9%9A%8F%E7%AC%94/"/>
+      <category term="Web" scheme="https://www.emzz.cn/categories/Web/"/>
     
     
-      <category term="博客" scheme="https://www.emzz.cn/tags/%E5%8D%9A%E5%AE%A2/"/>
+      <category term="随笔" scheme="https://www.emzz.cn/tags/%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   

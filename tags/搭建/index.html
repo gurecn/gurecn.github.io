@@ -4,11 +4,11 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content=" Android Framework | 计算机科学与技术 | Java Virtual Machine ">
+    <meta name="keywords" content="标签: 搭建,  Android Framework | 计算机科学与技术 | Java Virtual Machine ">
     <meta name="baidu-site-verification" content="fmlEuI34ir">
     <meta name="google-site-verification" content="yCy2azpds5XSuGZvis6OuA-XIGF5GuGpYRAaGfD6o48">
     <meta name="360-site-verification" content="b7c11a830ef90fd1464ad6206bb7b6e7">
-    <meta name="description" content="卓技卓品">
+    <meta name="description" content="标签: 搭建 | 卓技卓品">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +16,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>卓技卓品</title>
+    <title>标签: 搭建 | 卓技卓品</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -234,56 +234,9 @@
 
 </header>
 
-    
-<style>
-    .carousel-control {
-        width: 45px;
-        height: 45px;
-        line-height: 55px;
-        border-radius: 45px;
-        background: transparent;
-        cursor: pointer;
-        z-index: 100;
-    }
-
-    #prev-cover {
-        position: absolute;
-        top: 48%;
-        left: 8px;
-    }
-
-    #next-cover {
-        position: absolute;
-        top: 48%;
-        right: 8px;;
-    }
-
-    #prev-cover i {
-        margin-right: 3px;
-    }
-
-    #next-cover i {
-        margin-left: 3px;
-    }
-
-    .carousel-control:hover {
-        background-color:rgba(0, 0, 0, .4);
-    }
-
-    .carousel-control i {
-        color: #fff;
-        font-size: 2.4rem;
-    }
-</style>
-
-
-
-<div class="carousel carousel-slider center index-cover" data-indicators="true" style="margin-top: -64px;">
-    
-
-    <div class="carousel-item red white-text bg-cover about-cover">
-        <div class="container">
-            <div class="row">
+    <div class="bg-cover pd-header about-cover">
+    <div class="container">
+    <div class="row">
     <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
         <div class="brand">
             <div class="title center-align">
@@ -291,7 +244,7 @@
                     源于技术，止于卓品
                  -->
                 
-                    源于技术，止于卓品
+                    标签
                 
             </div>
 
@@ -309,133 +262,99 @@
 $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay() + '.jpg)');
 </script>
 
-
-            <div class="cover-btns">
-                <a href="#indexCard" class="waves-effect waves-light btn">
-                    <i class="fa fa-angle-double-down"></i>开始阅读
-                </a>
-
-                
-                <a href="https://github.com/gurecn" class="waves-effect waves-light btn" target="_blank">
-                    <i class="fa fa-github-alt"></i>Github
-                </a>
-                
-            </div>
-            <div class="cover-social-link">
-    <a href="https://github.com/gurecn" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-        <i class="fa fa-github"></i>
-    </a>
-
-
-
-    <a href="mailto:gurecn@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-        <i class="fa fa-envelope-open"></i>
-    </a>
-
-
-
-    <a href="https://zhihu.com/people/gurecn" class="tooltipped" target="_blank" data-tooltip="访问我的知乎" data-position="top" data-delay="50">
-        <i class="fa fa-inverse">知</i>
-    </a>
-
-
-
-    <a href="http://wpa.qq.com/msgrd?v=3&uin=755383249&site=qq&menu=yes" class="tooltipped" target="_blank" data-tooltip="访问我的知乎" data-position="top" data-delay="50">
-        <i class="fa fa-qq"></i>
-    </a>
-
-
-
-
-
-    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
-        <i class="fa fa-rss"></i>
-    </a>
-</div>
-        </div>
     </div>
-
-    
 </div>
-
-<script>
-$(function () {
-    let coverSlider = $('.carousel');
-    coverSlider.carousel({
-        duration: Number('120'),
-        fullWidth: true,
-        indicators: 'true' === 'true'
-    });
-
-    let carouselIntervalId;
-    
-    // Loop to call the next cover article picture.
-    let autoCarousel = function() {
-        carouselIntervalId = setInterval(function () {
-            coverSlider.carousel('next');
-        }, 5000);
-    };
-    autoCarousel();
-    
-
-    let restartPlay = function () {
-        
-        clearInterval(carouselIntervalId);
-        autoCarousel();
-        
-    };
-
-    
-    // prev and next cover post.
-    $('#prev-cover').click(function () {
-        coverSlider.carousel('prev');
-        restartPlay();
-    });
-    $('#next-cover').click(function () {
-        coverSlider.carousel('next');
-        restartPlay();
-    });
-    
-});
-</script>
-
-
 
 <main class="content">
 
     
-    <div id="indexCard" class="index-card">
-        <div class="container ">
-            <div class="card">
-                <div class="card-content">
-                    
 
-                    
-
-                    
-
-                    <div id="recommend-sections" class="recommend">
-                        
-
-
-
-                    </div>
-                </div>
+<div id="tags" class="container chip-container">
+    <div class="card">
+        <div class="card-content">
+            <div class="tag-title center-align">
+                <i class="fa fa-tags"></i>&nbsp;&nbsp;文章标签
+            </div>
+            <div class="tag-chips">
+                
+                
+                <a href="/tags/随笔/" title="随笔: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="随笔" style="background-color: #F9EBEA;">随笔
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/Hexo/" title="Hexo: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="Hexo" style="background-color: #F5EEF8;">Hexo
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/博客/" title="博客: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="博客" style="background-color: #D5F5E3;">博客
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/搭建/" title="搭建: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-active "
+                            data-tagname="搭建" style="background-color: #E8F8F5;">搭建
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/感悟/" title="感悟: 2">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="感悟" style="background-color: #FEF9E7;">感悟
+                        <span class="tag-length">2</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/UOS/" title="UOS: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="UOS" style="background-color: #F8F9F9;">UOS
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/信创/" title="信创: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="信创" style="background-color: #82E0AA;">信创
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
             </div>
         </div>
     </div>
-    
+</div>
 
     
 
-    <!-- 所有文章卡片 -->
     <article id="articles" class="container articles">
-        <div class="row article-row">
+        <div class="row tags-posts">
             
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
+            
+            <div class="article tag-post col s12 m6 l4" data-tags="Hexo, 博客, 搭建" data-aos="fade-up">
                 <div class="card">
-                    <a href="/2024/06/19/hexo-github-bo-ke-da-jian-bi-keng-zhi-nan/" target="_blank">
-                        <div class="card-image">
+                    <a href="/2024/06/19/hexo-github-bo-ke-da-jian-bi-keng-zhi-nan/">
+                        <div class="card-image tag-image">
                             
                             
                             <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="Github博客搭建避坑指南">
@@ -443,15 +362,7 @@ $(function () {
                             <span class="card-title">Github博客搭建避坑指南</span>
                         </div>
                     </a>
-
                     <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                            缘由阿里云服务器到期，财力问题未继续付费，所以基于github免费搭建一套个人博客。由于我非前端开发人员，本次博客系统搭建主要参考韦阳的小白搭建教程，在此感谢韦阳细致的部署教程，韦阳部署教程链接如下：
-
-超详细Hexo+Github博客搭建
-                            
-                        </div>
                         <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2024-06-19
@@ -461,240 +372,18 @@ $(function () {
                                 <i class="fa fa-bookmark fa-fw icon-category"></i>
                                 
                                 <a href="/categories/Web/" class="post-category" target="_blank">
-                                    Web
+                                Web
                                 </a>
                                 
                                 
                             </span>
                         </div>
                     </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/Hexo/" target="_blank">
-                            <span class="chip bg-color">Hexo</span>
-                        </a>
-                        
-                        <a href="/tags/博客/" target="_blank">
-                            <span class="chip bg-color">博客</span>
-                        </a>
-                        
-                        <a href="/tags/搭建/" target="_blank">
-                            <span class="chip bg-color">搭建</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2024/06/18/xie-zai-fu-qin-jie-zhi-hou/" target="_blank">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/24.jpg" class="responsive-img" alt="写在父亲节之后">
-                            
-                            <span class="card-title">写在父亲节之后</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                            
-
-
-
-刚过去的周末，带着对世界充满好奇与期待的依依冉冉、带着一家人驱车600多公里到日照去看海。  
-大海存在小孩子的幻想里，依依5岁、冉冉2岁都还没见过海。他们从书本和我们的讲述里知道蓝色的大海、金色的沙滩、呜呜的轮船和丰富的海生动物。
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2024-06-18
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/随笔/" class="post-category" target="_blank">
-                                    随笔
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/感悟/" target="_blank">
-                            <span class="chip bg-color">感悟</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2024/06/17/tong-xin-uos-20-zhuan-ye-ban-chong-zhi-mi-ma/" target="_blank">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="统信UOS 20专业版重置密码">
-                            
-                            <span class="card-title">统信UOS 20专业版重置密码</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                            背景公司使用的鲲泰kuntai D-526-2台式电脑预装统信UOS20专业版系统。因鲲泰项目长时间搁置，电脑被同事搬到仓库，转移时未注意粘贴的密码标签，导致密码丢失。而另外新项目需要编译arm版本的集成资源，采用x86环境交叉编译的方式可
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2024-06-17
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/Linux/" class="post-category" target="_blank">
-                                    Linux
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/UOS/" target="_blank">
-                            <span class="chip bg-color">UOS</span>
-                        </a>
-                        
-                        <a href="/tags/信创/" target="_blank">
-                            <span class="chip bg-color">信创</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2024/06/13/xie-zai-liu-yi-er-tong-jie-zhi-hou/" target="_blank">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="写在六一儿童节之后">
-                            
-                            <span class="card-title">写在六一儿童节之后</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                            
-
-
-
-今年六一儿童节被这首大合唱【星河合唱】一首《童年》带你们开启回忆的时光机…感动了。
-儿童节已过半月，感动还停留在心间。仔细品味，或许真正会对童年有所触动的，是早已经走过童年、少年的中年和老年吧。  
-蓦然回首，吃惊地发现自己离儿时已
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2024-06-13
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/随笔/" class="post-category" target="_blank">
-                                    随笔
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/感悟/" target="_blank">
-                            <span class="chip bg-color">感悟</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2024/06/12/5w2h-godweiyang/" target="_blank">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="关于写博客的七点反思">
-                            
-                            <span class="card-title">关于写博客的七点反思</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                            When？什么时候开始写的？第一次写博客是 2015 年了，在 CSDN 和博客园上面，当时写文章是为了记录 ACM 竞赛的题解，陆陆续续写了几十篇。但是最后还是没有坚持下去，主要还是因为 CSDN 和博客园的体验太差了，写起文章来很难受，
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2024-06-12
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/Web/" class="post-category" target="_blank">
-                                    Web
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/随笔/" target="_blank">
-                            <span class="chip bg-color">随笔</span>
-                        </a>
-                        
-                    </div>
-                    
                 </div>
             </div>
             
         </div>
     </article>
-
 </main>
 
 
