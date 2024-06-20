@@ -4,11 +4,13 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="统信UOS 20专业版重置密码,  Android Framework | 计算机科学与技术 | Java Virtual Machine ">
+    <meta name="keywords" content="遗憾不能相帮,  Android Framework | 计算机科学与技术 | Java Virtual Machine ">
     <meta name="baidu-site-verification" content="fmlEuI34ir">
     <meta name="google-site-verification" content="yCy2azpds5XSuGZvis6OuA-XIGF5GuGpYRAaGfD6o48">
     <meta name="360-site-verification" content="b7c11a830ef90fd1464ad6206bb7b6e7">
-    <meta name="description" content="背景公司使用的鲲泰kuntai D-526-2台式电脑预装统信UOS20专业版系统。因鲲泰项目长时间搁置，电脑被同事搬到仓库，转移时未注意粘贴的密码标签，导致密码丢失。而另外新项目需要编译arm版本的集成资源，采用x86环境交叉编译的方式可">
+    <meta name="description" content="这几天堂哥来郑州开网约车，带着他报名、体检、考试、拿证、熟悉。家人说，他就是你堂哥，力所能及帮助一下就行，为什么这么用心呢？
+是啊，为什么这么上心呢？这要从很久以前的一件非常遗憾的往事说起。
+在我八岁时父亲因病去世，家里陷入深渊。本来就贫困">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +18,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>统信UOS 20专业版重置密码 | 忆梦之舟</title>
+    <title>遗憾不能相帮 | 忆梦之舟</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -215,13 +217,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/28.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        统信UOS 20专业版重置密码
+                        遗憾不能相帮
                     </div>
                 </div>
             </div>
@@ -332,12 +334,8 @@
                     
                     <div class="article-tag">
                         
-                        <a href="/tags/UOS/" target="_blank">
-                            <span class="chip bg-color">UOS</span>
-                        </a>
-                        
-                        <a href="/tags/信创/" target="_blank">
-                            <span class="chip bg-color">信创</span>
+                        <a href="/tags/感悟/" target="_blank">
+                            <span class="chip bg-color">感悟</span>
                         </a>
                         
                     </div>
@@ -348,8 +346,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                        <a href="/categories/Linux/" class="post-category" target="_blank">
-                            Linux
+                        <a href="/categories/随笔/" class="post-category" target="_blank">
+                            随笔
                         </a>
                         
                     </div>
@@ -360,7 +358,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2024-06-17
+                    2024-06-20
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -374,14 +372,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    764
+                    906
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    3 分
                 </div>
                 
                 
@@ -397,29 +395,16 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>公司使用的鲲泰kuntai D-526-2台式电脑预装统信UOS20专业版系统。<br>因鲲泰项目长时间搁置，电脑被同事搬到仓库，转移时未注意粘贴的密码标签，导致密码丢失。<br>而另外新项目需要编译arm版本的集成资源，采用x86环境交叉编译的方式可以编译，但存在兼容性风险。因此我们又把落灰的鲲泰电脑找回来，尝试密码登录失败，无奈进行密码重置。  </p>
-<h2 id="实现路径"><a href="#实现路径" class="headerlink" title="实现路径"></a>实现路径</h2><p>搜索调研统信UOS系统密码重置的方案，主要方式有两种：</p>
-<ul>
-<li><a href="https://zhuanlan.zhihu.com/p/648892542?utm_id=0" target="_blank" rel="noopener"><del>第一种方式：在系统启动项修改</del></a></li>
-</ul>
-<p>通过验证，发现该方式修改失败。按照教程完成启动项内容调整后，系统仍然进入密码登录界面，无法进入控制台界面。报错信息为：</p>
-<pre class="line-numbers language-bash"><code class="language-bash"> You are <span class="token keyword">in</span> rescue mode <span class="token keyword">.</span> After logging <span class="token keyword">in</span> , <span class="token function">type</span> <span class="token string">" journalctl - xb "</span> to vieu system logs ,<span class="token string">" systemctl reboot "</span> to <span class="token function">reboot</span> ,<span class="token string">" systemctl default "</span> or <span class="token string">" exit "</span> to boot into default mode <span class="token keyword">.</span>
- Cannot <span class="token function">open</span> access to console , the root account is locked <span class="token keyword">.</span>
- See sulogin <span class="token punctuation">(</span>8<span class="token punctuation">)</span> <span class="token function">man</span> page <span class="token keyword">for</span> <span class="token function">more</span> details <span class="token keyword">.</span>
- Press Enter to <span class="token keyword">continue</span> <span class="token keyword">.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>由于无法进入控制台执行命令，因此无法继续按照教程执行修改密码命令。<br>该方案无法继续，失败。</p>
-<ul>
-<li><a href="https://faq.uniontech.com/video/function/c452" target="_blank" rel="noopener">第二种方式：使用LiveCD工具进行修改</a></li>
-</ul>
-<p>该方案需要下载LiveCD工具，使用U盘写入工具镜像进行修改。<br>kuntai D-526-2台式机使用飞腾腾锐D2000/8 八核标准版处理器，该处理器对应的工具镜像4.4G。我们按照常规方式，下载镜像与启动U盘制作工具，制作启动盘。<br>启动盘制作完成后，按照操作说明：把U盘插入终端，开机启动项选择U盘启动，等待进入系统即可使用。（注意，我发现教程需要修改启动项内容，实际操作不需要修改，直接选择U盘启动-&gt;选择LiveCD Tools启动项即可正常进入修改可视化界面）。<br><img src="uos_reset_password.png#pic_center" alt="LiveCD工具界面"><br><strong>这个方式过程比较顺利，直接重置完成，启动电脑正常。</strong></p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol>
-<li>LiveCD可以协助运维人员处理忘记密码、磁盘空间满、账号被锁定、分区修复等问题，降低运维难度，Linux系统的运维管理小帮手。UOS系统相关工具地址：<a href="http://livecd.uostools.com/" target="_blank" rel="noopener">uostools group</a>。</li>
-<li>直接使用浏览器下载仅能单线程，LiveCD工具官方推荐IDM多线程下载工具。通过IDM能够达到最大8线程同步下载镜像，将下载时间从4小时缩短到50分钟。get到浏览器下载新方式。但IDM工具只支持Windows、且未购买激活码使用会持续弹框。解决方法有二：<ul>
-<li>参考教程使用免激活版本，<a href="https://www.bilibili.com/video/BV1CE421K7dA/" target="_blank" rel="noopener">IDM 多线程下载工具，永久免费激活，详细安装教程！</a>,测试有效。</li>
-<li>更换其他多线程下载工具，<a href="https://zhuanlan.zhihu.com/p/689855290" target="_blank" rel="noopener">告别迅雷和idm，更好用的下载工具来了</a>，亲测fdm在Ubuntu可行。</li>
-</ul>
-</li>
-</ol>
+                <p>这几天堂哥来郑州开网约车，带着他报名、体检、考试、拿证、熟悉。家人说，他就是你堂哥，力所能及帮助一下就行，为什么这么用心呢？</p>
+<p>是啊，为什么这么上心呢？这要从很久以前的一件非常遗憾的往事说起。</p>
+<p>在我八岁时父亲因病去世，家里陷入深渊。本来就贫困，为父亲治病又从亲朋、邻居间借下大量债务。家里的牛羊、麦子被债主直接拉走抵债；母亲白天不敢出门，把我赶出家门、从门外上锁，只为让债主以为家中无人。</p>
+<p>那时的我们像病毒，亲戚害怕我们上门，因为上门大概就是借钱。学习成绩最好的二哥因家中拮据，在初三就辍学到广州修车铺做学徒、学修车。往事太艰辛，诉说不尽，不堪回首。</p>
+<p>等我上高中时，母亲开始去山东阿香米线快餐店打工，来偿还家中债务。我的学费主要是依靠慈善会和张慕新叔叔的资助。</p>
+<p>此时二哥学修车已好几年，技术已经成熟。有一个机会：他一朋友希望和他一起开修车店，朋友提供主要资金，二哥主要出技术，当然二哥如果能出小部分资金更好，便于股份划分。但是他学徒期间工资只够生活，没有任何储蓄。</p>
+<p>那天他打电话回来，希望能让我帮他贷款，不需要太多，只需要贷五千元。我请假回到家，找到我们村在银行工作的异性长辈，说明了诉求。异性长辈表示，贷款需要有贷款人和担保人，像我这样的还在上高中的学生来说，担保人需要有两对已婚的夫妻才行。他建议我找大伯、二伯，因为是叔伯，直有这种关系才可能帮助我们。但当我找到他们，他们却对担保工作非常抵触。可能是因为我是小孩子，可能是觉得二哥做不成，也可能是因为我家太贫困，担心还不起。最终，没有贷款成功。</p>
+<p>当时我各种好话劝说，想尽一切办法解决，多想为二哥做成一件事啊。但这终究成了一个长久埋藏在心底的遗憾。回到学校后，我哭着给二哥诉说着遭遇，不仅是没有贷款成功，同时还为自己委屈，为自己无奈。这就是遗憾不能相帮。</p>
+<p>现在，经济形势直下，堂哥外出找不到工作。所以想来到郑州开网约车试一下，希望通过这种方式在郑州落脚。我的工作性质没办法像工厂、饭店，给老家的亲朋提供工作岗位，所以只能在流程上提供帮助。之前闲暇时，我曾开过顺风车，用自己的车开过网约车，所以对整个流程和开车注意事项也相对熟悉。而堂哥手机、车技不熟悉，郑州粒矿业不熟悉。我就请假陪他走流程，给他压车，让他尽快熟悉。</p>
+<p>堂哥也算亲人，不管之前怎么样，我不想让未来的自己在回顾此刻的自己时，心里有什么负担或者遗憾。所以我愿意全力以赴的提供帮助，而不是力所能及。我想，这样心中就不会再留下什么遗憾了吧。</p>
 
             </div>
             <hr />
@@ -454,9 +439,9 @@
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《统信UOS 20专业版重置密码》
+                    《遗憾不能相帮》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2024/06/17/tong-xin-uos-20-zhuan-ye-ban-chong-zhi-mi-ma/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2024/06/20/yi-han-bu-neng-xiang-bang/" property="cc:attributionName"
                rel="cc:attributionURL">
                 gure
             </a> 采用
@@ -496,34 +481,32 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2024/06/18/xie-zai-fu-qin-jie-zhi-hou/">
+                <a href="/2024/06/20/yi-han-bu-neng-xiang-bang/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="写在父亲节之后">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="遗憾不能相帮">
                         
-                        <span class="card-title">写在父亲节之后</span>
+                        <span class="card-title">遗憾不能相帮</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
-
-
-
-刚过去的周末，带着对世界充满好奇与期待的依依冉冉、带着一家人驱车600多公里到日照去看海。  
-大海存在小孩子的幻想里，依依5岁、冉冉2岁都还没见过海。他们从书本和我们的讲述里知道蓝色的大海、金色的沙滩、呜呜的轮船和丰富的海生动物。
+                            这几天堂哥来郑州开网约车，带着他报名、体检、考试、拿证、熟悉。家人说，他就是你堂哥，力所能及帮助一下就行，为什么这么用心呢？
+是啊，为什么这么上心呢？这要从很久以前的一件非常遗憾的往事说起。
+在我八岁时父亲因病去世，家里陷入深渊。本来就贫困
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2024-06-18
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2024-06-20
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -536,6 +519,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -554,37 +538,33 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/06/13/xie-zai-liu-yi-er-tong-jie-zhi-hou/">
+                <a href="/2024/06/19/hexo-github-bo-ke-da-jian-bi-keng-zhi-nan/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="写在六一儿童节之后">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="Github博客搭建避坑指南">
                         
-                        <span class="card-title">写在六一儿童节之后</span>
+                        <span class="card-title">Github博客搭建避坑指南</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            缘由阿里云服务器到期，财力问题未继续付费，所以基于github免费搭建一套个人博客。由于我非前端开发人员，本次博客系统搭建主要参考韦阳的小白搭建教程，在此感谢韦阳细致的部署教程，韦阳部署教程链接如下：
 
-
-
-今年六一儿童节被这首大合唱【星河合唱】一首《童年》带你们开启回忆的时光机…感动了。
-儿童节已过半月，感动还停留在心间。仔细品味，或许真正会对童年有所触动的，是早已经走过童年、少年的中年和老年吧。  
-蓦然回首，吃惊地发现自己离儿时已
+超详细Hexo+Github博客搭建
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2024-06-13
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2024-06-19
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/随笔/" class="post-category" target="_blank">
-                                    随笔
+                            <a href="/categories/Web/" class="post-category" target="_blank">
+                                    Web
                                 </a>
                             
                             
@@ -594,8 +574,16 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/感悟/" target="_blank">
-                        <span class="chip bg-color">感悟</span>
+                    <a href="/tags/Hexo/" target="_blank">
+                        <span class="chip bg-color">Hexo</span>
+                    </a>
+                    
+                    <a href="/tags/博客/" target="_blank">
+                        <span class="chip bg-color">博客</span>
+                    </a>
+                    
+                    <a href="/tags/搭建/" target="_blank">
+                        <span class="chip bg-color">搭建</span>
                     </a>
                     
                 </div>
