@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>使用Gradle获取Git记录</title>
+      <link href="/2024/06/24/shi-yong-gradle-huo-qu-git-ji-lu/"/>
+      <url>/2024/06/24/shi-yong-gradle-huo-qu-git-ji-lu/</url>
+      
+        <content type="html"><![CDATA[<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>开源的雨燕输入法项目中，在<code>关于界面</code>要实现显示Git提交记录以及点击条目跳转到对应的Github提交节点。<br>之前的方案是，在每次打包前手动更改对应的值，不但麻烦，且易出错。<br>技术上分析，一旦打包完成，应用内不具备Git环境，因此没办法通过Java代码在运行时动态获取相关属性。<br>项目使用Gradle方式构建，那么如何在编译、构建时获取Git最新记录及提交时间等属性呢？</p><h3 id="前置条件"><a href="#前置条件" class="headerlink" title="前置条件"></a>前置条件</h3><ul><li>项目已正常初始化Git资源，并已存在提交记录。</li><li>项目使用<code>Groovy</code>方式构建。由于雨燕输入法项目使用Groovy构建，因此该文章介绍使用该构建方案。</li></ul><pre><code>Android Gradle插件4.0支持使用Kotlin脚本(KTS)，用于替代Groovy。KTS比Groovy更适合编写Gradle脚本，Kotlin代码可读性更高，且提供更好的编译时检查和IDE支持。</code></pre><h3 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h3><ul><li>创建方法，获取对应值<br>在子模块<code>build.gradle</code>中，定义方法获取对应的值：</li></ul><pre><code>apply plugin: &#39;org.jetbrains.kotlin.android&#39;// kotlinapply plugin: &#39;kotlin-android&#39; def getAPPGitHead() {    return &quot;git rev-parse HEAD&quot;.execute().text.trim()}def getAPPBuildTime() {    return &quot;git log -1 --pretty=%ai&quot;.execute().text.trim()} android {    compileSdk 34    // ...  省略对应内容} </code></pre><ul><li>执行方法，动态创建变量并赋值<br>在子模块<code>build.gradle</code>中，执行构建方法<code>buildTypes</code>时，调用方法，并动态创建<code>AppCommitHead</code>、<code>AppBuildTime</code>变量存储Git属性。</li></ul><pre><code>android {    compileSdk 34    buildTypes {        release {            minifyEnabled true            proguardFiles getDefaultProguardFile(&#39;proguard-android-optimize.txt&#39;), &#39;proguard.cfg&#39;            def APP_GIT_COMMIT_HEAD = getAPPGitHead()            buildConfigField &quot;String&quot;, &quot;AppCommitHead&quot;, &quot;\&quot;${APP_GIT_COMMIT_HEAD}\&quot;&quot;            def APP_GIT_COMMIT_TIME = getAPPBuildTime()            buildConfigField &quot;String&quot;, &quot;AppBuildTime&quot;, &quot;\&quot;${APP_GIT_COMMIT_TIME}\&quot;&quot;        }        debug {            def APP_GIT_COMMIT_HEAD = getAPPGitHead()            buildConfigField &quot;String&quot;, &quot;AppCommitHead&quot;, &quot;\&quot;${APP_GIT_COMMIT_HEAD}\&quot;&quot;            def APP_GIT_COMMIT_TIME = getAPPBuildTime()            buildConfigField &quot;String&quot;, &quot;AppBuildTime&quot;, &quot;\&quot;${APP_GIT_COMMIT_TIME}\&quot;&quot;        }    }}</code></pre><ul><li>项目中调用变量<br>在项目中使用Java或Kotlin代码，通过BuildConfig使用对应的值。</li></ul><pre><code>    addCategory(R.string.version) {        addPreference(R.string.app_version, BuildConfig.AppCommitId)        addPreference(R.string.app_build_git_hash, BuildConfig.AppCommitHead) {            val commit = BuildConfig.AppCommitHead.substringBefore(&#39;-&#39;)            val uri = Uri.parse(&quot;${CustomConstant.YuyanSDKRepo}/commit/${commit}&quot;)            startActivity(Intent(Intent.ACTION_VIEW, uri))        }        addPreference(R.string.app_build_time, BuildConfig.AppBuildTime)        addPreference(R.string.sdk_version, BuildConfig.SdkCommitId)    }</code></pre><p>查看效果：<br><img src="gradle_git.webp" alt="Gradle获取Git记录"></p><h3 id="问题记录"><a href="#问题记录" class="headerlink" title="问题记录"></a>问题记录</h3><ol><li>通过<code>buildConfigField</code>动态构建变量未成功。<br>发现编译时报错：</li></ol><pre><code>* What went wrongA problem occurred configuring project &#39;:app&#39;.&gt; defaultConfig contains custom BuildConfig fields, but the feature is disabled.</code></pre><p>原因在8.x版本的gradle插件中，<code>buildConfigField</code>功能被禁用。<br>解决方式是在build.gradle中添加：</p><pre><code>buildFeatures {    buildConfig = true}</code></pre><ol start="2"><li>获取其他路径或子模块Git记录。<br><code>Gradle</code>支持调用Git命令时，指定Git资源路径,我们能通过指定绝对路径的方式获取其他路径的Git记录：</li></ol><pre><code>def getSDKGitRevision() {    return &quot;git --git-dir=/home/gure/devproject/YuyanIme/yuyansdk/.git rev-parse --short HEAD&quot;.execute().text.trim()}</code></pre><p>通过这种方式，我们获取<code>yuyansdk</code>的Git提交情况。</p><ol start="3"><li>Git Rev-Parse命令<br>Git命令行工具中的低级命令，用于输出Git引用的确切值，通常用于脚本中，确保脚本能正确识别分支、标签或提交。常用参数：</li></ol><pre><code>    --abbrev-ref &lt;ref&gt;：输出给定引用的简化形式，通常用于分支名称。    --symbolic：输出引用的完整名称，而不是其SHA-1值。    --verify：尝试验证给定的引用，并确保它存在。如果引用不存在，命令将返回错误。    --short：输出给定对象的短SHA-1哈希值。    --show-prefix：显示从当前工作目录到仓库根目录的路径。    --show-toplevel：显示当前仓库的顶级目录。    --git-dir：显示或打印Git目录的路径。    --show-cdup：显示从当前工作目录到仓库顶级目录的相对路径。    --is-inside-git-dir：如果当前目录是Git目录的一部分，则输出true。    --is-inside-work-tree：如果当前目录是Git工作树的一部分，则输出true。    --is-bare-repository：如果当前仓库是裸仓库，则输出true。    --is-shallow-repository：如果当前仓库是浅克隆仓库，则输出true。    --default &lt;arg&gt;：如果给定的引用不存在，则使用默认值。    --all：显示所有引用。    --branches：显示所有本地分支。    --tags：显示所有标签。    --remotes：显示所有远程跟踪分支。    --quiet：不输出错误信息。    --prefix：输出给定对象的引用前缀。    --max-count &lt;n&gt;：仅输出最多n个匹配的引用。    --min-candidates &lt;n&gt;：在搜索引用时，至少需要n个匹配项。    --no-min-candidates：忽略--min-candidates的限制。    --no-max-count：忽略--max-count的限制。    --no-walk：不进行引用的遍历搜索。    --no-walk-reflogs：不通过reflog来搜索引用。    --no-walk-reachable：不搜索可达的引用。    --no-walk-tags：不搜索标签。    --sort-by &lt;key&gt;：按指定的键对输出的引用进行排序。</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> Android </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Gradle </tag>
+            
+            <tag> Git </tag>
+            
+            <tag> 雨燕输入法 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>遗憾不能相帮</title>
       <link href="/2024/06/20/yi-han-bu-neng-xiang-bang/"/>
       <url>/2024/06/20/yi-han-bu-neng-xiang-bang/</url>
