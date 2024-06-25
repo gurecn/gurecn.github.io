@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.emzz.cn/"/>
-  <updated>2024-06-24T03:18:21.815Z</updated>
+  <updated>2024-06-25T03:05:00.491Z</updated>
   <id>https://www.emzz.cn/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>使用Gradle获取Git记录</title>
-    <link href="https://www.emzz.cn/2024/06/24/shi-yong-gradle-huo-qu-git-ji-lu/"/>
-    <id>https://www.emzz.cn/2024/06/24/shi-yong-gradle-huo-qu-git-ji-lu/</id>
-    <published>2024-06-24T03:01:31.000Z</published>
-    <updated>2024-06-24T03:18:21.815Z</updated>
+    <title>Kotlin全局变量后置初始化</title>
+    <link href="https://www.emzz.cn/2024/06/25/kotlin-quan-ju-bian-liang-hou-zhi-chu-shi-hua/"/>
+    <id>https://www.emzz.cn/2024/06/25/kotlin-quan-ju-bian-liang-hou-zhi-chu-shi-hua/</id>
+    <published>2024-06-25T02:56:16.000Z</published>
+    <updated>2024-06-25T03:05:00.491Z</updated>
     
     <summary type="html">
     
@@ -29,7 +29,37 @@
       
         
         
-          &lt;h3 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot;
+          &lt;h3 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h3&gt;&lt;p&gt;开源的&lt;a href=&quot;https://github.com/gurecn/YuyanIme&quot; target=&quot;_blank&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="https://www.emzz.cn/categories/Android/"/>
+    
+    
+      <category term="雨燕输入法" scheme="https://www.emzz.cn/tags/%E9%9B%A8%E7%87%95%E8%BE%93%E5%85%A5%E6%B3%95/"/>
+    
+      <category term="Kotlin" scheme="https://www.emzz.cn/tags/Kotlin/"/>
+    
+      <category term="语法" scheme="https://www.emzz.cn/tags/%E8%AF%AD%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用Gradle获取Git记录</title>
+    <link href="https://www.emzz.cn/2024/06/24/shi-yong-gradle-huo-qu-git-ji-lu/"/>
+    <id>https://www.emzz.cn/2024/06/24/shi-yong-gradle-huo-qu-git-ji-lu/</id>
+    <published>2024-06-24T03:01:31.000Z</published>
+    <updated>2024-06-25T00:59:49.830Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h3&gt;&lt;p&gt;开源的&lt;a href=&quot;https://github.com/gurecn/YuyanIme&quot; target=&quot;_blank&quot;
         
       
     
@@ -51,7 +81,7 @@
     <link href="https://www.emzz.cn/2024/06/20/yi-han-bu-neng-xiang-bang/"/>
     <id>https://www.emzz.cn/2024/06/20/yi-han-bu-neng-xiang-bang/</id>
     <published>2024-06-20T09:52:17.000Z</published>
-    <updated>2024-06-20T09:59:53.577Z</updated>
+    <updated>2024-06-25T00:28:35.190Z</updated>
     
     <summary type="html">
     
@@ -164,7 +194,7 @@
     <link href="https://www.emzz.cn/2024/06/13/xie-zai-liu-yi-er-tong-jie-zhi-hou/"/>
     <id>https://www.emzz.cn/2024/06/13/xie-zai-liu-yi-er-tong-jie-zhi-hou/</id>
     <published>2024-06-13T04:28:46.000Z</published>
-    <updated>2024-06-13T06:02:51.286Z</updated>
+    <updated>2024-06-25T00:29:19.629Z</updated>
     
     <summary type="html">
     
