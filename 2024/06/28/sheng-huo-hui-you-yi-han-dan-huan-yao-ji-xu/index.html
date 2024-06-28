@@ -4,11 +4,13 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="使用Gradle获取Git记录,  Android Framework | 计算机科学与技术 | Java Virtual Machine ">
+    <meta name="keywords" content="生活会有遗憾但还要继续,  Android Framework | 计算机科学与技术 | Java Virtual Machine ">
     <meta name="baidu-site-verification" content="fmlEuI34ir">
     <meta name="google-site-verification" content="yCy2azpds5XSuGZvis6OuA-XIGF5GuGpYRAaGfD6o48">
     <meta name="360-site-verification" content="b7c11a830ef90fd1464ad6206bb7b6e7">
-    <meta name="description" content="问题开源的雨燕输入法项目中，在关于界面要实现显示Git提交记录以及点击条目跳转到对应的Github提交节点。之前的方案是，在每次打包前手动更改对应的值，不但麻烦，且易出错。技术上分析，一旦打包完成，应用内不具备Git环境，因此没办法通过Ja">
+    <meta name="description" content="连续三天几乎没有做什么工作，早出晚归，忙侄女高考志愿填报的事情。
+三天来，我仔细研读评估志愿填报规则、一个个筛选本科院校优劣势、既往录取名次、趋势，发现很多以前一知半解的高考常识和志愿误解。
+我终于明白了高考招生的规则和志愿投递的原理。我连">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +18,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>使用Gradle获取Git记录 | 忆梦之舟</title>
+    <title>生活会有遗憾但还要继续 | 忆梦之舟</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -215,13 +217,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/24.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/26.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        使用Gradle获取Git记录
+                        生活会有遗憾但还要继续
                     </div>
                 </div>
             </div>
@@ -332,16 +334,8 @@
                     
                     <div class="article-tag">
                         
-                        <a href="/tags/雨燕输入法/" target="_blank">
-                            <span class="chip bg-color">雨燕输入法</span>
-                        </a>
-                        
-                        <a href="/tags/Gradle/" target="_blank">
-                            <span class="chip bg-color">Gradle</span>
-                        </a>
-                        
-                        <a href="/tags/Git/" target="_blank">
-                            <span class="chip bg-color">Git</span>
+                        <a href="/tags/感悟/" target="_blank">
+                            <span class="chip bg-color">感悟</span>
                         </a>
                         
                     </div>
@@ -352,8 +346,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                        <a href="/categories/Android/" class="post-category" target="_blank">
-                            Android
+                        <a href="/categories/随笔/" class="post-category" target="_blank">
+                            随笔
                         </a>
                         
                     </div>
@@ -364,7 +358,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2024-06-24
+                    2024-06-28
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -378,14 +372,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.2k
+                    960
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    3 分
                 </div>
                 
                 
@@ -401,113 +395,19 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>开源的<a href="https://github.com/gurecn/YuyanIme" target="_blank" rel="noopener">雨燕输入法</a>项目中，在<code>关于界面</code>要实现显示Git提交记录以及点击条目跳转到对应的Github提交节点。<br>之前的方案是，在每次打包前手动更改对应的值，不但麻烦，且易出错。<br>技术上分析，一旦打包完成，应用内不具备Git环境，因此没办法通过Java代码在运行时动态获取相关属性。<br>项目使用Gradle方式构建，那么如何在编译、构建时获取Git最新记录及提交时间等属性呢？</p>
-<h3 id="前置条件"><a href="#前置条件" class="headerlink" title="前置条件"></a>前置条件</h3><ul>
-<li>项目已正常初始化Git资源，并已存在提交记录。</li>
-<li>项目使用<code>Groovy</code>方式构建。由于雨燕输入法项目使用Groovy构建，因此该文章介绍使用该构建方案。</li>
-</ul>
-<pre><code>Android Gradle插件4.0支持使用Kotlin脚本(KTS)，用于替代Groovy。
-KTS比Groovy更适合编写Gradle脚本，Kotlin代码可读性更高，且提供更好的编译时检查和IDE支持。</code></pre><h3 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h3><ul>
-<li>创建方法，获取对应值<br>在子模块<code>build.gradle</code>中，定义方法获取对应的值：</li>
-</ul>
-<pre><code>apply plugin: &#39;org.jetbrains.kotlin.android&#39;
-// kotlin
-apply plugin: &#39;kotlin-android&#39; 
+                <p>连续三天几乎没有做什么工作，早出晚归，忙侄女高考志愿填报的事情。</p>
+<p>三天来，我仔细研读评估志愿填报规则、一个个筛选本科院校优劣势、既往录取名次、趋势，发现很多以前一知半解的高考常识和志愿误解。</p>
+<p>我终于明白了高考招生的规则和志愿投递的原理。我连续经历两次失败的高考，今天我才明白志愿到底是怎么进行的，院校又是如何招生的。消息获取的不平等导致农村的孩子在招生中面临非常大的劣势。连续两年高考都是在没有任何参考的情况下，听从班主任的建议填报志愿，结果均出现滑档。好在第二次在征集志愿院校中“瘸子里挑将军”，征集到了我的大学。</p>
+<p>我看到在日常生活中听到非常不起眼的院校，甚至听着就是专科的院校，在省内的招生分数竟如此之高，甚至远高出省外更高层次院校的录取分数。有些院校明明刚从技校改名，分数线就迅速拉升。我感觉到河南考生竞争的激烈，学子的不易。</p>
+<p>我看到学校介绍中明明还是职业学院，教育资源、学校环境已经不能再差了，仍然被学生争破头的涌入。我看到南方大部分的民办院校师资力量、教育资源甚至远远高过河南省内的一本招生院校。我感觉到河南教育资源的匮乏。</p>
+<p>虽然有很多不平等，有各种各样的不同个体的特殊情况。但仍要说，生活总会有遗憾，但是生活总要继续。</p>
+<p>农村的孩子获取不到最新的信息、没有专业的指导和系统的培训，但这种情况下走出来的孩子自主能力会更强。河南的孩子虽然面临各种竞争，但是进入社会后，更有抓住机会的本能。虽然这些听起来都像是自欺欺人，但是生活还是要继续不是吗。</p>
+<p>我们不能因为遗憾、不公平、有压力就放弃生活，放弃奋斗，放弃还存在希望的明天。</p>
+<p>现在回首，我虽然没有进入理想的学校，但结识了大学里的非常要好的同学。虽然没有选择高大上的专业，却意外赶上了移动互联网的潮流。有时候我会想，当时如果我填报了正确的志愿，会不会比现在过的更好？我不知道明确的答案，因为我没办法回到当时。但我知道，那肯定是另外一种有不同经历却同样精彩的的生活。</p>
+<p>我想有这样一种人，他无论进入哪所学校，读哪种专业，甚至可能不上大学，但是他一样能做成事情。这是因为我最看重的态度决定的。我看来态度就是一种气，有这种气的人，做起事来就会用心、坚持，甚至苛刻。只要有这种态度，就能带着他走向不错的、满足的生活。</p>
+<p>不错的、满足的生活有大有小，这又关联到非常多的细节。有些人被规划的很详细、有些人只能靠自己，没有任何支撑，这两种各有优劣，各有精彩。我不求最大，只求刚刚好，就像我走过了过去，来到了今天，我不愿意放弃过往和现在。</p>
+<p>我知道，生活还会继续，生活中的精彩和不精彩也会继续，我接受他们。</p>
 
-def getAPPGitHead() {
-    return &quot;git rev-parse HEAD&quot;.execute().text.trim()
-}
-
-def getAPPBuildTime() {
-    return &quot;git log -1 --pretty=%ai&quot;.execute().text.trim()
-} 
-
-android {
-    compileSdk 34
-    // ...  省略对应内容
-} 
-</code></pre><ul>
-<li>执行方法，动态创建变量并赋值<br>在子模块<code>build.gradle</code>中，执行构建方法<code>buildTypes</code>时，调用方法，并动态创建<code>AppCommitHead</code>、<code>AppBuildTime</code>变量存储Git属性。</li>
-</ul>
-<pre><code>android {
-    compileSdk 34
-
-    buildTypes {
-        release {
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile(&#39;proguard-android-optimize.txt&#39;), &#39;proguard.cfg&#39;
-            def APP_GIT_COMMIT_HEAD = getAPPGitHead()
-            buildConfigField &quot;String&quot;, &quot;AppCommitHead&quot;, &quot;\&quot;${APP_GIT_COMMIT_HEAD}\&quot;&quot;
-            def APP_GIT_COMMIT_TIME = getAPPBuildTime()
-            buildConfigField &quot;String&quot;, &quot;AppBuildTime&quot;, &quot;\&quot;${APP_GIT_COMMIT_TIME}\&quot;&quot;
-
-        }
-        debug {
-            def APP_GIT_COMMIT_HEAD = getAPPGitHead()
-            buildConfigField &quot;String&quot;, &quot;AppCommitHead&quot;, &quot;\&quot;${APP_GIT_COMMIT_HEAD}\&quot;&quot;
-            def APP_GIT_COMMIT_TIME = getAPPBuildTime()
-            buildConfigField &quot;String&quot;, &quot;AppBuildTime&quot;, &quot;\&quot;${APP_GIT_COMMIT_TIME}\&quot;&quot;
-        }
-    }
-}
-</code></pre><ul>
-<li>项目中调用变量<br>在项目中使用Java或Kotlin代码，通过BuildConfig使用对应的值。</li>
-</ul>
-<pre><code>    addCategory(R.string.version) {
-        addPreference(R.string.app_version, BuildConfig.AppCommitId)
-        addPreference(R.string.app_build_git_hash, BuildConfig.AppCommitHead) {
-            val commit = BuildConfig.AppCommitHead.substringBefore(&#39;-&#39;)
-            val uri = Uri.parse(&quot;${CustomConstant.YuyanSDKRepo}/commit/${commit}&quot;)
-            startActivity(Intent(Intent.ACTION_VIEW, uri))
-        }
-        addPreference(R.string.app_build_time, BuildConfig.AppBuildTime)
-        addPreference(R.string.sdk_version, BuildConfig.SdkCommitId)
-    }</code></pre><p>查看效果：<br><img src="gradle_git.webp" alt="Gradle获取Git记录"></p>
-<h3 id="问题记录"><a href="#问题记录" class="headerlink" title="问题记录"></a>问题记录</h3><ol>
-<li>通过<code>buildConfigField</code>动态构建变量未成功。<br>发现编译时报错：</li>
-</ol>
-<pre><code>* What went wrong
-A problem occurred configuring project &#39;:app&#39;.
-&gt; defaultConfig contains custom BuildConfig fields, but the feature is disabled.</code></pre><p>原因在8.x版本的gradle插件中，<code>buildConfigField</code>功能被禁用。<br>解决方式是在build.gradle中添加：</p>
-<pre><code>buildFeatures {
-    buildConfig = true
-}</code></pre><ol start="2">
-<li>获取其他路径或子模块Git记录。<br><code>Gradle</code>支持调用Git命令时，指定Git资源路径,我们能通过指定绝对路径的方式获取其他路径的Git记录：</li>
-</ol>
-<pre><code>def getSDKGitRevision() {
-    return &quot;git --git-dir=/home/gure/devproject/YuyanIme/yuyansdk/.git rev-parse --short HEAD&quot;.execute().text.trim()
-}</code></pre><p>通过这种方式，我们获取<code>yuyansdk</code>的Git提交情况。</p>
-<ol start="3">
-<li>Git Rev-Parse命令<br>Git命令行工具中的低级命令，用于输出Git引用的确切值，通常用于脚本中，确保脚本能正确识别分支、标签或提交。常用参数：</li>
-</ol>
-<pre><code>    --abbrev-ref &lt;ref&gt;：输出给定引用的简化形式，通常用于分支名称。
-    --symbolic：输出引用的完整名称，而不是其SHA-1值。
-    --verify：尝试验证给定的引用，并确保它存在。如果引用不存在，命令将返回错误。
-    --short：输出给定对象的短SHA-1哈希值。
-    --show-prefix：显示从当前工作目录到仓库根目录的路径。
-    --show-toplevel：显示当前仓库的顶级目录。
-    --git-dir：显示或打印Git目录的路径。
-    --show-cdup：显示从当前工作目录到仓库顶级目录的相对路径。
-    --is-inside-git-dir：如果当前目录是Git目录的一部分，则输出true。
-    --is-inside-work-tree：如果当前目录是Git工作树的一部分，则输出true。
-    --is-bare-repository：如果当前仓库是裸仓库，则输出true。
-    --is-shallow-repository：如果当前仓库是浅克隆仓库，则输出true。
-    --default &lt;arg&gt;：如果给定的引用不存在，则使用默认值。
-    --all：显示所有引用。
-    --branches：显示所有本地分支。
-    --tags：显示所有标签。
-    --remotes：显示所有远程跟踪分支。
-    --quiet：不输出错误信息。
-    --prefix：输出给定对象的引用前缀。
-    --max-count &lt;n&gt;：仅输出最多n个匹配的引用。
-    --min-candidates &lt;n&gt;：在搜索引用时，至少需要n个匹配项。
-    --no-min-candidates：忽略--min-candidates的限制。
-    --no-max-count：忽略--max-count的限制。
-    --no-walk：不进行引用的遍历搜索。
-    --no-walk-reflogs：不通过reflog来搜索引用。
-    --no-walk-reachable：不搜索可达的引用。
-    --no-walk-tags：不搜索标签。
-    --sort-by &lt;key&gt;：按指定的键对输出的引用进行排序。</code></pre>
             </div>
             <hr />
 
@@ -541,9 +441,9 @@ A problem occurred configuring project &#39;:app&#39;.
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《使用Gradle获取Git记录》
+                    《生活会有遗憾但还要继续》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2024/06/24/shi-yong-gradle-huo-qu-git-ji-lu/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2024/06/28/sheng-huo-hui-you-yi-han-dan-huan-yao-ji-xu/" property="cc:attributionName"
                rel="cc:attributionURL">
                 gure
             </a> 采用
@@ -583,9 +483,62 @@ A problem occurred configuring project &#39;:app&#39;.
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2024/06/28/sheng-huo-hui-you-yi-han-dan-huan-yao-ji-xu/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/26.jpg" class="responsive-img" alt="生活会有遗憾但还要继续">
+                        
+                        <span class="card-title">生活会有遗憾但还要继续</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            连续三天几乎没有做什么工作，早出晚归，忙侄女高考志愿填报的事情。
+三天来，我仔细研读评估志愿填报规则、一个个筛选本科院校优劣势、既往录取名次、趋势，发现很多以前一知半解的高考常识和志愿误解。
+我终于明白了高考招生的规则和志愿投递的原理。我连
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2024-06-28
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/随笔/" class="post-category" target="_blank">
+                                    随笔
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/感悟/" target="_blank">
+                        <span class="chip bg-color">感悟</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2024/06/25/kotlin-quan-ju-bian-liang-hou-zhi-chu-shi-hua/">
                     <div class="card-image">
@@ -603,9 +556,9 @@ A problem occurred configuring project &#39;:app&#39;.
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2024-06-25
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2024-06-25
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -631,57 +584,6 @@ A problem occurred configuring project &#39;:app&#39;.
                     
                     <a href="/tags/雨燕输入法/" target="_blank">
                         <span class="chip bg-color">雨燕输入法</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2024/06/20/yi-han-bu-neng-xiang-bang/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="遗憾不能相帮">
-                        
-                        <span class="card-title">遗憾不能相帮</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            这几天堂哥来郑州开网约车，带着他报名、体检、考试、拿证、熟悉。家人说，他就是你堂哥，力所能及帮助一下就行，为什么这么用心呢？
-是啊，为什么这么上心呢？这要从很久以前的一件非常遗憾的往事说起。
-在我八岁时父亲因病去世，家里陷入深渊。本来就贫困
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2024-06-20
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/随笔/" class="post-category" target="_blank">
-                                    随笔
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/感悟/" target="_blank">
-                        <span class="chip bg-color">感悟</span>
                     </a>
                     
                 </div>

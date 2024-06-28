@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.emzz.cn/"/>
-  <updated>2024-06-25T03:05:00.491Z</updated>
+  <updated>2024-06-28T10:03:14.008Z</updated>
   <id>https://www.emzz.cn/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>生活会有遗憾但还要继续</title>
+    <link href="https://www.emzz.cn/2024/06/28/sheng-huo-hui-you-yi-han-dan-huan-yao-ji-xu/"/>
+    <id>https://www.emzz.cn/2024/06/28/sheng-huo-hui-you-yi-han-dan-huan-yao-ji-xu/</id>
+    <published>2024-06-28T10:02:28.000Z</published>
+    <updated>2024-06-28T10:03:14.008Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;连续三天几乎没有做什么工作，早出晚归，忙侄女高考志愿填报的事情。&lt;/p&gt;
+&lt;p&gt;三天来，我仔细研读评估志愿填报规则、一个个筛选本科院校优劣势、既往录取名次、趋势，发现很多以前一知半解的高考常识和志愿误解。&lt;/p&gt;
+&lt;p&gt;我终于明白了高考招生的规则和志愿投递的原理。我连续经历
+        
+      
+    
+    </summary>
+    
+      <category term="随笔" scheme="https://www.emzz.cn/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+      <category term="感悟" scheme="https://www.emzz.cn/tags/%E6%84%9F%E6%82%9F/"/>
+    
+  </entry>
   
   <entry>
     <title>Kotlin全局变量后置初始化</title>
@@ -38,11 +66,11 @@
       <category term="Android" scheme="https://www.emzz.cn/categories/Android/"/>
     
     
-      <category term="雨燕输入法" scheme="https://www.emzz.cn/tags/%E9%9B%A8%E7%87%95%E8%BE%93%E5%85%A5%E6%B3%95/"/>
-    
       <category term="Kotlin" scheme="https://www.emzz.cn/tags/Kotlin/"/>
     
       <category term="语法" scheme="https://www.emzz.cn/tags/%E8%AF%AD%E6%B3%95/"/>
+    
+      <category term="雨燕输入法" scheme="https://www.emzz.cn/tags/%E9%9B%A8%E7%87%95%E8%BE%93%E5%85%A5%E6%B3%95/"/>
     
   </entry>
   
@@ -68,11 +96,11 @@
       <category term="Android" scheme="https://www.emzz.cn/categories/Android/"/>
     
     
+      <category term="雨燕输入法" scheme="https://www.emzz.cn/tags/%E9%9B%A8%E7%87%95%E8%BE%93%E5%85%A5%E6%B3%95/"/>
+    
       <category term="Gradle" scheme="https://www.emzz.cn/tags/Gradle/"/>
     
       <category term="Git" scheme="https://www.emzz.cn/tags/Git/"/>
-    
-      <category term="雨燕输入法" scheme="https://www.emzz.cn/tags/%E9%9B%A8%E7%87%95%E8%BE%93%E5%85%A5%E6%B3%95/"/>
     
   </entry>
   
