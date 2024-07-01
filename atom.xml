@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.emzz.cn/"/>
-  <updated>2024-06-28T10:03:14.008Z</updated>
+  <updated>2024-07-01T03:08:43.246Z</updated>
   <id>https://www.emzz.cn/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>生活需要脑洞大开</title>
+    <link href="https://www.emzz.cn/2024/07/01/sheng-huo-xu-yao-nao-dong-da-kai/"/>
+    <id>https://www.emzz.cn/2024/07/01/sheng-huo-xu-yao-nao-dong-da-kai/</id>
+    <published>2024-07-01T02:59:46.000Z</published>
+    <updated>2024-07-01T03:08:43.246Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;昨天我们一起看了一个2015年上映的脑洞大开的电影-《头脑特工队》，电影讲述了小女孩莱莉因为爸爸的工作变动而搬到旧金山，她的生活被这五种情绪所掌控，尽展脑内情绪的缤纷世界的故事。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;Inside_Out.webp&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="随笔" scheme="https://www.emzz.cn/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+      <category term="感悟" scheme="https://www.emzz.cn/tags/%E6%84%9F%E6%82%9F/"/>
+    
+      <category term="电影" scheme="https://www.emzz.cn/tags/%E7%94%B5%E5%BD%B1/"/>
+    
+  </entry>
   
   <entry>
     <title>生活会有遗憾但还要继续</title>
@@ -66,11 +95,11 @@
       <category term="Android" scheme="https://www.emzz.cn/categories/Android/"/>
     
     
+      <category term="雨燕输入法" scheme="https://www.emzz.cn/tags/%E9%9B%A8%E7%87%95%E8%BE%93%E5%85%A5%E6%B3%95/"/>
+    
       <category term="Kotlin" scheme="https://www.emzz.cn/tags/Kotlin/"/>
     
       <category term="语法" scheme="https://www.emzz.cn/tags/%E8%AF%AD%E6%B3%95/"/>
-    
-      <category term="雨燕输入法" scheme="https://www.emzz.cn/tags/%E9%9B%A8%E7%87%95%E8%BE%93%E5%85%A5%E6%B3%95/"/>
     
   </entry>
   
@@ -96,11 +125,11 @@
       <category term="Android" scheme="https://www.emzz.cn/categories/Android/"/>
     
     
-      <category term="雨燕输入法" scheme="https://www.emzz.cn/tags/%E9%9B%A8%E7%87%95%E8%BE%93%E5%85%A5%E6%B3%95/"/>
-    
       <category term="Gradle" scheme="https://www.emzz.cn/tags/Gradle/"/>
     
       <category term="Git" scheme="https://www.emzz.cn/tags/Git/"/>
+    
+      <category term="雨燕输入法" scheme="https://www.emzz.cn/tags/%E9%9B%A8%E7%87%95%E8%BE%93%E5%85%A5%E6%B3%95/"/>
     
   </entry>
   
