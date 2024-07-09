@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>忆梦之舟</title>
+  
+  <subtitle>源自梦想，止于技术</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://www.emzz.cn/"/>
+  <updated>2024-07-09T07:09:52.537Z</updated>
+  <id>https://www.emzz.cn/</id>
+  
+  <author>
+    <name>gure</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Ubuntu Hexo环境还原问题</title>
+    <link href="https://www.emzz.cn/2024/07/09/ubuntu-xi-tong-npm-quan-xian-deng-hexo-wen-ti/"/>
+    <id>https://www.emzz.cn/2024/07/09/ubuntu-xi-tong-npm-quan-xian-deng-hexo-wen-ti/</id>
+    <published>2024-07-09T04:44:56.000Z</published>
+    <updated>2024-07-09T07:09:52.537Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;系统重装、博客项目恢复中，发现重新安装hexo环境出现问题：主要矛盾点在于npm、node版本升级，与之前版本相差甚远。拉取原有项目安装依赖过程中失败、并且掺杂安装权限问题，导致错误频出。我记录遇到的主要问题及对应解决方案。&lt;/p&gt;
+&lt;h2
+        
+      
+    
+    </summary>
+    
+      <category term="Linux" scheme="https://www.emzz.cn/categories/Linux/"/>
+    
+    
+      <category term="Hexo" scheme="https://www.emzz.cn/tags/Hexo/"/>
+    
+      <category term="Ubuntu" scheme="https://www.emzz.cn/tags/Ubuntu/"/>
+    
+      <category term="NPM" scheme="https://www.emzz.cn/tags/NPM/"/>
+    
+      <category term="权限" scheme="https://www.emzz.cn/tags/%E6%9D%83%E9%99%90/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Ubuntu启动引导项调整</title>
+    <link href="https://www.emzz.cn/2024/07/08/ubuntu-qi-dong-yin-dao-xiang-diao-zheng/"/>
+    <id>https://www.emzz.cn/2024/07/08/ubuntu-qi-dong-yin-dao-xiang-diao-zheng/</id>
+    <published>2024-07-08T04:51:19.000Z</published>
+    <updated>2024-07-08T06:25:38.110Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Ubuntu开机启动引导界面除了Ubuntu、Windows系统之外，还有&lt;code&gt;Advanced options for Kubuntu&lt;/code&gt;、&lt;code&gt;UEFI Firmware
+        
+      
+    
+    </summary>
+    
+      <category term="Linux" scheme="https://www.emzz.cn/categories/Linux/"/>
+    
+    
+      <category term="Ubuntu" scheme="https://www.emzz.cn/tags/Ubuntu/"/>
+    
+      <category term="OS" scheme="https://www.emzz.cn/tags/OS/"/>
+    
+      <category term="引导" scheme="https://www.emzz.cn/tags/%E5%BC%95%E5%AF%BC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android14安装低版本应用</title>
+    <link href="https://www.emzz.cn/2024/07/04/android14-an-zhuang-di-ban-ben-ying-yong/"/>
+    <id>https://www.emzz.cn/2024/07/04/android14-an-zhuang-di-ban-ben-ying-yong/</id>
+    <published>2024-07-04T01:13:19.000Z</published>
+    <updated>2024-07-04T01:15:04.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;前几天给妈妈生日，考虑到上一部手机用了快5年了，就买了一部红米K70手机，使用手机主要用来微信聊天、刷抖音视频。&lt;br&gt;之所以买小米手机，是因为她不认字。上一部红米Note
+        
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="https://www.emzz.cn/categories/Android/"/>
+    
+    
+      <category term="兼容性" scheme="https://www.emzz.cn/tags/%E5%85%BC%E5%AE%B9%E6%80%A7/"/>
+    
+      <category term="小米" scheme="https://www.emzz.cn/tags/%E5%B0%8F%E7%B1%B3/"/>
+    
+      <category term="ADB" scheme="https://www.emzz.cn/tags/ADB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>生活需要脑洞大开</title>
+    <link href="https://www.emzz.cn/2024/07/01/sheng-huo-xu-yao-nao-dong-da-kai/"/>
+    <id>https://www.emzz.cn/2024/07/01/sheng-huo-xu-yao-nao-dong-da-kai/</id>
+    <published>2024-07-01T02:59:46.000Z</published>
+    <updated>2024-07-01T03:08:43.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;昨天我们一起看了一个2015年上映的脑洞大开的电影-《头脑特工队》，电影讲述了小女孩莱莉因为爸爸的工作变动而搬到旧金山，她的生活被这五种情绪所掌控，尽展脑内情绪的缤纷世界的故事。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;Inside_Out.webp&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="随笔" scheme="https://www.emzz.cn/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+      <category term="感悟" scheme="https://www.emzz.cn/tags/%E6%84%9F%E6%82%9F/"/>
+    
+      <category term="电影" scheme="https://www.emzz.cn/tags/%E7%94%B5%E5%BD%B1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>生活会有遗憾但还要继续</title>
+    <link href="https://www.emzz.cn/2024/06/28/sheng-huo-hui-you-yi-han-dan-huan-yao-ji-xu/"/>
+    <id>https://www.emzz.cn/2024/06/28/sheng-huo-hui-you-yi-han-dan-huan-yao-ji-xu/</id>
+    <published>2024-06-28T10:02:28.000Z</published>
+    <updated>2024-06-28T10:03:14.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;连续三天几乎没有做什么工作，早出晚归，忙侄女高考志愿填报的事情。&lt;/p&gt;
+&lt;p&gt;三天来，我仔细研读评估志愿填报规则、一个个筛选本科院校优劣势、既往录取名次、趋势，发现很多以前一知半解的高考常识和志愿误解。&lt;/p&gt;
+&lt;p&gt;我终于明白了高考招生的规则和志愿投递的原理。我连续经历
+        
+      
+    
+    </summary>
+    
+      <category term="随笔" scheme="https://www.emzz.cn/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+      <category term="感悟" scheme="https://www.emzz.cn/tags/%E6%84%9F%E6%82%9F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Kotlin全局变量后置初始化</title>
+    <link href="https://www.emzz.cn/2024/06/25/kotlin-quan-ju-bian-liang-hou-zhi-chu-shi-hua/"/>
+    <id>https://www.emzz.cn/2024/06/25/kotlin-quan-ju-bian-liang-hou-zhi-chu-shi-hua/</id>
+    <published>2024-06-25T02:56:16.000Z</published>
+    <updated>2024-06-25T03:05:00.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h3&gt;&lt;p&gt;开源的&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="https://www.emzz.cn/categories/Android/"/>
+    
+    
+      <category term="Kotlin" scheme="https://www.emzz.cn/tags/Kotlin/"/>
+    
+      <category term="语法" scheme="https://www.emzz.cn/tags/%E8%AF%AD%E6%B3%95/"/>
+    
+      <category term="雨燕输入法" scheme="https://www.emzz.cn/tags/%E9%9B%A8%E7%87%95%E8%BE%93%E5%85%A5%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用Gradle获取Git记录</title>
+    <link href="https://www.emzz.cn/2024/06/24/shi-yong-gradle-huo-qu-git-ji-lu/"/>
+    <id>https://www.emzz.cn/2024/06/24/shi-yong-gradle-huo-qu-git-ji-lu/</id>
+    <published>2024-06-24T03:01:31.000Z</published>
+    <updated>2024-06-25T00:59:49.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h3&gt;&lt;p&gt;开源的&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="https://www.emzz.cn/categories/Android/"/>
+    
+    
+      <category term="雨燕输入法" scheme="https://www.emzz.cn/tags/%E9%9B%A8%E7%87%95%E8%BE%93%E5%85%A5%E6%B3%95/"/>
+    
+      <category term="Gradle" scheme="https://www.emzz.cn/tags/Gradle/"/>
+    
+      <category term="Git" scheme="https://www.emzz.cn/tags/Git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>遗憾不能相帮</title>
+    <link href="https://www.emzz.cn/2024/06/20/yi-han-bu-neng-xiang-bang/"/>
+    <id>https://www.emzz.cn/2024/06/20/yi-han-bu-neng-xiang-bang/</id>
+    <published>2024-06-20T09:52:17.000Z</published>
+    <updated>2024-06-25T00:28:35.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;这几天堂哥来郑州开网约车，带着他报名、体检、考试、拿证、熟悉。家人说，他就是你堂哥，力所能及帮助一下就行，为什么这么用心呢？&lt;/p&gt;
+&lt;p&gt;是啊，为什么这么上心呢？这要从很久以前的一件非常遗憾的往事说起。&lt;/p&gt;
+&lt;p&gt;在我八岁时父亲因病去世，家里陷入深渊。本来就贫困，为父
+        
+      
+    
+    </summary>
+    
+      <category term="随笔" scheme="https://www.emzz.cn/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+      <category term="感悟" scheme="https://www.emzz.cn/tags/%E6%84%9F%E6%82%9F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Github博客搭建避坑指南</title>
+    <link href="https://www.emzz.cn/2024/06/19/hexo-github-bo-ke-da-jian-bi-keng-zhi-nan/"/>
+    <id>https://www.emzz.cn/2024/06/19/hexo-github-bo-ke-da-jian-bi-keng-zhi-nan/</id>
+    <published>2024-06-19T01:26:31.000Z</published>
+    <updated>2024-06-19T01:56:18.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;缘由&quot;&gt;&lt;a href=&quot;#缘由&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Web" scheme="https://www.emzz.cn/categories/Web/"/>
+    
+    
+      <category term="Hexo" scheme="https://www.emzz.cn/tags/Hexo/"/>
+    
+      <category term="博客" scheme="https://www.emzz.cn/tags/%E5%8D%9A%E5%AE%A2/"/>
+    
+      <category term="搭建" scheme="https://www.emzz.cn/tags/%E6%90%AD%E5%BB%BA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>写在父亲节之后</title>
+    <link href="https://www.emzz.cn/2024/06/18/xie-zai-fu-qin-jie-zhi-hou/"/>
+    <id>https://www.emzz.cn/2024/06/18/xie-zai-fu-qin-jie-zhi-hou/</id>
+    <published>2024-06-18T03:28:12.000Z</published>
+    <updated>2024-06-18T05:18:49.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;div style=&quot;text-align: center;&quot;&gt;
+&lt;iframe
+        
+      
+    
+    </summary>
+    
+      <category term="随笔" scheme="https://www.emzz.cn/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+      <category term="感悟" scheme="https://www.emzz.cn/tags/%E6%84%9F%E6%82%9F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>统信UOS 20专业版重置密码</title>
+    <link href="https://www.emzz.cn/2024/06/17/tong-xin-uos-20-zhuan-ye-ban-chong-zhi-mi-ma/"/>
+    <id>https://www.emzz.cn/2024/06/17/tong-xin-uos-20-zhuan-ye-ban-chong-zhi-mi-ma/</id>
+    <published>2024-06-17T10:58:12.000Z</published>
+    <updated>2024-06-18T01:25:31.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h2&gt;&lt;p&gt;公司使用的鲲泰kuntai
+        
+      
+    
+    </summary>
+    
+      <category term="Linux" scheme="https://www.emzz.cn/categories/Linux/"/>
+    
+    
+      <category term="UOS" scheme="https://www.emzz.cn/tags/UOS/"/>
+    
+      <category term="信创" scheme="https://www.emzz.cn/tags/%E4%BF%A1%E5%88%9B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>写在六一儿童节之后</title>
+    <link href="https://www.emzz.cn/2024/06/13/xie-zai-liu-yi-er-tong-jie-zhi-hou/"/>
+    <id>https://www.emzz.cn/2024/06/13/xie-zai-liu-yi-er-tong-jie-zhi-hou/</id>
+    <published>2024-06-13T04:28:46.000Z</published>
+    <updated>2024-06-25T00:29:19.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;div style=&quot;text-align: center;&quot;&gt;
+&lt;iframe
+        
+      
+    
+    </summary>
+    
+      <category term="随笔" scheme="https://www.emzz.cn/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+      <category term="感悟" scheme="https://www.emzz.cn/tags/%E6%84%9F%E6%82%9F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>关于写博客的七点反思</title>
+    <link href="https://www.emzz.cn/2024/06/12/5w2h-godweiyang/"/>
+    <id>https://www.emzz.cn/2024/06/12/5w2h-godweiyang/</id>
+    <published>2024-06-12T07:27:31.000Z</published>
+    <updated>2024-06-19T01:28:13.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;When？什么时候开始写的？&quot;&gt;&lt;a href=&quot;#When？什么时候开始写的？&quot; class=&quot;headerlink&quot; title=&quot;When？什么时候开始写的？&quot;&gt;&lt;/a&gt;When？什么时候开始写的？&lt;/h2&gt;&lt;p&gt;第一次写博客是 2015 年了，在
+        
+      
+    
+    </summary>
+    
+      <category term="Web" scheme="https://www.emzz.cn/categories/Web/"/>
+    
+    
+      <category term="随笔" scheme="https://www.emzz.cn/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
+  
+</feed>

@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>Ubuntu Hexo环境还原问题</title>
+      <link href="/2024/07/09/ubuntu-xi-tong-npm-quan-xian-deng-hexo-wen-ti/"/>
+      <url>/2024/07/09/ubuntu-xi-tong-npm-quan-xian-deng-hexo-wen-ti/</url>
+      
+        <content type="html"><![CDATA[<p>系统重装、博客项目恢复中，发现重新安装hexo环境出现问题：主要矛盾点在于npm、node版本升级，与之前版本相差甚远。拉取原有项目安装依赖过程中失败、并且掺杂安装权限问题，导致错误频出。我记录遇到的主要问题及对应解决方案。</p><h2 id="npm安装权限问题"><a href="#npm安装权限问题" class="headerlink" title="npm安装权限问题"></a>npm安装权限问题</h2><p>遇到npm安全权限问题时，查询资料主要有两个解决方式：</p><h3 id="第一种提权安装（不建议使用，会导致安装的应用权限错乱）。"><a href="#第一种提权安装（不建议使用，会导致安装的应用权限错乱）。" class="headerlink" title="第一种提权安装（不建议使用，会导致安装的应用权限错乱）。"></a>第一种提权安装（不建议使用，会导致安装的应用权限错乱）。</h3><p>我们正常安装时，使用命名：</p><pre><code>npm install hexo-cli -g</code></pre><p>此时很可能报错：</p><pre><code>gure@gure-tm1701:~/devproject/blog/Test/blog$ npm install hexo-cli -gnpm ERR! code EACCESnpm ERR! syscall mkdirnpm ERR! path /usr/local/lib/node_modulesnpm ERR! errno -13npm ERR! Error: EACCES: permission denied, mkdir &#39;/usr/local/lib/node_modules&#39;npm ERR!  [Error: EACCES: permission denied, mkdir &#39;/usr/local/lib/node_modules&#39;] &#123;npm ERR!   errno: -13,npm ERR!   code: &#39;EACCES&#39;,npm ERR!   syscall: &#39;mkdir&#39;,npm ERR!   path: &#39;/usr/local/lib/node_modules&#39;npm ERR! &#125;npm ERR! npm ERR! The operation was rejected by your operating system.npm ERR! It is likely you do not have the permissions to access this file as the current usernpm ERR! npm ERR! If you believe this might be a permissions issue, please double-check thenpm ERR! permissions of the file and its containing directories, or try runningnpm ERR! the command again as root/Administrator.npm ERR! A complete log of this run can be found in:npm ERR!     /home/gure/.npm/_logs/2024-07-09T02_58_02_788Z-debug-0.log</code></pre><p>发现无<code>/usr/local/lib/node_modules</code>操作权限。</p><p>我们可以使用<code>sudo</code>提权安装：</p><pre><code>sudo npm install hexo-cli -g</code></pre><p>此时发现安装正常。</p><p>但是该种方式会导致hexo权限异常。立马可能遇到的问题就是，执行<code>hexo init</code>等命令时，需要使用管理员权限，也就是需要添加<code>sudo</code>才能执行，否则会找不到命令。但如果使用<code>sudo</code>权限，会导致后续命令找不到环境变量，一步步提权，导致权限滥用。</p><h3 id="第二种方式，修改文件归属。"><a href="#第二种方式，修改文件归属。" class="headerlink" title="第二种方式，修改文件归属。"></a>第二种方式，修改文件归属。</h3><p>通过报错信息看到，是npm在<code>/usr/local/lib</code>文件夹创建<code>node_modules</code>失败。查看权限发现<code>/usr/local/lib</code>归属<code>root</code>用户，但是我们日常软件都安装在该路径下，我们应该将该文件夹的权限授权给当前用户：</p><pre><code>sudo chown -R $USER /usr/local</code></pre><p>修改后再次执行，发现安装成功：</p><pre><code>gure@gure-tm1701:~/devproject/blog/Test/blog$ npm install hexo-cli -gadded 53 packages in 2s14 packages are looking for funding  run `npm fund` for details</code></pre><p>通过覆盖方式，未对应用提权，就实现了应用安装。</p><h2 id="hexo依赖安装问题"><a href="#hexo依赖安装问题" class="headerlink" title="hexo依赖安装问题"></a>hexo依赖安装问题</h2><p><code>hexo-cli</code>安装完成后，进入原博客项目路径，执行<code>npm install</code>。会发现输出很多执行警告，原来是很多包过时了，但没有报错误<code>ERROR</code>。然而当我们执行<code>hexo g</code>时，错误就出现了：</p><pre><code>INFO  Start processingnode:events:495      throw er; // Unhandled &#39;error&#39; event      ^Error: EACCES: permission denied, open &#39;/home/gure/devproject/blog/HexoTheme/source/_posts/写在父亲节之后/rizhao_0616.jpg&#39;Emitted &#39;error&#39; event on ReadStream instance at:    at emitErrorNT (node:internal/streams/destroy:151:8)    at emitErrorCloseNT (node:internal/streams/destroy:116:3)    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) &#123;  errno: -13,  code: &#39;EACCES&#39;,  syscall: &#39;open&#39;,  path: &#39;/home/gure/devproject/blog/HexoTheme/source/_posts/写在父亲节之后/rizhao_0616.jpg&#39;&#125;Node.js v18.19.1</code></pre><p>此时有两种方法进行修改，第一种是新版本兼容;第二种是版本降级。</p><h3 id="新版本兼容"><a href="#新版本兼容" class="headerlink" title="新版本兼容"></a>新版本兼容</h3><p>新版本兼容能使用一些新的特性及更好的稳定性，对于博客网站来说，样式是不变的。因此兼容新版本的诉求倒不是特别强烈。<br>我们在一个新路径使用<code>hexo init</code>初始化一个新的hexo项目，编译<code>hexo g</code>、调试<code>hexo s</code>成功。进入新路径，查看<code>package.json</code>文件：</p><pre><code>&#123;  &quot;name&quot;: &quot;hexo-site&quot;,  &quot;version&quot;: &quot;0.0.0&quot;,  &quot;private&quot;: true,  &quot;scripts&quot;: &#123;    &quot;build&quot;: &quot;hexo generate&quot;,    &quot;clean&quot;: &quot;hexo clean&quot;,    &quot;deploy&quot;: &quot;hexo deploy&quot;,    &quot;server&quot;: &quot;hexo server&quot;  &#125;,  &quot;hexo&quot;: &#123;    &quot;version&quot;: &quot;7.3.0&quot;  &#125;,  &quot;dependencies&quot;: &#123;    &quot;hexo&quot;: &quot;^7.0.0&quot;,    &quot;hexo-generator-archive&quot;: &quot;^2.0.0&quot;,    &quot;hexo-generator-category&quot;: &quot;^2.0.0&quot;,    &quot;hexo-generator-index&quot;: &quot;^3.0.0&quot;,    &quot;hexo-generator-tag&quot;: &quot;^2.0.0&quot;,    &quot;hexo-renderer-ejs&quot;: &quot;^2.0.0&quot;,    &quot;hexo-renderer-marked&quot;: &quot;^6.0.0&quot;,    &quot;hexo-renderer-stylus&quot;: &quot;^3.0.0&quot;,    &quot;hexo-server&quot;: &quot;^3.0.0&quot;,    &quot;hexo-theme-landscape&quot;: &quot;^1.0.0&quot;  &#125;&#125;</code></pre><p>将更新的内容替换到原hexo项目中，重新安装依赖：<code>npm install</code>，如果报错则清空缓存：<code>npm cache clear --force</code>，命令会弹出警告，忽略即可，然后重新执行安装操作即可安装完成。</p><p>然后执行<code>hexo g</code>，此时根据权限情况，可能会执行失败：</p><pre><code>FATAL Something&#39;s wrong. Maybe you can find the solution here: https://hexo.io/docs/troubleshooting.htmlError: EACCES: permission denied, open &#39;/home/gure/devproject/blog/HexoTheme/source/_posts/***&#39;</code></pre><p>我们赋予对应的权限即可：</p><pre><code>sudo chown -R $USER /home/gure/devproject/blog/HexoTheme/</code></pre><p>最周执行<code>hexo s</code>、<code>hexo d</code>操作，就可以在本地进行预览显示。<br>预览时，发现文章中，代码样式宽度越界。<br>经定位，是新版本依赖中兼容问题，这个暂不修复，我使用了另外一种方式：降低版本。</p><h3 id="降低版本"><a href="#降低版本" class="headerlink" title="降低版本"></a>降低版本</h3><p>找回之前依赖的版本，直接替换：</p><pre><code>&#123;  &quot;name&quot;: &quot;hexo-site&quot;,  &quot;version&quot;: &quot;0.0.0&quot;,  &quot;private&quot;: true,  &quot;scripts&quot;: &#123;    &quot;build&quot;: &quot;hexo generate&quot;,    &quot;clean&quot;: &quot;hexo clean&quot;,    &quot;deploy&quot;: &quot;hexo deploy&quot;,    &quot;server&quot;: &quot;hexo server&quot;  &#125;,  &quot;hexo&quot;: &#123;    &quot;version&quot;: &quot;5.4.2&quot;  &#125;,  &quot;dependencies&quot;: &#123;    &quot;hexo&quot;: &quot;^5.0.0&quot;,    &quot;eslint&quot;: &quot;^6.0.1&quot;,    &quot;hexo-baidu-url-submit&quot;: &quot;0.0.6&quot;,    &quot;hexo-cli&quot;: &quot;^4.3.2&quot;,    &quot;hexo-deployer-git&quot;: &quot;^3.0.0&quot;,    &quot;hexo-generator-archive&quot;: &quot;^1.0.0&quot;,    &quot;hexo-generator-baidu-sitemap&quot;: &quot;^0.1.9&quot;,    &quot;hexo-generator-category&quot;: &quot;^1.0.0&quot;,    &quot;hexo-generator-feed&quot;: &quot;^1.2.2&quot;,    &quot;hexo-generator-index&quot;: &quot;^2.0.0&quot;,    &quot;hexo-generator-search&quot;: &quot;^2.4.0&quot;,    &quot;hexo-generator-sitemap&quot;: &quot;^1.2.0&quot;,    &quot;hexo-generator-tag&quot;: &quot;^0.2.0&quot;,    &quot;hexo-helper-live2d&quot;: &quot;^3.1.1&quot;,    &quot;hexo-permalink-pinyin&quot;: &quot;^1.1.0&quot;,    &quot;hexo-prism-plugin&quot;: &quot;^2.3.0&quot;,    &quot;hexo-renderer-ejs&quot;: &quot;^1.0.0&quot;,    &quot;hexo-renderer-marked&quot;: &quot;^4.0.0&quot;,    &quot;hexo-renderer-stylus&quot;: &quot;^2.0.0&quot;,    &quot;hexo-server&quot;: &quot;^2.0.0&quot;,    &quot;hexo-wordcount&quot;: &quot;^6.0.1&quot;  &#125;&#125;</code></pre><p>版本还原后，清空npm缓存：<code>npm cache clear --force</code>，重新执行安装操作<code>npm install</code>，文章编译运行后后发现显示正常了。</p><p><strong>以上路径、用户名均使用我电脑的路径及用户名，实际操作中需要替换成对应的路径和与电脑中真实用户。</strong></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Hexo </tag>
+            
+            <tag> Ubuntu </tag>
+            
+            <tag> NPM </tag>
+            
+            <tag> 权限 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Ubuntu启动引导项调整</title>
+      <link href="/2024/07/08/ubuntu-qi-dong-yin-dao-xiang-diao-zheng/"/>
+      <url>/2024/07/08/ubuntu-qi-dong-yin-dao-xiang-diao-zheng/</url>
+      
+        <content type="html"><![CDATA[<p>Ubuntu开机启动引导界面除了Ubuntu、Windows系统之外，还有<code>Advanced options for Kubuntu</code>、<code>UEFI Firmware Settings</code>等基本不用的条目。今天记录一下如何移除这些条目及相关问题。</p><h3 id="启动菜单计时调整"><a href="#启动菜单计时调整" class="headerlink" title="启动菜单计时调整"></a>启动菜单计时调整</h3><p>开机引导界面菜单选择时间默认为10s倒计时，10秒内选择,对应的启动项，否则会默认启动系统已选定的项。我希望更改为系统停留在选择界面，直到我手动选择。<br>这个修改需要调整<code>/etc/default/grub</code>文件，打开对应文件：</p><pre><code> sudo nano /etc/default/grub</code></pre><p>会看到很多配置项：</p><pre><code># If you change this file, run &#39;update-grub&#39; afterwards to update# /boot/grub/grub.cfg.# For full documentation of the options in this file, see:#   info -f grub -n &#39;Simple configuration&#39;GRUB_DEFAULT=0   // 设定系统预选菜单GRUB_TIMEOUT_STYLE=hidden   // 设定超时样式，默认超时隐藏。可设定为menu,超时显示启动项菜单GRUB_TIMEOUT=-1  //设定菜单等待时间，默认10秒;0为不等待;-1为持续等待，直到手动选择。GRUB_DISTRIBUTOR=&#39;Kubuntu&#39;  // 发行版本名，我使用的是KubuntuGRUB_CMDLINE_LINUX_DEFAULT=&#39;quiet splash&#39;  // quiet 启动时简化提示信息;splash 启动时用图形化进度条代替控制台字符输出。也可设置为text GRUB_CMDLINE_LINUX=&quot;&quot;  // 导入到启动项的命令行</code></pre><p>要实现我的需求，直接配置<code>GRUB_TIMEOUT=-1</code>即可。</p><p>此时执行<code>sudo update-grub</code>命令更新引导配置。</p><h3 id="调整启动项顺序"><a href="#调整启动项顺序" class="headerlink" title="调整启动项顺序"></a>调整启动项顺序</h3><p>我发现系统默认将Kubuntu排在第一位，而Windows排在第四位了。考虑到家里人使用我电脑时，主要是进入Windows系统，我想将Windows挪到第一位。<br>最开始我调整<code>sudo nano /boot/grub/grub.cfg</code>文件，直接在文件内调整顺序，删减所遇的启动项，发现更改后调用<code>sudo update-grub</code>命令就会将更改覆盖。<br>仔细查看<code>sudo nano /boot/grub/grub.cfg</code>文件注释，发现：</p><pre><code>## DO NOT EDIT THIS FILE## It is automatically generated by grub-mkconfig using templates# from /etc/grub.d and settings from /etc/default/grub#</code></pre><p>原来该文件是由<code>/etc/grub.d</code> 和 <code>/etc/default/grub</code>两个文件生成的。<code>/etc/grub.d</code>是一个文件夹，里面有很多文件，我们查看<code>README</code>文件，查看描述：</p><pre><code>All executable files in this directory are processed in shell expansion order.  00_*: Reserved for 00_header.  10_*: Native boot entries.  20_*: Third party apps (e.g. memtest86+).The number namespace in-between is configurable by system installer and/oradministrator.  For example, you can add an entry to boot another OS as01_otheros, 11_otheros, etc, depending on the position you want it to occupy inthe menu; and then adjust the default setting via /etc/default/grub.</code></pre><p>通过文件夹里的文件描述及备注知道，我们可通过自定义配置修改启动项。<br>其中00_header配置头信息、初始内容;05_debian_theme配置主题;10_linux系统使用的Linux系统内核配置;20_memtest86+ 内存检测测试软件;30_os-prober系统检测其他操作系统。<br>其中文件名前部分数字，代表了执行的顺序。比如我要把其他操作系统放到Linux前面，只需要将<code>30_os-prober</code>文件名中数字30改为小于<code>10_linux</code>中数字10的数字，防止影响其他功能，我们改为大于05,小于10的数字7：</p><pre><code>sudo mv /etc/grub.d/30_os-prober /etc/grub.d/07_os-prober</code></pre><p>此时，再次执行<code>sudo update-grub</code>命令更新引导配置，重启发现Windows已经挪到了第一位。</p><h3 id="移除多余的引导项"><a href="#移除多余的引导项" class="headerlink" title="移除多余的引导项"></a>移除多余的引导项</h3><p>我发现开机启动引导界面中除了Ubuntu、Windows外，还有<code>Advanced options for Kubuntu</code>、<code>UEFI Firmware Settings</code>等不常用条目，那么如何移除呢？<br>我们查看<code>10_linux</code>、<code>30_os-prober</code>，发现并没有写死启动项，使用<code>scripts</code>扫描磁盘实现的，那么不具备脚本编写能力的花，只能通过<code>/boot/grub/grub.cfg</code>进行调整了。<br>打开文件，找到对应的项删除即可。但需要注意：<strong>调整<code>/boot/grub/grub.cfg</code>后，再次执行<code>sudo update-grub</code>命令会将调整内容覆盖。</strong>因此调整后不要再执行<code>sudo update-grub</code>命令。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Ubuntu </tag>
+            
+            <tag> OS </tag>
+            
+            <tag> 引导 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Android14安装低版本应用</title>
+      <link href="/2024/07/04/android14-an-zhuang-di-ban-ben-ying-yong/"/>
+      <url>/2024/07/04/android14-an-zhuang-di-ban-ben-ying-yong/</url>
+      
+        <content type="html"><![CDATA[<p>前几天给妈妈生日，考虑到上一部手机用了快5年了，就买了一部红米K70手机，使用手机主要用来微信聊天、刷抖音视频。<br>之所以买小米手机，是因为她不认字。上一部红米Note Pro手机安装了讯飞语音引擎后，配合小米手机的辅助功能权限，可以实现点击文字使用河南话方言阅读能力。<br>这个太好用了，以前我们在家庭群聊天，如果打字就被她抱怨，因为她看不懂。自从Get到这个功能后，他也能参与到我们的日常沟通中了。</p><p>但是新手机的使用却遇到了一些问题，发现红米K70手机内置小米澎湃OS系统，澎湃OS基于Android 14版本开发。<br><img src="hyperos.png" alt="系统截图"></p><p>但是因为Android 14是比较新的系统，很多软件尚未适配，甚至讯飞语音识别软件已经很年都不在维护了。直接安装会失败：</p><p><img src="info.png" alt="安装失败"></p><p>官方给出解释：</p><pre><code>安卓14禁止安装低于target api23以下的应用，低api应用可以绕过安全保护机制获取更多系统权限和隐私，所以需要反馈应用开发者更新target api。</code></pre><p>本来是一件好事，差点惹的老妈不开心。好在论坛提供了解决方案：<br>如果一定要安装目标API低于23的软件也是可以的，使用以下命令：</p><pre><code>adb install --bypass-low-target-sdk-block FILENAME.apk </code></pre><p>按照方案安装：</p><pre><code>gure@gure:~$ adb install --bypass-low-target-sdk-block &#39;/home/gure/桌面/IFLYTEK.APK&#39; Performing Streamed Installadb: failed to install /home/gure/桌面/IFLYTEK.APK: Failure [INSTALL_FAILED_USER_RESTRICTED: Install canceled by user]gure@gure:~$ adb install --bypass-low-target-sdk-block &#39;/home/gure/桌面/IFLYTEK.APK&#39; Performing Streamed InstallSuccessgure@gure:~$ </code></pre><p>终于安装成功了。</p><p>安装成功后，发现下载方言语音包时下载总是失败，把我吓了一跳，以为服务停止了。<br>在系统设置-应用管理中发现，澎湃OS系统在Android系统文件管理的基础上对存储做了进一步的管控，需要把文件管理的权限进行再次授权才可正常存储数据。授权后下载成功，能正常使用了。</p><p>我尝试包括度秘语音引擎等其他多家TTS软件，发现有些软件能够安装却不能使用，还好讯飞语音引擎是可以的。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Android </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 兼容性 </tag>
+            
+            <tag> 小米 </tag>
+            
+            <tag> ADB </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>生活需要脑洞大开</title>
+      <link href="/2024/07/01/sheng-huo-xu-yao-nao-dong-da-kai/"/>
+      <url>/2024/07/01/sheng-huo-xu-yao-nao-dong-da-kai/</url>
+      
+        <content type="html"><![CDATA[<p>昨天我们一起看了一个2015年上映的脑洞大开的电影-《头脑特工队》，电影讲述了小女孩莱莉因为爸爸的工作变动而搬到旧金山，她的生活被这五种情绪所掌控，尽展脑内情绪的缤纷世界的故事。</p><p><img src="Inside_Out.webp" alt="头脑特工队"></p><p>这个电影给我带来的最大印象就是脑洞大开。电影的展现方式，通过不同情绪小人来展示一个人的情绪波动，这种方式非常新颖，可以说导演是脑洞大开。其次，电影也让我思考到自己的生活态度，我发现生活也需要脑洞大开，不同情绪的相互作用、转换，造就了我们个人的生活态度，遇到事情的决策。</p><p>莱莉是一个快乐、积极的女孩，她的主人格是代表着快乐的乐乐，同时被大脑中其他四种种情绪小人共同支配——怕怕、怒怒、厌厌和忧忧。每种情绪各有特色，他们相互协作，有分歧也有共同的目标：为了乐乐的成长能够。电影中各种情绪和行为的对应关系，情绪之间的相互争执，都设定得很妙，就是具象化的情绪转换逻辑。</p><p>在主情绪乐乐的带领下，一路欢声笑语，构建一系列象征性的个性小岛，这些小岛因莱莉特殊的核心记忆形成，有着家庭岛、淘气岛、友谊岛、兴趣岛和诚实岛。但从她父母决定从冰天雪地的明尼苏达州搬到暖和的旧金山的那一刻，问题开始出现。个性小岛相继崩塌，莱莉情绪逐渐失控，莱莉慢慢地否定、放弃自己，开始逃避生活，美好的记忆逐渐褪色。最终在乐乐的不屑坚持，五种主导情绪的相互作用下，莱莉找回了美好记忆球，重新回到了正常的生活。</p><p>我们需要多种情绪，就像莱莉的情绪中快乐、忧伤、愤怒、害怕、讨厌缺一不可。最直观的表现就是他们中缺少了任何人，莱莉都回不到最初的状态。如果没有乐乐，他们早就束手无策；如果没有忧忧，莱莉无法从无边的阴影中走出；如果没有怕怕，他们莱莉就不会醒来；如果没有厌厌和怒怒，乐乐和忧忧就无法进入情绪总部。每种情绪都有自己的作用，在正确的时间有对的情绪支配，一个人才能正常面对生活中的各种情况，平安走过各种挫折。</p><p>我们需要不断有一些小惊喜，就像小象一样。小象惊喜无处可寻，却在不经意间忽然出现，带来非常强烈的感动和欢乐。但随着年零的增长，我们的惊喜也在逐渐的减少，就像小象被埋藏了一样。这点让我想到了我自己：在结婚前，我总会想办法创造一些惊喜给王莹，但是随着结婚，甚至更随着付依依、付冉冉的出生，惊喜越来越少，甚至已经消失。如果没有了对惊喜的期待，那么生活就很减少很多积极的波澜，就会像平静的湖面一样，始终如一，也没了许多的乐趣和欢声。</p><p>电影中，包括后面花絮，只有儿童的情绪是被乐乐主宰的。成人的世界反而更加消极，妈妈情绪是悲伤，爸爸的是愤怒，甚至小狗的情绪是贪婪。这和现实放在一起很值得深思。我们面对复杂的人际关系、无休无止的工作内容、车贷、房贷、育儿等生活压力的相互作用后，还能有多少快乐、惊喜的空间存在呢？</p><p>希望我们看完电影后能够善待他人，特别是家人和亲人，让一个个充满消极、无奈、平淡的个体能增加一些积极的记忆元素，为生活增添丰富的色彩。让我们脑洞大开，迎向未来。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 随笔 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 感悟 </tag>
+            
+            <tag> 电影 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>生活会有遗憾但还要继续</title>
+      <link href="/2024/06/28/sheng-huo-hui-you-yi-han-dan-huan-yao-ji-xu/"/>
+      <url>/2024/06/28/sheng-huo-hui-you-yi-han-dan-huan-yao-ji-xu/</url>
+      
+        <content type="html"><![CDATA[<p>连续三天几乎没有做什么工作，早出晚归，忙侄女高考志愿填报的事情。</p><p>三天来，我仔细研读评估志愿填报规则、一个个筛选本科院校优劣势、既往录取名次、趋势，发现很多以前一知半解的高考常识和志愿误解。</p><p>我终于明白了高考招生的规则和志愿投递的原理。我连续经历两次失败的高考，今天我才明白志愿到底是怎么进行的，院校又是如何招生的。消息获取的不平等导致农村的孩子在招生中面临非常大的劣势。连续两年高考都是在没有任何参考的情况下，听从班主任的建议填报志愿，结果均出现滑档。好在第二次在征集志愿院校中“瘸子里挑将军”，征集到了我的大学。</p><p>我看到在日常生活中听到非常不起眼的院校，甚至听着就是专科的院校，在省内的招生分数竟如此之高，甚至远高出省外更高层次院校的录取分数。有些院校明明刚从技校改名，分数线就迅速拉升。我感觉到河南考生竞争的激烈，学子的不易。</p><p>我看到学校介绍中明明还是职业学院，教育资源、学校环境已经不能再差了，仍然被学生争破头的涌入。我看到南方大部分的民办院校师资力量、教育资源甚至远远高过河南省内的一本招生院校。我感觉到河南教育资源的匮乏。</p><p>虽然有很多不平等，有各种各样的不同个体的特殊情况。但仍要说，生活总会有遗憾，但是生活总要继续。</p><p>农村的孩子获取不到最新的信息、没有专业的指导和系统的培训，但这种情况下走出来的孩子自主能力会更强。河南的孩子虽然面临各种竞争，但是进入社会后，更有抓住机会的本能。虽然这些听起来都像是自欺欺人，但是生活还是要继续不是吗。</p><p>我们不能因为遗憾、不公平、有压力就放弃生活，放弃奋斗，放弃还存在希望的明天。</p><p>现在回首，我虽然没有进入理想的学校，但结识了大学里的非常要好的同学。虽然没有选择高大上的专业，却意外赶上了移动互联网的潮流。有时候我会想，当时如果我填报了正确的志愿，会不会比现在过的更好？我不知道明确的答案，因为我没办法回到当时。但我知道，那肯定是另外一种有不同经历却同样精彩的的生活。</p><p>我想有这样一种人，他无论进入哪所学校，读哪种专业，甚至可能不上大学，但是他一样能做成事情。这是因为我最看重的态度决定的。我看来态度就是一种气，有这种气的人，做起事来就会用心、坚持，甚至苛刻。只要有这种态度，就能带着他走向不错的、满足的生活。</p><p>不错的、满足的生活有大有小，这又关联到非常多的细节。有些人被规划的很详细、有些人只能靠自己，没有任何支撑，这两种各有优劣，各有精彩。我不求最大，只求刚刚好，就像我走过了过去，来到了今天，我不愿意放弃过往和现在。</p><p>我知道，生活还会继续，生活中的精彩和不精彩也会继续，我接受他们。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 随笔 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 感悟 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Kotlin全局变量后置初始化</title>
+      <link href="/2024/06/25/kotlin-quan-ju-bian-liang-hou-zhi-chu-shi-hua/"/>
+      <url>/2024/06/25/kotlin-quan-ju-bian-liang-hou-zhi-chu-shi-hua/</url>
+      
+        <content type="html"><![CDATA[<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>开源的<a href="https://github.com/gurecn/YuyanIme">雨燕输入法</a>项目已经切换成<code>Kotlin</code>语言进行开发。<br>代码切换完成后，在重构代码时发现，使用<code>Kotlin</code>语言定义全局变量（包括View对象），默认只均为<code>null</code>。<br>这就导致所有使用该变量的调用均需进行判空（<code>?.</code>或<code>!!</code>）操作，满足 Kotlin 的空指针检查，哪怕已经明确该变量此时不会为<code>null</code>。<br>此时就需要使用关键字<code>lateinit</code>救场了。</p><h3 id="优化前"><a href="#优化前" class="headerlink" title="优化前"></a>优化前</h3><p>代码未优化前，创建变量及调用方式如下。</p><ul><li><p>创建全局变量mSkbRoot，初始值为<code>null</code>。</p><pre><code>var mSkbRoot: RelativeLayout? = null</code></pre></li><li><p>代码中为全局变量mSkbRoot赋值。</p><pre><code>mSkbRoot = LayoutInflater.from(context).inflate(R.layout.sdk_skb_container, this, false) as RelativeLayout</code></pre></li><li><p>使用全局变量,需进行空指针检查。</p><pre><code>mIvSkbMove = mSkbRoot!!.findViewById(R.id.iv_keyboard_move)mSkbRoot?.background = activeTheme.backgroundGradientDrawable(isKeyBorder)</code></pre><p>若未检查空指针，编辑器会报错：</p><pre><code>Smart cast to &#39;RelativeLayout&#39; is impossible, because &#39;mSkbRoot&#39; is a mutable property that could have been changed by this time</code></pre></li></ul><h3 id="优化后"><a href="#优化后" class="headerlink" title="优化后"></a>优化后</h3><p><code>lateinit</code>关键字用于延迟属性初始化，通知编译器该变量会在后续进行初始化，不用在定义时为其赋值<code>null</code>。<br><code>lateinit</code>可以对可变、非空、非基本数据类型进行修饰。<br>使用<code>lateinit</code>修饰后，我们就可以像<code>Java</code>类似的调用。</p><ul><li><p>创建全局变量,mSkbRoot，使用<code>lateinit</code>修饰。</p><pre><code>lateinit var mSkbRoot: RelativeLayout</code></pre></li><li><p>为全局变量mSkbRoot赋值。</p><pre><code>mSkbRoot = LayoutInflater.from(context).inflate(R.layout.sdk_skb_container, this, false) as RelativeLayout</code></pre></li><li><p>使用全局变量,无需空指针检查。</p><pre><code>mIvSkbMove = mSkbRoot.findViewById(R.id.iv_keyboard_move)mSkbRoot.background = activeTheme.backgroundGradientDrawable(isKeyBorder)</code></pre></li></ul><h3 id="问题记录"><a href="#问题记录" class="headerlink" title="问题记录"></a>问题记录</h3><ul><li><p>异常风险。<br>通过<code>lateinit</code>可以实现延迟对变量进行初始化，但该方式同时会带来未及是对变量初始化，而直接调用变量导致的异常<code>UninitializedPropertyAccessException</code>。</p></li><li><p>判空操作失效。<br>优化前，我们可以对全局变量进行判空操作：</p><pre><code>if (mSkbRoot == null) &#123;    // 初始化操作&#125;</code></pre><p>但是一旦使用<code>lateinit</code>关键字修饰后，该判断会失效：<code>Condition &#39;mSkbRoot == null&#39; is always &#39;false&#39;</code>。<br>此时该变量不为<code>null</code>，但是未进行初始化，我们需要对变量判断是否进行初始化:</p><pre><code>if (::mSkbRoot.isInitialized) &#123;    // 初始化操作&#125;</code></pre></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Android </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Kotlin </tag>
+            
+            <tag> 语法 </tag>
+            
+            <tag> 雨燕输入法 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>使用Gradle获取Git记录</title>
+      <link href="/2024/06/24/shi-yong-gradle-huo-qu-git-ji-lu/"/>
+      <url>/2024/06/24/shi-yong-gradle-huo-qu-git-ji-lu/</url>
+      
+        <content type="html"><![CDATA[<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>开源的<a href="https://github.com/gurecn/YuyanIme">雨燕输入法</a>项目中，在<code>关于界面</code>要实现显示Git提交记录以及点击条目跳转到对应的Github提交节点。<br>之前的方案是，在每次打包前手动更改对应的值，不但麻烦，且易出错。<br>技术上分析，一旦打包完成，应用内不具备Git环境，因此没办法通过Java代码在运行时动态获取相关属性。<br>项目使用Gradle方式构建，那么如何在编译、构建时获取Git最新记录及提交时间等属性呢？</p><h3 id="前置条件"><a href="#前置条件" class="headerlink" title="前置条件"></a>前置条件</h3><ul><li>项目已正常初始化Git资源，并已存在提交记录。</li><li>项目使用<code>Groovy</code>方式构建。由于雨燕输入法项目使用Groovy构建，因此该文章介绍使用该构建方案。</li></ul><pre><code>Android Gradle插件4.0支持使用Kotlin脚本(KTS)，用于替代Groovy。KTS比Groovy更适合编写Gradle脚本，Kotlin代码可读性更高，且提供更好的编译时检查和IDE支持。</code></pre><h3 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h3><ul><li>创建方法，获取对应值<br>在子模块<code>build.gradle</code>中，定义方法获取对应的值：</li></ul><pre><code>apply plugin: &#39;org.jetbrains.kotlin.android&#39;// kotlinapply plugin: &#39;kotlin-android&#39; def getAPPGitHead() &#123;    return &quot;git rev-parse HEAD&quot;.execute().text.trim()&#125;def getAPPBuildTime() &#123;    return &quot;git log -1 --pretty=%ai&quot;.execute().text.trim()&#125; android &#123;    compileSdk 34    // ...  省略对应内容&#125; </code></pre><ul><li>执行方法，动态创建变量并赋值<br>在子模块<code>build.gradle</code>中，执行构建方法<code>buildTypes</code>时，调用方法，并动态创建<code>AppCommitHead</code>、<code>AppBuildTime</code>变量存储Git属性。</li></ul><pre><code>android &#123;    compileSdk 34    buildTypes &#123;        release &#123;            minifyEnabled true            proguardFiles getDefaultProguardFile(&#39;proguard-android-optimize.txt&#39;), &#39;proguard.cfg&#39;            def APP_GIT_COMMIT_HEAD = getAPPGitHead()            buildConfigField &quot;String&quot;, &quot;AppCommitHead&quot;, &quot;\&quot;$&#123;APP_GIT_COMMIT_HEAD&#125;\&quot;&quot;            def APP_GIT_COMMIT_TIME = getAPPBuildTime()            buildConfigField &quot;String&quot;, &quot;AppBuildTime&quot;, &quot;\&quot;$&#123;APP_GIT_COMMIT_TIME&#125;\&quot;&quot;        &#125;        debug &#123;            def APP_GIT_COMMIT_HEAD = getAPPGitHead()            buildConfigField &quot;String&quot;, &quot;AppCommitHead&quot;, &quot;\&quot;$&#123;APP_GIT_COMMIT_HEAD&#125;\&quot;&quot;            def APP_GIT_COMMIT_TIME = getAPPBuildTime()            buildConfigField &quot;String&quot;, &quot;AppBuildTime&quot;, &quot;\&quot;$&#123;APP_GIT_COMMIT_TIME&#125;\&quot;&quot;        &#125;    &#125;&#125;</code></pre><ul><li>项目中调用变量<br>在项目中使用Java或Kotlin代码，通过BuildConfig使用对应的值。</li></ul><pre><code>    addCategory(R.string.version) &#123;        addPreference(R.string.app_version, BuildConfig.AppCommitId)        addPreference(R.string.app_build_git_hash, BuildConfig.AppCommitHead) &#123;            val commit = BuildConfig.AppCommitHead.substringBefore(&#39;-&#39;)            val uri = Uri.parse(&quot;$&#123;CustomConstant.YuyanSDKRepo&#125;/commit/$&#123;commit&#125;&quot;)            startActivity(Intent(Intent.ACTION_VIEW, uri))        &#125;        addPreference(R.string.app_build_time, BuildConfig.AppBuildTime)        addPreference(R.string.sdk_version, BuildConfig.SdkCommitId)    &#125;</code></pre><p>查看效果：<br><img src="gradle_git.webp" alt="Gradle获取Git记录"></p><h3 id="问题记录"><a href="#问题记录" class="headerlink" title="问题记录"></a>问题记录</h3><ol><li>通过<code>buildConfigField</code>动态构建变量未成功。<br>发现编译时报错：</li></ol><pre><code>* What went wrongA problem occurred configuring project &#39;:app&#39;.&gt; defaultConfig contains custom BuildConfig fields, but the feature is disabled.</code></pre><p>原因在8.x版本的gradle插件中，<code>buildConfigField</code>功能被禁用。<br>解决方式是在build.gradle中添加：</p><pre><code>buildFeatures &#123;    buildConfig = true&#125;</code></pre><ol start="2"><li>获取其他路径或子模块Git记录。<br><code>Gradle</code>支持调用Git命令时，指定Git资源路径,我们能通过指定绝对路径的方式获取其他路径的Git记录：</li></ol><pre><code>def getSDKGitRevision() &#123;    return &quot;git --git-dir=/home/gure/devproject/YuyanIme/yuyansdk/.git rev-parse --short HEAD&quot;.execute().text.trim()&#125;</code></pre><p>通过这种方式，我们获取<code>yuyansdk</code>的Git提交情况。</p><ol start="3"><li>Git Rev-Parse命令<br>Git命令行工具中的低级命令，用于输出Git引用的确切值，通常用于脚本中，确保脚本能正确识别分支、标签或提交。常用参数：</li></ol><pre><code>    --abbrev-ref &lt;ref&gt;：输出给定引用的简化形式，通常用于分支名称。    --symbolic：输出引用的完整名称，而不是其SHA-1值。    --verify：尝试验证给定的引用，并确保它存在。如果引用不存在，命令将返回错误。    --short：输出给定对象的短SHA-1哈希值。    --show-prefix：显示从当前工作目录到仓库根目录的路径。    --show-toplevel：显示当前仓库的顶级目录。    --git-dir：显示或打印Git目录的路径。    --show-cdup：显示从当前工作目录到仓库顶级目录的相对路径。    --is-inside-git-dir：如果当前目录是Git目录的一部分，则输出true。    --is-inside-work-tree：如果当前目录是Git工作树的一部分，则输出true。    --is-bare-repository：如果当前仓库是裸仓库，则输出true。    --is-shallow-repository：如果当前仓库是浅克隆仓库，则输出true。    --default &lt;arg&gt;：如果给定的引用不存在，则使用默认值。    --all：显示所有引用。    --branches：显示所有本地分支。    --tags：显示所有标签。    --remotes：显示所有远程跟踪分支。    --quiet：不输出错误信息。    --prefix：输出给定对象的引用前缀。    --max-count &lt;n&gt;：仅输出最多n个匹配的引用。    --min-candidates &lt;n&gt;：在搜索引用时，至少需要n个匹配项。    --no-min-candidates：忽略--min-candidates的限制。    --no-max-count：忽略--max-count的限制。    --no-walk：不进行引用的遍历搜索。    --no-walk-reflogs：不通过reflog来搜索引用。    --no-walk-reachable：不搜索可达的引用。    --no-walk-tags：不搜索标签。    --sort-by &lt;key&gt;：按指定的键对输出的引用进行排序。</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> Android </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 雨燕输入法 </tag>
+            
+            <tag> Gradle </tag>
+            
+            <tag> Git </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>遗憾不能相帮</title>
+      <link href="/2024/06/20/yi-han-bu-neng-xiang-bang/"/>
+      <url>/2024/06/20/yi-han-bu-neng-xiang-bang/</url>
+      
+        <content type="html"><![CDATA[<p>这几天堂哥来郑州开网约车，带着他报名、体检、考试、拿证、熟悉。家人说，他就是你堂哥，力所能及帮助一下就行，为什么这么用心呢？</p><p>是啊，为什么这么上心呢？这要从很久以前的一件非常遗憾的往事说起。</p><p>在我八岁时父亲因病去世，家里陷入深渊。本来就贫困，为父亲治病又从亲朋、邻居间借下大量债务。家里的牛羊、麦子被债主直接拉走抵债；母亲白天不敢出门，把我赶出家门、从门外上锁，只为让债主以为家中无人。</p><p>那时的我们像病毒，亲戚害怕我们上门，因为上门大概就是借钱。学习成绩最好的二哥因家中拮据，在初三就辍学到广州修车铺做学徒、学修车。往事太艰辛，诉说不尽，不堪回首。</p><p>等我上高中时，母亲开始去山东阿香米线快餐店打工，来偿还家中债务。我的学费主要是依靠慈善会和张慕新叔叔的资助。</p><p>此时二哥学修车已好几年，技术已经成熟。有一个机会：他一朋友希望和他一起开修车店，朋友提供主要资金，二哥主要出技术，当然二哥如果能出小部分资金更好，便于股份划分。但是他学徒期间工资只够生活，没有任何储蓄。</p><p>那天他打电话回来，希望能让我帮他贷款，不需要太多，只需要贷五千元。我请假回到家，找到我们村在银行工作的异性长辈，说明了诉求。异性长辈表示，贷款需要有贷款人和担保人，像我这样的还在上高中的学生来说，担保人需要有两对已婚的夫妻才行。他建议我找大伯、二伯，因为是叔伯，直有这种关系才可能帮助我们。但当我找到他们，他们却对担保工作非常抵触。可能是因为我是小孩子，可能是觉得二哥做不成，也可能是因为我家太贫困，担心还不起。最终，没有贷款成功。</p><p>当时我各种好话劝说，想尽一切办法解决，多想为二哥做成一件事啊。但这终究成了一个长久埋藏在心底的遗憾。回到学校后，我哭着给二哥诉说着遭遇，不仅是没有贷款成功，同时还为自己委屈，为自己无奈。这就是遗憾不能相帮。</p><p>现在，经济形势直下，堂哥外出找不到工作。所以想来到郑州开网约车试一下，希望通过这种方式在郑州落脚。我的工作性质没办法像工厂、饭店，给老家的亲朋提供工作岗位，所以只能在流程上提供帮助。之前闲暇时，我曾开过顺风车，用自己的车开过网约车，所以对整个流程和开车注意事项也相对熟悉。而堂哥手机、车技不熟悉，郑州路况也不熟悉。我就请假陪他走流程，给他压车，让他尽快熟悉。</p><p>堂哥也算亲人，不管之前怎样，我不想让未来的自己在回顾此刻的自己时，心里有什么负担或者遗憾。所以我愿意全力以赴的提供帮助，而不是力所能及。我想，这样心中就不会再留下什么遗憾了吧。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 随笔 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 感悟 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Github博客搭建避坑指南</title>
+      <link href="/2024/06/19/hexo-github-bo-ke-da-jian-bi-keng-zhi-nan/"/>
+      <url>/2024/06/19/hexo-github-bo-ke-da-jian-bi-keng-zhi-nan/</url>
+      
+        <content type="html"><![CDATA[<h2 id="缘由"><a href="#缘由" class="headerlink" title="缘由"></a>缘由</h2><p>阿里云服务器到期，财力问题未继续付费，所以基于github免费搭建一套个人博客。<br>由于我非前端开发人员，本次博客系统搭建主要参考韦阳的小白搭建教程，在此感谢韦阳细致的部署教程，韦阳部署教程链接如下：</p><blockquote><p><a href="https://zhuanlan.zhihu.com/p/35668237">超详细Hexo+Github博客搭建小白教程</a></p></blockquote><p>在韦阳部署教程发布时间看，实际部署在2018年4月份。距今已5年，在参考教程进行实际部署时，发现一些问题。本次我主要记录部署中出现的问题以及解决问题的过程。<br>其他小伙伴借鉴部署时，可先阅读韦阳的部署教程，在部署过程中遇到问题时，对照我的解决方式，希望能对大家顺利部署自己的博客有所帮助。</p><h3 id="遇到问题："><a href="#遇到问题：" class="headerlink" title="遇到问题："></a>遇到问题：</h3><ol><li>github创建Pages时创建gh-pages分支</li><li>hexo d命令错误</li><li>无法push到github远程仓库</li><li>访问页面总是404</li><li>访问页面不带样式</li></ol><h2 id="解决过程"><a href="#解决过程" class="headerlink" title="解决过程"></a>解决过程</h2><h3 id="问题1：Github创建Pages时总是创建新的分支"><a href="#问题1：Github创建Pages时总是创建新的分支" class="headerlink" title="问题1：Github创建Pages时总是创建新的分支"></a>问题1：Github创建Pages时总是创建新的分支</h3><h4 id="现象"><a href="#现象" class="headerlink" title="现象"></a>现象</h4><p>按照韦阳教程说明：</p><blockquote><p>然后项目就建成了，点击Settings，向下拉到最后有个GitHub Pages，点击Choose a theme选择一个主题。然后等一会儿，再回到GitHub Pages，会变成下面这样：</p></blockquote><p>发现实际现象不同。<br>执行中发现一旦选择theme后，Github会默认创建一个新分支：gh-pages，并提示进行git提交申请。此时提交后GitHub Pages会将pages默认切换到gh-pages分支上，这时是没办法把gh-pages分支的内容手动迁移到master分支。</p><h4 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h4><p>方案1：不选择theme。项目建成后，点击Settings，向下拉到最后有个GitHub Pages，在Source中选择master分支，然后直接点击Save，停止后续的操作。这时候Github仓库中由于没有web资源，所以这时候访问会提示404，不过不用担心，待客户端部署后就能进行测试了。</p><p>方案2：选择theme。这时Github会创建一个新的分支gh-pages，此时可以测试访问创建的gh-pages测试创建情况。能正常打开说明创建已经完成。这时候重新进入Settings，向下拉到最后GitHub Pages，在Source中选择master分支，然后直接点击Save，操作结束。该操作后网页访问不到，不过不用担心，待客户端部署后就可恢复功能。</p><h3 id="问题2：无法push到github远程仓库"><a href="#问题2：无法push到github远程仓库" class="headerlink" title="问题2：无法push到github远程仓库"></a>问题2：无法push到github远程仓库</h3><h4 id="现象-1"><a href="#现象-1" class="headerlink" title="现象"></a>现象</h4><p>按照韦阳教程：</p><blockquote><p>编写完markdown文件后，根目录下输入hexo g生成静态网页，然后输入hexo s可以本地预览效果，最后输入hexo d上传到github上。这时打开你的github.io主页就能看到发布的文章啦。</p></blockquote><p>实际过程中，由于hexo会在初始化后自动创建一个hello-world.md文章，我实际部署时没有执行”<strong>写文章、发布文章</strong>“这个章节中的安装命令，导致执行hexo d后总是提示：ERROR Deployer not found: git。如下：</p><pre class="line-numbers language-bash"><code class="language-bash">$ hexo dINFO  Validating configERROR Deployer not found: <span class="token function">git</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><h4 id="方案-1"><a href="#方案-1" class="headerlink" title="方案"></a>方案</h4><p>这个错误是由于未安装exo-deployer-git导致的，可以在博客根目录下右键打开git bash，安装对应的扩展npm i hexo-deployer-git。安装完成后再次执行hexo d后即可正常提交。</p><h3 id="问题3：hexo-d命令错误"><a href="#问题3：hexo-d命令错误" class="headerlink" title="问题3：hexo d命令错误"></a>问题3：hexo d命令错误</h3><h4 id="现象-2"><a href="#现象-2" class="headerlink" title="现象"></a>现象</h4><p>若是使用hexo自带的模板，不存在该问题，可以正常进行博客书写了。<br>我看到韦阳博客模板功能比较完备，所以直接使用韦阳GitHub上提供的模板，就根据韦阳的教程进行操作：</p><blockquote><p>大家也可以先用下文hexo安装方法安装完hexo，然后直接git clone <a href="mailto:&#103;&#105;&#x74;&#64;&#x67;&#x69;&#x74;&#x68;&#117;&#x62;&#46;&#x63;&#111;&#x6d;">&#103;&#105;&#x74;&#64;&#x67;&#x69;&#x74;&#x68;&#117;&#x62;&#46;&#x63;&#111;&#x6d;</a>:godweiyang/hexo-matery-modified.git克隆我的所有源文件，然后这是我修改完的基本没bug的定制化的博客，就可以直接拿来用啦。<br><strong>我这个源文件和原来的主题没有什么区别，只是我把插件都安装完了，有些小bug也修复了，所以拿来就能直接用，方便大家。</strong></p></blockquote><p>发现执行hexo g、hexo s均正常，本地预览也正常。但是在使用hexo d提交GitHub时报错：The “mode” argument must be integer. Received an instance of Object。</p><pre class="line-numbers language-bash"><code class="language-bash">$ hexo dINFO  Deploying: <span class="token function">git</span>INFO  Clearing .deploy_git folder<span class="token punctuation">..</span>.INFO  Copying files from public folder<span class="token punctuation">..</span>.FATAL Something's wrong. Maybe you can <span class="token function">find</span> the solution here: https://hexo.io/docs/troubleshooting.htmlTypeError <span class="token punctuation">[</span>ERR_INVALID_ARG_TYPE<span class="token punctuation">]</span>: The <span class="token string">"mode"</span> argument must be integer. Received an instance of Object    at copyFile <span class="token punctuation">(</span>fs.js:2042:10<span class="token punctuation">)</span>    at tryCatcher <span class="token punctuation">(</span>C:\develop\hexo-theme-sungod-master\node_modules\bluebird\js\release\util.js:16:23<span class="token punctuation">)</span>    at ret <span class="token punctuation">(</span>eval at makeNodePromisifiedEval <span class="token punctuation">(</span>C:\Users\Administrator\AppData\Roaming\npm\node_modules\hexo-cli\node_modules\bluebird\js\release\promisify.js:184:12<span class="token punctuation">)</span>, <span class="token operator">&lt;</span>anonymous<span class="token operator">></span>:13:39<span class="token punctuation">)</span>    at C:\develop\hexo-theme-sungod-master\node_modules\hexo-fs\lib\fs.js:144:39    at tryCatcher <span class="token punctuation">(</span>C:\develop\hexo-theme-sungod-master\node_modules\bluebird\js\release\util.js:16:23<span class="token punctuation">)</span>    at Promise._settlePromiseFromHandler <span class="token punctuation">(</span>C:\develop\hexo-theme-sungod-master\node_modules\bluebird\js\release\promise.js:517:31<span class="token punctuation">)</span>    at Promise._settlePromise <span class="token punctuation">(</span>C:\develop\hexo-theme-sungod-master\node_modules\bluebird\js\release\promise.js:574:18<span class="token punctuation">)</span>    at Promise._settlePromise0 <span class="token punctuation">(</span>C:\develop\hexo-theme-sungod-master\node_modules\bluebird\js\release\promise.js:619:10<span class="token punctuation">)</span>    at Promise._settlePromises <span class="token punctuation">(</span>C:\develop\hexo-theme-sungod-master\node_modules\bluebird\js\release\promise.js:699:18<span class="token punctuation">)</span>    at Promise._fulfill <span class="token punctuation">(</span>C:\develop\hexo-theme-sungod-master\node_modules\bluebird\js\release\promise.js:643:18<span class="token punctuation">)</span>    at Promise._resolveCallback <span class="token punctuation">(</span>C:\develop\hexo-theme-sungod-master\node_modules\bluebird\js\release\promise.js:437:57<span class="token punctuation">)</span>    at Promise._settlePromiseFromHandler <span class="token punctuation">(</span>C:\develop\hexo-theme-sungod-master\node_modules\bluebird\js\release\promise.js:529:17<span class="token punctuation">)</span>    at Promise._settlePromise <span class="token punctuation">(</span>C:\develop\hexo-theme-sungod-master\node_modules\bluebird\js\release\promise.js:574:18<span class="token punctuation">)</span>    at Promise._settlePromise0 <span class="token punctuation">(</span>C:\develop\hexo-theme-sungod-master\node_modules\bluebird\js\release\promise.js:619:10<span class="token punctuation">)</span>    at Promise._settlePromises <span class="token punctuation">(</span>C:\develop\hexo-theme-sungod-master\node_modules\bluebird\js\release\promise.js:699:18<span class="token punctuation">)</span>    at Promise._fulfill <span class="token punctuation">(</span>C:\develop\hexo-theme-sungod-master\node_modules\bluebird\js\release\promise.js:643:18<span class="token punctuation">)</span>    at Promise._resolveCallback <span class="token punctuation">(</span>C:\develop\hexo-theme-sungod-master\node_modules\bluebird\js\release\promise.js:437:57<span class="token punctuation">)</span>    at Promise._settlePromiseFromHandler <span class="token punctuation">(</span>C:\develop\hexo-theme-sungod-master\node_modules\bluebird\js\release\promise.js:529:17<span class="token punctuation">)</span>    at Promise._settlePromise <span class="token punctuation">(</span>C:\develop\hexo-theme-sungod-master\node_modules\bluebird\js\release\promise.js:574:18<span class="token punctuation">)</span>    at Promise._settlePromise0 <span class="token punctuation">(</span>C:\develop\hexo-theme-sungod-master\node_modules\bluebird\js\release\promise.js:619:10<span class="token punctuation">)</span>    at Promise._settlePromises <span class="token punctuation">(</span>C:\develop\hexo-theme-sungod-master\node_modules\bluebird\js\release\promise.js:699:18<span class="token punctuation">)</span>    at Promise._fulfill <span class="token punctuation">(</span>C:\develop\hexo-theme-sungod-master\node_modules\bluebird\js\release\promise.js:643:18<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>经查资料，普遍反馈是node.js版本不一致导致的，网上也提供了多种解决方案。</p><h4 id="方案-2"><a href="#方案-2" class="headerlink" title="方案"></a>方案</h4><p>方案1：<a href="https://www.ddmit.com/2021/09/24/hexo-mode-argument-must-be-integer-error/">The “mode” argument must be integer(node降版本方式)</a><br>网上比较常见的解决方式是降级node.js的版本号，反馈降级到比较稳定的node12.14版本后功能即可正常（个人未验证）。我特意看了一下韦阳使用的版本：v9.11.1，确实是比较老的版本了。通过降低node.js的方式我没有尝试，理论上大家普遍反馈使用该方式解决了，应该能解决问题。方法可参考：</p><blockquote><p><a href="https://zhuanlan.zhihu.com/p/136552969">Hexo网站部署 The “mode” argument must be integer问题</a></p></blockquote><p>方案2：<a href="https://www.ddmit.com/2021/09/24/hexo-mode-argument-must-be-integer-error/">The “mode” argument must be integer(无需node降版本)</a><br>我个人不建议使用方案1降级的方式。当前node.js稳定版本是14.18.1，中间已经有了几个大版本迭代，包括安全性和新特性上来看，最好能在项目上修复该问题，使部署的项目适配最新的平台，这样后续其他项目也不至于使用旧版的node.js进行编译。继续查找资料，发现一个比较有帮助的文章：</p><blockquote><p><a href="https://www.ddmit.com/2021/09/24/hexo-mode-argument-must-be-integer-error/">hexo部署项目报错解决：The “mode” argument must be integer(无需node降版本)</a></p></blockquote><p>很遗憾，通过作者的方式没能解决这个问题，不过给我很大的启示。升级hexo-renderer-stylus版本的方式没有解决该问题，但是使用hexo初始化的模板又可以正常编译、提交，那说明我个人电脑上的hexo及其他插件的版本都是没问题的，那么将韦阳项目中的版本全部升级成我电脑安装的版本是否能解决问题？<br>韦阳项目中的依赖版本信息：</p><pre class="line-numbers language-groovy"><code class="language-groovy">  <span class="token string">"dependencies"</span><span class="token punctuation">:</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>    <span class="token string">"eslint"</span><span class="token punctuation">:</span> <span class="token string">"^6.0.1"</span><span class="token punctuation">,</span>    <span class="token string">"hexo"</span><span class="token punctuation">:</span> <span class="token string">"^3.9.0"</span><span class="token punctuation">,</span>    <span class="token string">"hexo-baidu-url-submit"</span><span class="token punctuation">:</span> <span class="token string">"0.0.6"</span><span class="token punctuation">,</span>    <span class="token string">"hexo-deployer-git"</span><span class="token punctuation">:</span> <span class="token string">"^1.0.0"</span><span class="token punctuation">,</span>    <span class="token string">"hexo-generator-archive"</span><span class="token punctuation">:</span> <span class="token string">"^0.1.5"</span><span class="token punctuation">,</span>    <span class="token string">"hexo-generator-baidu-sitemap"</span><span class="token punctuation">:</span> <span class="token string">"^0.1.6"</span><span class="token punctuation">,</span>    <span class="token string">"hexo-generator-category"</span><span class="token punctuation">:</span> <span class="token string">"^0.1.3"</span><span class="token punctuation">,</span>    <span class="token string">"hexo-generator-feed"</span><span class="token punctuation">:</span> <span class="token string">"^1.2.2"</span><span class="token punctuation">,</span>    <span class="token string">"hexo-generator-index"</span><span class="token punctuation">:</span> <span class="token string">"^0.2.1"</span><span class="token punctuation">,</span>    <span class="token string">"hexo-generator-search"</span><span class="token punctuation">:</span> <span class="token string">"^2.4.0"</span><span class="token punctuation">,</span>    <span class="token string">"hexo-generator-sitemap"</span><span class="token punctuation">:</span> <span class="token string">"^1.2.0"</span><span class="token punctuation">,</span>    <span class="token string">"hexo-generator-tag"</span><span class="token punctuation">:</span> <span class="token string">"^0.2.0"</span><span class="token punctuation">,</span>    <span class="token string">"hexo-helper-live2d"</span><span class="token punctuation">:</span> <span class="token string">"^3.1.1"</span><span class="token punctuation">,</span>    <span class="token string">"hexo-permalink-pinyin"</span><span class="token punctuation">:</span> <span class="token string">"^1.1.0"</span><span class="token punctuation">,</span>    <span class="token string">"hexo-prism-plugin"</span><span class="token punctuation">:</span> <span class="token string">"^2.3.0"</span><span class="token punctuation">,</span>    <span class="token string">"hexo-renderer-ejs"</span><span class="token punctuation">:</span> <span class="token string">"^0.3.1"</span><span class="token punctuation">,</span>    <span class="token string">"hexo-renderer-marked"</span><span class="token punctuation">:</span> <span class="token string">"^1.0.1"</span><span class="token punctuation">,</span>    <span class="token string">"hexo-renderer-stylus"</span><span class="token punctuation">:</span> <span class="token string">"^0.3.3"</span><span class="token punctuation">,</span>    <span class="token string">"hexo-server"</span><span class="token punctuation">:</span> <span class="token string">"^0.3.3"</span><span class="token punctuation">,</span>    <span class="token string">"hexo-wordcount"</span><span class="token punctuation">:</span> <span class="token string">"^6.0.1"</span>  <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>我初始化hexo项目中的依赖版本信息：</p><pre class="line-numbers language-groovy"><code class="language-groovy">  <span class="token string">"dependencies"</span><span class="token punctuation">:</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>    <span class="token string">"hexo"</span><span class="token punctuation">:</span> <span class="token string">"^5.0.0"</span><span class="token punctuation">,</span>    <span class="token string">"hexo-generator-archive"</span><span class="token punctuation">:</span> <span class="token string">"^1.0.0"</span><span class="token punctuation">,</span>    <span class="token string">"hexo-generator-category"</span><span class="token punctuation">:</span> <span class="token string">"^1.0.0"</span><span class="token punctuation">,</span>    <span class="token string">"hexo-generator-index"</span><span class="token punctuation">:</span> <span class="token string">"^2.0.0"</span><span class="token punctuation">,</span>    <span class="token string">"hexo-generator-tag"</span><span class="token punctuation">:</span> <span class="token string">"^1.0.0"</span><span class="token punctuation">,</span>    <span class="token string">"hexo-renderer-ejs"</span><span class="token punctuation">:</span> <span class="token string">"^1.0.0"</span><span class="token punctuation">,</span>    <span class="token string">"hexo-renderer-marked"</span><span class="token punctuation">:</span> <span class="token string">"^4.0.0"</span><span class="token punctuation">,</span>    <span class="token string">"hexo-renderer-stylus"</span><span class="token punctuation">:</span> <span class="token string">"^2.0.0"</span><span class="token punctuation">,</span>    <span class="token string">"hexo-server"</span><span class="token punctuation">:</span> <span class="token string">"^2.0.0"</span><span class="token punctuation">,</span>    <span class="token string">"hexo-theme-landscape"</span><span class="token punctuation">:</span> <span class="token string">"^0.0.3"</span>  <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>将对应的版本升级后，最终的版本信息如下：</p><pre class="line-numbers language-groovy"><code class="language-groovy">  <span class="token string">"dependencies"</span><span class="token punctuation">:</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>    <span class="token string">"eslint"</span><span class="token punctuation">:</span> <span class="token string">"^6.0.1"</span><span class="token punctuation">,</span>    <span class="token string">"hexo"</span><span class="token punctuation">:</span> <span class="token string">"^5.0.0"</span><span class="token punctuation">,</span>    <span class="token string">"hexo-baidu-url-submit"</span><span class="token punctuation">:</span> <span class="token string">"0.0.6"</span><span class="token punctuation">,</span>    <span class="token string">"hexo-deployer-git"</span><span class="token punctuation">:</span> <span class="token string">"^3.0.0"</span><span class="token punctuation">,</span>    <span class="token string">"hexo-generator-archive"</span><span class="token punctuation">:</span> <span class="token string">"^1.0.0"</span><span class="token punctuation">,</span>    <span class="token string">"hexo-generator-baidu-sitemap"</span><span class="token punctuation">:</span> <span class="token string">"^0.1.6"</span><span class="token punctuation">,</span>    <span class="token string">"hexo-generator-category"</span><span class="token punctuation">:</span> <span class="token string">"^1.0.0"</span><span class="token punctuation">,</span>    <span class="token string">"hexo-generator-feed"</span><span class="token punctuation">:</span> <span class="token string">"^1.2.2"</span><span class="token punctuation">,</span>    <span class="token string">"hexo-generator-index"</span><span class="token punctuation">:</span> <span class="token string">"^2.0.0"</span><span class="token punctuation">,</span>    <span class="token string">"hexo-generator-search"</span><span class="token punctuation">:</span> <span class="token string">"^2.4.0"</span><span class="token punctuation">,</span>    <span class="token string">"hexo-generator-sitemap"</span><span class="token punctuation">:</span> <span class="token string">"^1.2.0"</span><span class="token punctuation">,</span>    <span class="token string">"hexo-generator-tag"</span><span class="token punctuation">:</span> <span class="token string">"^0.2.0"</span><span class="token punctuation">,</span>    <span class="token string">"hexo-helper-live2d"</span><span class="token punctuation">:</span> <span class="token string">"^3.1.1"</span><span class="token punctuation">,</span>    <span class="token string">"hexo-permalink-pinyin"</span><span class="token punctuation">:</span> <span class="token string">"^1.1.0"</span><span class="token punctuation">,</span>    <span class="token string">"hexo-prism-plugin"</span><span class="token punctuation">:</span> <span class="token string">"^2.3.0"</span><span class="token punctuation">,</span>    <span class="token string">"hexo-renderer-ejs"</span><span class="token punctuation">:</span> <span class="token string">"^1.0.0"</span><span class="token punctuation">,</span>    <span class="token string">"hexo-renderer-marked"</span><span class="token punctuation">:</span> <span class="token string">"^4.0.0"</span><span class="token punctuation">,</span>    <span class="token string">"hexo-renderer-stylus"</span><span class="token punctuation">:</span> <span class="token string">"^2.0.0"</span><span class="token punctuation">,</span>    <span class="token string">"hexo-server"</span><span class="token punctuation">:</span> <span class="token string">"^2.0.0"</span><span class="token punctuation">,</span>    <span class="token string">"hexo-wordcount"</span><span class="token punctuation">:</span> <span class="token string">"^6.0.1"</span>  <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>发现果然提交正常了。hexo d提交如下：</p><pre class="line-numbers language-bash"><code class="language-bash">Enumerating objects: 380, done.Counting objects: 100% <span class="token punctuation">(</span>380/380<span class="token punctuation">)</span>, done.Delta compression using up to 8 threadsCompressing objects: 100% <span class="token punctuation">(</span>319/319<span class="token punctuation">)</span>, done.Writing objects: 100% <span class="token punctuation">(</span>380/380<span class="token punctuation">)</span>, 18.81 MiB <span class="token operator">|</span> 1.91 MiB/s, done.Total 380 <span class="token punctuation">(</span>delta 66<span class="token punctuation">)</span>, reused 0 <span class="token punctuation">(</span>delta 0<span class="token punctuation">)</span>, pack-reused 0remote: Resolving deltas: 100% <span class="token punctuation">(</span>66/66<span class="token punctuation">)</span>, done.To github.com:gurecn/gure.github.io.git + 0421389<span class="token punctuation">..</span>.dac3b2b HEAD -<span class="token operator">></span> master <span class="token punctuation">(</span>forced update<span class="token punctuation">)</span>Branch <span class="token string">'master'</span> <span class="token keyword">set</span> up to track remote branch <span class="token string">'master'</span> from <span class="token string">'git@github.com:gurecn/gure.github.io.git'</span><span class="token keyword">.</span>INFO  Deploy done: <span class="token function">git</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="问题4：访问页面总是404"><a href="#问题4：访问页面总是404" class="headerlink" title="问题4：访问页面总是404"></a>问题4：访问页面总是404</h3><p>这个问题我没有遇到，但是在网络上发现了。我实际测试了一下确实存在，在这里也提醒一下。<br>GitHub上创建的项目：username.github.io，必须使用这种格式，且username需与GitHub真实username保持一致。</p><ul><li><input disabled="" type="checkbox"> 举个反例：项目这种情况下是不行的：~~<a href="mailto:&#103;&#x69;&#x74;&#x40;&#x67;&#105;&#116;&#104;&#x75;&#98;&#x2e;&#99;&#x6f;&#x6d;">&#103;&#x69;&#x74;&#x40;&#x67;&#105;&#116;&#104;&#x75;&#98;&#x2e;&#99;&#x6f;&#x6d;</a>:gurecn/gure.github.io.git ~~</li><li><input checked="" disabled="" type="checkbox"> 正确例子：必须创建成这样才可以：<a href="mailto:&#x67;&#x69;&#x74;&#x40;&#103;&#105;&#116;&#104;&#117;&#x62;&#x2e;&#99;&#x6f;&#109;">&#x67;&#x69;&#x74;&#x40;&#103;&#105;&#116;&#104;&#117;&#x62;&#x2e;&#99;&#x6f;&#109;</a>:gurecn/gurecn.github.io.git</li></ul><p>通过几次尝试，我还发现一个比较好的点，GitHub显示的访问方式是：</p><blockquote><p><a href="https://gurecn.github.io/gure.github.io/">https://gurecn.github.io/username.github.io/</a></p></blockquote><p>实际可以使用下面的地址进行访问：</p><blockquote><p><a href="https://gurecn.github.io/gure.github.io/">https://username.github.io/</a></p></blockquote><p>其中username就是你的用户名。</p><h3 id="问题5：访问页面不带样式"><a href="#问题5：访问页面不带样式" class="headerlink" title="问题5：访问页面不带样式"></a>问题5：访问页面不带样式</h3><h4 id="现象-3"><a href="#现象-3" class="headerlink" title="现象"></a>现象</h4><p>hexo d部署后，访问对应的页面，发现博客内容确实出来了，但没有样式。所有内容跟直接显示出来，没有任何美感。</p><h4 id="方案-3"><a href="#方案-3" class="headerlink" title="方案"></a>方案</h4><p>经定位主要原因是GitHub访问较慢，数据没有加载完成。次要原因是浏览器可能带有缓存，一次访问失败后，后续直接加载之前错误的显示效果，无论怎么刷新都不会更新效果。<br>此时我发现Chrome浏览器一个比较好用的方式，点击右上角菜单，选择：打开新的无痕窗口，这个窗口不共享缓存，重新加载数据。完美解决。</p><p>好了，避坑指南到此结束，希望对大家有帮助，再次感谢韦阳细致的教程及奉献。</p><h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>以上完成后，就可以正常书写博客了。但是后续我发现还有一点比较麻烦的是，如何备份文章？或者说如果更换电脑或者多台电脑同时使用时，怎么方便的同步文章资源？<br>我就吃了一个大亏，电脑重装系统后，未将文章及时备份，文章原文资料丢失，无奈重新书写。后来研究，我们可以借助git版本管理工具管理我们的文章资源。</p><ul><li>首先在我们必可根目录初始化git仓库，创建<code>.gitignore</code>忽略部署资源等相关内容：<pre><code>.DS_StoreThumbs.db.logpublic/node_modules/.deploy_git/.vscode/</code></pre></li><li>第二步，在Github上创建一个私有仓库，用来存储我们的博客资源。</li><li>最后将我们的资源上传到git仓库。后续每次书写文章后，及时提交改动。<br>通过该方式，实现了资源的及时备份和同步工作。</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Web </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Hexo </tag>
+            
+            <tag> 博客 </tag>
+            
+            <tag> 搭建 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>写在父亲节之后</title>
+      <link href="/2024/06/18/xie-zai-fu-qin-jie-zhi-hou/"/>
+      <url>/2024/06/18/xie-zai-fu-qin-jie-zhi-hou/</url>
+      
+        <content type="html"><![CDATA[<div style="text-align: center;"><iframe src="//player.bilibili.com/player.html?isOutside=true&aid=414242203&bvid=BV1LV411U77v&cid=223255930&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" width="100%" height="100%" allowfullscreen="true"></iframe></div><p>刚过去的周末，带着对世界充满好奇与期待的依依冉冉、带着一家人驱车600多公里到日照去看海。  </p><p>大海存在小孩子的幻想里，依依5岁、冉冉2岁都还没见过海。他们从书本和我们的讲述里知道蓝色的大海、金色的沙滩、呜呜的轮船和丰富的海生动物。  </p><p>我看到大海是在高中勤工俭学时，到海滨城市烟台的阿香米线快餐店找务工的母亲。长大后，我已忘记小时候对大海的幻想和期盼了。  </p><p>我想，我在高中阶段、依靠勤工俭学的机会才看到大海，这件事在我父母心里一定不算是遗憾。因为农村出身的孩子遗憾太多了。父母总希望把最好的一切给予孩子，但是能力有限，他们没办法把所有美好的一切都给子女拿到。  </p><p>现在生活条件提高了，我也同样想要孩子尽量少有遗憾。  </p><p>游乐场玩耍时，付依依、付冉冉太小，小朋友不愿意和小于他们的孩子玩耍。而我是大人，所有小孩都希望和大人一起玩。那么我就加入他们，而我带着依依冉冉玩，大家就玩到一起了。看海同样是一件充满期待的事，承载了他们的快乐。在日照第三海水浴场，陪着孩子在海边上疯跑、挖沙、踩水，小孩子满足，我也很满足。</p><p><img src="rizhao_0616_2.jpg#pic_center" alt="日照之行"><br><img src="rizhao_0616.jpg#pic_center" alt="日照之行"></p><p>父亲节那天，付依依从幼儿园给我带回礼物，画了爸爸和胸前大大的红花。再联想生活中，她总能发现爸爸的优点，给我贴多多的小红花。付冉冉喜欢炫耀，自己穿了衣服、扔了垃圾，总会跑到我们面前，让我们看看她的杰作。我很庆幸有两个可爱的女儿，付依依听话、懂礼貌，付冉冉动手能力强、有主见。我想，在他们的心理，我应该是一个好爸爸。  </p><p>所有的孩心目中，爸爸的样子就是整个世界的样子，爸爸的样子最开始都是伟岸、包容、无所不能的。随着年龄的增强，无所不能的爸爸身上覆盖的神奇元素会越来越淡，爸爸会变得普通、渺小，甚至不可理喻。但其实父亲本身是不变的，我是一名父亲，我也有父亲。我明白，无论时间、环境、标签怎么变，他都还是那个爱着子女、呵护子女的人。愿意把最好的留给孩子，我是这样的父亲，我的父亲也是这样的父亲。</p><p>最后，再加附上《父亲》歌词：</p><pre><code>父亲作词: 赵韫颖演唱：崔京浩那是我小时候常坐在父亲肩头父亲是儿那登天的梯父亲是那拉车的牛忘不了粗茶淡饭将我养大忘不了一声长叹半壶老酒等我长大后山里孩子往外走想儿时一封家书千里写叮嘱盼儿归一袋闷烟满天数星斗都说养儿能防老可儿山高水远他乡留都说养儿为防老可你再苦再累不张口儿只有清歌一曲和泪唱愿天下父母平安度春秋那是我小时候常坐在父亲肩头父亲是儿那登天的梯父亲是那拉车的牛忘不了粗茶淡饭将我养大忘不了一声长叹半壶老酒等我长大后山里孩子往外走想儿时一封家书千里写叮嘱盼儿归一袋闷烟满天数星斗都说养儿能防老可儿山高水远他乡留都说养儿为防老可你再苦再累不张口儿只有清歌一曲和泪唱愿天下父母平安度春秋</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 随笔 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 感悟 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>统信UOS 20专业版重置密码</title>
+      <link href="/2024/06/17/tong-xin-uos-20-zhuan-ye-ban-chong-zhi-mi-ma/"/>
+      <url>/2024/06/17/tong-xin-uos-20-zhuan-ye-ban-chong-zhi-mi-ma/</url>
+      
+        <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>公司使用的鲲泰kuntai D-526-2台式电脑预装统信UOS20专业版系统。<br>因鲲泰项目长时间搁置，电脑被同事搬到仓库，转移时未注意粘贴的密码标签，导致密码丢失。<br>而另外新项目需要编译arm版本的集成资源，采用x86环境交叉编译的方式可以编译，但存在兼容性风险。因此我们又把落灰的鲲泰电脑找回来，尝试密码登录失败，无奈进行密码重置。  </p><h2 id="实现路径"><a href="#实现路径" class="headerlink" title="实现路径"></a>实现路径</h2><p>搜索调研统信UOS系统密码重置的方案，主要方式有两种：</p><ul><li><a href="https://zhuanlan.zhihu.com/p/648892542?utm_id=0"><del>第一种方式：在系统启动项修改</del></a></li></ul><p>通过验证，发现该方式修改失败。按照教程完成启动项内容调整后，系统仍然进入密码登录界面，无法进入控制台界面。报错信息为：</p><pre class="line-numbers language-bash"><code class="language-bash"> You are <span class="token keyword">in</span> rescue mode <span class="token keyword">.</span> After logging <span class="token keyword">in</span> , <span class="token function">type</span> <span class="token string">" journalctl - xb "</span> to vieu system logs ,<span class="token string">" systemctl reboot "</span> to <span class="token function">reboot</span> ,<span class="token string">" systemctl default "</span> or <span class="token string">" exit "</span> to boot into default mode <span class="token keyword">.</span> Cannot <span class="token function">open</span> access to console , the root account is locked <span class="token keyword">.</span> See sulogin <span class="token punctuation">(</span>8<span class="token punctuation">)</span> <span class="token function">man</span> page <span class="token keyword">for</span> <span class="token function">more</span> details <span class="token keyword">.</span> Press Enter to <span class="token keyword">continue</span> <span class="token keyword">.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><p>由于无法进入控制台执行命令，因此无法继续按照教程执行修改密码命令。<br>该方案无法继续，失败。</p><ul><li><a href="https://faq.uniontech.com/video/function/c452">第二种方式：使用LiveCD工具进行修改</a></li></ul><p>该方案需要下载LiveCD工具，使用U盘写入工具镜像进行修改。<br>kuntai D-526-2台式机使用飞腾腾锐D2000/8 八核标准版处理器，该处理器对应的工具镜像4.4G。我们按照常规方式，下载镜像与启动U盘制作工具，制作启动盘。<br>启动盘制作完成后，按照操作说明：把U盘插入终端，开机启动项选择U盘启动，等待进入系统即可使用。（注意，我发现教程需要修改启动项内容，实际操作不需要修改，直接选择U盘启动-&gt;选择LiveCD Tools启动项即可正常进入修改可视化界面）。<br><img src="uos_reset_password.png#pic_center" alt="LiveCD工具界面"><br><strong>这个方式过程比较顺利，直接重置完成，启动电脑正常。</strong></p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol><li>LiveCD可以协助运维人员处理忘记密码、磁盘空间满、账号被锁定、分区修复等问题，降低运维难度，Linux系统的运维管理小帮手。UOS系统相关工具地址：<a href="http://livecd.uostools.com/">uostools group</a>。</li><li>直接使用浏览器下载仅能单线程，LiveCD工具官方推荐IDM多线程下载工具。通过IDM能够达到最大8线程同步下载镜像，将下载时间从4小时缩短到50分钟。get到浏览器下载新方式。但IDM工具只支持Windows、且未购买激活码使用会持续弹框。解决方法有二：<ul><li>参考教程使用免激活版本，<a href="https://www.bilibili.com/video/BV1CE421K7dA/">IDM 多线程下载工具，永久免费激活，详细安装教程！</a>,测试有效。</li><li>更换其他多线程下载工具，<a href="https://zhuanlan.zhihu.com/p/689855290">告别迅雷和idm，更好用的下载工具来了</a>，亲测fdm在Ubuntu可行。</li></ul></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> UOS </tag>
+            
+            <tag> 信创 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>写在六一儿童节之后</title>
+      <link href="/2024/06/13/xie-zai-liu-yi-er-tong-jie-zhi-hou/"/>
+      <url>/2024/06/13/xie-zai-liu-yi-er-tong-jie-zhi-hou/</url>
+      
+        <content type="html"><![CDATA[<div style="text-align: center;"><iframe src="//player.bilibili.com/player.html?isOutside=true&aid=1751775431&bvid=BV1bx421C7Jh&cid=1468627415&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" width="100%" height="100%" allowfullscreen="true"></iframe></div><p>今年六一儿童节被这首大合唱<code>【星河合唱】一首《童年》带你们开启回忆的时光机…</code>感动了。</p><p>儿童节已过半月，感动还停留在心间。仔细品味，或许真正会对童年有所触动的，是早已经走过童年、少年的中年和老年吧。  </p><p>蓦然回首，吃惊地发现自己离儿时已经太过遥远了。  现在的自己不但是已经34岁、离开学校、踏入社会的一名工作人员，同时变成了一家之主，一名有人挂念的丈夫、上有70岁母亲的儿子、下有4岁和2岁孩子的父亲。  </p><p>正是因为有了牵挂、奔头，同时经历了生活的磨砺，承担着环境的压力，所以才会对童年这首大合唱有如此的感叹吧。  </p><p>忘不掉的儿时是内心最柔软的记忆。  </p><p>我的童年记忆里有什么呢？有遥远父亲的影子，一起去干枯河床抓鱼的雀跃。有同学的友谊，跑很远只为了和同学偶遇。有老师的悉心呵护，冬天考试夏老师对着手掌哈气的印象从未淡去。还有生活的艰辛，哥哥被迫辍学、我们做饭无盐的无奈。一幕幕涌上心头，酸甜苦辣，生活百态。  </p><p>童年是丰富多彩的，同一人的不同时刻也会有不同的童年状态，就像歌词里等待游戏的童年、心里初恋的童年、迷迷糊糊的童年、这么孤单的童年、盼望长大的童年。同时每个人也都有自己的童年，每个人的童年是不同的经历，都有属于其自身的不一样的精彩，都值得珍惜。正是如此，我们才会如此缅怀童年。</p><p>现在再细读罗大佑的歌词，写的就是我们自己的少年时光啊。等待下课、等待放学，现在还有当时在教室里坐不下去，急不可耐的心情。超市里什么都有，就是口袋里没有半毛钱，回忆初中到毕业都没有进过几次的食堂，这种感觉非常逼真。一寸光阴一寸金，老师说过寸金难买寸光阴，只是在大学毕业以后才发现，时间是如此宝贵。</p><p>现在，34岁的自己，后头看自己走过的路，生命中遗憾总是有的。我相信，如果以前的自己用现在的心态走过前半生，那走到现在的一定是另外一个更优秀的自己。但是我不后悔之前的路，因为之前所有的日子是我一步一步走过的，曾经的自己也确实努力过。</p><p>站在当下，我现对过去的自己说一声：<strong>辛苦了，过去的你做的很好。</strong></p><p>最后，再加附上《童年》歌词：</p><pre><code>童年 作词: 罗大佑池塘边的榕树上知了在声声叫着夏天操场边的秋千上只有蝴蝶停在上面黑板上老师的粉笔还在拼命叽叽喳喳写个不停等待着下课 等待着放学等待游戏的童年福利社里面什么都有就是口袋里没有半毛钱诸葛四郎和魔鬼党到底谁抢到那支宝剑隔壁班的那个女孩怎么还没经过我的窗前嘴里的零食 手里的漫画心里初恋的童年总是要等到睡觉前才知道功课只做了一点点总是要等到考试以后才知道该念的书都没有念一寸光阴一寸金老师说过寸金难买寸光阴一天又一天 一年又一年迷迷糊糊的童年没有人知道为什么太阳总下到山的那一边没有人能够告诉我山里面有没有住着神仙多少的日子里总是一个人面对着天空发呆就这么好奇 就这么幻想这么孤单的童年阳光下蜻蜓飞过来一片片绿油油的稻田水彩蜡笔和万花筒画不出天边那一条彩虹什么时候才能像高年级的同学有张成熟与长大的脸盼望着假期 盼望着明天盼望长大的童年一天又一天 一年又一年盼望长大的童年</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 随笔 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 感悟 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>关于写博客的七点反思</title>
+      <link href="/2024/06/12/5w2h-godweiyang/"/>
+      <url>/2024/06/12/5w2h-godweiyang/</url>
+      
+        <content type="html"><![CDATA[<h2 id="When？什么时候开始写的？"><a href="#When？什么时候开始写的？" class="headerlink" title="When？什么时候开始写的？"></a>When？什么时候开始写的？</h2><p>第一次写博客是 2015 年了，在 CSDN 和博客园上面，当时写文章是为了记录 ACM 竞赛的题解，陆陆续续写了几十篇。但是最后还是没有坚持下去，主要还是因为 CSDN 和博客园的体验太差了，写起文章来很难受，又丑又慢。另一个原因是， CSDN 发个文章还需要审核，定制主题自由度也太差。</p><p>第二次就是 2017 年暑假了，当时自己建了个人博客。当时的想法是，个人博客好好看，有各种主题，如果会点前端知识，还能自己魔改。个人博客主要更新的就是自然语言处理的知识了，主要都是些论文的阅读赏析。另外还更新一些计算机相关的基础知识，主要考虑到绝大多数人并不会对枯燥又专业的自然语言处理感兴趣。算法题解的话最近也开始更新起来了，主要写一些 LeetCode上面的题解。</p><p>最后就是知乎专栏和微信公众号了，这两个平台是最近才搞的，主要把个人博客的文章同步更新过去，内容都差不多。微信公众号本来不想搞的，不支持 markdown ，写起来挺麻烦的。但是考虑到以后的发展，以及可能会有一些变现的操作，还是重操旧业了（其实我公众号两年前就注册过了，只是一直没有更新）。</p><h2 id="Why？为什么会想起来写博客？"><a href="#Why？为什么会想起来写博客？" class="headerlink" title="Why？为什么会想起来写博客？"></a>Why？为什么会想起来写博客？</h2><p>其实刚开始写博客，主要还是为了记录自己平时学到的一些东西，以后可能还能翻出来复习复习。但是现在看来，基本不会再去翻以前写的东西了。</p><p>另一个目的，也是我写博客最主要的目的，还是想分享我知道的一些东西，能够让更多的人因此受益。因为写博客，其实还是认识了不少天南地北的朋友的，有各个高校甚至初高中的学生，也有工作了很多年想学习学习编程的，也有国外一些名校的学生。不管是谁，我觉得都可以扩展我的人脉，现在微信好友人数上限扩展到了 5000 人了，而我才用了十分之一多一点，什么时候能达到上限也算是圆满了。</p><p>最后，有句话叫做：“不以盈利为目的的博客最后都死亡了”。因为如果不能因此获得任何的收入的话，极少有人有这个毅力坚持更新博客。虽然我也想因此获利，但是暂时我并不想因此改变了初衷，去写一些刻意迎合大众的水文，从而获得粉丝。</p><h2 id="What？都写一些什么主题的博客？"><a href="#What？都写一些什么主题的博客？" class="headerlink" title="What？都写一些什么主题的博客？"></a>What？都写一些什么主题的博客？</h2><p>主要都是与我相关的一些计算机相关知识。最主要的就是深度学习和自然语言处理了，但是因为我是做句法分析的，这个方向受众比较小，如果纯粹写这个方向的内容的话，看的人可能会很少。而如果写深度学习和自然语言处理的入门普及或者综合一点热门一点的方向的话，看得人应该会很多。但是这样又有一个弊端，非常的浪费我时间，因为过于基础的知识对我的提升微乎其微，只适合以后我面试前看看补补基础。而主要我现在重心还在发论文，继续搞学术，所以只能写一些结合我最近所学知识的文章。</p><p>还会写一些算法题解，现在主要在做 LeetCode 上面的中等和困难题目，然后每日一更。尽管网上各种 LeetCode 的题解已经太多了，但是我觉得，大多数的题解都非常的模糊，讲解的很不清楚，抄来抄去的有什么意思？而他们的代码风格，更是让我看不下去，最基本的美观都做不到，代码的简洁精炼就更不用谈了。所以我的目的还是尽量用美观精炼的代码来让更多人的算法思想和代码能力得到提升。</p><p>偶尔，我还会分享一些计算机基础知识，比如怎么搭博客（这是我阅读量最高的一篇博客了）、好用的软件、常用的一些软件的安装配置等等。其实讲道理，我是不愿意写这一类文章的，因为非常的费时费力，需要自己动手模拟一遍，确保能够正确完成才能写进文章。不然就会像很多网上的教程那样，抄来抄去一堆错误，根本没有自己动手实践过。但是这种文章其实对很多人帮助还挺大的，大家也乐意去看，如果你在知乎发的话，你会发现这类文章收藏量都挺高的。如果我以后用空了，我还是会经常把我平时的一些经验分享给大家的，比如 LaTeX 常用写作技巧之类的。</p><p>那么其他火的博客都写些什么呢？我觉得当代人闲暇时候、上厕所刷手机的时候，那些碎片时间是没办法好好学习一些知识的，最爱看的还是有趣的故事，例如 99 行代码做出冰雪奇缘特效、程序员脱发、程序员单身狗啦之类的。这些故事背后的技术可能是很深奥的，但是大多数人并不会去关心，只是会看完惊叹一句“卧槽”而已。其他的吸引人的内容还有资料下载、课程学习（当然基本都是广告）等等。不过我个人目前并不想写这些东西，首先这些新闻类的文章很多地方都有了，写来写去就那么些东西，同质化严重。而资料下载确实是个不错的主意，可以分享好东西给大家，但是我个人最近也没有太多值得珍藏的好资料，况且大多数网上都有现成的，我不赞同为了增加粉丝而不放出链接，把资料放在公众号后台的行为。</p><p>总之，不忘初心，粉丝什么的随缘吧。我非常佛系，即使没人看我也会日常更新，就当记日记不是吗？</p><h2 id="Who？写出来的博客都是给谁看的？"><a href="#Who？写出来的博客都是给谁看的？" class="headerlink" title="Who？写出来的博客都是给谁看的？"></a>Who？写出来的博客都是给谁看的？</h2><p>大多数看我博客的都是自然语言处理相关的学生。就拿我在知乎专栏的粉丝来看，大多数人是来看我的论文赏析的，而少部分人是看到了那篇博客搭建教程来的。至于算法题解，貌似并没有很多人看，可能这一类文章网上实在是太多了，没有什么独特的吸引力。而公众号粉丝，目前为止还很少，绝大多数还都是好友粉丝。主要原因还是公众号太封闭了，很难让好友之外的人知道并且关注你。一个方法可以在知乎等平台引流，但是现在这属于违规操作，最好还是不要干了。</p><p>其实我目标的受众群体还是包括但不仅限于计算机系的学生，像一些计算机基础知识，就算你是个小白，也可以从这里学到很多东西。甚至还有很多考研的学生来咨询我问题，虽然我是保研的，但是很多导师选取、学习方面的问题我还是愿意给出我自己的建议的。我这个人向来喜欢分享，也喜欢倾听，如果别人来问我问题，我基本是会耐心回答的。曾经有啥都不会的小白来问我怎么搭建博客，我得从最基本的命令行教他，讲道理这其实很烦，我都不想教，但我还是会尽量把关键点都告诉他。有人会觉得，我这样最后会得到什么呢？是的，也不赚钱，最多偶尔有些朋友会打赏个红包，我还浪费了大把时间（其实还好，白天工作的时候我都简单回复，晚上一般会详细点），但是认识的人多了，许多人还是多少知道我这个名字的，虽然没啥用，但是也算是种隐形财富吧，以后有什么用再说。</p><h2 id="Where？都在什么平台写博客呢？"><a href="#Where？都在什么平台写博客呢？" class="headerlink" title="Where？都在什么平台写博客呢？"></a>Where？都在什么平台写博客呢？</h2><p>这个其实上面都说过了，我现在文章主要更新在个人博客、知乎专栏、微信公众号和 CSDN 上面，我简要说一些这些平台的优缺点吧。</p><p>个人博客可以个性化定制主题，想怎么好看就怎么好看，还不用发文章审核，想发什么就发什么。但是缺点就是发文章麻烦一点的，步骤略多，并且搜索引擎收录很慢的。</p><p>知乎专栏是我比较喜欢的一个平台，主要是它支持markdown，还可以把公式变成矢量图片，还是挺不错的。但是发知乎文章要注意千万别带着营销、引流等内容，不然容易被人举报被删除甚至禁言。</p><p>微信公众号是我最近才开始运营的，相对而言，它的编辑界面是最不友好的一个，只支持富文本编辑，连markdown都没有。但是也有解决方法，比如我现在用<a href="https://mdnice.com/">mdnice.com</a>这个网站，把markdown转换成微信公众号的富文本格式，还是非常好用的。公众号还有个缺点，太封闭了，很难宣传出去，刚开始只能亲朋好友关注关注，但是如果你真的做大了知名度，还是可以借助微信的优势，赚得不少广告钱的。</p><p>CSDN因为几年前被永久封过号，然后现在不知道为什么又被解封了，所以用的不是特别多，主要都是通过知乎专栏自动同步文章过去的。CSDN 好处就是流量大，很多人都在上面搜东西，百度搜出来也基本都是 CSDN ，但是排版是真的真的烂，不过现在好多了，也支持 markdown 了。但是还是谈不上喜欢，广告什么的都太多了，除非迫不得已，我一般不去 CSDN 看技术文章，我一般都是个人博客或者知乎看论文解读之类的。</p><h2 id="How？按照什么流程来写博客？"><a href="#How？按照什么流程来写博客？" class="headerlink" title="How？按照什么流程来写博客？"></a>How？按照什么流程来写博客？</h2><p>其实同时维护好几个平台还是挺累的，你得找到一个最佳的顺序来发布文章，这样才能事半功倍。我一般都是先在个人博客上写好 markdown 文章，然后发布完之后，打开<a href="https://mdnice.com/">mdnice.com</a>在线编辑网站，把 markdown 粘贴进去，转成微信公众号和知乎专栏的格式，最后分别发布在两个地方就行了。 CSDN 就不用管了，它会每天自动同步知乎专栏的文章的，倒是为我省了不少事。markdown 写作也挺轻松的，完全不用管排版之类的问题，安安心心写内容就行了。</p><p>微信公众号现在设置的是每天早上 8:05 推送，其实稍微晚一点比较好，这样别人的都推送完了，你的就会置顶在最上面。而知乎专栏和个人博客我就随性发布了，想什么时候发就什么时候发，经常会前一天就写好内容，早早的发布出去了。</p><p>我个人现在来看，写一篇博客最累的是敲公式和找图片，当然像我这篇就一个公式和图都没有，是最最轻松的了。我这个人有强迫症，公式一定要手打 LaTeX 公式，然后转成矢量图才行，这样看着又清楚又舒服。遇到复杂的矩阵公式，能把我敲的头晕。这也是我为什么不喜欢 CSDN 的一个原因，上面很多文章公式全是截图，看的我头都大了。</p><h2 id="How-much？要花多少时间和金钱来运营维护？"><a href="#How-much？要花多少时间和金钱来运营维护？" class="headerlink" title="How much？要花多少时间和金钱来运营维护？"></a>How much？要花多少时间和金钱来运营维护？</h2><p>写博客挺花时间的，特别是现在还在为发论文而忙活的时候，可能论文截稿前那段时间甚至我会停更好久哈哈。不过现在放假了，还算比较闲，有功夫搞搞这些。我个人是倾向于白天还是老老实实学习吧，晚上把部分的游戏时间抽出来写会儿文章，更新一波。这样也不算太浪费时间，毕竟就算不写，时间也都用来打游戏了，游戏输了还坏了心情（我的亚索怎么会输？）。</p><p>那什么时候做 LeetCode 呢？我一般都是白天吃饭时，或者走在路上时，手机 app 上随机选一道题，然后吃个饭的时间就能想出个解法，回到实验室后敲一顿代码通过了就行了。这样看来也节约了不少时间嘛，还能和室友一起讨论讨论，帮他提高一波算法能力。</p><p>金钱的话就基本没有花销了，除了开了个素材设计网站的会员（我是真的睿智，用 PS 不就行了嘛，脑子瓦特了充钱了）以外，其他不需要啥了，偶尔还能吃点打赏钱，粉丝太少了，没有广告。</p><p>因为写文章这上面花时间比较多，写出好的文章、不水文章的话花的时间更多，所以很容易坚持不下去。而又要迎合大众的口味，众口难调嘛，又要坚持自己的初心，尽量写对自己提升大的内容，还是比较难以平衡的。特别是粉丝特别少，没有什么人看的时候，你会很想放弃。</p><p>但是，总会有人在你坚持不下去的时候，给你鼓励的目光，支持你继续走下去的。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Web </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 随笔 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>
