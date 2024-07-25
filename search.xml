@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>Python环境设置</title>
+      <link href="/2024/07/25/python-huan-jing-she-zhi/"/>
+      <url>/2024/07/25/python-huan-jing-she-zhi/</url>
+      
+        <content type="html"><![CDATA[<h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>前一段时间，我的Ubuntu冲装了，换成了Kubuntu。其实我挺喜欢Ubuntu的Gnome桌面风格。但是Gnome桌面没办法点击状态栏的微信图标打开微信。</p><p>这就导致不限信点了右上角的叉号之后，只能退出应用重新打开，特别考验耐心，非常不便。若是平常不常用我就忍了，但是现在公司沟通工作主要使用微信，发现很多时候着急，却打不开微信，无奈求变。切换Ubuntu有两种方式，我均体验了。</p><p>第一种是基于Ubuntu安装KDE桌面环境，发现兼容性会有一些问题，导致很多时候两个桌面环境有冲突，并且最主要的问题是启动非常慢。</p><p>第二种是安装Kubuntu系统，我最终采用第二种并且到现在为止体验一切正常。</p><p>今天记录一下我重装系统后编译<a href="https://github.com/osfans/trime">同文输入法代</a>码遇到的一个问题，其实问题比较简单，但是不熟悉Python与Linux编程，导致走了很多弯路，浪费了将近一周的时间，同时不确定是环境问题还是代码问题，多次重装Android sdk、cmake、python，多次从Github上拉取庞大的代码。这次记录一下，以后不再重复走同样的弯路。</p><h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><p>首先前提是Android Studio、Android SDK均已安装完成，我自己的Android项目已经正常运行及编写。在调试<a href="https://github.com/rime/librime">Rime</a>时，发现不区分大小写。那么其他使用Rime引擎的输入法是否支持呢？是使用问题还是引擎不兼容？要确认这个问题就需要运行一下同文输入法看看。</p><p>此时我打开系统安装之前备份的同文输入法项目，在编译运行时，提示：</p><pre><code>CMake Error at /usr/share/cmake-3.23/Modules/FindPackageHandleStandardArgs.cmake:230 (message):  Could NOT find PythonInterp (missing: PYTHON_EXECUTABLE)</code></pre><p>首先怀疑是没有安装Python导致的，控制台我检查Python安装情况：</p><pre><code>gure@gure-tm1701:~$ pythonpython3            python3.12   gure@gure-tm1701:~$ python --versionPython 3.12.3</code></pre><p>看输出Python是安装的。<br>继续猜测，可能是CMake的问题，到Android SDK中，卸载cmake-3.23，然后重新下载，发现问题依旧。</p><p>继续猜测，可能是Python环境不对，那么重装Python环境，发现python3.12 无法卸载，就安装了Python的其他版本，发现问题依旧。</p><p>继续猜测，可能是项目代码的问题，怀疑在原系统备份时，遗漏了配置文件，那么删除项目源码，从Github重新下载最新版本。重新编译发现问题依旧。</p><p>继续尝试，卸载Android Studio、重装，包括Android SDK重新下载，重新编译问题依旧。</p><p>此时回过头来重新捋一下问题，同时在项目里搜索相关错误信息，发现在指导文件中有描述：</p><pre><code>Make sure you have Python installed, as some of Google Test&#39;s tests are writtenin Python. If the cmake command complains about not being able to find Python(`Could NOT find PythonInterp (missing: PYTHON_EXECUTABLE)`), try telling itexplicitly where your Python executable can be found:cmake -DPYTHON_EXECUTABLE=path/to/python ...</code></pre><p>显示，首先确保安装了Python，如果还有这个错误，就是环境变量的问题。按照提示在<code>CMakeLists.txt</code>对应路径下执行命令，添加DPYTHON_EXECUTABLE配置，发现还是不行，可能是指定的路径不对。</p><p>最终如何解决呢？</p><p>因为是环境配置的问题，那么我将Python配置到系统变量里不就行了。Python支持多版本共存及多版本切换能力，那么我将Python版本设置一下是否可行：</p><pre><code>gure@gure-tm1701:~$ sudo update-alternatives --list python/usr/bin/python3.12gure@gure-tm1701:~$ sudo update-alternatives --config python 有 1 个候选项可用于替换 python (提供 /usr/bin/python)。  选择       路径               优先级  状态------------------------------------------------------------* 0            /usr/bin/python3.12   1         自动模式  1            /usr/bin/python3.12   1         手动模式要维持当前值[*]请按&lt;回车键&gt;，或者键入选择的编号：0gure@gure-tm1701:~$ </code></pre><p>通过命令设置后，发现可以直接执行Python命令：</p><pre><code>gure@gure-tm1701:~$ python --versionPython 3.12.3</code></pre><p>此时重新编译项目就可以了。</p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>当前最新Python版本是3.12，由于Python支持多版本共存和切换，直接安装Python后，执行命令需要携带版本号。比如安装了Python 3.12，执行命令需要使用：<code>python3 --version</code>,此时需要创建python和指定版本的链接关联，可以使用<code>update-alternatives</code>命令来解决，实现多版本管理。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Android </tag>
+            
+            <tag> Python </tag>
+            
+            <tag> 开发 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>手机丢失教训</title>
       <link href="/2024/07/22/shou-ji-diu-shi-jiao-xun/"/>
       <url>/2024/07/22/shou-ji-diu-shi-jiao-xun/</url>

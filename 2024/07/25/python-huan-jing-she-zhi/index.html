@@ -4,11 +4,12 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="使用Gradle获取Git记录,  Android Framework | 计算机科学与技术 | Java Virtual Machine ">
+    <meta name="keywords" content="Python环境设置,  Android Framework | 计算机科学与技术 | Java Virtual Machine ">
     <meta name="baidu-site-verification" content="fmlEuI34ir" />
     <meta name="google-site-verification" content="yCy2azpds5XSuGZvis6OuA-XIGF5GuGpYRAaGfD6o48" />
     <meta name="360-site-verification" content="b7c11a830ef90fd1464ad6206bb7b6e7" />
-    <meta name="description" content="问题开源的雨燕输入法项目中，在关于界面要实现显示Git提交记录以及点击条目跳转到对应的Github提交节点。之前的方案是，在每次打包前手动更改对应的值，不但麻烦，且易出错。技术上分析，一旦打包完成，应用内不具备Git环境，因此没办法通过Ja">
+    <meta name="description" content="起因前一段时间，我的Ubuntu冲装了，换成了Kubuntu。其实我挺喜欢Ubuntu的Gnome桌面风格。但是Gnome桌面没办法点击状态栏的微信图标打开微信。
+这就导致不限信点了右上角的叉号之后，只能退出应用重新打开，特别考验耐心，非常">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +17,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>使用Gradle获取Git记录 | 忆梦之舟</title>
+    <title>Python环境设置 | 忆梦之舟</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -221,7 +222,7 @@
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        使用Gradle获取Git记录
+                        Python环境设置
                     </div>
                 </div>
             </div>
@@ -332,16 +333,16 @@
                     
                     <div class="article-tag">
                         
-                        <a href="/tags/%E9%9B%A8%E7%87%95%E8%BE%93%E5%85%A5%E6%B3%95/" target="_blank">
-                            <span class="chip bg-color">雨燕输入法</span>
+                        <a href="/tags/Android/" target="_blank">
+                            <span class="chip bg-color">Android</span>
                         </a>
                         
-                        <a href="/tags/Gradle/" target="_blank">
-                            <span class="chip bg-color">Gradle</span>
+                        <a href="/tags/Python/" target="_blank">
+                            <span class="chip bg-color">Python</span>
                         </a>
                         
-                        <a href="/tags/Git/" target="_blank">
-                            <span class="chip bg-color">Git</span>
+                        <a href="/tags/%E5%BC%80%E5%8F%91/" target="_blank">
+                            <span class="chip bg-color">开发</span>
                         </a>
                         
                     </div>
@@ -352,8 +353,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                        <a href="/categories/Android/" class="post-category" target="_blank">
-                            Android
+                        <a href="/categories/Linux/" class="post-category" target="_blank">
+                            Linux
                         </a>
                         
                     </div>
@@ -364,7 +365,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2024-06-24
+                    2024-07-25
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -378,14 +379,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.2k
+                    1.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    4 分
                 </div>
                 
                 
@@ -401,126 +402,56 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>开源的<a target="_blank" rel="noopener" href="https://github.com/gurecn/YuyanIme">雨燕输入法</a>项目中，在<code>关于界面</code>要实现显示Git提交记录以及点击条目跳转到对应的Github提交节点。<br>之前的方案是，在每次打包前手动更改对应的值，不但麻烦，且易出错。<br>技术上分析，一旦打包完成，应用内不具备Git环境，因此没办法通过Java代码在运行时动态获取相关属性。<br>项目使用Gradle方式构建，那么如何在编译、构建时获取Git最新记录及提交时间等属性呢？</p>
-<h3 id="前置条件"><a href="#前置条件" class="headerlink" title="前置条件"></a>前置条件</h3><ul>
-<li>项目已正常初始化Git资源，并已存在提交记录。</li>
-<li>项目使用<code>Groovy</code>方式构建。由于雨燕输入法项目使用Groovy构建，因此该文章介绍使用该构建方案。</li>
-</ul>
-<pre><code>Android Gradle插件4.0支持使用Kotlin脚本(KTS)，用于替代Groovy。
-KTS比Groovy更适合编写Gradle脚本，Kotlin代码可读性更高，且提供更好的编译时检查和IDE支持。
+                <h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>前一段时间，我的Ubuntu冲装了，换成了Kubuntu。其实我挺喜欢Ubuntu的Gnome桌面风格。但是Gnome桌面没办法点击状态栏的微信图标打开微信。</p>
+<p>这就导致不限信点了右上角的叉号之后，只能退出应用重新打开，特别考验耐心，非常不便。若是平常不常用我就忍了，但是现在公司沟通工作主要使用微信，发现很多时候着急，却打不开微信，无奈求变。切换Ubuntu有两种方式，我均体验了。</p>
+<p>第一种是基于Ubuntu安装KDE桌面环境，发现兼容性会有一些问题，导致很多时候两个桌面环境有冲突，并且最主要的问题是启动非常慢。</p>
+<p>第二种是安装Kubuntu系统，我最终采用第二种并且到现在为止体验一切正常。</p>
+<p>今天记录一下我重装系统后编译<a target="_blank" rel="noopener" href="https://github.com/osfans/trime">同文输入法代</a>码遇到的一个问题，其实问题比较简单，但是不熟悉Python与Linux编程，导致走了很多弯路，浪费了将近一周的时间，同时不确定是环境问题还是代码问题，多次重装Android sdk、cmake、python，多次从Github上拉取庞大的代码。这次记录一下，以后不再重复走同样的弯路。</p>
+<h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><p>首先前提是Android Studio、Android SDK均已安装完成，我自己的Android项目已经正常运行及编写。在调试<a target="_blank" rel="noopener" href="https://github.com/rime/librime">Rime</a>时，发现不区分大小写。那么其他使用Rime引擎的输入法是否支持呢？是使用问题还是引擎不兼容？要确认这个问题就需要运行一下同文输入法看看。</p>
+<p>此时我打开系统安装之前备份的同文输入法项目，在编译运行时，提示：</p>
+<pre><code>CMake Error at /usr/share/cmake-3.23/Modules/FindPackageHandleStandardArgs.cmake:230 (message):
+  Could NOT find PythonInterp (missing: PYTHON_EXECUTABLE)
 </code></pre>
-<h3 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h3><ul>
-<li>创建方法，获取对应值<br>在子模块<code>build.gradle</code>中，定义方法获取对应的值：</li>
-</ul>
-<pre><code>apply plugin: &#39;org.jetbrains.kotlin.android&#39;
-// kotlin
-apply plugin: &#39;kotlin-android&#39; 
+<p>首先怀疑是没有安装Python导致的，控制台我检查Python安装情况：</p>
+<pre><code>gure@gure-tm1701:~$ python
+python3            python3.12   
+gure@gure-tm1701:~$ python --version
+Python 3.12.3
+</code></pre>
+<p>看输出Python是安装的。<br>继续猜测，可能是CMake的问题，到Android SDK中，卸载cmake-3.23，然后重新下载，发现问题依旧。</p>
+<p>继续猜测，可能是Python环境不对，那么重装Python环境，发现python3.12 无法卸载，就安装了Python的其他版本，发现问题依旧。</p>
+<p>继续猜测，可能是项目代码的问题，怀疑在原系统备份时，遗漏了配置文件，那么删除项目源码，从Github重新下载最新版本。重新编译发现问题依旧。</p>
+<p>继续尝试，卸载Android Studio、重装，包括Android SDK重新下载，重新编译问题依旧。</p>
+<p>此时回过头来重新捋一下问题，同时在项目里搜索相关错误信息，发现在指导文件中有描述：</p>
+<pre><code>Make sure you have Python installed, as some of Google Test&#39;s tests are written
+in Python. If the cmake command complains about not being able to find Python
+(`Could NOT find PythonInterp (missing: PYTHON_EXECUTABLE)`), try telling it
+explicitly where your Python executable can be found:
 
-def getAPPGitHead() &#123;
-    return &quot;git rev-parse HEAD&quot;.execute().text.trim()
-&#125;
+cmake -DPYTHON_EXECUTABLE=path/to/python ...
+</code></pre>
+<p>显示，首先确保安装了Python，如果还有这个错误，就是环境变量的问题。按照提示在<code>CMakeLists.txt</code>对应路径下执行命令，添加DPYTHON_EXECUTABLE配置，发现还是不行，可能是指定的路径不对。</p>
+<p>最终如何解决呢？</p>
+<p>因为是环境配置的问题，那么我将Python配置到系统变量里不就行了。Python支持多版本共存及多版本切换能力，那么我将Python版本设置一下是否可行：</p>
+<pre><code>gure@gure-tm1701:~$ sudo update-alternatives --list python
+/usr/bin/python3.12
+gure@gure-tm1701:~$ sudo update-alternatives --config python 
+有 1 个候选项可用于替换 python (提供 /usr/bin/python)。
 
-def getAPPBuildTime() &#123;
-    return &quot;git log -1 --pretty=%ai&quot;.execute().text.trim()
-&#125; 
+  选择       路径               优先级  状态
+------------------------------------------------------------
+* 0            /usr/bin/python3.12   1         自动模式
+  1            /usr/bin/python3.12   1         手动模式
 
-android &#123;
-    compileSdk 34
-    // ...  省略对应内容
-&#125; 
+要维持当前值[*]请按&lt;回车键&gt;，或者键入选择的编号：0
+gure@gure-tm1701:~$ 
 </code></pre>
-<ul>
-<li>执行方法，动态创建变量并赋值<br>在子模块<code>build.gradle</code>中，执行构建方法<code>buildTypes</code>时，调用方法，并动态创建<code>AppCommitHead</code>、<code>AppBuildTime</code>变量存储Git属性。</li>
-</ul>
-<pre><code>android &#123;
-    compileSdk 34
-
-    buildTypes &#123;
-        release &#123;
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile(&#39;proguard-android-optimize.txt&#39;), &#39;proguard.cfg&#39;
-            def APP_GIT_COMMIT_HEAD = getAPPGitHead()
-            buildConfigField &quot;String&quot;, &quot;AppCommitHead&quot;, &quot;\&quot;$&#123;APP_GIT_COMMIT_HEAD&#125;\&quot;&quot;
-            def APP_GIT_COMMIT_TIME = getAPPBuildTime()
-            buildConfigField &quot;String&quot;, &quot;AppBuildTime&quot;, &quot;\&quot;$&#123;APP_GIT_COMMIT_TIME&#125;\&quot;&quot;
-
-        &#125;
-        debug &#123;
-            def APP_GIT_COMMIT_HEAD = getAPPGitHead()
-            buildConfigField &quot;String&quot;, &quot;AppCommitHead&quot;, &quot;\&quot;$&#123;APP_GIT_COMMIT_HEAD&#125;\&quot;&quot;
-            def APP_GIT_COMMIT_TIME = getAPPBuildTime()
-            buildConfigField &quot;String&quot;, &quot;AppBuildTime&quot;, &quot;\&quot;$&#123;APP_GIT_COMMIT_TIME&#125;\&quot;&quot;
-        &#125;
-    &#125;
-&#125;
+<p>通过命令设置后，发现可以直接执行Python命令：</p>
+<pre><code>gure@gure-tm1701:~$ python --version
+Python 3.12.3
 </code></pre>
-<ul>
-<li>项目中调用变量<br>在项目中使用Java或Kotlin代码，通过BuildConfig使用对应的值。</li>
-</ul>
-<pre><code>    addCategory(R.string.version) &#123;
-        addPreference(R.string.app_version, BuildConfig.AppCommitId)
-        addPreference(R.string.app_build_git_hash, BuildConfig.AppCommitHead) &#123;
-            val commit = BuildConfig.AppCommitHead.substringBefore(&#39;-&#39;)
-            val uri = Uri.parse(&quot;$&#123;CustomConstant.YuyanSDKRepo&#125;/commit/$&#123;commit&#125;&quot;)
-            startActivity(Intent(Intent.ACTION_VIEW, uri))
-        &#125;
-        addPreference(R.string.app_build_time, BuildConfig.AppBuildTime)
-        addPreference(R.string.sdk_version, BuildConfig.SdkCommitId)
-    &#125;
-</code></pre>
-<p>查看效果：<br><img src="gradle_git.webp" alt="Gradle获取Git记录"></p>
-<h3 id="问题记录"><a href="#问题记录" class="headerlink" title="问题记录"></a>问题记录</h3><ol>
-<li>通过<code>buildConfigField</code>动态构建变量未成功。<br>发现编译时报错：</li>
-</ol>
-<pre><code>* What went wrong
-A problem occurred configuring project &#39;:app&#39;.
-&gt; defaultConfig contains custom BuildConfig fields, but the feature is disabled.
-</code></pre>
-<p>原因在8.x版本的gradle插件中，<code>buildConfigField</code>功能被禁用。<br>解决方式是在build.gradle中添加：</p>
-<pre><code>buildFeatures &#123;
-    buildConfig = true
-&#125;
-</code></pre>
-<ol start="2">
-<li>获取其他路径或子模块Git记录。<br><code>Gradle</code>支持调用Git命令时，指定Git资源路径,我们能通过指定绝对路径的方式获取其他路径的Git记录：</li>
-</ol>
-<pre><code>def getSDKGitRevision() &#123;
-    return &quot;git --git-dir=/home/gure/devproject/YuyanIme/yuyansdk/.git rev-parse --short HEAD&quot;.execute().text.trim()
-&#125;
-</code></pre>
-<p>通过这种方式，我们获取<code>yuyansdk</code>的Git提交情况。</p>
-<ol start="3">
-<li>Git Rev-Parse命令<br>Git命令行工具中的低级命令，用于输出Git引用的确切值，通常用于脚本中，确保脚本能正确识别分支、标签或提交。常用参数：</li>
-</ol>
-<pre><code>    --abbrev-ref &lt;ref&gt;：输出给定引用的简化形式，通常用于分支名称。
-    --symbolic：输出引用的完整名称，而不是其SHA-1值。
-    --verify：尝试验证给定的引用，并确保它存在。如果引用不存在，命令将返回错误。
-    --short：输出给定对象的短SHA-1哈希值。
-    --show-prefix：显示从当前工作目录到仓库根目录的路径。
-    --show-toplevel：显示当前仓库的顶级目录。
-    --git-dir：显示或打印Git目录的路径。
-    --show-cdup：显示从当前工作目录到仓库顶级目录的相对路径。
-    --is-inside-git-dir：如果当前目录是Git目录的一部分，则输出true。
-    --is-inside-work-tree：如果当前目录是Git工作树的一部分，则输出true。
-    --is-bare-repository：如果当前仓库是裸仓库，则输出true。
-    --is-shallow-repository：如果当前仓库是浅克隆仓库，则输出true。
-    --default &lt;arg&gt;：如果给定的引用不存在，则使用默认值。
-    --all：显示所有引用。
-    --branches：显示所有本地分支。
-    --tags：显示所有标签。
-    --remotes：显示所有远程跟踪分支。
-    --quiet：不输出错误信息。
-    --prefix：输出给定对象的引用前缀。
-    --max-count &lt;n&gt;：仅输出最多n个匹配的引用。
-    --min-candidates &lt;n&gt;：在搜索引用时，至少需要n个匹配项。
-    --no-min-candidates：忽略--min-candidates的限制。
-    --no-max-count：忽略--max-count的限制。
-    --no-walk：不进行引用的遍历搜索。
-    --no-walk-reflogs：不通过reflog来搜索引用。
-    --no-walk-reachable：不搜索可达的引用。
-    --no-walk-tags：不搜索标签。
-    --sort-by &lt;key&gt;：按指定的键对输出的引用进行排序。
-</code></pre>
+<p>此时重新编译项目就可以了。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>当前最新Python版本是3.12，由于Python支持多版本共存和切换，直接安装Python后，执行命令需要携带版本号。比如安装了Python 3.12，执行命令需要使用：<code>python3 --version</code>,此时需要创建python和指定版本的链接关联，可以使用<code>update-alternatives</code>命令来解决，实现多版本管理。</p>
 
             </div>
             <hr />
@@ -555,9 +486,9 @@ A problem occurred configuring project &#39;:app&#39;.
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《使用Gradle获取Git记录》
+                    《Python环境设置》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2024/06/24/shi-yong-gradle-huo-qu-git-ji-lu/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2024/07/25/python-huan-jing-she-zhi/" property="cc:attributionName"
                rel="cc:attributionURL">
                 gure
             </a> 采用
@@ -597,54 +528,57 @@ A problem occurred configuring project &#39;:app&#39;.
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2024/06/25/kotlin-quan-ju-bian-liang-hou-zhi-chu-shi-hua/">
+                <a href="/2024/07/25/python-huan-jing-she-zhi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Kotlin全局变量后置初始化">
+                        <img src="/medias/featureimages/25.jpg" class="responsive-img" alt="Python环境设置">
                         
-                        <span class="card-title">Kotlin全局变量后置初始化</span>
+                        <span class="card-title">Python环境设置</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            问题开源的雨燕输入法项目已经切换成Kotlin语言进行开发。代码切换完成后，在重构代码时发现，使用Kotlin语言定义全局变量（包括View对象），默认只均为null。这就导致所有使用该变量的调用均需进行判空（?.或!!）操作，满足 Kot
+                            起因前一段时间，我的Ubuntu冲装了，换成了Kubuntu。其实我挺喜欢Ubuntu的Gnome桌面风格。但是Gnome桌面没办法点击状态栏的微信图标打开微信。
+这就导致不限信点了右上角的叉号之后，只能退出应用重新打开，特别考验耐心，非常
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2024-06-25
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2024-07-25
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Android/" class="post-category" target="_blank">
-                                    Android
+                            <a href="/categories/Linux/" class="post-category" target="_blank">
+                                    Linux
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Kotlin/" target="_blank">
-                        <span class="chip bg-color">Kotlin</span>
+                    <a href="/tags/Android/" target="_blank">
+                        <span class="chip bg-color">Android</span>
                     </a>
                     
-                    <a href="/tags/%E8%AF%AD%E6%B3%95/" target="_blank">
-                        <span class="chip bg-color">语法</span>
+                    <a href="/tags/Python/" target="_blank">
+                        <span class="chip bg-color">Python</span>
                     </a>
                     
-                    <a href="/tags/%E9%9B%A8%E7%87%95%E8%BE%93%E5%85%A5%E6%B3%95/" target="_blank">
-                        <span class="chip bg-color">雨燕输入法</span>
+                    <a href="/tags/%E5%BC%80%E5%8F%91/" target="_blank">
+                        <span class="chip bg-color">开发</span>
                     </a>
                     
                 </div>
@@ -658,26 +592,26 @@ A problem occurred configuring project &#39;:app&#39;.
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/06/20/yi-han-bu-neng-xiang-bang/">
+                <a href="/2024/07/22/shou-ji-diu-shi-jiao-xun/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="遗憾不能相帮">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="手机丢失教训">
                         
-                        <span class="card-title">遗憾不能相帮</span>
+                        <span class="card-title">手机丢失教训</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            这几天堂哥来郑州开网约车，带着他报名、体检、考试、拿证、熟悉。家人说，他就是你堂哥，力所能及帮助一下就行，为什么这么用心呢？
-是啊，为什么这么上心呢？这要从很久以前的一件非常遗憾的往事说起。
-在我八岁时父亲因病去世，家里陷入深渊。本来就贫困
+                            迷糊的一瞬间，任何失误都有可能发生。
+下班正在地铁上，突然精神不振，想倒头就睡，距离目的地还剩2站，就闭眼迷糊两分钟。后来我拿着手机、NFC刷卡走出地铁站，然后木然的坐电梯出站、骑电动车往家赶。
+仅仅走了500米，忽然发现手机不在口袋里，也
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2024-06-20
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2024-07-22
                             </span>
                         <span class="publish-author">
                             

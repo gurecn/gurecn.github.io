@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.emzz.cn/"/>
-  <updated>2024-07-22T07:34:17.678Z</updated>
+  <updated>2024-07-25T08:26:12.817Z</updated>
   <id>https://www.emzz.cn/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python环境设置</title>
+    <link href="https://www.emzz.cn/2024/07/25/python-huan-jing-she-zhi/"/>
+    <id>https://www.emzz.cn/2024/07/25/python-huan-jing-she-zhi/</id>
+    <published>2024-07-25T08:22:25.000Z</published>
+    <updated>2024-07-25T08:26:12.817Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;起因&quot;&gt;&lt;a href=&quot;#起因&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Linux" scheme="https://www.emzz.cn/categories/Linux/"/>
+    
+    
+      <category term="Android" scheme="https://www.emzz.cn/tags/Android/"/>
+    
+      <category term="Python" scheme="https://www.emzz.cn/tags/Python/"/>
+    
+      <category term="开发" scheme="https://www.emzz.cn/tags/%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
   
   <entry>
     <title>手机丢失教训</title>
