@@ -4,17 +4,13 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="写在六一儿童节之后,  Android Framework | 计算机科学与技术 | Java Virtual Machine ">
+    <meta name="keywords" content="双系统时间同步问题,  Android Framework | 计算机科学与技术 | Java Virtual Machine ">
     <meta name="baidu-site-verification" content="fmlEuI34ir" />
     <meta name="google-site-verification" content="yCy2azpds5XSuGZvis6OuA-XIGF5GuGpYRAaGfD6o48" />
     <meta name="360-site-verification" content="b7c11a830ef90fd1464ad6206bb7b6e7" />
-    <meta name="description" content="
-
-
-
-今年六一儿童节被这首大合唱【星河合唱】一首《童年》带你们开启回忆的时光机…感动了。
-儿童节已过半月，感动还停留在心间。仔细品味，或许真正会对童年有所触动的，是早已经走过童年、少年的中年和老年吧。  
-蓦然回首，吃惊地发现自己离儿时已">
+    <meta name="description" content="背景双系统切换使用过程中，会遇到时间不同步的情况。
+一般来说非主要系统时间错乱不影响功能，但是我使用VPN的过程中发现需要校正时间后才能正常连接，导致每次切换系统均需要手动关闭联网更新时间、然后重新打开，以实现时间更新功能。
+这玩意虽然不复">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -22,7 +18,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>写在六一儿童节之后 | 忆梦之舟</title>
+    <title>双系统时间同步问题 | 忆梦之舟</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -221,13 +217,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        写在六一儿童节之后
+                        双系统时间同步问题
                     </div>
                 </div>
             </div>
@@ -338,8 +334,12 @@
                     
                     <div class="article-tag">
                         
-                        <a href="/tags/%E6%84%9F%E6%82%9F/" target="_blank">
-                            <span class="chip bg-color">感悟</span>
+                        <a href="/tags/Ubuntu/" target="_blank">
+                            <span class="chip bg-color">Ubuntu</span>
+                        </a>
+                        
+                        <a href="/tags/OS/" target="_blank">
+                            <span class="chip bg-color">OS</span>
                         </a>
                         
                     </div>
@@ -350,8 +350,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                        <a href="/categories/%E9%9A%8F%E7%AC%94/" class="post-category" target="_blank">
-                            随笔
+                        <a href="/categories/Linux/" class="post-category" target="_blank">
+                            Linux
                         </a>
                         
                     </div>
@@ -362,7 +362,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2024-06-13
+                    2024-07-30
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -383,7 +383,7 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    4 分
                 </div>
                 
                 
@@ -399,67 +399,62 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <div style="text-align: center;">
-<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=1751775431&bvid=BV1bx421C7Jh&cid=1468627415&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" width="100%" height="100%" allowfullscreen="true"></iframe>
-</div>
+                <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>双系统切换使用过程中，会遇到时间不同步的情况。</p>
+<p>一般来说非主要系统时间错乱不影响功能，但是我使用VPN的过程中发现需要校正时间后才能正常连接，导致每次切换系统均需要手动关闭联网更新时间、然后重新打开，以实现时间更新功能。</p>
+<p>这玩意虽然不复杂，却非常闹心。</p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>查询原因，发现系统会使用BIOS时间，他是系统BIOS的硬件时间。</p>
+<p>两个系统时间不同步的原因也非常简单：</p>
+<p>Windows认为，BIOS时间就是当地时间。所以Windows会直接显示BIOS时间。</p>
+<p>Ubuntu认为，BIOS时间应当是UTC时间（格林尼治标准时间）。所以Ubuntu会将BIOS时间加上8小时后再显示出来（在中国）。</p>
+<p>所有的操作系统在启动后都会更新系统时间。流程如下：</p>
+<p>1.电脑开机，读取BIOS时间并显示。（Windows直接显示，Ubuntu加8后再显示）</p>
+<p>2.联网后，获取当地时间并显示。</p>
+<p>3.更新BIOS时间。</p>
+<p>联网后大家获取到的时间都是当地时间，这没问题。但Ubuntu和Windows在更新BIOS时间时，做法不同。</p>
+<p>Windows获取到当地时间后，直接把BIOS时间设为当地时间；而Ubuntu把BIOS时间设为UTC时间。比如现在是北京时间12点，UTC时间就是12-8=4点，Ubuntu就会把BIOS时间设为4点。</p>
+<h3 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h3><p>进入Ubuntu，在终端里输入一条指令，就可以验证上面的分析：</p>
+<pre><code>gure@gure-tm1701:~$ timedatectl status
+               Local time: 二 2024-07-30 08:54:36 CST
+           Universal time: 二 2024-07-30 00:54:36 UTC
+                 RTC time: 二 2024-07-30 00:54:36
+                Time zone: Asia/Shanghai (CST, +0800)
+System clock synchronized: no
+              NTP service: no
+          RTC in local TZ: no
 
-<p>今年六一儿童节被这首大合唱<code>【星河合唱】一首《童年》带你们开启回忆的时光机…</code>感动了。</p>
-<p>儿童节已过半月，感动还停留在心间。仔细品味，或许真正会对童年有所触动的，是早已经走过童年、少年的中年和老年吧。  </p>
-<p>蓦然回首，吃惊地发现自己离儿时已经太过遥远了。  现在的自己不但是已经34岁、离开学校、踏入社会的一名工作人员，同时变成了一家之主，一名有人挂念的丈夫、上有70岁母亲的儿子、下有4岁和2岁孩子的父亲。  </p>
-<p>正是因为有了牵挂、奔头，同时经历了生活的磨砺，承担着环境的压力，所以才会对童年这首大合唱有如此的感叹吧。  </p>
-<p>忘不掉的儿时是内心最柔软的记忆。  </p>
-<p>我的童年记忆里有什么呢？有遥远父亲的影子，一起去干枯河床抓鱼的雀跃。有同学的友谊，跑很远只为了和同学偶遇。有老师的悉心呵护，冬天考试夏老师对着手掌哈气的印象从未淡去。还有生活的艰辛，哥哥被迫辍学、我们做饭无盐的无奈。一幕幕涌上心头，酸甜苦辣，生活百态。  </p>
-<p>童年是丰富多彩的，同一人的不同时刻也会有不同的童年状态，就像歌词里等待游戏的童年、心里初恋的童年、迷迷糊糊的童年、这么孤单的童年、盼望长大的童年。同时每个人也都有自己的童年，每个人的童年是不同的经历，都有属于其自身的不一样的精彩，都值得珍惜。正是如此，我们才会如此缅怀童年。</p>
-<p>现在再细读罗大佑的歌词，写的就是我们自己的少年时光啊。等待下课、等待放学，现在还有当时在教室里坐不下去，急不可耐的心情。超市里什么都有，就是口袋里没有半毛钱，回忆初中到毕业都没有进过几次的食堂，这种感觉非常逼真。一寸光阴一寸金，老师说过寸金难买寸光阴，只是在大学毕业以后才发现，时间是如此宝贵。</p>
-<p>现在，34岁的自己，后头看自己走过的路，生命中遗憾总是有的。我相信，如果以前的自己用现在的心态走过前半生，那走到现在的一定是另外一个更优秀的自己。但是我不后悔之前的路，因为之前所有的日子是我一步一步走过的，曾经的自己也确实努力过。</p>
-<p>站在当下，我现对过去的自己说一声：<strong>辛苦了，过去的你做的很好。</strong></p>
-<p>最后，再加附上《童年》歌词：</p>
-<pre><code>童年 
-作词: 罗大佑
-
-池塘边的榕树上
-知了在声声叫着夏天
-操场边的秋千上
-只有蝴蝶停在上面
-黑板上老师的粉笔
-还在拼命叽叽喳喳写个不停
-等待着下课 等待着放学
-等待游戏的童年
-福利社里面什么都有
-就是口袋里没有半毛钱
-诸葛四郎和魔鬼党
-到底谁抢到那支宝剑
-隔壁班的那个女孩
-怎么还没经过我的窗前
-嘴里的零食 手里的漫画
-心里初恋的童年
-总是要等到睡觉前
-才知道功课只做了一点点
-总是要等到考试以后
-才知道该念的书都没有念
-一寸光阴一寸金
-老师说过寸金难买寸光阴
-一天又一天 一年又一年
-迷迷糊糊的童年
-没有人知道为什么
-太阳总下到山的那一边
-没有人能够告诉我
-山里面有没有住着神仙
-多少的日子里总是
-一个人面对着天空发呆
-就这么好奇 就这么幻想
-这么孤单的童年
-阳光下蜻蜓飞过来
-一片片绿油油的稻田
-水彩蜡笔和万花筒
-画不出天边那一条彩虹
-什么时候才能像高年级的同学
-有张成熟与长大的脸
-盼望着假期 盼望着明天
-盼望长大的童年
-一天又一天 一年又一年
-盼望长大的童年
+gure@gure-tm1701:~$
 </code></pre>
+<p>这个指令用来查看系统时间状态。如果您的显示如下：</p>
+<p>第一行，Local time=8点，是Ubuntu联网获取到的当地时间。</p>
+<p>第三行，RTC time=0点，是电脑的BIOS时间。可以看到，Ubuntu把当地时间减去8小时，得到了UTC时间并赋给了BIOS。</p>
+<p>最后一行，RTC in local TZ=no，这句话代表系统时间和BIOS时间不同步，即BIOS存储的是UTC时间，而系统时间是当地时间。</p>
+<p>那么问题就来了，下次重启进入Windows时，Windows读到的BIOS时间是0点，而Windows认为BIOS时间就是当地时间，所以就会直接显示0点。</p>
+<p>Windows联网更新时间后，当他得到正确的时间8点，会将BIOS设为获取8点，那么等你下次进Ubuntu的时候，Ubuntu又会把BIOS的8点加上8作为当前系统时间，得到16点。而当网络更新时间时再变更BISO设置。</p>
+<p>如此循环，每次更换系统的时候显示的时间都不对。</p>
+<h3 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h3><p>解决方案非常简单。直接在Ubuntu终端中输入：</p>
+<pre><code>timedatectl set-local-rtc 1
+</code></pre>
+<p>这句话的作用是让Ubuntu将系统时间和BIOS时间同步。此时Ubuntu和Windows一样，都认为BIOS时间为当地时间。联网更新时，直接将BIOS时间设为当地时间。</p>
+<p>现在再输入timedatectl status查看系统时间状态：</p>
+<pre><code>gure@gure-tm1701:~$ timedatectl status
+               Local time: 二 2024-07-30 09:03:05 CST
+           Universal time: 二 2024-07-30 01:03:05 UTC
+                 RTC time: 二 2024-07-30 09:03:05
+                Time zone: Asia/Shanghai (CST, +0800)
+System clock synchronized: yes
+              NTP service: active
+          RTC in local TZ: yes
+</code></pre>
+<p>此时切换到Windows系统，更新系统时间显示后，在切换双系统，时间显示均正常了。</p>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>我们发现，当执行<code>timedatectl set-local-rtc 1</code>，在查看系统时间状态时会包出一个<code>Warning</code>警告：</p>
+<pre><code>Warning: The system is configured to read the RTC time in the local time zone.
+         This mode cannot be fully supported. It will create various problems
+         with time zone changes and daylight saving time adjustments. The RTC
+         time is never updated, it relies on external facilities to maintain it.
+         If at all possible, use RTC in UTC by calling
+         &#39;timedatectl set-local-rtc 0&#39;.
+</code></pre>
+<p>为什么爆出该警告？因为设置为<code>timedatectl set-local-rtc 1</code>后，本地时间会自动同步到硬件时钟，导致硬件时钟受随外部维护，可能随着失去更改、夏令时调整等原因导致硬件时钟出现错乱。<br>不过这种影响对我们普通用户来说根本不会有什么不便。</p>
 
             </div>
             <hr />
@@ -494,9 +489,9 @@
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《写在六一儿童节之后》
+                    《双系统时间同步问题》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2024/06/13/xie-zai-liu-yi-er-tong-jie-zhi-hou/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2024/07/30/shuang-xi-tong-shi-jian-tong-bu-wen-ti/" property="cc:attributionName"
                rel="cc:attributionURL">
                 gure
             </a> 采用
@@ -536,29 +531,87 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2024/06/17/tong-xin-uos-20-zhuan-ye-ban-chong-zhi-mi-ma/">
+                <a href="/2024/07/30/shuang-xi-tong-shi-jian-tong-bu-wen-ti/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="统信UOS 20专业版重置密码">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="双系统时间同步问题">
                         
-                        <span class="card-title">统信UOS 20专业版重置密码</span>
+                        <span class="card-title">双系统时间同步问题</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            背景公司使用的鲲泰kuntai D-526-2台式电脑预装统信UOS20专业版系统。因鲲泰项目长时间搁置，电脑被同事搬到仓库，转移时未注意粘贴的密码标签，导致密码丢失。而另外新项目需要编译arm版本的集成资源，采用x86环境交叉编译的方式可
+                            背景双系统切换使用过程中，会遇到时间不同步的情况。
+一般来说非主要系统时间错乱不影响功能，但是我使用VPN的过程中发现需要校正时间后才能正常连接，导致每次切换系统均需要手动关闭联网更新时间、然后重新打开，以实现时间更新功能。
+这玩意虽然不复
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2024-06-17
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2024-07-30
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Linux/" class="post-category" target="_blank">
+                                    Linux
+                                </a>
+                            
+                            
                         </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Ubuntu/" target="_blank">
+                        <span class="chip bg-color">Ubuntu</span>
+                    </a>
+                    
+                    <a href="/tags/OS/" target="_blank">
+                        <span class="chip bg-color">OS</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2024/07/25/python-huan-jing-she-zhi/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/27.jpg" class="responsive-img" alt="Python环境设置">
+                        
+                        <span class="card-title">Python环境设置</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            起因前一段时间，我的Ubuntu冲装了，换成了Kubuntu。其实我挺喜欢Ubuntu的Gnome桌面风格。但是Gnome桌面没办法点击状态栏的微信图标打开微信。
+这就导致不限信点了右上角的叉号之后，只能退出应用重新打开，特别考验耐心，非常
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2024-07-25
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -574,61 +627,16 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/UOS/" target="_blank">
-                        <span class="chip bg-color">UOS</span>
+                    <a href="/tags/Android/" target="_blank">
+                        <span class="chip bg-color">Android</span>
                     </a>
                     
-                    <a href="/tags/%E4%BF%A1%E5%88%9B/" target="_blank">
-                        <span class="chip bg-color">信创</span>
+                    <a href="/tags/Python/" target="_blank">
+                        <span class="chip bg-color">Python</span>
                     </a>
                     
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2024/06/12/5w2h-godweiyang/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="关于写博客的七点反思">
-                        
-                        <span class="card-title">关于写博客的七点反思</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            When？什么时候开始写的？第一次写博客是 2015 年了，在 CSDN 和博客园上面，当时写文章是为了记录 ACM 竞赛的题解，陆陆续续写了几十篇。但是最后还是没有坚持下去，主要还是因为 CSDN 和博客园的体验太差了，写起文章来很难受，
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2024-06-12
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Web/" class="post-category" target="_blank">
-                                    Web
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E9%9A%8F%E7%AC%94/" target="_blank">
-                        <span class="chip bg-color">随笔</span>
+                    <a href="/tags/%E5%BC%80%E5%8F%91/" target="_blank">
+                        <span class="chip bg-color">开发</span>
                     </a>
                     
                 </div>

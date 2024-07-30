@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>双系统时间同步问题</title>
+      <link href="/2024/07/30/shuang-xi-tong-shi-jian-tong-bu-wen-ti/"/>
+      <url>/2024/07/30/shuang-xi-tong-shi-jian-tong-bu-wen-ti/</url>
+      
+        <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>双系统切换使用过程中，会遇到时间不同步的情况。</p><p>一般来说非主要系统时间错乱不影响功能，但是我使用VPN的过程中发现需要校正时间后才能正常连接，导致每次切换系统均需要手动关闭联网更新时间、然后重新打开，以实现时间更新功能。</p><p>这玩意虽然不复杂，却非常闹心。</p><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>查询原因，发现系统会使用BIOS时间，他是系统BIOS的硬件时间。</p><p>两个系统时间不同步的原因也非常简单：</p><p>Windows认为，BIOS时间就是当地时间。所以Windows会直接显示BIOS时间。</p><p>Ubuntu认为，BIOS时间应当是UTC时间（格林尼治标准时间）。所以Ubuntu会将BIOS时间加上8小时后再显示出来（在中国）。</p><p>所有的操作系统在启动后都会更新系统时间。流程如下：</p><p>1.电脑开机，读取BIOS时间并显示。（Windows直接显示，Ubuntu加8后再显示）</p><p>2.联网后，获取当地时间并显示。</p><p>3.更新BIOS时间。</p><p>联网后大家获取到的时间都是当地时间，这没问题。但Ubuntu和Windows在更新BIOS时间时，做法不同。</p><p>Windows获取到当地时间后，直接把BIOS时间设为当地时间；而Ubuntu把BIOS时间设为UTC时间。比如现在是北京时间12点，UTC时间就是12-8=4点，Ubuntu就会把BIOS时间设为4点。</p><h3 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h3><p>进入Ubuntu，在终端里输入一条指令，就可以验证上面的分析：</p><pre><code>gure@gure-tm1701:~$ timedatectl status               Local time: 二 2024-07-30 08:54:36 CST           Universal time: 二 2024-07-30 00:54:36 UTC                 RTC time: 二 2024-07-30 00:54:36                Time zone: Asia/Shanghai (CST, +0800)System clock synchronized: no              NTP service: no          RTC in local TZ: nogure@gure-tm1701:~$</code></pre><p>这个指令用来查看系统时间状态。如果您的显示如下：</p><p>第一行，Local time=8点，是Ubuntu联网获取到的当地时间。</p><p>第三行，RTC time=0点，是电脑的BIOS时间。可以看到，Ubuntu把当地时间减去8小时，得到了UTC时间并赋给了BIOS。</p><p>最后一行，RTC in local TZ=no，这句话代表系统时间和BIOS时间不同步，即BIOS存储的是UTC时间，而系统时间是当地时间。</p><p>那么问题就来了，下次重启进入Windows时，Windows读到的BIOS时间是0点，而Windows认为BIOS时间就是当地时间，所以就会直接显示0点。</p><p>Windows联网更新时间后，当他得到正确的时间8点，会将BIOS设为获取8点，那么等你下次进Ubuntu的时候，Ubuntu又会把BIOS的8点加上8作为当前系统时间，得到16点。而当网络更新时间时再变更BISO设置。</p><p>如此循环，每次更换系统的时候显示的时间都不对。</p><h3 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h3><p>解决方案非常简单。直接在Ubuntu终端中输入：</p><pre><code>timedatectl set-local-rtc 1</code></pre><p>这句话的作用是让Ubuntu将系统时间和BIOS时间同步。此时Ubuntu和Windows一样，都认为BIOS时间为当地时间。联网更新时，直接将BIOS时间设为当地时间。</p><p>现在再输入timedatectl status查看系统时间状态：</p><pre><code>gure@gure-tm1701:~$ timedatectl status               Local time: 二 2024-07-30 09:03:05 CST           Universal time: 二 2024-07-30 01:03:05 UTC                 RTC time: 二 2024-07-30 09:03:05                Time zone: Asia/Shanghai (CST, +0800)System clock synchronized: yes              NTP service: active          RTC in local TZ: yes</code></pre><p>此时切换到Windows系统，更新系统时间显示后，在切换双系统，时间显示均正常了。</p><h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>我们发现，当执行<code>timedatectl set-local-rtc 1</code>，在查看系统时间状态时会包出一个<code>Warning</code>警告：</p><pre><code>Warning: The system is configured to read the RTC time in the local time zone.         This mode cannot be fully supported. It will create various problems         with time zone changes and daylight saving time adjustments. The RTC         time is never updated, it relies on external facilities to maintain it.         If at all possible, use RTC in UTC by calling         &#39;timedatectl set-local-rtc 0&#39;.</code></pre><p>为什么爆出该警告？因为设置为<code>timedatectl set-local-rtc 1</code>后，本地时间会自动同步到硬件时钟，导致硬件时钟受随外部维护，可能随着失去更改、夏令时调整等原因导致硬件时钟出现错乱。<br>不过这种影响对我们普通用户来说根本不会有什么不便。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Ubuntu </tag>
+            
+            <tag> OS </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Python环境设置</title>
       <link href="/2024/07/25/python-huan-jing-she-zhi/"/>
       <url>/2024/07/25/python-huan-jing-she-zhi/</url>

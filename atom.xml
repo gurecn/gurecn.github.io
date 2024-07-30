@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.emzz.cn/"/>
-  <updated>2024-07-25T08:26:12.817Z</updated>
+  <updated>2024-07-30T01:24:30.391Z</updated>
   <id>https://www.emzz.cn/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>双系统时间同步问题</title>
+    <link href="https://www.emzz.cn/2024/07/30/shuang-xi-tong-shi-jian-tong-bu-wen-ti/"/>
+    <id>https://www.emzz.cn/2024/07/30/shuang-xi-tong-shi-jian-tong-bu-wen-ti/</id>
+    <published>2024-07-30T01:17:24.000Z</published>
+    <updated>2024-07-30T01:24:30.391Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Linux" scheme="https://www.emzz.cn/categories/Linux/"/>
+    
+    
+      <category term="Ubuntu" scheme="https://www.emzz.cn/tags/Ubuntu/"/>
+    
+      <category term="OS" scheme="https://www.emzz.cn/tags/OS/"/>
+    
+  </entry>
   
   <entry>
     <title>Python环境设置</title>
