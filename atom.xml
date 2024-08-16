@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.emzz.cn/"/>
-  <updated>2024-08-15T09:45:41.984Z</updated>
+  <updated>2024-08-16T02:51:46.425Z</updated>
   <id>https://www.emzz.cn/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>问天量子加密卡安装过程</title>
+    <link href="https://www.emzz.cn/2024/08/16/wen-tian-liang-zi-jia-mi-qia-an-zhuang-guo-cheng-ji-lu/"/>
+    <id>https://www.emzz.cn/2024/08/16/wen-tian-liang-zi-jia-mi-qia-an-zhuang-guo-cheng-ji-lu/</id>
+    <published>2024-08-16T02:38:26.000Z</published>
+    <updated>2024-08-16T02:51:46.425Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;记录一下最近一段时间配合硬件开发人员安装、调试问天量子加密卡的过程及遇到问题的解决方式。&lt;/p&gt;
+&lt;h2 id=&quot;安装前准备&quot;&gt;&lt;a href=&quot;#安装前准备&quot; class=&quot;headerlink&quot; title=&quot;安装前准备&quot;&gt;&lt;/a&gt;安装前准备&lt;/h2&gt;&lt;h3
+        
+      
+    
+    </summary>
+    
+      <category term="密码" scheme="https://www.emzz.cn/categories/%E5%AF%86%E7%A0%81/"/>
+    
+    
+      <category term="加密卡" scheme="https://www.emzz.cn/tags/%E5%8A%A0%E5%AF%86%E5%8D%A1/"/>
+    
+      <category term="硬件" scheme="https://www.emzz.cn/tags/%E7%A1%AC%E4%BB%B6/"/>
+    
+      <category term="Linux" scheme="https://www.emzz.cn/tags/Linux/"/>
+    
+  </entry>
   
   <entry>
     <title>服务器安装系统记录</title>
