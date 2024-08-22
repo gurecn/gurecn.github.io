@@ -4,12 +4,11 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Ubuntu启动引导项调整,  Android Framework | 计算机科学与技术 | Java Virtual Machine ">
+    <meta name="keywords" content="服务器系统重装ssh失败,  Android Framework | 计算机科学与技术 | Java Virtual Machine ">
     <meta name="baidu-site-verification" content="fmlEuI34ir" />
     <meta name="google-site-verification" content="yCy2azpds5XSuGZvis6OuA-XIGF5GuGpYRAaGfD6o48" />
     <meta name="360-site-verification" content="b7c11a830ef90fd1464ad6206bb7b6e7" />
-    <meta name="description" content="Ubuntu开机启动引导界面除了Ubuntu、Windows系统之外，还有Advanced options for Kubuntu、UEFI Firmware Settings等基本不用的条目。今天记录一下如何移除这些条目及相关问题。
-启动">
+    <meta name="description" content="起因前不久安装了三台服务器系统，安装过程比较顺利，没遇到什么问题。但是后面部署业务时，发现有一台服务器硬盘只有16G，排查发现系统竟然存在16个用户分区。经分析大概率是安装系统时未清空原有Windows Server系统分区。为防止出现意外">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +16,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Ubuntu启动引导项调整 | 忆梦之舟</title>
+    <title>服务器系统重装ssh失败 | 忆梦之舟</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -216,13 +215,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Ubuntu启动引导项调整
+                        服务器系统重装ssh失败
                     </div>
                 </div>
             </div>
@@ -333,16 +332,16 @@
                     
                     <div class="article-tag">
                         
-                        <a href="/tags/Ubuntu/" target="_blank">
-                            <span class="chip bg-color">Ubuntu</span>
-                        </a>
-                        
                         <a href="/tags/OS/" target="_blank">
                             <span class="chip bg-color">OS</span>
                         </a>
                         
-                        <a href="/tags/%E5%BC%95%E5%AF%BC/" target="_blank">
-                            <span class="chip bg-color">引导</span>
+                        <a href="/tags/Server/" target="_blank">
+                            <span class="chip bg-color">Server</span>
+                        </a>
+                        
+                        <a href="/tags/SSH/" target="_blank">
+                            <span class="chip bg-color">SSH</span>
                         </a>
                         
                     </div>
@@ -365,7 +364,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2024-07-08
+                    2024-08-21
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -379,14 +378,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    993
+                    1.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    7 分
                 </div>
                 
                 
@@ -402,50 +401,100 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Ubuntu开机启动引导界面除了Ubuntu、Windows系统之外，还有<code>Advanced options for Kubuntu</code>、<code>UEFI Firmware Settings</code>等基本不用的条目。今天记录一下如何移除这些条目及相关问题。</p>
-<h3 id="启动菜单计时调整"><a href="#启动菜单计时调整" class="headerlink" title="启动菜单计时调整"></a>启动菜单计时调整</h3><p>开机引导界面菜单选择时间默认为10s倒计时，10秒内选择,对应的启动项，否则会默认启动系统已选定的项。我希望更改为系统停留在选择界面，直到我手动选择。<br>这个修改需要调整<code>/etc/default/grub</code>文件，打开对应文件：</p>
-<pre><code> sudo nano /etc/default/grub
+                <h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>前不久安装了三台服务器系统，安装过程比较顺利，没遇到什么问题。但是后面部署业务时，发现有一台服务器硬盘只有<code>16G</code>，排查发现系统竟然存在16个用户分区。<br>经分析大概率是安装系统时未清空原有<code>Windows Server</code>系统分区。为防止出现意外，就重装系统来解决。<br>重装过程非常顺利，按照之前整理的经验，直接就安装完成了。  </p>
+<p>但是服务器系统重装之后，发现用我个人电脑远程连接服务器时报异常：</p>
+<pre><code>gure@gure-tm1701:~$ ssh root@192.168.102.162
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that a host key has just been changed.
+The fingerprint for the ED25519 key sent by the remote host is
+SHA256:S/LpJdTbZnsVjPCxLhV+pA4VQSejKh109bR1Tknliv8.
+Please contact your system administrator.
+Add correct host key in /home/gure/.ssh/known_hosts to get rid of this message.
+Offending ECDSA key in /home/gure/.ssh/known_hosts:16
+  remove with:
+  ssh-keygen -f &#39;/home/gure/.ssh/known_hosts&#39; -R &#39;192.168.102.162&#39;
+Host key for 192.168.102.162 has changed and you have requested strict checking.
+Host key verification failed.
+gure@gure-tm1701:~$ 
 </code></pre>
-<p>会看到很多配置项：</p>
-<pre><code># If you change this file, run &#39;update-grub&#39; afterwards to update
-# /boot/grub/grub.cfg.
-# For full documentation of the options in this file, see:
-#   info -f grub -n &#39;Simple configuration&#39;
-
-GRUB_DEFAULT=0   // 设定系统预选菜单
-GRUB_TIMEOUT_STYLE=hidden   // 设定超时样式，默认超时隐藏。可设定为menu,超时显示启动项菜单
-GRUB_TIMEOUT=-1  //设定菜单等待时间，默认10秒;0为不等待;-1为持续等待，直到手动选择。
-GRUB_DISTRIBUTOR=&#39;Kubuntu&#39;  // 发行版本名，我使用的是Kubuntu
-GRUB_CMDLINE_LINUX_DEFAULT=&#39;quiet splash&#39;  // quiet 启动时简化提示信息;splash 启动时用图形化进度条代替控制台字符输出。也可设置为text 
-GRUB_CMDLINE_LINUX=&quot;&quot;  // 导入到启动项的命令行
+<h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><p>查询资料发现，原来问题出在身份密钥ssh上面。  </p>
+<p>ssh服务是通过公钥和私钥来进行连接的，该方式广泛的用在linux服务验证、git身份验证上。<br>ssh服务连接远程服务时，会把每个曾经访问过计算机或服务器的公钥（<code>public key</code>），记录在 <code>~/.ssh/known_hosts</code> 中。<br>当ssh服务再次访问服务时，会核对公钥。如果密钥和记录不同，OpenSSH会发出警告。<br><code>WARNING:REMOTE HOST IDENTIFICATION HAS CHANGED!</code>报错是由于远程的主机的公钥发生了变化导致的。 </p>
+<p>此时解决问题需要用<code>ssh-keygen</code>。<code>ssh-keygen</code>用于为SSH创建新的身份验证密钥对的工具。<br>我们使用<code>-R</code>参数删除指定服务对应的公钥即可。</p>
+<pre><code>gure@gure-tm1701:~$ ssh-keygen -R 192.168.102.162
+# Host 192.168.102.162 found: line 15
+# Host 192.168.102.162 found: line 16
+/home/gure/.ssh/known_hosts updated.
+Original contents retained as /home/gure/.ssh/known_hosts.old
+gure@gure-tm1701:~$ 
 </code></pre>
-<p>要实现我的需求，直接配置<code>GRUB_TIMEOUT=-1</code>即可。</p>
-<p>此时执行<code>sudo update-grub</code>命令更新引导配置。</p>
-<h3 id="调整启动项顺序"><a href="#调整启动项顺序" class="headerlink" title="调整启动项顺序"></a>调整启动项顺序</h3><p>我发现系统默认将Kubuntu排在第一位，而Windows排在第四位了。考虑到家里人使用我电脑时，主要是进入Windows系统，我想将Windows挪到第一位。<br>最开始我调整<code>sudo nano /boot/grub/grub.cfg</code>文件，直接在文件内调整顺序，删减所遇的启动项，发现更改后调用<code>sudo update-grub</code>命令就会将更改覆盖。<br>仔细查看<code>sudo nano /boot/grub/grub.cfg</code>文件注释，发现：</p>
-<pre><code>#
-# DO NOT EDIT THIS FILE
-#
-# It is automatically generated by grub-mkconfig using templates
-# from /etc/grub.d and settings from /etc/default/grub
-#
+<p>再次连接服务正常了。</p>
+<pre><code>gure@gure-tm1701:~$ ssh-keygen -R 192.168.102.162
+# Host 192.168.102.162 found: line 15
+# Host 192.168.102.162 found: line 16
+/home/gure/.ssh/known_hosts updated.
+Original contents retained as /home/gure/.ssh/known_hosts.old
+gure@gure-tm1701:~$ ssh root@192.168.102.162
+The authenticity of host &#39;192.168.102.162 (192.168.102.162)&#39; can&#39;t be established.
+ED25519 key fingerprint is SHA256:S/LpJdTbZnsVjPCxLhV+pA4VQSejKh109bR1Tknliv8.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added &#39;192.168.102.162&#39; (ED25519) to the list of known hosts.
+root@192.168.102.162&#39;s password: 
+Last login: Fri Aug 16 17:48:23 2024
+[root@bogon ~]# df -h
+文件系统                 容量  已用  可用 已用% 挂载点
+devtmpfs                  16G     0   16G    0% /dev
+tmpfs                     16G     0   16G    0% /dev/shm
+tmpfs                     16G   10M   16G    1% /run
+tmpfs                     16G     0   16G    0% /sys/fs/cgroup
+/dev/mapper/centos-root   50G  1.8G   49G    4% /
+/dev/sda1               1014M  151M  864M   15% /boot
+/dev/mapper/centos-home  492G   33M  492G    1% /home
+tmpfs                    3.1G     0  3.1G    0% /run/user/0
+[root@bogon ~]# 
 </code></pre>
-<p>原来该文件是由<code>/etc/grub.d</code> 和 <code>/etc/default/grub</code>两个文件生成的。<code>/etc/grub.d</code>是一个文件夹，里面有很多文件，我们查看<code>README</code>文件，查看描述：</p>
-<pre><code>All executable files in this directory are processed in shell expansion order.
-
-  00_*: Reserved for 00_header.
-  10_*: Native boot entries.
-  20_*: Third party apps (e.g. memtest86+).
-
-The number namespace in-between is configurable by system installer and/or
-administrator.  For example, you can add an entry to boot another OS as
-01_otheros, 11_otheros, etc, depending on the position you want it to occupy in
-the menu; and then adjust the default setting via /etc/default/grub.
+<h2 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h2><pre><code>ssh-keygen常用的选项有： 
+-a trials 在使用 -T 对 DH-GEX 候选素数进行安全筛选时需要执行的基本测试数量。 
+-B 显示指定的公钥/私钥文件的 bubblebabble 摘要。 
+-b bits 指定密钥长度。对于RSA密钥，最小要求768位，默认是2048位。DSA密钥必须恰好是1024位(FIPS 186-2 标准的要求)。 
+-C comment 提供一个新注释 
+-c 要求修改私钥和公钥文件中的注释。本选项只支持 RSA1 密钥。 程序将提示输入私钥文件名、密语(如果存在)、新注释。 
+-D reader 下载存储在智能卡 reader 里的 RSA 公钥。 
+-e 读取OpenSSH的私钥或公钥文件，并以 RFC 4716 SSH 公钥文件格式在 stdout 上显示出来。 
+该选项能够为多种商业版本的 SSH 输出密钥。 
+-F hostname 在 known_hosts 文件中搜索指定的 hostname ，并列出所有的匹配项。 
+这个选项主要用于查找散列过的主机名/ip地址，还可以和 -H 选项联用打印找到的公钥的散列值。 
+-f filename 指定密钥文件名。 
+-G output_file 为 DH-GEX 产生候选素数。这些素数必须在使用之前使用 -T 选项进行安全筛选。 
+-g 在使用 -r 打印指纹资源记录的时候使用通用的 DNS 格式。 
+-H 对 known_hosts 文件进行散列计算。这将把文件中的所有主机名/ip地址替换为相应的散列值。 
+原来文件的内容将会添加一个”.old”后缀后保存。这些散列值只能被 ssh 和 sshd 使用。 
+这个选项不会修改已经经过散列的主机名/ip地址，因此可以在部分公钥已经散列过的文件上安全使用。 
+-i 读取未加密的SSH-2兼容的私钥/公钥文件，然后在 stdout 显示OpenSSH兼容的私钥/公钥。 
+该选项主要用于从多种商业版本的SSH中导入密钥。 
+-l 显示公钥文件的指纹数据。它也支持 RSA1 的私钥。 
+对于RSA和DSA密钥，将会寻找对应的公钥文件，然后显示其指纹数据。 
+-M memory 指定在生成 DH-GEXS 候选素数的时候最大内存用量(MB)。 
+-N new_passphrase 提供一个新的密语。 
+-P passphrase 提供(旧)密语。 
+-p 要求改变某私钥文件的密语而不重建私钥。程序将提示输入私钥文件名、原来的密语、以及两次输入新密语。 
+-q 安静模式。用于在 /etc/rc 中创建新密钥的时候。 
+-R hostname 从 known_hosts 文件中删除所有属于 hostname 的密钥。 
+这个选项主要用于删除经过散列的主机(参见 -H 选项)的密钥。 
+-r hostname 打印名为 hostname 的公钥文件的 SSHFP 指纹资源记录。 
+-S start 指定在生成 DH-GEX 候选模数时的起始点(16进制)。 
+-T output_file 测试 Diffie-Hellman group exchange 候选素数(由 -G 选项生成)的安全性。 
+-t type 指定要创建的密钥类型。可以使用：”rsa1”(SSH-1) “rsa”(SSH-2) “dsa”(SSH-2) 
+-U reader 把现存的RSA私钥上传到智能卡 reader 
+-v 详细模式。ssh-keygen 将会输出处理过程的详细调试信息。常用于调试模数的产生过程。 
+重复使用多个 -v 选项将会增加信息的详细程度(最大3次)。 
+-W generator 指定在为 DH-GEX 测试候选模数时想要使用的 generator 
+-y 读取OpenSSH专有格式的公钥文件，并将OpenSSH公钥显示在 stdout 上。
 </code></pre>
-<p>通过文件夹里的文件描述及备注知道，我们可通过自定义配置修改启动项。<br>其中00_header配置头信息、初始内容;05_debian_theme配置主题;10_linux系统使用的Linux系统内核配置;20_memtest86+ 内存检测测试软件;30_os-prober系统检测其他操作系统。<br>其中文件名前部分数字，代表了执行的顺序。比如我要把其他操作系统放到Linux前面，只需要将<code>30_os-prober</code>文件名中数字30改为小于<code>10_linux</code>中数字10的数字，防止影响其他功能，我们改为大于05,小于10的数字7：</p>
-<pre><code>sudo mv /etc/grub.d/30_os-prober /etc/grub.d/07_os-prober
-</code></pre>
-<p>此时，再次执行<code>sudo update-grub</code>命令更新引导配置，重启发现Windows已经挪到了第一位。</p>
-<h3 id="移除多余的引导项"><a href="#移除多余的引导项" class="headerlink" title="移除多余的引导项"></a>移除多余的引导项</h3><p>我发现开机启动引导界面中除了Ubuntu、Windows外，还有<code>Advanced options for Kubuntu</code>、<code>UEFI Firmware Settings</code>等不常用条目，那么如何移除呢？<br>我们查看<code>10_linux</code>、<code>30_os-prober</code>，发现并没有写死启动项，使用<code>scripts</code>扫描磁盘实现的，那么不具备脚本编写能力的花，只能通过<code>/boot/grub/grub.cfg</code>进行调整了。<br>打开文件，找到对应的项删除即可。但需要注意：<strong>调整<code>/boot/grub/grub.cfg</code>后，再次执行<code>sudo update-grub</code>命令会将调整内容覆盖。</strong>因此调整后不要再执行<code>sudo update-grub</code>命令。</p>
 
             </div>
             <hr />
@@ -480,9 +529,9 @@ the menu; and then adjust the default setting via /etc/default/grub.
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《Ubuntu启动引导项调整》
+                    《服务器系统重装ssh失败》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2024/07/08/ubuntu-qi-dong-yin-dao-xiang-diao-zheng/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2024/08/21/fu-wu-qi-xi-tong-chong-zhuang-ssh-shi-bai/" property="cc:attributionName"
                rel="cc:attributionURL">
                 gure
             </a> 采用
@@ -522,30 +571,30 @@ the menu; and then adjust the default setting via /etc/default/grub.
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2024/07/09/ubuntu-xi-tong-npm-quan-xian-deng-hexo-wen-ti/">
+                <a href="/2024/08/21/fu-wu-qi-xi-tong-chong-zhuang-ssh-shi-bai/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Ubuntu Hexo环境还原问题">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="服务器系统重装ssh失败">
                         
-                        <span class="card-title">Ubuntu Hexo环境还原问题</span>
+                        <span class="card-title">服务器系统重装ssh失败</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            系统重装、博客项目恢复中，发现重新安装hexo环境出现问题：主要矛盾点在于npm、node版本升级，与之前版本相差甚远。拉取原有项目安装依赖过程中失败、并且掺杂安装权限问题，导致错误频出。我记录遇到的主要问题及对应解决方案。
-npm安装权限
+                            起因前不久安装了三台服务器系统，安装过程比较顺利，没遇到什么问题。但是后面部署业务时，发现有一台服务器硬盘只有16G，排查发现系统竟然存在16个用户分区。经分析大概率是安装系统时未清空原有Windows Server系统分区。为防止出现意外
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2024-07-09
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2024-08-21
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -558,23 +607,20 @@ npm安装权限
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Hexo/" target="_blank">
-                        <span class="chip bg-color">Hexo</span>
+                    <a href="/tags/OS/" target="_blank">
+                        <span class="chip bg-color">OS</span>
                     </a>
                     
-                    <a href="/tags/Ubuntu/" target="_blank">
-                        <span class="chip bg-color">Ubuntu</span>
+                    <a href="/tags/Server/" target="_blank">
+                        <span class="chip bg-color">Server</span>
                     </a>
                     
-                    <a href="/tags/NPM/" target="_blank">
-                        <span class="chip bg-color">NPM</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%9D%83%E9%99%90/" target="_blank">
-                        <span class="chip bg-color">权限</span>
+                    <a href="/tags/SSH/" target="_blank">
+                        <span class="chip bg-color">SSH</span>
                     </a>
                     
                 </div>
@@ -588,31 +634,35 @@ npm安装权限
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/07/04/android14-an-zhuang-di-ban-ben-ying-yong/">
+                <a href="/2024/08/16/wen-tian-liang-zi-jia-mi-qia-an-zhuang-guo-cheng-ji-lu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="Android14安装低版本应用">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="问天量子加密卡安装过程">
                         
-                        <span class="card-title">Android14安装低版本应用</span>
+                        <span class="card-title">问天量子加密卡安装过程</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            前几天给妈妈生日，考虑到上一部手机用了快5年了，就买了一部红米K70手机，使用手机主要用来微信聊天、刷抖音视频。之所以买小米手机，是因为她不认字。上一部红米Note Pro手机安装了讯飞语音引擎后，配合小米手机的辅助功能权限，可以实现点击文
+                            记录一下最近一段时间配合硬件开发人员安装、调试问天量子加密卡的过程及遇到问题的解决方式。
+安装前准备检查加密卡
+查看加密卡外观是否存在弯曲、破损等状况。
+查看加密卡型号是否正确。当前使用产品序号为：20240328001（贴纸打印）。  
+
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2024-07-04
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2024-08-16
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Android/" class="post-category" target="_blank">
-                                    Android
+                            <a href="/categories/%E5%AF%86%E7%A0%81/" class="post-category" target="_blank">
+                                    密码
                                 </a>
                             
                             
@@ -622,16 +672,16 @@ npm安装权限
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%85%BC%E5%AE%B9%E6%80%A7/" target="_blank">
-                        <span class="chip bg-color">兼容性</span>
+                    <a href="/tags/%E5%8A%A0%E5%AF%86%E5%8D%A1/" target="_blank">
+                        <span class="chip bg-color">加密卡</span>
                     </a>
                     
-                    <a href="/tags/%E5%B0%8F%E7%B1%B3/" target="_blank">
-                        <span class="chip bg-color">小米</span>
+                    <a href="/tags/%E7%A1%AC%E4%BB%B6/" target="_blank">
+                        <span class="chip bg-color">硬件</span>
                     </a>
                     
-                    <a href="/tags/ADB/" target="_blank">
-                        <span class="chip bg-color">ADB</span>
+                    <a href="/tags/Linux/" target="_blank">
+                        <span class="chip bg-color">Linux</span>
                     </a>
                     
                 </div>

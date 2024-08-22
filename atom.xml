@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.emzz.cn/"/>
-  <updated>2024-08-16T02:51:46.425Z</updated>
+  <updated>2024-08-22T10:20:51.823Z</updated>
   <id>https://www.emzz.cn/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>服务器系统重装ssh失败</title>
+    <link href="https://www.emzz.cn/2024/08/21/fu-wu-qi-xi-tong-chong-zhuang-ssh-shi-bai/"/>
+    <id>https://www.emzz.cn/2024/08/21/fu-wu-qi-xi-tong-chong-zhuang-ssh-shi-bai/</id>
+    <published>2024-08-21T11:28:29.000Z</published>
+    <updated>2024-08-22T10:20:51.823Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;起因&quot;&gt;&lt;a href=&quot;#起因&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Linux" scheme="https://www.emzz.cn/categories/Linux/"/>
+    
+    
+      <category term="OS" scheme="https://www.emzz.cn/tags/OS/"/>
+    
+      <category term="Server" scheme="https://www.emzz.cn/tags/Server/"/>
+    
+      <category term="SSH" scheme="https://www.emzz.cn/tags/SSH/"/>
+    
+  </entry>
   
   <entry>
     <title>问天量子加密卡安装过程</title>
